@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
     entry: './frontend/hopcamp.jsx',
     output: {
-        path: path.resolve(__dirname, 'app', 'asset', 'javascript'),
+        path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: './bundle.js',
     },
     module: {
