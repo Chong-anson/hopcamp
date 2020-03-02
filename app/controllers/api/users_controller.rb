@@ -9,13 +9,18 @@ class Api::UsersController < ApplicationController
     end 
 
     def update
+        @user = User.find_by(id: params[:id])
+        if @user
+            if @user.update(user_params)
+                render :show
+            else
+                return json: @user.errors.full_messages
+            end
+        else
+            return json: ["Invalid User"]
+        end
     end 
 
-    def destroy
-    end
-
-    def index 
-    end
 
     def show 
         @user = User.find_by(id: params[:id])
