@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_045358) do
+ActiveRecord::Schema.define(version: 2020_03_03_055435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_045358) do
     t.integer "capacity", null: false
     t.integer "price", null: false
     t.integer "venue_id", null: false
-    t.string "type", null: false
+    t.string "campsite_type", null: false
     t.float "lat", null: false
     t.float "lng", null: false
     t.datetime "created_at", null: false

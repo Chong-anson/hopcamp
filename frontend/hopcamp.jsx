@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Root from "./components/root"
-import configureStore from "./store/store"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from "./components/root";
+import configureStore from "./store/store";
 // TESTING
-import * as actions from "./actions/session_actions"
+import * as actions from "./actions/session_actions";
+import * as campsiteUtil from "./util/campsite_api_util";
 // TESTING END
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -12,6 +13,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // TESTING 
     window.store = store;
     window.actions = actions;
+    window.campsiteUtil = campsiteUtil; 
+    
     // DELETE ABOVE CODE
     ReactDOM.render(<Root store={store} />, root)
 })
