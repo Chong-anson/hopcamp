@@ -1,10 +1,14 @@
-export const requestCampsites = () => {
+export const fetchCampsites = (filter) => {
+    const { venue } = filter; 
     return $.ajax({
-        url: "/api/campsites"
+        url: "/api/campsites",
+        data: {
+            venue
+        }
     })
 }
 
-export const requestCampsite = (campsiteId) => {
+export const fetchCampsite = (campsiteId) => {
     return $.ajax({
         url: `api/campsites/${campsiteId}`
     })

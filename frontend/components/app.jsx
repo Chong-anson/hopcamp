@@ -12,8 +12,11 @@ const App = () => {
                 <Link className="header-logo" to="/">HopCamp</Link>
                 <NavbarContainer />
             </header> 
-            <AuthRoute exact path="/signup" component={signupFormContainer} />
-            <AuthRoute exact path="/login" component={loginFormContainer} />
+            <Switch>
+                <AuthRoute exact path="/signup" component={signupFormContainer} />
+                <AuthRoute exact path="/login" component={loginFormContainer} />
+
+            </Switch>
         </div>
     )
 };

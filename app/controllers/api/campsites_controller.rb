@@ -1,9 +1,10 @@
 class Api::CampsitesController < ApplicationController
     def index
-        if (params[:venueId])
-            @campsites = Campsite.where("venue_id = ?", params[:venueId]).limit(50)
+        @campsites = Campsite.includes(:venue)
+        if (params[:venue])
+            @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
         else
-            @campsites = Campsite.all.limit(50) 
+            @campsites = @campsites.all
         end
         render :index
     end
