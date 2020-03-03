@@ -20,4 +20,6 @@ class Campsite < ApplicationRecord
 
     belongs_to :venue,
         class_name: :Venue
+
+    has_many :bookings
 end
