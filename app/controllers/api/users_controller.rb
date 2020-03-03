@@ -17,7 +17,7 @@ class Api::UsersController < ApplicationController
                 render json: @user.errors.full_messages
             end
         else
-            render json: ["Invalid User"]
+            render json: ["Invalid User"], status: 422
         end
     end 
 
@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
         if @user 
             render :show
         else
-            render json: ["Invalid User"]
+            render json: ["Invalid User"], status: 404
         end
     end
 
