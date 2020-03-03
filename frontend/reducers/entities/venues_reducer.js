@@ -8,8 +8,8 @@ const venuesReducer = (state = _defaultState, action) => {
     switch(action.type){
         case RECEIVE_CAMPSITES:
             const newState = Object.assign({}, state);
-            Object.values(action.payload.venues).forEach(venue =>
-                newState[venue.id] = venue
+            Object.keys(action.payload.venues).forEach(id =>
+                newState[id] = action.payload.venues[id]
             )
             return newState;
         default: 
