@@ -12,13 +12,13 @@ const receiveCampsite = (campsite) => ({
     campsite
 })
 
-export const requestCampsites = (filter) => (dispatch) => {
+export const fetchCampsites = (filter) => (dispatch) => {
     return campsiteUtil.fetchCampsites(filter)
                 .then(res => dispatch(receiveCampsites(res)))
                 .fail(res => console.log(res))
 }
 
-export const requestCampsite = (campsiteId) => (dispatch) => {
+export const fetchCampsite = (campsiteId) => (dispatch) => {
     return campsiteUtil.fetchCampsite(campsiteId)
                 .then(campsite => dispatch(receiveCampsite(campsite)))
                 .fail(res => console.log(res))

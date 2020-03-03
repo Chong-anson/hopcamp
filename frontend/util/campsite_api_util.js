@@ -1,9 +1,9 @@
 export const fetchCampsites = (filter) => {
-    const { venue } = filter; 
+    // const { venue } = filter; 
     return $.ajax({
         url: "/api/campsites",
         data: {
-            venue
+            
         }
     })
 }
