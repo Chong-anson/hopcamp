@@ -4,7 +4,7 @@ class Api::CampsitesController < ApplicationController
         if (params[:venue])
             @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
         else
-            @campsites = @campsites.all
+            @campsites = @campsites.all.sample(50)
         end
         render :index
     end

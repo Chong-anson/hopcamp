@@ -6,12 +6,15 @@ json.campsites do
     end
 end
 
-
 json.venues do 
-    venues = @campsites.map { |camp| camp.venue}
-    venues.uniq.each do |venue|
-        json.set! venue.id do 
-            json.array! venue.campsites.ids
+    venues = Hash.new{ |h,k| h[k] = []}; 
+
+    @campsites.each do |campsite|
+        venues[campsite.venue.id] << campsite.id
+    end
+    venues.each do | k,v| 
+        json.set! k do 
+            json.array! v
         end
     end
 end
