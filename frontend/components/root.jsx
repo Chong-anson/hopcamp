@@ -7,7 +7,6 @@ const Root = (props) => {
     return(
         <Provider store={props.store}>
             <HashRouter>
-                <h2>This is the rooooot</h2>
                 <App /> 
             </HashRouter>
         </Provider>
