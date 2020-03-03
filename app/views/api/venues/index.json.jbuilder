@@ -1,8 +1,6 @@
-json.venues do 
-    @venues.each do |venue| 
-        json.set! venue.id do 
-            json.partial! "api/venues/venue", venue: venue
-        end
+@venues.each do |venue| 
+    json.set! venue.id do 
+        json.partial! "api/venues/venue", venue: venue
     end
 end
 
