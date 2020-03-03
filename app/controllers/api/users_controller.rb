@@ -14,10 +14,10 @@ class Api::UsersController < ApplicationController
             if @user.update(user_params)
                 render :show
             else
-                return json: @user.errors.full_messages
+                render json: @user.errors.full_messages
             end
         else
-            return json: ["Invalid User"]
+            render json: ["Invalid User"]
         end
     end 
 
@@ -33,7 +33,7 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params 
-        params.require(
+        params.require(:user).permit(
             :username, 
             :first_name,
             :last_name,
