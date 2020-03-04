@@ -24,12 +24,12 @@ body {
     display: flex;
 }
 
-.navbar-buttons a{
+.navbar-buttons a, .navbar-btn{
     font-size: 18px;
     padding: 22.5px 12px;
 }
 
-.navbar-buttons > a:hover{
+.navbar-buttons > a:hover, .navbar-btn{
     text-decoration: underline;
 }
 

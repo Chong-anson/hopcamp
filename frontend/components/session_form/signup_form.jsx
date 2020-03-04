@@ -34,14 +34,43 @@ class SignupForm extends React.Component {
                         <h1>Join HopCamp!</h1>
                         <p>Discover the best campsites near me</p>
                     </div>
-                        <input className="form-control" type="text" placeholder="Username:" value={this.state.username} onChange={this.handleChange("username")} />
+                        <input className="form-control" 
+                            type="text" 
+                            placeholder="Username:"
+                            value={this.state.username} 
+                            onChange={this.handleChange("username")} 
+                        />
                     <div className="name-form">
-                        <input className="form-control" type="text" placeholder="First Name:" value={this.state.first_name} onChange={this.handleChange("first_name")} />
+                        <input 
+                            className="form-control" 
+                        type="text" 
+                        placeholder="First Name
+                        :" value={this.state.first_name}
+                         onChange={this.handleChange("first_name")} 
+                         />
                         <br/>
-                        <input className="form-control" type="text" placeholder="Last Name:"value={this.state.last_name} onChange={this.handleChange("last_name")} />
+                        <input 
+                            className="form-control" 
+                            type="text" 
+                            placeholder="Last Name
+                            :"value={this.state.last_name}
+                            onChange={this.handleChange("last_name")} 
+                         />
                     </div>
-                        <input className="form-control" type="text" placeholder="Email:" value={this.state.email} onChange={this.handleChange("email")} />
-                        <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
+                        <input 
+                            className="form-control" 
+                            type="text" 
+                            placeholder="Email:"
+                            value={this.state.email} 
+                            onChange={this.handleChange("email")} 
+                         />
+                        <input 
+                            className="form-control" 
+                            type="password" 
+                            placeholder="Password:"
+                            value={this.state.password} 
+                            onChange={this.handleChange("password")} 
+                        />
                     <button className="btn session-btn">Sign Up</button>
                 </form>
                 <div className="session-component-footer">

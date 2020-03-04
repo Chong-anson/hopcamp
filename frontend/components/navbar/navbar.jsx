@@ -22,7 +22,7 @@ class Navbar extends React.Component {
                     <br />
                     <Link to="/">Messages</Link>
                     <br />
-                    <button onClick={this.handleClick}> Sign Out!</button>
+                    <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
                 </div>
             )
         }
