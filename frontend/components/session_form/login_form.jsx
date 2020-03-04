@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import ErrorShowContainer from './error_show';
+import ErrorShowContainer from '../error_show';
 
 
 class LoginForm extends React.Component {
