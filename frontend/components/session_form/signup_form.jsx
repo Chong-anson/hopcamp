@@ -19,7 +19,7 @@ class SignupForm extends React.Component {
         this.props.processForm(user)
             .then(() => {
                 const url = this.props.match.url
-                if (url.includes("campsite")){
+                if (url.includes("campsites")){
                     this.props.history.push(url.replace("/signup", ""));
                 }
                 else{
@@ -30,6 +30,13 @@ class SignupForm extends React.Component {
     }
 
     render() {
+        const url = this.props.match.url;
+        const loginForm = (url.includes("campsites")) ? (
+            <button className="redirect-button"
+             onClick={() => this.props.history.push(url.replace("/signup", "/login"))}>
+            Sign in 
+            </button>
+        ) : this.props.loginForm; 
         let errors = "";
         if (this.props.errors.session.length){
             errors = this.props.errors.session.map(error =>
@@ -84,7 +91,7 @@ class SignupForm extends React.Component {
                 </form>
                 <div className="session-component-footer">
 
-                    <span>Have an account? </span>{this.props.loginForm}
+                    <span>Have an account? </span>{loginForm}
                 </div>
                 {/* {errors.length ? <h2>Errors</h2> : ""}
                 <ul>

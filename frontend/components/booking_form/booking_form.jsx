@@ -37,13 +37,14 @@ class Bookingform extends React.Component{
         if (this.props.currentUserId){
             const booking = Object.assign({}, this.state, {
                 campsiteId: this.props.campsite.id,
-                currentUserId: this.props.currentUserId
+                userId: this.props.currentUserId
             });
-            this.props.createBooking()
+            this.props.createBooking(booking);
         }
         else{
-            const url = this.props.match.url;
-            this.props.history.push(url + "/signup");
+            const url = this.props.match.url.concat('signup')
+            console.log(url);
+            this.props.history.push(url);
         }
     }
 

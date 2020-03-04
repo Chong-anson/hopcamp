@@ -14,6 +14,6 @@ const receiveBooking = (booking) => ({
 
 export const createBooking = (booking) => dispatch => {
     return bookingUtil.createBooking(booking)
-            .then(res => dispatch(receiveBooking))
+            .then(booking => dispatch(receiveBooking(booking)))
 }
 

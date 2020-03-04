@@ -1,9 +1,10 @@
 class Api::BookingsController < ApplicationController
     def create
+        debugger
         @booking = Booking.new(booking_params)
         # debugger
-        @booking.start_date = Date.strptime(booking_params[:start_date], '%m-%d-%y')
-        @booking.end_date = Date.strptime(booking_params[:end_date], '%m-%d-%y')
+        # @booking.start_date = Date.strptime(booking_params[:start_date], '%m-%d-%y')
+        # @booking.end_date = Date.strptime(booking_params[:end_date], '%m-%d-%y')
         if (@booking.save)
             render :show
         else

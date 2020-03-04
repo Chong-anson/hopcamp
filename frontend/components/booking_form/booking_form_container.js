@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import BookingForm from "./booking_form";
-import {createBooking} from "../../util/booking_api_utils";
+import {createBooking} from "../../actions/booking_actions";
 
 const msp = (state, ownProps) => ({
     
@@ -10,7 +10,7 @@ const msp = (state, ownProps) => ({
 });
 
 const mdp = (dispatch) => ({
-    createBooking: (booking) => (dispatch(createBooking))
+    createBooking: (booking) => (dispatch(createBooking(booking)))
 
 });
 

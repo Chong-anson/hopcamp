@@ -31,11 +31,18 @@ class LoginForm extends React.Component {
 
     render() {
         let errors = ""
-        if (this.props.errors.session.length) {
-            errors = this.props.errors.session.map(error =>
-                (<li>{error}</li>)
-            )
-        }
+        // if (this.props.errors.session.length) {
+        //     errors = this.props.errors.session.map(error =>
+        //         (<li>{error}</li>)
+        //     )
+        // }
+        const url = this.props.match.url;
+        const signupForm = (url.includes("campsites")) ? (
+            <button className="redirect-button"
+                onClick={() => this.props.history.push(url.replace("/login", "/signup"))}>
+                Sign up!
+            </button>
+        ) : this.props.signupForm; 
 
         return (
             <div className="login-component session-component">
@@ -56,7 +63,7 @@ class LoginForm extends React.Component {
                 </ul> */}
                 <div className="session-component-footer">
                     <span>Don't have a Hopcamp account? </span>
-                    <span>{this.props.signupForm}</span>
+                    <span>{signupForm}</span>
                 </div>
 
             </div>
