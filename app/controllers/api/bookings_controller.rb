@@ -1,6 +1,5 @@
 class Api::BookingsController < ApplicationController
     def create
-        debugger
         @booking = Booking.new(booking_params)
         # debugger
         # @booking.start_date = Date.strptime(booking_params[:start_date], '%m-%d-%y')
