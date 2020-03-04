@@ -1,0 +1,23 @@
+.booking-wdiget{
+    display: flex;
+    flex-direction: column;
+};
+
+.row{
+    width: 100%;
+    display: flex;
+};
+
+.col-4{
+    width: 25%
+};
+
+/* .DayPicker-Day--highlighted {
+  background-color: yellow;
+  color: white;
+};
+
+.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+    background-color: #f0f8ff !important;
+    color: #4a90e2;
+  } */

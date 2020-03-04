@@ -6,6 +6,8 @@ import HomeContainer from './home_container'
 import Modal from "./modal/modal";
 import { AuthRoute, ProtectedRoute } from "../util/route_utils.jsx";
 import CampsiteShowContainer from "./campsite_show/campsite_show_container";
+import { SignupFormContainer, LoginFormContainer } from "./session_form/form_container";
+
 
 const App = () => {
     return(
@@ -16,9 +18,9 @@ const App = () => {
                 <NavbarContainer />
             </header> 
             <Switch>
-                {/* <AuthRoute exact path="/signup" component={signupFormContainer} />
-                <AuthRoute exact path="/login" component={loginFormContainer} /> */}
-                <Route path="/campsites/:id" component={CampsiteShowContainer} />
+                <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />
+                <AuthRoute exact path="/campsites/:campsiteId/login" component={LoginFormContainer} />
+                <Route exact path="/campsites/:id" component={CampsiteShowContainer} />
                 <Route path="/" component={HomeContainer} />
             </Switch>
         </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import BookingFormContainer from "../booking_form/booking_form_container";
+
 class CampsiteShow extends React.Component{
     constructor(props){
         super(props);
@@ -28,6 +30,7 @@ class CampsiteShow extends React.Component{
                         </li>
                             {campsite.venue}
                     </ul>
+                    <BookingFormContainer campsite={campsite}  />
                 </div>
             )   
         }

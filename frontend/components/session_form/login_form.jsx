@@ -17,7 +17,16 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user)
-            .then(() => this.props.closeModal());
+            .then(() => {
+                const url = this.props.match.url
+                if (url.includes("campsite")) {
+                    console.log(url);
+                    this.props.history.push(url.replace("/login",""));
+                }
+                else {
+                    this.props.closeModal();
+                };
+            });
     }
 
     render() {
