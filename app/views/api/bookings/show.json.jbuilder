@@ -1,0 +1,1 @@
+json.extract! @booking, :id, :user_id, :campsite_id, :status, :start_date, :end_date, :group_size

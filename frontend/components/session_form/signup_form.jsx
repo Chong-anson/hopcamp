@@ -17,7 +17,7 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user)
-            .then(() => this.props.history.push("/"));
+            .then(() => this.props.closeModal());
     }
 
     render() {
@@ -28,36 +28,30 @@ class SignupForm extends React.Component {
             )
         }
         return (
-            <div className="modal is-open">
-                <form className="modal-form signup-form form" onSubmit={this.handleSubmit}>
-                    <h1>Join HopCamp</h1>
-                    <p>Discover the best campsites near me</p>
-                    <label>Username:
-                        <input type="text" value={this.state.username} onChange={this.handleChange("username")} />
-                    </label>
-                    <br/>
-                    <label>First Name:
-                        <input type="text" value={this.state.first_name} onChange={this.handleChange("first_name")} />
-                    </label>
-                    <br/>
-                    <label>Last Name:
-                        <input type="text" value={this.state.last_name} onChange={this.handleChange("last_name")} />
-                    </label>
-                    <br/>
-                    <label>Email:
-                        <input type="text" value={this.state.email} onChange={this.handleChange("email")} />
-                    </label>
-                    <br/>
-                    <label>Password:
-                        <input type="password" value={this.state.password} onChange={this.handleChange("password")} />
-                    </label>
-                    <br/>
-                    <button>Sign Up</button>
+            <div className="signup-component session-component">
+                <form className="signup-form form" onSubmit={this.handleSubmit}>
+                    <div className="title">
+                        <h1>Join HopCamp!</h1>
+                        <p>Discover the best campsites near me</p>
+                    </div>
+                        <input className="form-control" type="text" placeholder="Username:" value={this.state.username} onChange={this.handleChange("username")} />
+                    <div className="name-form">
+                        <input className="form-control" type="text" placeholder="First Name:" value={this.state.first_name} onChange={this.handleChange("first_name")} />
+                        <br/>
+                        <input className="form-control" type="text" placeholder="Last Name:"value={this.state.last_name} onChange={this.handleChange("last_name")} />
+                    </div>
+                        <input className="form-control" type="text" placeholder="Email:" value={this.state.email} onChange={this.handleChange("email")} />
+                        <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
+                    <button className="btn session-btn">Sign Up</button>
                 </form>
-                {errors.length ? <h2>Errors</h2> : ""}
+                <div className="session-component-footer">
+
+                    <span>Have an account? </span>{this.props.loginForm}
+                </div>
+                {/* {errors.length ? <h2>Errors</h2> : ""}
                 <ul>
                     {errors}
-                </ul>
+                </ul> */}
             </div>
         )
     }

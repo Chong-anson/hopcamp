@@ -1,3 +1,87 @@
 // Place all the styles related to the api/Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form {
+    // border: solid 1px red;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.title h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+
+}
+
+.title p{
+    color: #757575;
+}
+
+.session-component-footer{
+    box-sizing: border-box;
+    // border: solid 1px red;
+    text-align: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.form-control{
+    box-sizing: border-box;
+    height: 68px;
+    width: 100%;
+    border: solid 1px #333333;
+    margin-bottom: 10px;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333333;
+}
+
+::placeholder{
+    color: #333333;
+}
+
+.name-form{
+    display: flex;
+    justify-content: space-between;
+
+}
+ 
+.name-form .form-control{
+    width: 48%;
+}
+
+.form a{
+    font-size: 14.4px;
+    color: #757575;
+    text-decoration: underline;
+    align-self: flex-end;
+}
+
+.session-btn {
+    display: block;
+    box-sizing: border-box;
+    // text-size: 19.2px;
+    color: #ffffff;
+    width: 100%; 
+    background-color: #40d9ac;
+    padding: 14px;
+    border-radius: 5px;
+}
+
+.redirect-button{
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.redirect-button:hover{
+    border-bottom: 1px solid #333333;
+}

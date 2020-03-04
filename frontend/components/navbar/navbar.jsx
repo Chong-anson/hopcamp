@@ -30,14 +30,11 @@ class Navbar extends React.Component {
             return (
                 <div className="navbar-buttons">
                     <Link to="/">Near Me</Link>
-                    <br />
                     <Link to="/">Become a Host</Link>
-                    <br />
                     <Link to="/">About</Link>
-                    <br />
-                    <Link to="/login">Login</Link>
-                    <br />
-                    <Link className="special-buttons" to="/signup">Sign up</Link>
+                    {this.props.loginForm}
+                    {/* <Link className="special-buttons" to="/signup">Sign up</Link> */}
+                    {this.props.signupForm}
                 </div>
 
             )

@@ -9,8 +9,24 @@ import * as venueActions from "./actions/venue_actions";
 // TESTING END
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    const store = configureStore()
-    const root = document.getElementById("root")
+    const root = document.getElementById("root");
+    let store;
+    if (window.currentUser) {
+        const preloadedState = {
+            entities: {
+                users: { [window.currentUser.id]: window.currentUser }
+            },
+            session: {
+                id: window.currentUser.id
+            }
+        }
+
+        store = configureStore(preloadedState);
+        delete window.currentUser;
+    }
+    else {
+        store = configureStore();
+    }
     // TESTING 
     window.store = store;
     window.actions = actions;

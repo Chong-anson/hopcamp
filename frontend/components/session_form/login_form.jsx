@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user)
-            .then(() => this.props.history.push("/"));
+            .then(() => this.props.closeModal());
     }
 
     render() {
@@ -29,27 +29,26 @@ class LoginForm extends React.Component {
         }
 
         return (
-            <div className="modal">
-                <form className="modal-form login-form form" onSubmit={this.handleSubmit}>
-                    <h1>Welcome Back!</h1>
-                    <label>Username:
-                        <input type="text" value={this.state.username} onChange={this.handleChange("username")} />
-                    </label>
-                    <label>Password:
-                        <input type="password" value={this.state.password} onChange={this.handleChange("password")} />
-                    </label>
+            <div className="login-component session-component">
+                <form className="login-form form" onSubmit={this.handleSubmit}>
+                    <div className="title">
+                        <h1>Welcome Back!</h1>
+                        <p>It's about time for another camping trip</p>
+                    </div>
+                    <input className="form-control" type="text" placeholder="Username:" value={this.state.username} onChange={this.handleChange("username")} />
+                    <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
                     <Link to="/">Forgot your password?</Link>
                     <br/>
-                    <button>Log In</button>
+                    <button className="btn session-btn">Log In</button>
                 </form>
-                <div className="modal-footer">
-                    <span>Don't have a Hopcamp account? </span>
-                    <Link to="/signup">Sign Up</Link>
-                </div>
-                {errors.length ? <h2>Errors</h2> : ""}
+                {/* {errors.length ? <h2>Errors</h2> : ""}
                 <ul>
                     {errors}
-                </ul>
+                </ul> */}
+                <div className="session-component-footer">
+                    <span>Don't have a Hopcamp account? </span>
+                    <span>{this.props.signupForm}</span>
+                </div>
 
             </div>
         )

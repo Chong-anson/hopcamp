@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     end 
 
     def update
-        @user = User.find_by(id: params[:id])
+        @user = User.includes(:bookings).find_by(id: params[:id])
         if @user
             if @user.update(user_params)
                 render :show
@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
 
 
     def show 
-        @user = User.find_by(id: params[:id])
+        @user = User.includes(:bookings).find_by(id: params[:id])
         if @user 
             render :show
         else
