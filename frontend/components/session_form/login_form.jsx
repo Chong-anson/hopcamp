@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import ErrorShowContainer from './error_show';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -57,10 +59,7 @@ class LoginForm extends React.Component {
                     <br/>
                     <button className="btn session-btn">Log In</button>
                 </form>
-                {/* {errors.length ? <h2>Errors</h2> : ""}
-                <ul>
-                    {errors}
-                </ul> */}
+                <ErrorShowContainer type={"session"} />
                 <div className="session-component-footer">
                     <span>Don't have a Hopcamp account? </span>
                     <span>{signupForm}</span>

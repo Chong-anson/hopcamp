@@ -1,5 +1,5 @@
 import React from "react"
-
+import ErrorShowContainer from './error_show';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -88,6 +88,7 @@ class SignupForm extends React.Component {
                             onChange={this.handleChange("password")} 
                         />
                     <button className="btn session-btn">Sign Up</button>
+                    <ErrorShowContainer type={"session"} /> 
                 </form>
                 <div className="session-component-footer">
 
