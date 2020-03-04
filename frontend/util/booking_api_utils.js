@@ -1,4 +1,4 @@
-export const createBooking = booking => {
+giexport const createBooking = booking => {
     return $.ajax({
         method: 'POST',
         url: '/api/bookings',
