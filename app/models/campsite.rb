@@ -22,4 +22,5 @@ class Campsite < ApplicationRecord
         class_name: :Venue
 
     has_many :bookings
+    has_one_attached :photo
 end
