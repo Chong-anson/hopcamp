@@ -12,19 +12,23 @@ class Splash extends React.Component{
     }
 
     render(){
-        const { tagsList } = this.props;
-        const citiesList = this.props.venues.map ( el => 
-            <SplashItem key={el.id} venue={el} /> 
+        const tagsList = this.props.tags.map( el => 
+            <SplashItem key={el.id} tag={el} type="tag" />
+            );
+        const citiesList = this.props.venues.map( el => 
+            <SplashItem key={el.id} venue={el} type="venue" /> 
             )
         return(
             <div className="main-content">
                 {/* SearchBox */}
-                
-                <ul>
+                <div className="splash-items-container">
                     {tagsList}
-                </ul>
+                </div>
                 {/* Places list */}
-                {citiesList}
+                <div className="splash-items-container">
+                    {citiesList}
+
+                </div>
                 {/* <img src={photoUrl} alt=""/> */}
     
             </div>

@@ -7,7 +7,8 @@ import Splash from './splash';
 const msp = (state, ownProps) => ({
     citiesList: selectAllCities(state),
     tagsList: selectAllTags(state),
-    venues: Object.values(state.entities.venues)
+    venues: Object.values(state.entities.venues),
+    tags: Object.values(state.entities.tags)
 })
 
 const mdp = (dispatch) => ({
