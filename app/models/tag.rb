@@ -5,5 +5,5 @@ class Tag < ApplicationRecord
 
     has_many :campsites,
         through: :campsite_taggings,
-        source: :tag
+        source: :campsite
 end

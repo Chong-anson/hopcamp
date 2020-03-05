@@ -1,18 +1,24 @@
 class Api::CampsitesController < ApplicationController
     def index
-        @campsites = Campsite.includes(:venue)
+        @campsites = Campsite
+                        .includes(:venue)
+                        .includes(:tags)
+                        .includes(:campsites)
 
         if (params[:venue])
             @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
         else
             @campsites = @campsites.all.sample(50)
         end
-
         render :index
     end
 
     def show 
-        @campsite = Campsite.includes(:venue).find_by(id: params[:id])
+        @campsite = Campsite
+                        .includes(:venue)
+                        .includes(:tags)
+                        .includes(:campsites)
+                        .find_by(id: params[:id])
         if @campsite
             render :show
         else
@@ -20,8 +26,4 @@ class Api::CampsitesController < ApplicationController
         end
     end
 
-    private
-    def campsite_params
-
-    end
 end

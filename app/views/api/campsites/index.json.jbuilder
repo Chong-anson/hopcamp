@@ -5,3 +5,9 @@ json.campsites do
         end
     end
 end
+
+json.tags do 
+    @campsites.each do | campsite | 
+        json.
+    end
+end
