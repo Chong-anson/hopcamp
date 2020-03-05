@@ -12,12 +12,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/log/.keep
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
 
-/node_modules
+/node_modules/
 /yarn-error.log
 
 /public/assets
@@ -28,6 +28,7 @@
 
 bundle.js
 bundle.js.map
+/bundle.js*
 .DS_Store
 npm-debug.log
 
