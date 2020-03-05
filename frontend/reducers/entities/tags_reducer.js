@@ -1,28 +1,17 @@
-import { RECEIVE_TAG, RECEIVE_TAGS } from "../../actions/tags";
+import { RECEIVE_TAG, RECEIVE_TAGS } from "../../actions/tag_actions";
 
 const _defaultState = {};
 
-// const campsitesReducer = (state = _defaultState, action) => {
-//     Object.freeze(state);
-//     let newState;
-//     switch (action.type) {
-//         case RECEIVE_CAMPSITES:
-//             newState = Object.assign({}, state);
-//             Object.values(action.payload.campsites).forEach(campsite =>
-//                 newState[campsite.id] = campsite
-//             )
-//             return newState;
-//         case RECEIVE_CAMPSITE:
-//             return Object.assign({}, state, { [action.campsite.id]: action.campsite })
-//         case RECEIVE_VENUE:
-//             newState = Object.assign({}, state);
-//             Object.values(action.payload.campsites).forEach(campsite =>
-//                 newState[campsite.id] = campsite
-//             )
-//             return newState;
-//         default:
-//             return state;
-//     }
-// }
+const tagsReducer = (state = _defaultState, action) => {
+    Object.freeze(state);
+    switch (action.type) {
+        case RECEIVE_TAGS:
+            return action.tags;
+        case RECEIVE_TAG:
+            return Object.assign({}, state, { [action.tag.id]: action.tag })
+        default:
+            return state;
+    }
+}
 
-// export default campsitesReducer; 
+export default tagsReducer; 

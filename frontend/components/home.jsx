@@ -7,16 +7,20 @@ class Home extends React.Component{
 
     componentDidMount(){
         this.props.fetchVenues()
+        this.props.fetchTags() 
     }
 
     render(){
+        const { citiesList, tagsList } = this.props;
         return(
             <div className="main-content">
                 {/* SearchBox */}
-                {/* Categories list */}
+                <ul>
+                    {tagsList}
+                </ul>
                 {/* Places list */}
                 <ul>
-                    {this.props.citiesList}
+                    {citiesList}
                 </ul>
             </div>
         )

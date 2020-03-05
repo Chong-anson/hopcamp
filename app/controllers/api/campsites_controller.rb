@@ -7,6 +7,8 @@ class Api::CampsitesController < ApplicationController
 
         if (params[:venue])
             @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
+        elsif (params[:ids])
+            @campsites = @campsite.where(id: params[:ids])
         else
             @campsites = @campsites.all.sample(50)
         end
