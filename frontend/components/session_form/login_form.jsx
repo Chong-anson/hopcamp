@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
             .then(() => {
                 const url = this.props.match.url
                 if (url.includes("campsite")) {
-                    console.log(url);
+                    // console.log(url);
                     this.props.history.push(url.replace("/login",""));
                 }
                 else {

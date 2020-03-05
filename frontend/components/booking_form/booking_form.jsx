@@ -43,7 +43,7 @@ class Bookingform extends React.Component{
         }
         else{
             const url = this.props.match.url.concat('signup')
-            console.log(url);
+            // console.log(url);
             this.props.history.push(url);
         }
     }

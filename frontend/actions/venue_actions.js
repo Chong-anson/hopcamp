@@ -15,11 +15,11 @@ const receiveVenue = (payload) => ({
 export const fetchVenues = () => (dispatch) => {
     return venueUtils.fetchVenues()
         .then(venues => dispatch(receiveVenues(venues)))
-        .fail(res => console.log(res))
+        // .fail(res => console.log(res))
 }
 
 export const fetchVenue = (venueId) => (dispatch) => {
     return venueUtils.fetchVenue(venueId)
         .then(payload => dispatch(receiveVenue(payload)))
-        .fail(res => console.log(res))
+        // .fail(res => console.log(res))
 }
