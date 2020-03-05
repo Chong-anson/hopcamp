@@ -29,14 +29,14 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -w",
+    "start": "webpack -w --mode=development",
     "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Chong-anson/hopcamp.git"
   },
-  "engine": {
+  "engines": {
     "node": "10.13.0",
     "npm": "6.13.7"
   },
