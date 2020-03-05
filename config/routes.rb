@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :campsites, only: [:index, :show]
     resources :venues, only: [:index, :show]
     resources :bookings, except: [:new, :edit]
+    resources :tags, only: [:index, :show]
+    resources :category, only: [:index, :show]
   end
   root to: "static_pages#root"
 end
