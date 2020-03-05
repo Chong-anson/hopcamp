@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, Link } from 'react-router-dom';
 
 import NavbarContainer from './navbar/navbar_container';
-import HomeContainer from './home_container'
+import SplashContainer from './splash/splash_container';
 import Modal from "./modal/modal";
 import { AuthRoute, ProtectedRoute } from "../util/route_utils.jsx";
 import CampsiteShowContainer from "./campsite_show/campsite_show_container";
@@ -21,7 +21,7 @@ const App = () => {
                 <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />
                 <AuthRoute exact path="/campsites/:campsiteId/login" component={LoginFormContainer} />
                 <Route exact path="/campsites/:id" component={CampsiteShowContainer} />
-                <Route path="/" component={HomeContainer} />
+                <Route path="/" component={SplashContainer} />
             </Switch>
         </div>
     )

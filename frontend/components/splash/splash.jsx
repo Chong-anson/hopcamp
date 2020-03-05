@@ -1,6 +1,7 @@
 import React from 'react';
+import SplashItem from './splash_item';
 
-class Home extends React.Component{
+class Splash extends React.Component{
     constructor(props){
         super(props);
     };
@@ -11,21 +12,25 @@ class Home extends React.Component{
     }
 
     render(){
-        const { citiesList, tagsList } = this.props;
+        const { tagsList } = this.props;
+        const citiesList = this.props.venues.map ( el => 
+            <SplashItem key={el.id} venue={el} /> 
+            )
         return(
             <div className="main-content">
                 {/* SearchBox */}
+                
                 <ul>
                     {tagsList}
                 </ul>
                 {/* Places list */}
-                <ul>
-                    {citiesList}
-                </ul>
+                {citiesList}
+                {/* <img src={photoUrl} alt=""/> */}
+    
             </div>
         )
 
     }
 }
 
-export default Home; 
+export default Splash; 

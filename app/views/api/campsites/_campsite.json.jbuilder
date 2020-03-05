@@ -8,3 +8,7 @@ end
 json.bookings do
     json.array! campsite.bookings.ids
 end
+
+json.photos do
+    json.photo_url url_for(campsite.photo) if campsite.photo.attached?
+end
