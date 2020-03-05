@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_232924) do
+ActiveRecord::Schema.define(version: 2020_03_05_035746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2020_03_04_232924) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "campsite_taggings", force: :cascade do |t|
+    t.integer "campsite_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id", "tag_id"], name: "index_campsite_taggings_on_campsite_id_and_tag_id", unique: true
+  end
+
   create_table "campsites", force: :cascade do |t|
     t.string "name", null: false
     t.integer "capacity", null: false
@@ -61,6 +69,15 @@ ActiveRecord::Schema.define(version: 2020_03_04_232924) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_campsites_on_name", unique: true
     t.index ["venue_id"], name: "index_campsites_on_venue_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tags_on_category_id"
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "users", force: :cascade do |t|
