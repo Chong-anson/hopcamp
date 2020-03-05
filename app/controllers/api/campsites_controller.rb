@@ -2,8 +2,8 @@ class Api::CampsitesController < ApplicationController
     def index
         @campsites = Campsite
                         .includes(:venue)
-                        .includes(:tags)
-                        .includes(:campsites)
+                        .includes(tags: :campsites)
+                        .includes(:bookings)
 
         if (params[:venue])
             @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
@@ -16,8 +16,8 @@ class Api::CampsitesController < ApplicationController
     def show 
         @campsite = Campsite
                         .includes(:venue)
-                        .includes(:tags)
-                        .includes(:campsites)
+                        .includes(tags: :campsites)
+                        .includes(:bookings)
                         .find_by(id: params[:id])
         if @campsite
             render :show

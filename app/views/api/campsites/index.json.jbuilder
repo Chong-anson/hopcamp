@@ -8,6 +8,10 @@ end
 
 json.tags do 
     @campsites.each do | campsite | 
-        json.
+        campsite.tags.each do | tag | 
+            json.partial! "api/tags/tag", tag: tag
+        end
     end
 end
+
+# TODO: add booking slice for the owner to see 

@@ -1,3 +1,1 @@
-json.tags do 
-    json.partial "api/tags/tag", tag: tag
-end
+json.partial "api/tags/tag", tag: @tag

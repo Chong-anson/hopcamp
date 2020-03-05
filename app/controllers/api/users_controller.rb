@@ -24,7 +24,12 @@ class Api::UsersController < ApplicationController
 
 
     def show 
-        @user = User.includes(:bookings).find_by(id: params[:id])
+        @user = User
+                    .includes(:bookings)    
+                    .find_by(id: params[:id])
+
+                    # TODO: Add includes campsites after owner tables 
+                    # add reviews 
         if @user 
             render :show
         else

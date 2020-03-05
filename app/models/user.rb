@@ -22,7 +22,7 @@ class User < ApplicationRecord
     attr_reader :password
 
     has_many :bookings
-
+    
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)
