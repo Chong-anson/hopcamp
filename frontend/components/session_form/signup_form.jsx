@@ -20,6 +20,7 @@ class SignupForm extends React.Component {
             .then(() => {
                 const url = this.props.match.url
                 if (url.includes("campsites")){
+                    this.props.clearErrors();
                     this.props.history.push(url.replace("/signup", ""));
                 }
                 else{
@@ -33,7 +34,10 @@ class SignupForm extends React.Component {
         const url = this.props.match.url;
         const loginForm = (url.includes("campsites")) ? (
             <button className="redirect-button"
-             onClick={() => this.props.history.push(url.replace("/signup", "/login"))}>
+             onClick={() => {
+                 this.props.clearErrors();
+                 this.props.history.push(url.replace("/signup", "/login"))
+                }}>
             Sign in 
             </button>
         ) : this.props.loginForm; 
@@ -87,17 +91,13 @@ class SignupForm extends React.Component {
                             value={this.state.password} 
                             onChange={this.handleChange("password")} 
                         />
-                    <button className="btn session-btn">Sign Up</button>
                     <ErrorShowContainer type={"session"} /> 
+                    <button className="btn session-btn">Sign Up</button>
                 </form>
                 <div className="session-component-footer">
-
                     <span>Have an account? </span>{loginForm}
                 </div>
-                {/* {errors.length ? <h2>Errors</h2> : ""}
-                <ul>
-                    {errors}
-                </ul> */}
+
             </div>
         )
     }

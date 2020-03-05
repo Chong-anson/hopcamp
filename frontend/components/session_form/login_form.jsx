@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
                 const url = this.props.match.url
                 if (url.includes("campsite")) {
                     // console.log(url);
+                    this.props.clearError();
                     this.props.history.push(url.replace("/login",""));
                 }
                 else {
@@ -32,16 +33,13 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        let errors = ""
-        // if (this.props.errors.session.length) {
-        //     errors = this.props.errors.session.map(error =>
-        //         (<li>{error}</li>)
-        //     )
-        // }
         const url = this.props.match.url;
         const signupForm = (url.includes("campsites")) ? (
             <button className="redirect-button"
-                onClick={() => this.props.history.push(url.replace("/login", "/signup"))}>
+                onClick={() => {
+                    this.props.clearErrors();
+                    this.props.history.push(url.replace("/login", "/signup"))
+                }}>
                 Sign up!
             </button>
         ) : this.props.signupForm; 
@@ -57,9 +55,9 @@ class LoginForm extends React.Component {
                     <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
                     <Link to="/">Forgot your password?</Link>
                     <br/>
+                    <ErrorShowContainer type={"session"} />
                     <button className="btn session-btn">Log In</button>
                 </form>
-                <ErrorShowContainer type={"session"} />
                 <div className="session-component-footer">
                     <span>Don't have a Hopcamp account? </span>
                     <span>{signupForm}</span>

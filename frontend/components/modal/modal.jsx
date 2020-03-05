@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import { SignupFormContainer, LoginFormContainer } from "../session_form/form_container";
+import { clearErrors } from "../../actions/session_actions";
 
 function Modal({modal, closeModal}) {
     if (!modal){
@@ -39,7 +40,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => {
+            dispatch(clearErrors());
+            return dispatch(closeModal());
+        }
     };
 };
 

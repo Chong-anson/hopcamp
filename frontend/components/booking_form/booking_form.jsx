@@ -42,9 +42,9 @@ class Bookingform extends React.Component{
             this.props.createBooking(booking);
         }
         else{
-            const url = this.props.match.url.concat('signup')
+            const url = this.props.match.url.concat('/signup')
             // console.log(url);
-            this.props.history.push(url);
+            this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
         }
     }
 
