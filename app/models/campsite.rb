@@ -22,5 +22,11 @@ class Campsite < ApplicationRecord
         class_name: :Venue
 
     has_many :bookings
+    has_many :campsite_taggings
+
+    has_many :tags,
+        through: :campsite_taggings,
+        source: :tag
+
     has_one_attached :photo
 end
