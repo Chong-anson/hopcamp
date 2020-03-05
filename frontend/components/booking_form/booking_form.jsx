@@ -1,6 +1,6 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { formatDate, parseDate } from 'react-day-picker/moment';
+// import { formatDate, parseDate } from 'react-day-picker/moment';
 
 class Bookingform extends React.Component{
     constructor(props){
@@ -71,11 +71,11 @@ class Bookingform extends React.Component{
                         <span className="value">Select date</span>
                         <DayPickerInput
                             format="LL"
-                            formatDate={formatDate}
+                            // formatDate={formatDate}
                             onDayChange={this.handleDateClick('startDate')}
                             showOverlay={true}
                             dayPickerProps={ {
-                                selectedDays: [startDate, {startDate, endDate}],
+                                // selectedDays: [startDate],
                                 disabledDays: {
                                     before: new Date(Date.now()) 
                                 },
@@ -88,11 +88,11 @@ class Bookingform extends React.Component{
                         <DayPickerInput 
                             ref={ daypicker => this.endDate = daypicker}
                             format="LL"
-                            formatDate={formatDate}
+                            // formatDate={formatDate}
                             onDayChange={this.handleDateClick('endDate')}
-                            selectedDays={endDate}
+                            // selectedDays={endDate}
                             dayPickerProps={{
-                                selectedDays: [startDate, { startDate, endDate }],
+                                // selectedDays: [startDate, { startDate, endDate }],
                                 disabledDays: { before: nextDay },
                                 month: nextDay
 
