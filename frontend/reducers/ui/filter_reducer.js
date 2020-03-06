@@ -2,9 +2,9 @@ import { UPDATE_FILTER } from "../../actions/filter_actions";
 
 const _defaultState = {
     bounds: {},
-    minCapacity: 1,
-    minPrice: 30, 
-    maxPrice: 1000
+    minCapacity: null,
+    minPrice: null, 
+    maxPrice: null
 };
 
 const filterReducer = (state = _defaultState, action) => {

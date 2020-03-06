@@ -5,11 +5,18 @@ class Api::CampsitesController < ApplicationController
                         .includes(tags: :campsites)
                         .includes(:bookings)
 
-        
-        elsif (!params[:ids].length > 0)
-            @campsites = @campsite.where(id: params[:ids])
-        else
-            @campsites = @campsites.limit(50)
+    
+        if (params[:min_capacity])
+            @campsites = @campsites.where("capacity >= ?", params[:min_capacity])
+        end 
+        if (params[:min_price] > 0 )
+            @campsites = @campsites.where("price >= ?", params[:min_price])
+        end 
+        if (params[:max_price])
+            @campsites = @campsites.where("price <= ?", params[:max_price])
+        end
+        if (@campsites.length > 30)        
+            @campsites = @campsites.limit(30)
         end
         render :index
     end
