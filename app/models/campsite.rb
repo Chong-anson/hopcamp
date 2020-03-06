@@ -29,4 +29,11 @@ class Campsite < ApplicationRecord
         source: :tag
 
     has_one_attached :photo
+
+    def self.in_bounds(bounds)
+        campsites = Campsite.
+                    .where('lat BETWEEN ? AND ?', bounds["southWest"]["lat"],bounds["northEast"]["lat"])
+                    .where('lng BETWEEN ? AND ?', bounds["southWest"]["lng"],bounds["northEast"]["lng"])
+        return campsites
+    end
 end

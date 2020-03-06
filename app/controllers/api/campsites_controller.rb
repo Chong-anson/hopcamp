@@ -9,7 +9,7 @@ class Api::CampsitesController < ApplicationController
         elsif (!params[:ids].length > 0)
             @campsites = @campsite.where(id: params[:ids])
         else
-            @campsites = @campsites.all.limit(50)
+            @campsites = @campsites.limit(50)
         end
         render :index
     end
