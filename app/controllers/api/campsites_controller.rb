@@ -5,12 +5,11 @@ class Api::CampsitesController < ApplicationController
                         .includes(tags: :campsites)
                         .includes(:bookings)
 
-        if (params[:venue])
-            @campsites = @campsites.select { |campsite| campsite.venue.name == params[:venue] }
-        elsif (params[:ids])
+        
+        elsif (!params[:ids].length > 0)
             @campsites = @campsite.where(id: params[:ids])
         else
-            @campsites = @campsites.all.sample(50)
+            @campsites = @campsites.all.limit(50)
         end
         render :index
     end
