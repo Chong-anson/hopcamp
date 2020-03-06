@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import Search from "./search";
 import { fetchCampsites } from "../../actions/campsite_actions";
 import { fetchVenue } from "../../actions/venue_actions";
@@ -18,4 +19,4 @@ const mdp = (dispatch) => ({
     updateFilter: (filter,value) => dispatch(updateFilter(filter,value))
 })
 
-export default connect(msp, mdp)(Search);
+export default withRouter(connect(msp, mdp)(Search));

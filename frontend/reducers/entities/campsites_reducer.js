@@ -5,7 +5,7 @@ const _defaultState = {};
 
 const campsitesReducer = (state = _defaultState, action) => {
     Object.freeze(state);
-    // let newState;
+    let newState;
     switch(action.type){
         case RECEIVE_CAMPSITES:
             if(action.payload.campsites)

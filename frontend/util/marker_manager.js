@@ -7,7 +7,7 @@ class MarkerManager {
         this.markers = {};
         this.updateMarkers = this.updateMarkers.bind(this);
         this.removeMarker = this.removeMarker.bind(this);
-        this.createMarkerFromCampsite= this.createMarkerFromCampsite.bind(this);
+        this.createMarkerFromCampsite = this.createMarkerFromCampsite.bind(this);
         this.handleMarkerClick = handleMarkerClick;
     }
 
