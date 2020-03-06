@@ -1,6 +1,6 @@
-import React from 'react';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-// import { formatDate, parseDate } from 'react-day-picker/moment';
+import React from "react";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+// import { formatDate, parseDate } from "react-day-picker/moment";
 
 class Bookingform extends React.Component{
     constructor(props){
@@ -25,9 +25,9 @@ class Bookingform extends React.Component{
         return (e) => {
             e.preventDefault();
             let groupSize = this.state.groupSize;
-            if (type === 'minus')
+            if (type === "minus")
                 this.setState({groupSize: groupSize-1});
-            else if (type === 'plus')
+            else if (type === "plus")
                 this.setState({groupSize: groupSize+1});
         }
     };
@@ -42,7 +42,7 @@ class Bookingform extends React.Component{
             this.props.createBooking(booking);
         }
         else{
-            const url = this.props.match.url.concat('/signup')
+            const url = this.props.match.url.concat("/signup")
             // console.log(url);
             this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
         }
@@ -72,7 +72,7 @@ class Bookingform extends React.Component{
                         <DayPickerInput
                             format="LL"
                             // formatDate={formatDate}
-                            onDayChange={this.handleDateClick('startDate')}
+                            onDayChange={this.handleDateClick("startDate")}
                             showOverlay={true}
                             dayPickerProps={ {
                                 // selectedDays: [startDate],
@@ -89,7 +89,7 @@ class Bookingform extends React.Component{
                             ref={ daypicker => this.endDate = daypicker}
                             format="LL"
                             // formatDate={formatDate}
-                            onDayChange={this.handleDateClick('endDate')}
+                            onDayChange={this.handleDateClick("endDate")}
                             // selectedDays={endDate}
                             dayPickerProps={{
                                 // selectedDays: [startDate, { startDate, endDate }],
@@ -103,13 +103,13 @@ class Bookingform extends React.Component{
                         <h4 className="label">Guests</h4>
                         <button 
                             disabled={disabledMin}
-                            onClick={this.handleGuestClick('minus')}>
+                            onClick={this.handleGuestClick("minus")}>
                             <span className="fa fa-minus"></span>
                         </button>
                         <span className="guest-size">{groupSize}</span>
                         <button 
                             disabled={disabledMax}
-                            onClick={this.handleGuestClick('plus')}>
+                            onClick={this.handleGuestClick("plus")}>
                             <span className="fa fa-plus"></span>
                         </button>
                 

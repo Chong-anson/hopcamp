@@ -1,5 +1,5 @@
-import React from 'react';
-import SplashItem from './splash_item';
+import React from "react";
+import SplashItem from "./splash_item";
 
 class Splash extends React.Component{
     constructor(props){

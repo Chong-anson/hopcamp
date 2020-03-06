@@ -16,3 +16,4 @@ const mdp = (dispatch) => ({
     fetchCampsites: ()=> dispatch(fetchCampsites),
     updateFilter: (filter,value) => dispatch(updateFilter(filter,value))
 })
+

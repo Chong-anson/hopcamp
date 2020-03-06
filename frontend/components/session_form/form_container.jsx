@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux"
+import React from "react";
+import { withRouter } from "react-router-dom";
 import { signup, login, clearErrors } from "../../actions/session_actions";
 import LoginForm from "./login_form";
 import SignupForm from "./signup_form";
@@ -17,7 +17,7 @@ const signupMDP = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors()),
     loginForm: (
-        <button className="redirect-button" onClick={()=> dispatch(openModal('login'))}>
+        <button className="redirect-button" onClick={()=> dispatch(openModal("login"))}>
             Sign in
         </button>   
     )
@@ -28,7 +28,7 @@ const loginMDP = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors()),
     signupForm: (
-        <button className="redirect-button" onClick={() => dispatch(openModal('signup'))}>
+        <button className="redirect-button" onClick={() => dispatch(openModal("signup"))}>
             Sign up!
         </button>
     )

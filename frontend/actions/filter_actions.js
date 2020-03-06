@@ -1,4 +1,4 @@
-import fetchCampsites from "./campsite_actions";
+import {fetchCampsites} from "./campsite_actions";
 export const UPDATE_FILTER = "UPDATE_FILTER";
 
 export const updateFilter = (filter, value) => {

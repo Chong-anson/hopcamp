@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import ErrorShowContainer from '../error_show';
+import { Link } from "react-router-dom";
+import ErrorShowContainer from "../error_show";
 
 
 class LoginForm extends React.Component {
@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
                 <form className="login-form form" onSubmit={this.handleSubmit}>
                     <div className="title">
                         <h1>Welcome Back!</h1>
-                        <p>It's about time for another camping trip</p>
+                        <p>It"s about time for another camping trip</p>
                     </div>
                     <input className="form-control" type="text" placeholder="Username:" value={this.state.username} onChange={this.handleChange("username")} />
                     <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
                     <button className="btn session-btn">Log In</button>
                 </form>
                 <div className="session-component-footer">
-                    <span>Don't have a Hopcamp account? </span>
+                    <span>Don"t have a Hopcamp account? </span>
                     <span>{signupForm}</span>
                 </div>
 

@@ -1,6 +1,6 @@
 export const RECEIVE_CAMPSITES = "RECEIVE_CAMPSITES";
 export const RECEIVE_CAMPSITE = "RECEIVE_CAMPSITE";
-import * as campsiteUtil from '../util/campsite_api_util';
+import * as campsiteUtil from "../util/campsite_api_util";
 
 const receiveCampsites = (payload) => ({
     type: RECEIVE_CAMPSITES,

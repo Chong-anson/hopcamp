@@ -1,7 +1,7 @@
 export const createBooking = booking => {
     return $.ajax({
-        method: 'POST',
-        url: '/api/bookings',
+        method: "POST",
+        url: "/api/bookings",
         data: {
             booking: {
                user_id: booking.userId,

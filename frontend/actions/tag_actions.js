@@ -1,6 +1,6 @@
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 export const RECEIVE_TAG = "RECEIVE_TAG";
-import * as tagUtil from '../util/tag_api_utils';
+import * as tagUtil from "../util/tag_api_utils";
 
 const receiveTags = (tags) => ({
     type: RECEIVE_TAGS,

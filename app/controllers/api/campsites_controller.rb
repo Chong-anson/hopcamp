@@ -4,7 +4,6 @@ class Api::CampsitesController < ApplicationController
                         .includes(:venue)
                         .includes(tags: :campsites)
                         .includes(:bookings)
-
     
         if (params[:min_capacity])
             @campsites = @campsites.where("capacity >= ?", params[:min_capacity])
@@ -18,6 +17,7 @@ class Api::CampsitesController < ApplicationController
         if (@campsites.length > 30)        
             @campsites = @campsites.limit(30)
         end
+        
         render :index
     end
 

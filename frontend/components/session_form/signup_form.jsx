@@ -1,5 +1,5 @@
 import React from "react"
-import ErrorShowContainer from '../error_show';
+import ErrorShowContainer from "../error_show";
 
 class SignupForm extends React.Component {
     constructor(props) {
