@@ -1,5 +1,5 @@
 import React from "react";
-import CampsiteMap from ""
+import CampsiteMap from "../campsite_map/campsite_map";
 
 class Search extends React.Component{
     constructor(props){
@@ -7,7 +7,7 @@ class Search extends React.Component{
     }
 
     render(){
-        const { campsites, updateFilter } = this.props.campsites; 
+        const { campsites, updateFilter } = this.props; 
         return(
 
             <div className="search-container">

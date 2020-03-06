@@ -8,7 +8,7 @@ class Api::CampsitesController < ApplicationController
         if (params[:min_capacity])
             @campsites = @campsites.where("capacity >= ?", params[:min_capacity])
         end 
-        if (params[:min_price] > 0 )
+        if (params[:min_price])
             @campsites = @campsites.where("price >= ?", params[:min_price])
         end 
         if (params[:max_price])

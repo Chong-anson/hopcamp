@@ -139,9 +139,9 @@ class Map extends React.Component {
         // })
         return (
             <div className="campsite-map">
-                <ul>
+                {/* <ul>
                     {res_list}
-                </ul>
+                </ul> */}
                 <form onSubmit={this.handleSubmit} id="campsite-map-form">
                     <input type="text" value={this.state.location} onChange={this.handleChange} id="autocomplete" />
                     <br />
