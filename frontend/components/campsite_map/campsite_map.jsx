@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from "react-router-dom"
-// import MarkerManager from "../../utils/marker_manager"
+import MarkerManager from "../../util/marker_manager";
 
 class Map extends React.Component {
     constructor(props) {
@@ -96,7 +96,7 @@ class Map extends React.Component {
         }
 
         this.map = new google.maps.Map(this.mapNode, mapOptions)
-        // this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
+        this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
         if (this.props.selected) {
             this.map.setOptions({ draggable: false })
@@ -105,7 +105,7 @@ class Map extends React.Component {
             this.map.addListener("idle", this.updateMap);
             // this.map.addListener("click", this.handleClick);
         }
-        // this.MarkerManager.updateMarkers(this.props.benches);
+        this.MarkerManager.updateMarkers(this.props.campsites);
 
         // const autocomplete = new google.maps.places.Autocomplete(
         //     (document.getElementById("autocomplete")),
@@ -124,7 +124,7 @@ class Map extends React.Component {
             this.map.setCenter({ lat: this.props.campsite.lat, lng: this.props.campsite.lng })
         }
         else {
-            // this.MarkerManager.updateMarkers(this.props.benches);
+            this.MarkerManager.updateMarkers(this.props.campsites);
 
         }
 
