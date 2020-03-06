@@ -57,7 +57,6 @@ class Map extends React.Component {
             this.map.setCenter(results[0].geometry.location);
         })
 
-        // debugger
         // const request2 = {
         //     location: this.map.getCenter(),
         //     radius: '20000',

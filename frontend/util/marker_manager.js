@@ -47,7 +47,6 @@ class MarkerManager {
             map: this.map
         })
         marker.setMap(this.map)
-        // debugger
         marker.addListener("click", (e) => {
             e.preventDefault;
             this.handleMarkerClick(campsite.id);
