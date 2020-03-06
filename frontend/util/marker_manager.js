@@ -14,7 +14,6 @@ class MarkerManager {
     updateMarkers(campsites) {
 
         let newCampsites = {};
-
         campsites.forEach((campsite) => {
             if (!this.markers[campsite.id]) {
                 this.createMarkerFromCampsite(campsite);
@@ -36,6 +35,7 @@ class MarkerManager {
         const marker = this.markers[id];
         delete this.markers[id];
         marker.setMap(null);
+        // debugger
     }
 
     createMarkerFromCampsite(campsite) {

@@ -33,7 +33,7 @@ class Map extends React.Component {
         // const lat = e.latLng.lat();
         // const lng = e.latLng.lng();
         // this.props.history.push({
-        //     pathname: "/cam/new",
+        //     pathname: "/campsite/new",
         //     search: `lat=${lat}&lng=${lng}`
         // })
     }
@@ -118,7 +118,7 @@ class Map extends React.Component {
         // });
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(){
         if (this.props.selected) {
             this.map.setCenter({ lat: this.props.campsite.lat, lng: this.props.campsite.lng })
         }
@@ -130,7 +130,7 @@ class Map extends React.Component {
     }
 
     // lodging, rv_park, cemetery
-    render() {
+    render(){
         // const res_list = this.state.result.map(el => {
         //     return (
         //         <li> {el.lat},{el.lng}</li>

@@ -1,26 +1,27 @@
 class Api::CampsitesController < ApplicationController
     def index
+        # debugger
         @campsites = Campsite
                         .includes(:venue)
                         .includes(tags: :campsites)
                         .includes(:bookings)
-
-        if (params[:bounds])
-            @campsites = @campsites.in_bounds(params[:bounds])
+        if(params[:filter])
+            if (params[:filter][:bounds])
+                @campsites = @campsites.in_bounds(params[:filter][:bounds])
+            end
+            unless (params[:filter][:min_capacity])
+                @campsites = @campsites.where("capacity >= ?", params[:filter][:min_capacity])
+            end 
+            unless (params[:filter][:min_price])
+                @campsites = @campsites.where("price >= ?", params[:filter][:min_price])
+            end 
+            unless (params[:filter][:max_price])
+                @campsites = @campsites.where("price <= ?", params[:filter][:max_price])
+            end
+            if (@campsites.length > 30)        
+                @campsites = @campsites.limit(30)
+            end
         end
-        if (params[:min_capacity])
-            @campsites = @campsites.where("capacity >= ?", params[:min_capacity])
-        end 
-        if (params[:min_price])
-            @campsites = @campsites.where("price >= ?", params[:min_price])
-        end 
-        if (params[:max_price])
-            @campsites = @campsites.where("price <= ?", params[:max_price])
-        end
-        if (@campsites.length > 30)        
-            @campsites = @campsites.limit(30)
-        end
-        
         render :index
     end
 
