@@ -4,7 +4,7 @@ import { fetchCampsites } from "../../actions/campsite_actions";
 import { fetchVenue } from "../../actions/venue_actions";
 import { updateFilter } from "";
 
-const msp = (state) => ({
+const msp = (state, ownProps) => ({
     campsites: selectCampsites(state),
     // SELECT CAMPSITES BASED ON TAGS,
     // minCapactiy: state.ui.filter.minCapactiy
@@ -17,3 +17,4 @@ const mdp = (dispatch) => ({
     updateFilter: (filter,value) => dispatch(updateFilter(filter,value))
 })
 
+export default connect(msp, mdp)(Search);
