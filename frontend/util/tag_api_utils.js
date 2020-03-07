@@ -1,7 +1,6 @@
 export const fetchTags = () => {
     return $.ajax({
         url: "/api/tags",
-
     })
 }
 

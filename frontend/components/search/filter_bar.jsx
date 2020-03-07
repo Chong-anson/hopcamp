@@ -1,13 +1,14 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
+import MoreFilterContainer from './more_filter_container';
 
 class FilterBar extends React.Component{
     constructor(props){
         super(props);
-        this.state = { typeFilter: []};
+        this.CAMPSITE_TYPE = ["CAMPING", "RV", "GLAMPING"];
+        this.state = { typeFilter: this.CAMPSITE_TYPE};
         this.updateTypeFilter = this.updateTypeFilter.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
-
     };
 
     // componentWillUnmount remove filter modal 
@@ -28,7 +29,7 @@ class FilterBar extends React.Component{
     };
 
     render(){
-        const types = ["CAMPING", "RV", "GLAMPING"].map( (type,idx) => 
+        const types = this.CAMPSITE_TYPE.map( (type,idx) => 
             <button 
                 className="type-filter"
                 onClick={this.handleButtonClick}
@@ -44,9 +45,7 @@ class FilterBar extends React.Component{
                 {types}
                 <div className="more-filter">
                     <button>More filters</button>
-                    <div className="more-filter-contents">
-
-                    </div>
+                    <MoreFilterContainer />
                 </div>
             </div>
         )
