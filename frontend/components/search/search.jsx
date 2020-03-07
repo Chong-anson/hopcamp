@@ -1,12 +1,17 @@
 import React from "react";
-import { withRouter } from "react-router-dom"
 import MarkerManager from "../../util/marker_manager";
-// import CampsiteMap from "../campsite_map/campsite_map";
+import SearchItem from "./search_item";
+import FilterBar from "./filter_bar";
 
 class Search extends React.Component{
     constructor(props){
         super(props);
-        this.state = { location: "San Francisco" };
+        this.state = { 
+            location: "San Francisco",
+            startDate: "",
+            endDate: "",
+
+        };
         this.updateMap = this.updateMap.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +33,7 @@ class Search extends React.Component{
         this.props.history.push(`/campsites/${campsiteId}`);
     };
 
-    handleChange(e) {
+    handleChange(e){
         this.setState({ location: e.target.value });
     };
 
@@ -46,7 +51,7 @@ class Search extends React.Component{
         })
     };
 
-    componentDidMount() {
+    componentDidMount(){
         let mapOptions;
         if (this.props.selected) {
 
@@ -88,7 +93,7 @@ class Search extends React.Component{
         // });
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(){
         if (this.props.selected) {
             this.map.setCenter({ lat: this.props.campsite.lat, lng: this.props.campsite.lng })
         }
@@ -100,24 +105,27 @@ class Search extends React.Component{
     }
 
     render(){
-        const { campsites, updateFilter } = this.props; 
+        // const { campsites, updateFilter } = this.props; 
+        const campsites = this.props.campsites.map(el => 
+            <SearchItem item={el} key={el.id} /> 
+            )
         return(
-
             <div className="search-container">
                 <div className="search-box">
                     <form onSubmit={this.handleSubmit} id="campsite-map-form">
                         <input type="text" value={this.state.location} onChange={this.handleChange} id="autocomplete" />
-                        <br />
                         <button>Search campsite at that city</button>
                     </form>
                 </div>
-
+                <FilterBar /> 
                 <div className="results-container">
                     {/* {CampsiteResult} */}
-                </div>
-
-                <div className="campsites-map">
-                    <div id="map-container" ref={map => this.mapNode = map}>
+                    <div className="results-list">
+                        {campsites}
+                    </div>
+                    <div className="results-map">
+                        <div id="map-container" ref={map => this.mapNode = map}>
+                        </div>
                     </div>
                 </div>
             </div>

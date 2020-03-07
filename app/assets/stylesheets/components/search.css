@@ -1,0 +1,21 @@
+.search-container{
+    display: block;
+}
+
+.search-box{
+    width: 100%;
+}
+
+.results-container{
+    display: flex;
+}
+
+.results-list{
+    width: 60%;
+    border: 5px solid black;
+}
+
+.results-map{
+    width: 40%;
+    border: 5px solid red;
+}
