@@ -16,7 +16,7 @@ const msp = (state, ownProps) => ({
 
 const mdp = (dispatch) => ({
     fetchCampsites: ()=> dispatch(fetchCampsites),
-    updateFilter: (filter,value) => dispatch(updateFilter(filter,value))
+    updateFilter: (filter, value) => dispatch(updateFilter(filter,value))
 })
 
 export default withRouter(connect(msp, mdp)(Search));

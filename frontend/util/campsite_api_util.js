@@ -1,5 +1,5 @@
 export const fetchCampsites = (filter) => {
-    const { bounds, minCapacity, minPrice, maxPrice } = filter; 
+    const { bounds, minCapacity, minPrice, maxPrice, type } = filter; 
     return $.ajax({
         url: "/api/campsites",
         data:{
@@ -7,7 +7,8 @@ export const fetchCampsites = (filter) => {
                 bounds,
                 min_capacity: minCapacity,
                 min_price: minPrice,
-                max_price: maxPrice
+                max_price: maxPrice,
+                type
             }
         }
     })

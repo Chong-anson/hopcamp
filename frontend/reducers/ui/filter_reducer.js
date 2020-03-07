@@ -4,7 +4,8 @@ const _defaultState = {
     bounds: {},
     minCapacity: null,
     minPrice: null, 
-    maxPrice: null
+    maxPrice: null,
+    type: null,
 };
 
 const filterReducer = (state = _defaultState, action) => {

@@ -2,8 +2,9 @@
     display: block;
 }
 
-.search-box{
+.search-box,.filter-bar{
     width: 100%;
+    border: 3px solid yellow;
 }
 
 .results-container{
@@ -18,4 +19,13 @@
 .results-map{
     width: 40%;
     border: 5px solid red;
+}
+
+.type-filter{
+    padding: 0 10px;
+}
+
+.selected-filter{
+    border: 1px solid red;
+    color: green;
 }

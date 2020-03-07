@@ -46,7 +46,6 @@ class Search extends React.Component{
         };
         const service = new google.maps.places.PlacesService(this.map);
         service.findPlaceFromQuery(request, (results, status) => {
-            // console.log(results);
             this.map.setCenter(results[0].geometry.location);
         })
     };
@@ -111,13 +110,14 @@ class Search extends React.Component{
             )
         return(
             <div className="search-container">
+                
                 <div className="search-box">
                     <form onSubmit={this.handleSubmit} id="campsite-map-form">
                         <input type="text" value={this.state.location} onChange={this.handleChange} id="autocomplete" />
                         <button>Search campsite at that city</button>
                     </form>
                 </div>
-                <FilterBar /> 
+                <FilterBar updateFilter={this.props.updateFilter}/> 
                 <div className="results-container">
                     {/* {CampsiteResult} */}
                     <div className="results-list">
