@@ -4,23 +4,33 @@ class MoreFilter extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            tags: []
+            campsites: props.campsites,
         };
         this.handleChange = this.handleChange.bind(this);
     };
 
     handleChange(e){
         $(e.target).toggleClass("selected-more-filter");
-        let tags = [];
-        document.querySelectorAll("input.selected-more-filter")
-                .forEach( el => {
-                    const newSites = el.getAttribute("data-campsites").split(",");
-                    tags = tags.concat(newSites);
-                }
-        );
-        const distinctTags = [...new Set(tags)];
-        console.log(distinctTags);
-
+        const filters = document.querySelectorAll("input.selected-more-filter");
+        let campsites 
+        if (filters.length){
+            campsites = this.props.tags[filters[0].id].campsites;
+            this.props.updateAppliedFilter(true);
+            filters.forEach( el => {
+                    const newSites = el.getAttribute("data-campsites")
+                                        .split(",")
+                                        .map( id => parseInt(id));
+                    console.log(newSites);
+                    campsites = campsites.filter(id => newSites.includes(id));
+                })
+        }
+        else{
+            this.props.updateAppliedFilter(false);
+        };        
+        
+        this.setState({campsites}, () => {
+            this.props.updateFilter("tags", this.state.campsites)
+        });
     };
 
     componentDidMount(){
@@ -62,14 +72,6 @@ class MoreFilter extends React.Component{
                         <h2>Activities</h2>
                         <div className="strong-filter-activities">
                             {categorizedList["Activities"]}
-                            {/* <label> 
-                                <input type="checkbox" name="" id=""/>
-
-                            </label>
-                            <label> 
-                                <input type="checkbox" name="" id=""/>
-                                test2
-                            </label> */}
                         </div>
                     </div>
                     <div className="more-filter-section-4">

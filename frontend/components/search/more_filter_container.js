@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import MoreFilter from './more_filter';
 import { fetchTags } from '../../actions/tag_actions';
+import { updateAppliedFilter } from '../../actions/filter_actions';
 
 const msp = (state) => {
+    const campsites = state.entities.campsites;
     const tagsList = Object.values(state.entities.tags);
     if (tagsList.length){
         const categorized = {};
@@ -11,19 +13,22 @@ const msp = (state) => {
                 categorized[tag.category].push(tag);
             else
                 categorized[tag.category] = [];
-        }
-        )
+        } )
         return ({
-            categorized
+            categorized,
+            campsites: Object.keys(state.entities.campsites),
+            tags: state.entities.tags
         })
     }
     else{
-        return ({})
+        return ({
+        })
     }
 };
 
 const mdp = (dispatch) => ({
     fetchTags: () => dispatch(fetchTags()),
+    updateAppliedFilter: (bool)=> dispatch(updateAppliedFilter(bool))
 }); 
 
 export default connect(msp,mdp)(MoreFilter);

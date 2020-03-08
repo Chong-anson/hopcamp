@@ -1,4 +1,4 @@
-import { UPDATE_FILTER } from "../../actions/filter_actions";
+import { UPDATE_FILTER, UPDATE_APPLIED_FILTER } from "../../actions/filter_actions";
 
 const _defaultState = {
     bounds: {},
@@ -6,6 +6,8 @@ const _defaultState = {
     minPrice: null, 
     maxPrice: null,
     type: null,
+    tags: null, 
+    appliedFilter: false
 };
 
 const filterReducer = (state = _defaultState, action) => {
@@ -13,6 +15,8 @@ const filterReducer = (state = _defaultState, action) => {
     switch(action.type){
         case UPDATE_FILTER:
             return Object.assign({}, state,{[action.filter]: action.value});
+        case UPDATE_APPLIED_FILTER: 
+            return Object.assign({}, state, {appliedFilter: action.appliedFilter})
         default:
             return state;
     }

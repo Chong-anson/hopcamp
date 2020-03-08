@@ -10,7 +10,7 @@ class Search extends React.Component{
             location: "San Francisco",
             startDate: "",
             endDate: "",
-
+            campsites: this.props.campsites
         };
         this.updateMap = this.updateMap.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -28,6 +28,16 @@ class Search extends React.Component{
             southWest: swCoordinates
         });
     };
+
+    // updateExtraFilter(tags){
+    //     debugger
+    //     if (tags.length){
+
+    //         const results = this.props.campsites.filter(el => tags.includes(parseInt(el.id)));
+    //         // console.log(results);
+    //         this.setState({ campsites: results });
+    //     }
+    // };
 
     handleMarkerClick(campsiteId){
         this.props.history.push(`/campsites/${campsiteId}`);
@@ -117,7 +127,7 @@ class Search extends React.Component{
                         <button>Search campsite at that city</button>
                     </form>
                 </div>
-                <FilterBar updateFilter={this.props.updateFilter}/> 
+                <FilterBar updateFilter={this.props.updateFilter} /> 
                 <div className="results-container">
                     {/* {CampsiteResult} */}
                     <div className="results-list">

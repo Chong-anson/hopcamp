@@ -7,6 +7,7 @@ class FilterBar extends React.Component{
         super(props);
         this.CAMPSITE_TYPE = ["CAMPING", "RV", "GLAMPING"];
         this.state = { typeFilter: this.CAMPSITE_TYPE};
+        // props.updateFilter("type", this.CAMPSITE_TYPE);
         this.updateTypeFilter = this.updateTypeFilter.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
     };
@@ -45,7 +46,7 @@ class FilterBar extends React.Component{
                 {types}
                 <div className="more-filter">
                     <button>More filters</button>
-                    <MoreFilterContainer />
+                    <MoreFilterContainer updateFilter={this.props.updateFilter} />
                 </div>
             </div>
         )
