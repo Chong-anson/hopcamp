@@ -1,20 +1,28 @@
-
-
 .header {
   color: #333333;
   background: white;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid black; */
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
   margin: 0 auto;
   height: 70px;
   width: 100%;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  z-index: 10;
+};
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-buttons{
-    display: flex;
+  display: flex;
+
 }
 
 .navbar-buttons a, .navbar-btn{

@@ -1,0 +1,32 @@
+html{
+  font-size: 16px;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.42;
+  color: #333333;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+};
+
+h1, h2, h3, h4{
+    margin-top: 22px;
+    margin-bottom: 11px;
+    font-weight: 700;
+    line-height: 1;
+};
+
+h1{
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+};
+
+* {
+  box-sizing: border-box;
+}

@@ -15,8 +15,10 @@ const App = () => {
         <div className="App">
             <Modal /> 
             <header className="header">
-                <Link className="header-logo" to="/">HopCamp</Link>
-                <NavbarContainer />
+                <div className="navbar">
+                    <Link className="header-logo" to="/">HopCamp</Link>
+                    <NavbarContainer />
+                </div>
             </header> 
             <Switch>
                 <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />

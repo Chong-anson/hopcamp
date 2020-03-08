@@ -14,12 +14,13 @@
  */
 
 @import "default/reset";
-@import "default/default";
+@import "default/default.scss";
 @import "components/navbar";
 @import "components/modal";
 @import "api/sessions.scss";
 @import "components/booking_form";
 @import "../node_modules/react-day-picker/lib/style";
-@import "./components/splash.css";
+@import "./components/splash.scss";
 @import "./components/map.css";
 @import "./components/search.css";
+@import "./components/home_search.scss";

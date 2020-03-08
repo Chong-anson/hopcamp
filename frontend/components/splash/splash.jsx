@@ -1,5 +1,6 @@
 import React from "react";
 import SplashItem from "./splash_item";
+import HomeSearch from './home_search';
 
 class Splash extends React.Component{
     constructor(props){
@@ -21,14 +22,16 @@ class Splash extends React.Component{
         return(
             <div className="main-content">
                 {/* SearchBox */}
-                <div className="splash-items-container">
-                    {tagsList}
-                </div>
-                {/* Places list */}
+                <HomeSearch />
+
                 <div className="splash-items-container">
                     {citiesList}
 
                 </div>
+                <div className="splash-items-container">
+                    {tagsList}
+                </div>
+                {/* Places list */}
                 {/* <img src={photoUrl} alt=""/> */}
     
             </div>
