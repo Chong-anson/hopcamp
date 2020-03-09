@@ -5,7 +5,8 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import { logout } from "../../actions/session_actions";
 
 const msp = (state) => ({
-    currentUser: state.entities.users[state.session.id]
+    currentUser : state.entities.users[state.session.id],
+    
 })
 
 const mdp = (dispatch) => ({
@@ -16,7 +17,7 @@ const mdp = (dispatch) => ({
         </button>
     ),
     loginForm: (
-        <button onClick={() => dispatch(openModal("login"))}>
+        <button className="navbar-btn" onClick={() => dispatch(openModal("login"))}>
             Login
         </button>
     )

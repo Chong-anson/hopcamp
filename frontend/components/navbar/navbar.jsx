@@ -14,13 +14,14 @@ class Navbar extends React.Component {
 
     render() {
         if (this.props.currentUser) {
+            const  currentUserId = this.props.currentUser.id
             return (
                 <div className="navbar-buttons">
-                    <Link to="/">Trips</Link>
+                    <Link to={`/users/${currentUserId}/trips`}>Trips</Link>
                     <br />
-                    <Link to="/">Saves</Link>
+                    <Link to={`/users/${currentUserId}/Saves`}>Saves</Link>
                     <br />
-                    <Link to="/">Messages</Link>
+                    <Link to={`/users/${currentUserId}/Messages`}>Messages</Link>
                     <br />
                     <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
                 </div>

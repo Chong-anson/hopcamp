@@ -9,14 +9,16 @@ import { AuthRoute, ProtectedRoute } from "../util/route_utils.jsx";
 import CampsiteShowContainer from "./campsite_show/campsite_show_container";
 import { SignupFormContainer, LoginFormContainer } from "./session_form/form_container";
 
-
 const App = () => {
     return(
         <div className="App">
             <Modal /> 
             <header className="header">
                 <div className="navbar">
-                    <Link className="header-logo" to="/">HopCamp</Link>
+                    <Link className="header-logo" to="/">
+                        <div className="logo">
+                        </div>
+                    </Link>
                     <NavbarContainer />
                 </div>
             </header> 
