@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  email           :string           not null
@@ -13,8 +12,8 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-    validates :username, :first_name, :last_name, :email, :password_digest, presence: true 
-    validates :username, :email, uniqueness: true
+    validates :first_name, :last_name, :email, :password_digest, presence: true 
+    validates :email, uniqueness: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :password, length: {minimum: 6, allow_nil: true} 
 
@@ -28,8 +27,8 @@ class User < ApplicationRecord
         self.password_digest = BCrypt::Password.create(password)
     end
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by(username: username)
+    def self.find_by_credentials(email, password)
+        user = User.find_by(email: email)
         user && user.is_password?(password) ? user : nil 
     end
 

@@ -6,7 +6,7 @@ import ErrorShowContainer from "../error_show";
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: ""}
+        this.state = { email: "", password: ""}
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
                         <h1>Welcome Back!</h1>
                         <p>It"s about time for another camping trip</p>
                     </div>
-                    <input className="form-control" type="text" placeholder="Username:" value={this.state.username} onChange={this.handleChange("username")} />
+                    <input className="form-control" type="text" placeholder="Email:" value={this.state.email} onChange={this.handleChange("email")} />
                     <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
                     <Link to="/">Forgot your password?</Link>
                     <br/>

@@ -4,7 +4,7 @@ import ErrorShowContainer from "../error_show";
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "", email: "", first_name: "", last_name: ""}
+        this.state = { email: "", password: "", email: "", first_name: "", last_name: ""}
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -54,12 +54,12 @@ class SignupForm extends React.Component {
                         <h1>Join HopCamp!</h1>
                         <p>Discover the best campsites near me</p>
                     </div>
-                        <input className="form-control" 
+                        {/* <input className="form-control" 
                             type="text" 
                             placeholder="Username:"
-                            value={this.state.username} 
-                            onChange={this.handleChange("username")} 
-                        />
+                            value={this.state.email} 
+                            onChange={this.handleChange("email")} 
+                        /> */}
                     <div className="name-form">
                         <input 
                             className="form-control" 
