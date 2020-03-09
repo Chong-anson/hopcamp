@@ -20,7 +20,6 @@ class MoreFilter extends React.Component{
                     const newSites = el.getAttribute("data-campsites")
                                         .split(",")
                                         .map( id => parseInt(id));
-                    console.log(newSites);
                     campsites = campsites.filter(id => newSites.includes(id));
                 })
         }

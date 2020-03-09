@@ -45,7 +45,6 @@ class Search extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state.location);
         const request = {
             query: this.state.location,
             fields: ["geometry", "name"]
@@ -95,7 +94,6 @@ class Search extends React.Component{
             }
         }
         
-        console.log(mapOptions);
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
