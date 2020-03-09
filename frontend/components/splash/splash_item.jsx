@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SpashItem = (props) => {
     const {type} = props;
     const photoUrl = (props[type] && props[type].photoUrl) ? props[type].photoUrl : "#";
     return(
-        <a href="" className="splash-item-link">
+        <Link to="/" className="splash-item-link">
             <div className="splash-item-background" 
                 style={{ 
                     backgroundImage: `url(${photoUrl})`,
@@ -15,8 +16,7 @@ const SpashItem = (props) => {
                 <h2 className="item-title">Escape reality</h2>
                 <span>{props[type].name}</span>
             </div>
-
-        </a>
+        </Link>
     )
 }
 
