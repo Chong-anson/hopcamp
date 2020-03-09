@@ -20,7 +20,7 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
             loggedIn ? <Component {...props} /> : <Redirect to="/signup" />
         }
     />
-)
+);
 
 const mapStateToProps = state => {
     return { loggedIn: Boolean(state.session.id) };

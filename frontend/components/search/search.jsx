@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
 import MarkerManager from "../../util/marker_manager";
 import SearchItem from "./search_item";
 import FilterBar from "./filter_bar";
@@ -6,11 +7,16 @@ import FilterBar from "./filter_bar";
 class Search extends React.Component{
     constructor(props){
         super(props);
+        // const location = useLocation(); 
+        // const place = query.get('place');
+        if (this.props.place) {
+            this.setMapbyPlace(this.props.place);
+        }
         this.state = { 
             location: "San Francisco",
             startDate: "",
             endDate: "",
-            campsites: this.props.campsites
+            campsites: this.props.campsites,
         };
         this.updateMap = this.updateMap.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -28,16 +34,6 @@ class Search extends React.Component{
             southWest: swCoordinates
         });
     };
-
-    // updateExtraFilter(tags){
-    //     debugger
-    //     if (tags.length){
-
-    //         const results = this.props.campsites.filter(el => tags.includes(parseInt(el.id)));
-    //         // console.log(results);
-    //         this.setState({ campsites: results });
-    //     }
-    // };
 
     handleMarkerClick(campsiteId){
         this.props.history.push(`/campsites/${campsiteId}`);
@@ -60,6 +56,21 @@ class Search extends React.Component{
         })
     };
 
+    // componentWillMount(){
+
+    // };
+
+    // setMapbyPlace(place){
+    //     const geocoder = new google.maps.Geocoder();
+    //     geocoder.geocode({ 'address': place.replace("%20", " ") }, (res, status) => {
+    //         if (status === 'OK') {
+    //             const searchLat = res[0].geometry.location.lat();
+    //             const searchLng = res[0].geometry.location.lng();
+    //             this.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
+    //         }
+    //     })
+    // }
+
     componentDidMount(){
         let mapOptions;
         if (this.props.selected) {
@@ -67,17 +78,24 @@ class Search extends React.Component{
             const selectedCampsite = this.props.campsite;
             mapOptions = {
                 center: { lat: selectedCampsite.lat, lng: selectedCampsite.lng },
-                zoom: 13
+                zoom: 12
             }
         }
-        else {
+        else if (this.props.lat && this.props.lng) {
+            const { lat, lng } = this.props
+            mapOptions = {
+                center: { lat, lng },
+                zoom: 12
+            }
+        }
+        else{
             mapOptions = {
                 center: { lat: 37.7758, lng: -122.435 },
-                zoom: 13
+                zoom: 12
             }
-
         }
-
+        
+        console.log(mapOptions);
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
@@ -102,15 +120,19 @@ class Search extends React.Component{
         // });
     }
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
         if (this.props.selected) {
             this.map.setCenter({ lat: this.props.campsite.lat, lng: this.props.campsite.lng })
         }
         else {
             this.MarkerManager.updateMarkers(this.props.campsites);
-
         }
-
+        // if (this.props.place){
+        //     this.setMapbyPlace(this.props.place);
+        // }
+        if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng){
+            this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
+        }
     }
 
     render(){

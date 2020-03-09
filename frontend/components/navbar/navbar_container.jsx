@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Navbar from "./navbar";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { logout } from "../../actions/session_actions";
 
 const msp = (state) => ({
     currentUser : state.entities.users[state.session.id],
-    
 })
 
 const mdp = (dispatch) => ({
@@ -23,4 +23,4 @@ const mdp = (dispatch) => ({
     )
 })
 
-export default connect(msp, mdp)(Navbar);
+export default withRouter(connect(msp, mdp)(Navbar));

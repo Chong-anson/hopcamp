@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 
+import MiniSearchBox from "./navbar/mini_search"
 import NavbarContainer from "./navbar/navbar_container";
 import SplashContainer from "./splash/splash_container";
 import SearchContainer from "./search/search_container";
@@ -19,6 +20,7 @@ const App = () => {
                         <div className="logo">
                         </div>
                     </Link>
+                    <MiniSearchBox />
                     <NavbarContainer />
                 </div>
             </header> 

@@ -13,6 +13,9 @@ class Navbar extends React.Component {
     }
 
     render() {
+        // const searchBox = (
+
+        // )
         if (this.props.currentUser) {
             const  currentUserId = this.props.currentUser.id
             return (
