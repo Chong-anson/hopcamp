@@ -23,7 +23,6 @@ const msp = (state, ownProps) => {
         return params;
     };
     const query = parseQueryString();
-    // const query = useLocation().search;
     const lat = parseFloat(query['lat']);
     const lng = parseFloat(query['lng']);
     return ({

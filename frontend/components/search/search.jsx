@@ -55,25 +55,9 @@ class Search extends React.Component{
         })
     };
 
-    // componentWillMount(){
-
-    // };
-
-    // setMapbyPlace(place){
-    //     const geocoder = new google.maps.Geocoder();
-    //     geocoder.geocode({ 'address': place.replace("%20", " ") }, (res, status) => {
-    //         if (status === 'OK') {
-    //             const searchLat = res[0].geometry.location.lat();
-    //             const searchLng = res[0].geometry.location.lng();
-    //             this.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
-    //         }
-    //     })
-    // }
-
     componentDidMount(){
         let mapOptions;
         if (this.props.selected) {
-
             const selectedCampsite = this.props.campsite;
             mapOptions = {
                 center: { lat: selectedCampsite.lat, lng: selectedCampsite.lng },
