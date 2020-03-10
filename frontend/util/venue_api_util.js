@@ -4,8 +4,8 @@ export const fetchVenues = () => {
     })
 }
 
-export const fetchVenue = (venueId) => {
-    return $.ajax({
-        url: `api/venues/${venueId}`
-    })
-}
+// export const fetchVenue = (venueId) => {
+//     return $.ajax({
+//         url: `api/venues/${venueId}`
+//     })
+// }

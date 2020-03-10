@@ -14,12 +14,12 @@ const campsitesReducer = (state = _defaultState, action) => {
                 return _defaultState;
         case RECEIVE_CAMPSITE:
             return Object.assign({}, state, {[action.campsite.id] : action.campsite})
-        case RECEIVE_VENUE:
-            newState = Object.assign({}, state);
-            Object.values(action.payload.campsites).forEach(campsite =>
-                newState[campsite.id] = campsite
-            )
-            return newState;
+        // case RECEIVE_VENUE:
+        //     newState = Object.assign({}, state);
+        //     Object.values(action.payload.campsites).forEach(campsite =>
+        //         newState[campsite.id] = campsite
+        //     )
+        //     return newState;
         default: 
             return state;
     }

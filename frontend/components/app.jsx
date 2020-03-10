@@ -16,12 +16,18 @@ const App = () => {
             <Modal /> 
             <header className="header">
                 <div className="navbar">
-                    <Link className="header-logo" to="/">
-                        <div className="logo">
-                        </div>
-                    </Link>
-                    <MiniSearchBox />
-                    <NavbarContainer />
+                    <div className="left">
+
+                        <Link className="header-logo" to="/">
+                            <div className="logo">
+                            </div>
+                        </Link>
+                        <MiniSearchBox />
+                    </div>
+                    <div className="right">
+                        <NavbarContainer />
+
+                    </div>
                 </div>
             </header> 
             <Switch>

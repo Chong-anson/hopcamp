@@ -16,12 +16,12 @@
 class Campsite < ApplicationRecord
     
     validates :name, presence: true, uniqueness: true
-    validates :price, :venue_id, :campsite_type, :lat, :lng, :description, presence: true
+    validates :price, :campsite_type, :lat, :lng, :description, :address, presence: true
     validates :campsite_type, inclusion: {in: ["CAMPING", "RV", "GLAMPING"]}
     validates :lat, uniqueness: {scope: :lng, message: "Duplicate coordintes!"}
 
-    belongs_to :venue,
-        class_name: :Venue
+    # belongs_to :venue,
+    #     class_name: :Venue
 
     has_many :bookings
     has_many :campsite_taggings

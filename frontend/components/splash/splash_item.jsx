@@ -13,7 +13,7 @@ const SpashItem = (props) => {
                     }}>
             </div>
             <div className="splash-item-title">
-                <h2 className="item-title">Escape reality</h2>
+                <h2 className="item-title">{props[type].description}</h2>
                 <span>{props[type].name}</span>
             </div>
         </Link>

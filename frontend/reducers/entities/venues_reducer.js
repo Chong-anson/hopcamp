@@ -8,8 +8,8 @@ const venuesReducer = (state = _defaultState, action) => {
     switch(action.type){
         case RECEIVE_VENUES:
             return action.venues;
-        case RECEIVE_VENUE:
-            return Object.assign({}, state, { [action.payload.venue.id]: action.payload.venue});
+        // case RECEIVE_VENUE:
+        //     return Object.assign({}, state, { [action.payload.venue.id]: action.payload.venue});
         default: 
             return state; 
     }

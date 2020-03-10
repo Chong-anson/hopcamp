@@ -9,8 +9,9 @@
 #
 class Venue < ApplicationRecord
     validates :name, presence: true, uniqueness: true 
+    validates :description, presence: true
     
-    has_many :campsites
+    # has_many :campsites
 
     has_one_attached :photo
 end

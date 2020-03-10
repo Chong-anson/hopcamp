@@ -1,5 +1,5 @@
 export const RECEIVE_VENUES = "RECEIVE_VENUES";
-export const RECEIVE_VENUE = "RECEIVE_VENUE";
+// export const RECEIVE_VENUE = "RECEIVE_VENUE";
 import * as venueUtils from "../util/venue_api_util";
 
 const receiveVenues = (venues) => ({
@@ -7,10 +7,10 @@ const receiveVenues = (venues) => ({
     venues
 })
 
-const receiveVenue = (payload) => ({
-    type: RECEIVE_VENUE,
-    payload
-})
+// const receiveVenue = (payload) => ({
+//     type: RECEIVE_VENUE,
+//     payload
+// })
 
 export const fetchVenues = () => (dispatch) => {
     return venueUtils.fetchVenues()
@@ -18,8 +18,8 @@ export const fetchVenues = () => (dispatch) => {
         // .fail(res => console.log(res))
 }
 
-export const fetchVenue = (venueId) => (dispatch) => {
-    return venueUtils.fetchVenue(venueId)
-        .then(payload => dispatch(receiveVenue(payload)))
-        // .fail(res => console.log(res))
-}
+// export const fetchVenue = (venueId) => (dispatch) => {
+//     return venueUtils.fetchVenue(venueId)
+//         .then(payload => dispatch(receiveVenue(payload)))
+//         // .fail(res => console.log(res))
+// }
