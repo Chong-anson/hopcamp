@@ -1,0 +1,62 @@
+.search-container{
+    display: block;
+}
+
+.search-box,.filter-bar{
+    width: 100%;
+    border: 3px solid yellow;
+}
+
+.results-container{
+    display: flex;
+}
+
+.results-list{
+    width: 60%;
+    border: 5px solid black;
+}
+
+.results-map{
+    width: 40%;
+    height: 855px;
+    border: 5px solid red;
+}
+
+.filter-bar{
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #ebebeb;
+    padding: 10px;
+    background-color: #FDFDFD;
+    border-radius: 2px;
+}
+
+.type-filter{
+    display: flex;
+    align-items: center;
+    height: 45px;
+    padding: 9px 7px;
+    font-size: 18px;
+    padding: 0 10px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.campsite-icon{
+    width: 22px;
+    height: 22px;
+    background-image: url(asset-path('campground-solid.svg'));
+    background-position: center;
+    background-size: scale-down;
+    background-repeat: no-repeat;
+}
+
+.selected-filter{
+    border: 1px solid green;
+    color: green;
+}
+

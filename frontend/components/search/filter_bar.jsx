@@ -15,7 +15,7 @@ class FilterBar extends React.Component{
     // componentWillUnmount remove filter modal 
     handleButtonClick(e){
         e.preventDefault();
-        $(e.target).toggleClass("selected-filter");
+        $(e.currentTarget).toggleClass("selected-filter");
         this.updateTypeFilter();
     };
 
@@ -29,6 +29,10 @@ class FilterBar extends React.Component{
         });
     };
 
+    handleMoreFilterClick(){
+
+    }
+
     render(){
         const types = this.CAMPSITE_TYPE.map( (type,idx) => 
             <button 
@@ -36,6 +40,7 @@ class FilterBar extends React.Component{
                 onClick={this.handleButtonClick}
                 key={idx}
                 >
+                    <i className="campsite-icon"></i>
                     {type}
             </button>
         )
@@ -45,7 +50,7 @@ class FilterBar extends React.Component{
                 <DayPickerInput /> 
                 {types}
                 <div className="more-filter">
-                    <button>More filters</button>
+                    <button className="type-filter">More filters</button>
                     <MoreFilterContainer updateFilter={this.props.updateFilter} />
                 </div>
             </div>
