@@ -189,20 +189,28 @@
 
 .result-item-subinfo{
     width: 100%;
-    // position: relative;
-    // bottom: 0;
-    // margin-top: 22px; 
-    // margin-bottom: 11px;
     justify-self: flex-end;
     display: flex;
     justify-content: space-between;
 
 }
 
+.result-item-subinfo span.gray{
+    color: #757575;
+}
+
+.result-item-subinfo span.green{
+    color: #40d9ac;
+}
+
+
 .result-item-subtitle{
+    color: #757575;
     margin: 0;
 }
 
 .result-item p{
+    font-weight: 600;
     line-height: 1;
 }
+
