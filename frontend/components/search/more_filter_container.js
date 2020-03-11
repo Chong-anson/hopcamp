@@ -28,7 +28,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => ({
     fetchTags: () => dispatch(fetchTags()),
-    updateAppliedFilter: (bool)=> dispatch(updateAppliedFilter(bool))
+    updateAppliedFilter: (bool)=> dispatch(updateAppliedFilter(bool)),
+    
 }); 
 
 export default connect(msp,mdp)(MoreFilter);

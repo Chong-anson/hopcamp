@@ -64,14 +64,14 @@ class MoreFilter extends React.Component{
                 <div className="more-filter-large">
                     <div className="more-filter-section">
                         <h2>Group Size</h2>
-                        <select name="" id="">
+                        <select className="form-control" name="" id="">
                             <option value="">Any size</option>
                             {groupSize}
                             <option value="">10+ campers</option>
                             <option value="">15+ campers</option>
                         </select>
                         <h2>Pricing</h2>
-                        <select name="" id="">
+                        <select className="form-control" name="" id="">
                             <option value="25">Under $25</option>
                             <option value="50">Under $50</option>
                             <option value="75">Under $75</option>
