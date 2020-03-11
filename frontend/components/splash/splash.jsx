@@ -23,10 +23,11 @@ class Splash extends React.Component{
             <div className="main-content">
                 {/* SearchBox */}
                 <HomeSearch />
-
+                <h2>Destination getaways...</h2>
                 <div className="splash-items-container">
                     {citiesList}
                 </div>
+                <h2>Discover camping</h2>
                 <div className="splash-items-container">
                     {tagsList}
                 </div>

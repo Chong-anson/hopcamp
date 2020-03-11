@@ -15,7 +15,7 @@ class MiniSearchBox extends React.Component{
     };
 
     componentDidMount(){
-        const searchBox = new google.maps.places.Autocomplete(document.getElementById("google-search-box"), {types: ['(cities)']})
+        const searchBox = new google.maps.places.Autocomplete(document.getElementById("place-search-box"), {types: ['(cities)']})
         const that = this;
         searchBox.addListener('place_changed', function () {
             var place = searchBox.getPlace();
@@ -68,7 +68,7 @@ class MiniSearchBox extends React.Component{
                 <i className="fa fa-search"></i>
                     <input 
                         type="text" 
-                        id="google-search-box"
+                        id="place-search-box"
                         className="form-control" 
                         onChange={this.handleChange}
                         // onSubmit={this.handleSubmit}
