@@ -4,8 +4,10 @@ import {withRouter} from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import { SignupFormContainer, LoginFormContainer } from "../session_form/form_container";
 import { clearErrors } from "../../actions/session_actions";
+import { updateFilter } from "../../actions/filter_actions";
+import MoreFilterContainer from '../search/more_filter_container';
 
-function Modal({modal, closeModal}) {
+function Modal({modal, closeModal, updateFilter}) {
     if (!modal){
         return null;
     }
@@ -17,8 +19,9 @@ function Modal({modal, closeModal}) {
         case "signup":
             component = <SignupFormContainer />;
             break;
-        // case "date":
-        //     component = <SelectDateContainer />;
+        case "filters":
+            component = <MoreFilterContainer updateFilter={updateFilter}/>;
+            break;
         default:
             return null;
     }
@@ -43,7 +46,9 @@ const mapDispatchToProps = dispatch => {
         closeModal: () => {
             dispatch(clearErrors());
             return dispatch(closeModal());
-        }
+        },
+        updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+
     };
 };
 

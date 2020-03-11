@@ -29,6 +29,7 @@ input[type="password"],
 input[type="email"],
 input[type="text"],
 input[type="submit"],
+select,
 textarea,
 button {
   -webkit-appearance: none;

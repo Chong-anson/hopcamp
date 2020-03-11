@@ -1,6 +1,5 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import MoreFilterContainer from './more_filter_container';
 
 class FilterBar extends React.Component{
     constructor(props){
@@ -10,10 +9,11 @@ class FilterBar extends React.Component{
         // props.updateFilter("type", this.CAMPSITE_TYPE);
         this.updateTypeFilter = this.updateTypeFilter.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleFilterClick = this.handleFilterClick.bind(this);
     };
 
     // componentWillUnmount remove filter modal 
-    handleButtonClick(e){
+    handleFilterClick(e){
         e.preventDefault();
         $(e.currentTarget).toggleClass("selected-filter");
         this.updateTypeFilter();
@@ -22,22 +22,26 @@ class FilterBar extends React.Component{
     updateTypeFilter(){
         const typeFilter = []; 
         document.querySelectorAll('button.selected-filter').forEach(el =>
-            typeFilter.push(el.innerHTML)
+            typeFilter.push(el.getAttribute("data-type"))
         );
         this.setState({typeFilter}, ()=> {
             this.props.updateFilter("type", this.state.typeFilter);
         });
     };
 
-    handleMoreFilterClick(){
-
+    handleButtonClick(){
+        console.log("click")
+        const el = $(".more-filter-large")
+        // debugger
+        el.toggleClass("show")
     }
 
     render(){
         const types = this.CAMPSITE_TYPE.map( (type,idx) => 
             <button 
                 className="type-filter"
-                onClick={this.handleButtonClick}
+                onClick={this.handleFilterClick}
+                data-type={type}
                 key={idx}
                 >
                     <i className="campsite-icon"></i>
@@ -47,11 +51,11 @@ class FilterBar extends React.Component{
 
         return (
             <div className="filter-bar">
-                <DayPickerInput /> 
+                {/* <DayPickerInput />  */}
                 {types}
                 <div className="more-filter">
-                    <button className="type-filter">More filters</button>
-                    <MoreFilterContainer updateFilter={this.props.updateFilter} />
+                    {this.props.filterButton}
+                    {/* <MoreFilterContainer updateFilter={this.props.updateFilter} /> */}
                 </div>
             </div>
         )

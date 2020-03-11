@@ -51,8 +51,8 @@ class LoginForm extends React.Component {
                         <h1>Welcome Back!</h1>
                         <p>It"s about time for another camping trip</p>
                     </div>
-                    <input className="form-control" type="text" placeholder="Email:" value={this.state.email} onChange={this.handleChange("email")} />
-                    <input className="form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
+                    <input className="session-form-control" type="text" placeholder="Email:" value={this.state.email} onChange={this.handleChange("email")} />
+                    <input className="session-form-control" type="password" placeholder="Password:"value={this.state.password} onChange={this.handleChange("password")} />
                     <Link to="/">Forgot your password?</Link>
                     <br/>
                     <ErrorShowContainer type={"session"} />
