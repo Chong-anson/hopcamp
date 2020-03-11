@@ -14,6 +14,7 @@ class HomeSearch extends React.Component{
             lng: "",
         };
         this.handleChange = this.handleChange.bind(this);
+
         this.handleSubmit= this.handleSubmit.bind(this);
     };
 
