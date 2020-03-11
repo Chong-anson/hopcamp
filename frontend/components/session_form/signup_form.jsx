@@ -54,7 +54,7 @@ class SignupForm extends React.Component {
                         <h1>Join HopCamp!</h1>
                         <p>Discover the best campsites near me</p>
                     </div>
-                        {/* <input className="form-control" 
+                        {/* <input className="session-form-control" 
                             type="text" 
                             placeholder="Username:"
                             value={this.state.email} 
@@ -62,7 +62,7 @@ class SignupForm extends React.Component {
                         /> */}
                     <div className="name-form">
                         <input 
-                            className="form-control" 
+                            className="session-form-control" 
                         type="text" 
                         placeholder="First Name
                         :" value={this.state.first_name}
@@ -70,7 +70,7 @@ class SignupForm extends React.Component {
                          />
                         <br/>
                         <input 
-                            className="form-control" 
+                            className="session-form-control" 
                             type="text" 
                             placeholder="Last Name
                             :"value={this.state.last_name}
@@ -78,14 +78,14 @@ class SignupForm extends React.Component {
                          />
                     </div>
                         <input 
-                            className="form-control" 
+                            className="session-form-control" 
                             type="text" 
                             placeholder="Email:"
                             value={this.state.email} 
                             onChange={this.handleChange("email")} 
                          />
                         <input 
-                            className="form-control" 
+                            className="session-form-control" 
                             type="password" 
                             placeholder="Password:"
                             value={this.state.password} 

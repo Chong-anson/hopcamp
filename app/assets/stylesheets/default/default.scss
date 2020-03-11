@@ -34,3 +34,15 @@ h1{
 div {
   box-sizing: border-box;
 }
+
+.form-control{
+    box-sizing: border-box;
+    height: 68px;
+    // width: 100%;
+    border: solid 1px #333333;
+    margin-bottom: 10px;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #555555;
+}
