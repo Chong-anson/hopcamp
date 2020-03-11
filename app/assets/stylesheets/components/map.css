@@ -6,4 +6,6 @@
 .results-map{
     position: sticky;
     top: 0;
+    width: 460px;
+    max-height: 100vh;
 }

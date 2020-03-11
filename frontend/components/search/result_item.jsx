@@ -24,7 +24,7 @@ const ResultItem = props => {
                     <div className={`result-type-icon ${props.item.campsiteType}`}></div>
                 </div>
                 <div className="result-item-subinfo">
-                    <h2 className="result-item-subtitle">{props.item.address}</h2>
+                    <p className="result-item-subtitle">{props.item.address}</p>
                     <p>${props.item.price}/night</p>
                 </div>
             </div>
