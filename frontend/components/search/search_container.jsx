@@ -1,9 +1,11 @@
+import React from 'react'; 
 import { connect } from "react-redux";
 import { withRouter, useLocation } from 'react-router-dom';
 import Search from "./search";
 import { fetchCampsites } from "../../actions/campsite_actions";
-import { fetchVenue } from "../../actions/venue_actions";
+// import { fetchVenue } from "../../actions/venue_actions";
 import { updateFilter } from "../../actions/filter_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 const msp = (state, ownProps) => {
     const parseQueryString = function () {
@@ -39,7 +41,11 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => ({
     fetchCampsites: ()=> dispatch(fetchCampsites),
-    updateFilter: (filter, value) => dispatch(updateFilter(filter,value))
+    updateFilter: (filter, value) => dispatch(updateFilter(filter,value)),
+    filterButton: (
+        <button className="type-filter" onClick={()=> dispatch(openModal("filters"))}>More filters</button>
+    )
+
 })
 
 export default withRouter(connect(msp, mdp)(Search));

@@ -131,7 +131,7 @@ class Search extends React.Component{
                         <button>Search campsite at that city</button>
                     </form>
                 </div> */}
-                <FilterBar updateFilter={this.props.updateFilter} /> 
+                <FilterBar updateFilter={this.props.updateFilter} filterButton={this.props.filterButton}/> 
                 <div className="results-container">
                     {/* {CampsiteResult} */}
                     <div className="results-list">
