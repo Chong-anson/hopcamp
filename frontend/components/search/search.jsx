@@ -9,9 +9,9 @@ class Search extends React.Component{
         super(props);
         // const location = useLocation(); 
         // const place = query.get('place');
-        if (this.props.place) {
-            this.setMapbyPlace(this.props.place);
-        }
+        // if (this.props.place) {
+        //     this.setMapbyPlace(this.props.place);
+        // }
         this.state = { 
             location: "San Francisco",
             startDate: "",
@@ -20,7 +20,7 @@ class Search extends React.Component{
         };
         this.updateMap = this.updateMap.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     updateMap(){
@@ -43,20 +43,24 @@ class Search extends React.Component{
         this.setState({ location: e.target.value });
     };
 
-    handleSubmit(e){
-        e.preventDefault();
-        const request = {
-            query: this.state.location,
-            fields: ["geometry", "name"]
-        };
-        const service = new google.maps.places.PlacesService(this.map);
-        service.findPlaceFromQuery(request, (results, status) => {
-            this.map.setCenter(results[0].geometry.location);
-        })
-    };
+    // handleSubmit(e){
+    //     e.preventDefault();
+    //     const request = {
+    //         query: this.state.location,
+    //         fields: ["geometry", "name"]
+    //     };
+    //     const service = new google.maps.places.PlacesService(this.map);
+    //     service.findPlaceFromQuery(request, (results, status) => {
+    //         this.map.setCenter(results[0].geometry.location);
+    //     })
+    // };
 
     componentDidMount(){
-        let mapOptions;
+        let mapOptions = {
+            center: { lat: 37.7758, lng: -122.435 },
+            zoom: 9
+        };
+
         if (this.props.selected) {
             const selectedCampsite = this.props.campsite;
             mapOptions = {
@@ -71,13 +75,7 @@ class Search extends React.Component{
                 zoom: 9
             }
         }
-        else{
-            mapOptions = {
-                center: { lat: 37.7758, lng: -122.435 },
-                zoom: 9
-            }
-        }
-        
+        console.log(mapOptions);
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
@@ -112,8 +110,10 @@ class Search extends React.Component{
         // if (this.props.place){
         //     this.setMapbyPlace(this.props.place);
         // }
-        if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng){
-            this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
+        if (this.props.lat && this.props.lng){
+            if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng){
+                this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
+            }
         }
     }
 

@@ -31,6 +31,7 @@ const msp = (state, ownProps) => {
         campsites: Object.values(state.entities.campsites),
         lat,
         lng,
+        selected: false
     })
     // campsites: selectCampsites(state),
     // SELECT CAMPSITES BASED ON TAGS,

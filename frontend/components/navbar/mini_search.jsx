@@ -22,6 +22,7 @@ class MiniSearchBox extends React.Component{
             if (place.length == 0) {
                 return;
             }
+
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
                 // pressed the Enter key, or the Place Details request failed.
@@ -36,9 +37,11 @@ class MiniSearchBox extends React.Component{
                     }
                 })
             }
-            const lat = place.geometry.location.lat()
-            const lng = place.geometry.location.lng()
-            that.props.history.replace(`/search?lat=${lat}&lng=${lng}`)
+            else{
+                const lat = place.geometry.location.lat()
+                const lng = place.geometry.location.lng()
+                that.props.history.replace(`/search?lat=${lat}&lng=${lng}`)
+            }
             that.setState({ input: "" })
         })
     };
