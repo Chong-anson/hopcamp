@@ -20,7 +20,7 @@ class Splash extends React.Component{
             <SplashItem key={el.id} venue={el} type="venue" /> 
             )
         return(
-            <div className="main-content">
+            <div className="splash-content">
                 {/* SearchBox */}
                 <HomeSearch />
                 <h2>Destination getaways...</h2>

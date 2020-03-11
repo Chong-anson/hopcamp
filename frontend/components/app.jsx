@@ -30,6 +30,8 @@ const App = () => {
                     </div>
                 </div>
             </header> 
+            <div className="main-content">
+
             <Switch>
                 <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />
                 <AuthRoute exact path="/campsites/:campsiteId/login" component={LoginFormContainer} />
@@ -37,6 +39,7 @@ const App = () => {
                 <Route path="/search" component={SearchContainer} /> 
                 <Route path="/" component={SplashContainer} />
             </Switch>
+            </div>
         </div>
     )
 };

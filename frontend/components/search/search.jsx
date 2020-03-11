@@ -132,6 +132,10 @@ class Search extends React.Component{
                     </form>
                 </div> */}
                 <FilterBar updateFilter={this.props.updateFilter} filterButton={this.props.filterButton}/> 
+                <div className="address-bar">
+                    {/* TODO PRINT OUT ADDRESS HERE */}
+                    <h1>The best camping near ... </h1>
+                </div>
                 <div className="results-container">
                     {/* {CampsiteResult} */}
                     <div className="results-list">

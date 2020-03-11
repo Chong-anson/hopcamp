@@ -65,7 +65,6 @@ class HomeSearch extends React.Component{
     render(){
         return (
             <div className="home-search-container">
-
                 <div className="home-title">
                     <h1>Find yourself outside!</h1>
                     <div className="sub-title">
