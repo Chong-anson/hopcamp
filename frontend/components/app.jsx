@@ -40,6 +40,9 @@ const App = () => {
                 <Route path="/" component={SplashContainer} />
             </Switch>
             </div>
+            <footer>
+                {/* <Footer /> */}
+            </footer>
         </div>
     )
 };

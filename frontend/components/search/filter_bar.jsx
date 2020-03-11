@@ -44,7 +44,7 @@ class FilterBar extends React.Component{
                 data-type={type}
                 key={idx}
                 >
-                    <i className="campsite-icon"></i>
+                    <div className={`filter-type-icon ${type}`}></div>
                     {type}
             </button>
         )

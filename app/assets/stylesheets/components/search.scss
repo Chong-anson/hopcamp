@@ -50,6 +50,14 @@
     background-size: scale-down;
     background-repeat: no-repeat;
 }
+.filter-type-icon{
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+};
 
 .selected-filter{
     border: 1px solid green;
@@ -108,7 +116,13 @@
 
 .result-item a{
     width: 100%;
+    height: 100%;
     max-width: 400px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;;
+    flex-wrap: wrap;
+    align-items: space-between;
 }
 
 .result-image-wrapper{
@@ -121,11 +135,71 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .result-info{
-    width: 80%
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 100;
+}
+
+.result-item-title{
+    width: 85%;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 24px;
+    max-height: 48px;
+    margin: 0;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.result-type{
+    width: 15%;
+    height: 48px;
+};
+
+.result-type-icon{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+};
+
+.GLAMPING{
+    background-image: url(asset-path("glamping.png"));
+}
+.RV{
+    background-image: url(asset-path("rv.png"));
+}
+.CAMPING{
+    background-image: url(asset-path("camping.jpg"));
+}
+
+.result-item-subinfo{
+    width: 100%;
+    // position: relative;
+    // bottom: 0;
+    // margin-top: 22px; 
+    // margin-bottom: 11px;
+    justify-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.result-item-subtitle{
+    margin: 0;
+}
+
+.result-item p{
+    line-height: 1;
 }

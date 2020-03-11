@@ -7,6 +7,8 @@ span, article, footer, time, small {
   border: 0px;
   padding: 0px;
   outline: 0px;
+  /* margin-block-start: 0;
+  margin-block-end: 0; */
 
   box-sizing: inherit;
   font: inherit;

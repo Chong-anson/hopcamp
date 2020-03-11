@@ -16,13 +16,17 @@ const ResultItem = props => {
                         backgroundImage: `url(${props.item.photoUrls[0]})`
                     }}
                     >
-                
                 </div>
             </div>
             <div className="result-info">
-                <h1>{props.item.name}</h1>
-                <h3>{props.item.price}</h3>
-                <h3>{props.item.campsiteType}</h3>
+                <h1 className="result-item-title">{props.item.name}</h1>
+                <div className="result-type">
+                    <div className={`result-type-icon ${props.item.campsiteType}`}></div>
+                </div>
+                <div className="result-item-subinfo">
+                    <h2 className="result-item-subtitle">{props.item.address}</h2>
+                    <p>${props.item.price}/night</p>
+                </div>
             </div>
             </Link>
         </div>
