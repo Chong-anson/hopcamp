@@ -9,6 +9,7 @@ export const updateFilter = (filter, value) => {
             filter,
             value 
         })
+        if (filter !== "tags")
         return (fetchCampsites(getState().ui.filter)(dispatch));
     }
 };

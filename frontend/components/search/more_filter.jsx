@@ -7,6 +7,8 @@ class MoreFilter extends React.Component{
         this.state = {
             campsites: props.campsites,
             count: ((props.campsites) ? props.campsites.length : 0), 
+            appliedFilter: props.appliedFilter,
+            checkedTags: props.checkedTags
         };
         this.handleChange = this.handleChange.bind(this);
         this.clearFilter = this.clearFilter.bind(this);
@@ -16,43 +18,59 @@ class MoreFilter extends React.Component{
     handleChange(e){
         $(e.target).toggleClass("selected-more-filter");
         const filters = document.querySelectorAll("input.selected-more-filter");
-        let campsites 
+        let appliedFilter; 
+        let campsites = [];
+        let checkedTags = []; 
         if (filters.length){
-            campsites = this.props.tags[filters[0].id].campsites;
-            this.props.updateAppliedFilter(true);
+            campsites = [...this.props.campsites];
+            appliedFilter = true;
             filters.forEach( el => {
-                    const newSites = el.getAttribute("data-campsites")
-                                        .split(",")
-                                        .map( id => parseInt(id));
-                    campsites = campsites.filter(id => newSites.includes(id));
-                })
+                const newSites = el.getAttribute("data-campsites")
+                                    .split(",")
+                campsites = campsites.filter(id => newSites.includes(id));
+                checkedTags.push(el.id)
+            })
         }
         else{
-            this.props.updateAppliedFilter(false);
+            campsites = this.props.campsites; 
+            appliedFilter = false;
+            checkedTags = [];
         };        
-        this.setState({campsites, count: campsites.length})
+        this.setState({ campsites, count: campsites.length, appliedFilter, checkedTags});
+
     };
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.updateFilter("tags", this.state.campsites)
+        this.props.updateAppliedFilter(this.state.appliedFilter);
+        this.props.updateFilter("tags", this.state.checkedTags)
+        this.props.updateFilter("campsites", this.state.campsites.map(id => parseInt(id)));
         this.props.closeModal();
-
     };
 
     clearFilter(e){
         e.preventDefault();
+        this.props.updateAppliedFilter(false);
+        this.props.updateFilter("campsites", null);
         $("input[type='checkbox']").prop("checked", false)
         $(".selected-more-filter").removeClass("selected-more-filter")
         const campsites = this.props.campsites;
         this.setState({
             campsites,
-            count: campsites ? campsites.length : 0
+            count: campsites ? campsites.length : 0,
+            checkedTags: []
         })
     }
 
     componentDidMount(){
         this.props.fetchTags();
+    };
+
+    componentDidUpdate(prevProps){
+        if(!prevProps.campsites && this.props.campsites){
+            const {campsites} = this.props;
+            this.setState({campsites, count: campsites.length})
+        }
     };
 
     render(){
@@ -63,6 +81,7 @@ class MoreFilter extends React.Component{
                     <label key={tag.id}>
                         <input
                             type="checkbox"
+                            key={`tag${tag.id}`}
                             name={tag.id}
                             id={tag.id} 
                             onChange={this.handleChange}
@@ -73,10 +92,14 @@ class MoreFilter extends React.Component{
                 )
             )
             const groupSize = [];
-            const priceRange = []; 
             for(let i = 1 ; i <= 10; i++){
                 groupSize.push(
-                    <option value={i}>{i} camper{i > 1 ? "s" : ""}</option>
+                    <option key={i} value={i}>{i} camper{i > 1 ? "s" : ""}</option>
+                )
+            }
+            if (this.state.checkedTags){
+                this.state.checkedTags.forEach( id => 
+                    $(`#${id}`).prop("checked", true)
                 )
             }
             return(

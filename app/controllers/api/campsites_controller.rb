@@ -11,7 +11,7 @@ class Api::CampsitesController < ApplicationController
                 @campsites = @campsites.in_bounds(filter[:bounds])
             end
             if (filter[:applied_filter] == "true")
-                @campsites = @campsites.where(id: filter[:tags])
+                @campsites = @campsites.where(id: filter[:campsites])
             end
             if (filter[:min_capacity].length > 0)
                 @campsites = @campsites.where("capacity >= ?", filter[:min_capacity])

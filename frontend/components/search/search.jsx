@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
 import MarkerManager from "../../util/marker_manager";
-import SearchItem from "./search_item";
+import ResultItem from "./result_item";
 import FilterBar from "./filter_bar";
 
 class Search extends React.Component{
@@ -120,7 +120,7 @@ class Search extends React.Component{
     render(){
         // const { campsites, updateFilter } = this.props; 
         const campsites = this.props.campsites.map(el => 
-            <SearchItem item={el} key={el.id} /> 
+            <ResultItem item={el} key={el.id} /> 
             )
         return(
             <div className="search-container">

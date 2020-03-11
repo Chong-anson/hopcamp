@@ -6,6 +6,7 @@ const _defaultState = {
     minPrice: null, 
     maxPrice: null,
     type: null,
+    campsites: null, 
     tags: null, 
     appliedFilter: false
 };

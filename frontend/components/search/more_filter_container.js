@@ -16,9 +16,10 @@ const msp = (state, ownProps) => {
         } )
         return ({
             categorized,
-            campsites: Object.keys(state.entities.campsites),
+            campsites: Object.keys(campsites),
             tags: state.entities.tags,
-            checked_tag: state.ui.filter.tags
+            checkedTags: state.ui.filter.tags,
+            appliedFilter: state.ui.filter.appliedFilter
         })
     }
     else{
