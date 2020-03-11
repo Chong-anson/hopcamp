@@ -1,12 +1,16 @@
 import React from 'react';
+import { RECEIVE_CAMPSITES } from '../../actions/campsite_actions';
 
 class MoreFilter extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             campsites: props.campsites,
+            count: ((props.campsites) ? props.campsites.length : 0), 
         };
         this.handleChange = this.handleChange.bind(this);
+        this.clearFilter = this.clearFilter.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     handleChange(e){
@@ -26,11 +30,26 @@ class MoreFilter extends React.Component{
         else{
             this.props.updateAppliedFilter(false);
         };        
-        
-        this.setState({campsites}, () => {
-            this.props.updateFilter("tags", this.state.campsites)
-        });
+        this.setState({campsites, count: campsites.length})
     };
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.updateFilter("tags", this.state.campsites)
+        this.props.closeModal();
+
+    };
+
+    clearFilter(e){
+        e.preventDefault();
+        $("input[type='checkbox']").prop("checked", false)
+        $(".selected-more-filter").removeClass("selected-more-filter")
+        const campsites = this.props.campsites;
+        this.setState({
+            campsites,
+            count: campsites ? campsites.length : 0
+        })
+    }
 
     componentDidMount(){
         this.props.fetchTags();
@@ -101,8 +120,8 @@ class MoreFilter extends React.Component{
                         <button></button>
                     </div>
                     {/* TODO IMPLEMENT THE LOGIC */}
-                    <button onSubmit={this.clearFilter}>Clear Filter</button>
-                    <button>Show {this.state.count}+ camps </button>
+                    <button onClick={this.clearFilter}>Clear Filter</button>
+                    <button onClick={this.handleSubmit}>Show {this.state.count}+ camps </button>
 
                 </div>
             )

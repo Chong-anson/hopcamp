@@ -3,7 +3,7 @@ import MoreFilter from './more_filter';
 import { fetchTags } from '../../actions/tag_actions';
 import { updateAppliedFilter } from '../../actions/filter_actions';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
     const campsites = state.entities.campsites;
     const tagsList = Object.values(state.entities.tags);
     if (tagsList.length){
@@ -17,7 +17,8 @@ const msp = (state) => {
         return ({
             categorized,
             campsites: Object.keys(state.entities.campsites),
-            tags: state.entities.tags
+            tags: state.entities.tags,
+            checked_tag: state.ui.filter.tags
         })
     }
     else{

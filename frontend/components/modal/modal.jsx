@@ -20,7 +20,7 @@ function Modal({modal, closeModal, updateFilter}) {
             component = <SignupFormContainer />;
             break;
         case "filters":
-            component = <MoreFilterContainer updateFilter={updateFilter}/>;
+            component = <MoreFilterContainer updateFilter={updateFilter} closeModal={closeModal} />;
             break;
         default:
             return null;
@@ -48,7 +48,6 @@ const mapDispatchToProps = dispatch => {
             return dispatch(closeModal());
         },
         updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
-
     };
 };
 
