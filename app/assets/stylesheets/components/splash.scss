@@ -38,7 +38,9 @@
     left: 0;
     z-index: 1;
     height: 100%;
+    background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     // border: 2px solid red;
 
 };
@@ -62,7 +64,7 @@
     // border: 5px solid red;
     display: block;
     position: relative;
-    bottom: 0;
+    bottom: 25px;
     left: 0;
     font-weight: 400;
     color: white;
@@ -78,7 +80,7 @@
     margin-bottom: 2px;
     padding: 0 10px;
     margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
+    // margin-block-end: 0.83em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 };

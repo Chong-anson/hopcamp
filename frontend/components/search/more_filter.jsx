@@ -54,7 +54,7 @@ class MoreFilter extends React.Component{
                 )
             )
             return(
-                <div className="more-filter-contents">
+                <div className="more-filter-large">
                     <div className="more-filter-section-1">
                         <h2>Group Size</h2>
                         {/* DROP DOWN MENU FOR GROUP SIZE */}

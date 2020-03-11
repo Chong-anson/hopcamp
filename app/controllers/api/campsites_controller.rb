@@ -2,7 +2,6 @@ class Api::CampsitesController < ApplicationController
     def index
         # debugger
         @campsites = Campsite
-                        .includes(:venue)
                         .includes(tags: :campsites)
                         .includes(:bookings)
         # debugger
@@ -36,7 +35,6 @@ class Api::CampsitesController < ApplicationController
 
     def show 
         @campsite = Campsite
-                        .includes(:venue)
                         .includes(tags: :campsites)
                         .includes(:bookings)
                         .find_by(id: params[:id])

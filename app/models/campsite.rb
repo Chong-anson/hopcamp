@@ -6,12 +6,13 @@
 #  name          :string           not null
 #  capacity      :integer          not null
 #  price         :integer          not null
-#  venue_id      :integer          not null
 #  campsite_type :string           not null
 #  lat           :float            not null
 #  lng           :float            not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  description   :text             not null
+#  address       :string           not null
 #
 class Campsite < ApplicationRecord
     
@@ -30,7 +31,7 @@ class Campsite < ApplicationRecord
         through: :campsite_taggings,
         source: :tag
 
-    has_one_attached :photo
+    has_many_attached :photos
 
     def self.in_bounds(bounds)
         campsites = Campsite

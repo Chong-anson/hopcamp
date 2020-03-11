@@ -26,7 +26,6 @@ class Splash extends React.Component{
 
                 <div className="splash-items-container">
                     {citiesList}
-
                 </div>
                 <div className="splash-items-container">
                     {tagsList}

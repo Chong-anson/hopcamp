@@ -25,8 +25,16 @@ class MiniSearchBox extends React.Component{
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
                 // pressed the Enter key, or the Place Details request failed.
-                window.alert("No details available for input: '" + place.name + "'");
-                return;
+                // window.alert("No details available for input: '" + place.name + "'");
+                // return;
+                const geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': that.state.input }, (res, status) => {
+                    if (status === 'OK') {
+                        const searchLat = res[0].geometry.location.lat();
+                        const searchLng = res[0].geometry.location.lng();
+                        that.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
+                    }
+                })
             }
             const lat = place.geometry.location.lat()
             const lng = place.geometry.location.lng()
@@ -39,18 +47,15 @@ class MiniSearchBox extends React.Component{
     //     e.preventDefault();
 
     //     console.log(this.state.input)
-
-    //     // this.props.history.replace(`/search?place=${this.state.input}`)
-
-    //     // const geocoder = new google.maps.Geocoder();
-    //     // geocoder.geocode({ 'address': this.state.input }, (res, status) => {
-    //     //     if (status === 'OK') {
-    //     //         const searchLat = res[0].geometry.location.lat();
-    //     //         const searchLng = res[0].geometry.location.lng();
-    //     //         this.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
-    //     //     }
-    //     // })
-    //     // this.setState({input: ""})
+    //     const geocoder = new google.maps.Geocoder();
+    //     geocoder.geocode({ 'address': this.state.input }, (res, status) => {
+    //         if (status === 'OK') {
+    //             const searchLat = res[0].geometry.location.lat();
+    //             const searchLng = res[0].geometry.location.lng();
+    //             this.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
+    //         }
+    //     })
+    //     this.setState({input: ""})
     // };
 
     render(){
@@ -66,6 +71,7 @@ class MiniSearchBox extends React.Component{
                         id="google-search-box"
                         className="form-control" 
                         onChange={this.handleChange}
+                        // onSubmit={this.handleSubmit}
                         value={this.state.input}
                         placeholder="Search.."
                         />

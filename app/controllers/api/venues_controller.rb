@@ -1,6 +1,6 @@
 class Api::VenuesController < ApplicationController
     def index 
-        @venues = Venue.includes(:campsites)
+        @venues = Venue.all
         render :index
     end
 
