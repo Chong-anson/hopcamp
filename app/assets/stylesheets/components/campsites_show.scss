@@ -1,0 +1,45 @@
+.campsite-page{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.campsite-main-content{
+    width: 60%;
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+.photo-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.photo-container:first-child{
+    margin-left: 10px;
+}
+
+.photo{
+    width: 33.333333%;
+    height: 500px;
+    margin-right: 10px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.campsite-show-info{
+    width: 60%; 
+}
+
+.campsite-show-title{
+    border-bottom: solid 2px gray;
+    margin-bottom: 10px;
+}
+
+.campsite-map{
+    width: 100%;
+    height: 500px;
+}

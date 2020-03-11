@@ -59,9 +59,9 @@ class Bookingform extends React.Component{
         return (
             <div className="booking-widget">
                 {/* TEST */}
-                <div>{this.props.campsite.capacity}</div>
+                {/* <div>{this.props.campsite.capacity}</div> */}
                 <div className="price-box">
-                    <h4>${this.props.campsite.price} </h4>
+                    <h2 className="campsite-price">${this.props.campsite.price} </h2>
                     <p>per Night</p>
                 </div>
                 <div className="row">
@@ -73,7 +73,6 @@ class Bookingform extends React.Component{
                             format="LL"
                             formatDate={formatDate}
                             onDayChange={this.handleDateClick("startDate")}
-                            showOverlay={true}
                             dayPickerProps={ {
                                 // selectedDays: [startDate],
                                 disabledDays: {
@@ -95,7 +94,6 @@ class Bookingform extends React.Component{
                                 // selectedDays: [startDate, { startDate, endDate }],
                                 disabledDays: { before: nextDay },
                                 month: nextDay
-
                             }}
                         />
                     </div>
@@ -114,9 +112,9 @@ class Bookingform extends React.Component{
                         </button>
                 
                     </div>
-                    <div className="booking-submit-btn">
-                        <button onClick={this.handleSubmit}>Request Booking!</button>
-                    </div>
+                </div>
+                <div className="booking-submit-btn">
+                    <button className="special-buttons" onClick={this.handleSubmit}>Request Booking!</button>
                 </div>
 
 
