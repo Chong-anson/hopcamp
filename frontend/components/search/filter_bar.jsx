@@ -30,7 +30,6 @@ class FilterBar extends React.Component{
     };
 
     handleButtonClick(){
-        console.log("click")
         const el = $(".more-filter-large")
         // debugger
         el.toggleClass("show")
