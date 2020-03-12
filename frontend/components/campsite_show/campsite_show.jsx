@@ -51,9 +51,9 @@ class CampsiteShow extends React.Component{
             tags["Activities"] = [];
             tags["Amentities"]  = [] ;
             tags["Terrain"] = [] ;
-            this.props.tags.forEach( tag => 
-                tags[tag.category].push(tag.name)
-            )
+            // this.props.tags.forEach( tag => 
+            //     // tags[tag.category].push(tag.name)
+            // )
             return (
                 <div className="campsite-page">
                     <div className="photo-container">
@@ -84,6 +84,20 @@ class CampsiteShow extends React.Component{
                                 <div className="tags-container">
                                     <h2>Terrain</h2>
 
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="weather-container">
+                                    <h2>Elevation</h2>
+                                </div>
+                                <div className="weather-container">
+                                    <h2>Weather</h2>
+                                    <h3>{campsite.weather}</h3>
+                                </div>
+                                <div className="weather-container">
+                                    <h2>Temprature</h2>
+                                    <h3>{campsite.temperature}</h3>
                                 </div>
                             </div>
                         </div>

@@ -14,7 +14,6 @@ class HomeSearch extends React.Component{
             lng: "",
         };
         this.handleChange = this.handleChange.bind(this);
-        // this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
     };
 
@@ -51,10 +50,6 @@ class HomeSearch extends React.Component{
         })
     };
 
-    // handleButtonClick(){
-    //     $("div.types-drop-down").toggleClass("show")
-    // };
-
     handleSubmit(e){
         e.preventDefault();
         const {lat, lng} = this.state
@@ -80,7 +75,10 @@ class HomeSearch extends React.Component{
                             id="place-search-box-home"
                             onChange={this.handleChange}
                             />
-                        <DayPickerInput  /> 
+                        <div className="daypicker-home">
+                            <DayPickerInput placeholder="Enter date" showOverlay={true}/> 
+                        </div>
+
                         {/* <button onClick={this.handleButtonClick}></button> */}
                         <select className="form-control" name="campsiteType" id="">
                             <option value="All" defaultChecked>All camping</option>

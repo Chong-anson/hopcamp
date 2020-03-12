@@ -1,5 +1,6 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
+import DayPicker, { DateUtils } from 'react-day-picker';
 import { formatDate, parseDate } from "react-day-picker/moment";
 
 class Bookingform extends React.Component{
@@ -14,12 +15,18 @@ class Bookingform extends React.Component{
         this.handleDateClick = this.handleDateClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     };
-
+    
     handleDateClick(type){
         return (date) => {
             this.setState({[type]: date})
         }
     };
+
+    // handleDateClick(date){
+    //     const { startDate, endDate} = this.state
+    //     // const range = DateUtils.addDayToRange(date, {from: startDate, to: endDate})
+    //     this.setState({ startDate: range.from, endDate: range.to})
+    // }
 
     handleGuestClick(type){
         return (e) => {
@@ -55,7 +62,7 @@ class Bookingform extends React.Component{
         const modifiers = {start: startDate, end: endDate};
         let nextDay = new Date();
         nextDay.setDate(startDate.getDate() + 1);
-
+        console.log(this.state)
         return (
             <div className="booking-widget">
                 {/* TEST */}
@@ -65,39 +72,46 @@ class Bookingform extends React.Component{
                     <p>per Night</p>
                 </div>
                 <div className="row">
-                    <div className="check-in-btn col-4" >
+                    <div className="check-in-btn col-2" >
                         
                         <h4 className="label">Check in</h4>
-                        <span className="value">Select date</span>
-                        <DayPickerInput
-                            format="LL"
-                            formatDate={formatDate}
-                            onDayChange={this.handleDateClick("startDate")}
-                            dayPickerProps={ {
-                                // selectedDays: [startDate],
-                                disabledDays: {
-                                    before: new Date(Date.now()) 
-                                },
-                            }}
-                        />
+                        <div className="daypicker-booking">
+
+                            <DayPickerInput
+                                format="LL"
+                                formatDate={formatDate}
+                                placeholder="Select date"
+                                onDayChange={this.handleDateClick("startDate")}
+                                dayPickerProps={ {
+                                    selectedDays: [startDate, {from: startDate, to: endDate}],
+                                    disabledDays: {
+                                        before: new Date(Date.now()) 
+                                    },
+                                }}
+                            />
+                        </div>
                     </div>
-                    <div className="check-out-btn col-4">
+                    <div className="check-out-btn col-2">
                         <h4 className="label">Check out</h4>
-                        <span className="value">Select date</span>
-                        <DayPickerInput 
-                            ref={ daypicker => this.endDate = daypicker}
-                            format="LL"
-                            formatDate={formatDate}
-                            onDayChange={this.handleDateClick("endDate")}
-                            // selectedDays={endDate}
-                            dayPickerProps={{
-                                // selectedDays: [startDate, { startDate, endDate }],
-                                disabledDays: { before: nextDay },
-                                month: nextDay
-                            }}
-                        />
+                        <div className="daypicker-booking">
+
+                            <DayPickerInput 
+                                ref={ daypicker => this.endDate = daypicker}
+                                format="LL"
+                                formatDate={formatDate}
+                                onDayChange={this.handleDateClick("endDate")}
+                                // selectedDays={endDate}
+                                placeholder="Select date"
+                                dayPickerProps={{
+                                    selectedDays: [startDate, { from: startDate, to: endDate }],
+                                    disabledDays: { before: nextDay },
+                                    month: nextDay
+                                }}
+                            />
+                        </div>
+
                     </div>
-                    <div className="guest-size-container col-4">
+                    <div className="guest-size-container col-5">
                         <h4 className="label">Guests</h4>
                         <button 
                             disabled={disabledMin}

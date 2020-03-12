@@ -102,6 +102,7 @@ GEM
     crass (1.0.6)
     debug_inspector (0.0.3)
     erubi (1.9.0)
+    excon (0.72.0)
     execjs (2.7.0)
     ffi (1.12.2)
     figaro (1.1.1)
@@ -237,6 +238,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  excon
   figaro
   jbuilder (~> 2.5)
   jquery-rails

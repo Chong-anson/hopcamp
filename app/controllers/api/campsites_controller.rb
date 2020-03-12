@@ -2,7 +2,8 @@ class Api::CampsitesController < ApplicationController
     def index
         # debugger
         @campsites = Campsite
-                        .includes(tags: :campsites)
+                        .with_attached_photos
+                        .includes(:tags)
                         .includes(:bookings)
         # debugger
         filter = params[:filter]
@@ -35,14 +36,19 @@ class Api::CampsitesController < ApplicationController
 
     def show 
         @campsite = Campsite
-                        .includes(tags: :campsites)
+                        .with_attached_photos
+                        .includes(:tags)
                         .includes(:bookings)
                         .find_by(id: params[:id])
         if @campsite
+
             render :show
         else
             render json: ["Campsite not found"], status: 404 
         end
     end
+
+
+
 
 end

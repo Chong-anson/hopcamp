@@ -1,6 +1,6 @@
 class Api::VenuesController < ApplicationController
     def index 
-        @venues = Venue.all
+        @venues = Venue.all.with_attached_photo
         render :index
     end
 
