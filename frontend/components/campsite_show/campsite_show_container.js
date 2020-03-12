@@ -1,13 +1,20 @@
 import { connect } from "react-redux";
 import CampsiteShow from "./campsite_show";
 import { fetchCampsite } from "../../actions/campsite_actions";
+import { fetchTags } from '../../actions/tag_actions';
 
-const msp = (state, ownProps) => ({
-    campsite: state.entities.campsites[ownProps.match.params.id]
-})
+const msp = (state, ownProps) => {
+    const campsite = state.entities.campsites[ownProps.match.params.id];
+    return ({
+        campsite: state.entities.campsites[ownProps.match.params.id],
+        tags: campsite ? campsite.tags.map( tagId => state.entities.tags[tagId]) : [] 
+    })
+}
 
 const mdp = (dispatch) => ({
-    fetchCampsite: (campsiteId) => dispatch(fetchCampsite(campsiteId))
+    fetchCampsite: (campsiteId) => dispatch(fetchCampsite(campsiteId)),
+    fetchTags: () => dispatch(fetchTags()),
+
 })
 
 export default connect(msp,mdp)(CampsiteShow);

@@ -101,7 +101,7 @@
 
 .result-item{
     width: 48%;
-    height: 300px;
+    min-height: 300px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
@@ -110,7 +110,7 @@
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-height: 320px;
+    max-height: 350px;
     cursor: pointer;
 }
 
@@ -118,11 +118,10 @@
     width: 100%;
     height: 100%;
     max-width: 400px;
-    max-height: 300px;
     display: flex;
     flex-direction: column;;
-    flex-wrap: wrap;
-    align-items: space-between;
+    flex-wrap: nowrap;
+    // border: solid red 3px;
 }
 
 .result-image-wrapper{

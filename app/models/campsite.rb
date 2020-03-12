@@ -39,4 +39,6 @@ class Campsite < ApplicationRecord
                     .where('lng BETWEEN ? AND ?', bounds["southWest"]["lng"],bounds["northEast"]["lng"])
         return campsites
     end
+
+    
 end

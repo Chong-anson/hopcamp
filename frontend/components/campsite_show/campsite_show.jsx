@@ -9,14 +9,12 @@ class CampsiteShow extends React.Component{
 
     componentDidMount(){
         this.props.fetchCampsite(this.props.match.params.id);
-    
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.match.params.id != this.props.match.params.id){
             this.props.fetchCampsite(this.props.match.params.id);
         }
-
 
         if (this.props.campsite) {
             const { lat, lng } = this.props.campsite
@@ -49,8 +47,13 @@ class CampsiteShow extends React.Component{
                     >
                 </div>
                 )
-
-            const tags = campsite.tags
+            const tags = []
+            tags["Activities"] = [];
+            tags["Amentities"]  = [] ;
+            tags["Terrain"] = [] ;
+            this.props.tags.forEach( tag => 
+                tags[tag.category].push(tag.name)
+            )
             return (
                 <div className="campsite-page">
                     <div className="photo-container">
@@ -60,14 +63,29 @@ class CampsiteShow extends React.Component{
 
                         <div className="campsite-show-info">
                             <div className="campsite-show-title">
-                                <h1>{campsite.name}</h1>
-                                <h2 className="campsite-address">Nearby:</h2>
+                                <h1 className="campsite-title">{campsite.name}</h1>
+                                <h2 className="campsite-address">Nearby: </h2>
                                 <span>{campsite.address}</span>
                             </div>
                             <div className="campsite-description">
-                                {campsite.description}
+                                <p>
+                                    {campsite.description}
+                                </p>
                             </div>
 
+                            <div className="row">
+                                <div className="tags-container">
+                                    <h2>Amentities</h2>
+                                </div>
+                                <div className="tags-container">
+                                    <h2>Activites</h2>
+
+                                </div>
+                                <div className="tags-container">
+                                    <h2>Terrain</h2>
+
+                                </div>
+                            </div>
                         </div>
                         <BookingFormContainer campsite={campsite}  />
                     </div>

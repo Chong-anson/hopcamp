@@ -4,8 +4,8 @@ export const fetchTags = () => {
     })
 }
 
-// export const fetchTag = (tagId) => {
-//     return $.ajax({
-//         url: `api/tags/${tagId}`
-//     })
-// }
+export const fetchTag = (tagId) => {
+    return $.ajax({
+        url: `api/tags/${tagId}`
+    })
+}
