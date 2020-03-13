@@ -4,11 +4,11 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { fetchCurrentUser } from '../../actions/session_actions';
 
 const User = (props) => {
-    console.log(props);
+    // console.log(props);
     const {firstName, lastName, email}  = props.currentUser;
 
     let { url } = useRouteMatch();
-    console.log(props.bookings);
+    // console.log(props.bookings);
     const dispatch = useDispatch();
     let bookings = {};
     // useEffect( () => {dispatch(fetchCurrentUser(props.currentUser.id))}, [props.currentUser.id]);
