@@ -40,19 +40,12 @@ class Campsite < ApplicationRecord
         return campsites
     end
 
-    def api_call
+    def weather_api
         response = Excon.get("http://api.openweathermap.org/data/2.5/weather?lat=#{self.lat}&lon=#{self.lng}&appid=#{ENV['WEATHER_API_KEY']}&units=imperial")
         return nil if response.status != 200
-        JSON.parse(response.body)
+        result = JSON.parse(response.body)
+        result = {weather: result["weather"].first["main"], temperature: result["main"]["temp"]}
     end
     
-    def weather 
-        result = self.api_call
-        result["weather"].first["description"]
-    end
 
-    def temperature 
-        result = self.api_call
-        result["main"]["temp"]
-    end
 end

@@ -76,9 +76,9 @@ class HomeSearch extends React.Component{
                             onChange={this.handleChange}
                             />
                         <div className="daypicker-home">
-                            <DayPickerInput placeholder="Enter date" showOverlay={true}/> 
+                            <DayPickerInput placeholder="Enter date" /> 
+                        {/* showOverlay={true} */}
                         </div>
-
                         {/* <button onClick={this.handleButtonClick}></button> */}
                         <select className="form-control" name="campsiteType" id="">
                             <option value="All" defaultChecked>All camping</option>

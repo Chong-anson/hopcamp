@@ -1,4 +1,4 @@
-json.extract! campsite, :id, :name, :price, :weather, :temperature, :description, :address, :lat, :lng, :capacity, :campsite_type
+json.extract! campsite, :id, :name, :price, :description, :address, :lat, :lng, :capacity, :campsite_type
 
 json.tags do
     json.array! campsite.tags.ids

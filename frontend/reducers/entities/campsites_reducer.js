@@ -3,17 +3,17 @@ import { RECEIVE_VENUE } from "../../actions/venue_actions";
 
 const _defaultState = {};
 
-const campsitesReducer = (state = _defaultState, action) => {
+const campsitesReducer = (state = _defaultState, {type, payload}) => {
     Object.freeze(state);
     let newState;
-    switch(action.type){
+    switch(type){
         case RECEIVE_CAMPSITES:
-            if(action.payload.campsites)
-                return action.payload.campsites;
+            if(payload.campsites)
+                return payload.campsites;
             else
                 return _defaultState;
         case RECEIVE_CAMPSITE:
-            return Object.assign({}, state, {[action.campsite.id] : action.campsite})
+            return Object.assign({}, state, {[payload.campsite.id] : payload.campsite})
         // case RECEIVE_VENUE:
         //     newState = Object.assign({}, state);
         //     Object.values(action.payload.campsites).forEach(campsite =>

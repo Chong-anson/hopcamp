@@ -4,11 +4,11 @@ const _defaultState = {
     id: null
 }
 
-const sessionReducer = (state = _defaultState, action) => {
+const sessionReducer = (state = _defaultState, {type, payload}) => {
     Object.freeze(state);
-    switch(action.type){
+    switch(type){
         case RECEIVE_CURRENT_USER:
-            return {id: action.currentUser.id}
+            return {id: payload.user.id}
         case LOGOUT_CURRENT_USER:
             return _defaultState;
         default:

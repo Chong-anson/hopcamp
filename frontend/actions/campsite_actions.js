@@ -7,9 +7,9 @@ const receiveCampsites = (payload) => ({
     payload
 })
 
-const receiveCampsite = (campsite) => ({
+const receiveCampsite = (payload) => ({
     type: RECEIVE_CAMPSITE,
-    campsite
+    payload
 })
 
 export const fetchCampsites = (filter) => (dispatch) => {

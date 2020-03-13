@@ -33,14 +33,16 @@
 
 .campsite-show-info{
     width: 60%; 
+
 }
 
-.campsite-show-title{
-    border-bottom: solid 2px gray;
-    margin-bottom: 10px;
+.show-row, .campsite-description, .campsite-map{
+    border-top: 1px solid #ebebeb;
+    padding-top: 20px;
 }
 
 .campsite-map{
+    margin-top: 30px;
     width: 100%;
     height: 500px;
 }
@@ -59,31 +61,55 @@
 .campsite-description{
     font-size: 18px;
     line-height: 1.42;
-    color: #333333
+    color: #333333;
+    height: 500px;
+    overflow: auto;
+    padding-bottom: 20px;
+
+}
+.show-row{
+    margin-top: 30px;
 }
 
 .tags-container, .weather-container{
     width: 32%;
-    text-align: center;
-
     // border: solid 2px blue;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-
-    height: 220px;
+    justify-content: flex-start;
+    align-items: center;
+    // height: 220px;
     padding: 30px 0;
-    background-color: #fff;
-    text-align: center;
+    background-color: #ffffff;
     border: 1px solid #ebebeb;
 }
 
-.weather-container{
-    margin-top: 30px;
-    height: 150px;
-};
+.tags-list{
+    margin-top: 20px;
+    text-align: center;
+
+}
 
 .tags-container h2{
     margin: 0;
 }
+
+.tags-list li{
+    font-size: 18px;
+    line-height: 1.42;
+    color: #333333;
+    padding: 5px;
+}
+
+.show-row{
+    flex-wrap: wrap;
+};
+
+.show-row > h2{
+    margin: 0;
+    margin-bottom: 20px;
+    width: 100%;
+};
+
+

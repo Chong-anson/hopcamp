@@ -22,12 +22,6 @@ class Bookingform extends React.Component{
         }
     };
 
-    // handleDateClick(date){
-    //     const { startDate, endDate} = this.state
-    //     // const range = DateUtils.addDayToRange(date, {from: startDate, to: endDate})
-    //     this.setState({ startDate: range.from, endDate: range.to})
-    // }
-
     handleGuestClick(type){
         return (e) => {
             e.preventDefault();
@@ -46,7 +40,9 @@ class Bookingform extends React.Component{
                 campsiteId: this.props.campsite.id,
                 userId: this.props.currentUserId
             });
-            this.props.createBooking(booking);
+            this.props.createBooking(booking).then(
+                () => window.alert("booking created")
+            );
         }
         else{
             const url = this.props.match.url.concat("/signup")
@@ -62,17 +58,21 @@ class Bookingform extends React.Component{
         const modifiers = {start: startDate, end: endDate};
         let nextDay = new Date();
         nextDay.setDate(startDate.getDate() + 1);
-        console.log(this.state)
+
+        console.log(this.props)
+        // if (this.props.currentUser.bookings)
         return (
             <div className="booking-widget">
                 {/* TEST */}
                 {/* <div>{this.props.campsite.capacity}</div> */}
                 <div className="price-box">
-                    <h2 className="campsite-price">${this.props.campsite.price} </h2>
-                    <p>per Night</p>
+                    <div>
+                        <h2 className="campsite-price">${this.props.campsite.price} </h2>
+                        <p>per Night</p>
+                    </div>
                 </div>
-                <div className="row">
-                    <div className="check-in-btn col-2" >
+                <div className="row booking-row">
+                    <div className="check-in-btn col-4" >
                         
                         <h4 className="label">Check in</h4>
                         <div className="daypicker-booking">
@@ -91,7 +91,7 @@ class Bookingform extends React.Component{
                             />
                         </div>
                     </div>
-                    <div className="check-out-btn col-2">
+                    <div className="check-out-btn col-4">
                         <h4 className="label">Check out</h4>
                         <div className="daypicker-booking">
 
@@ -111,24 +111,32 @@ class Bookingform extends React.Component{
                         </div>
 
                     </div>
-                    <div className="guest-size-container col-5">
+                    <div className="guest-size-container col-2">
                         <h4 className="label">Guests</h4>
-                        <button 
-                            disabled={disabledMin}
-                            onClick={this.handleGuestClick("minus")}>
-                            <span className="fa fa-minus"></span>
-                        </button>
-                        <span className="guest-size">{groupSize}</span>
-                        <button 
-                            disabled={disabledMax}
-                            onClick={this.handleGuestClick("plus")}>
-                            <span className="fa fa-plus"></span>
-                        </button>
+                        <div className="add-minus-guest">
+                            <div>
+                                <button 
+                                    disabled={disabledMin}
+                                    onClick={this.handleGuestClick("minus")}>
+                                    <span className="fa fa-minus"></span>
+                                </button>
+                            </div>
+                            <div>
+                                <span className="guest-size">{groupSize}</span>
+                            </div>
+                            <div>
+                                <button 
+                                    disabled={disabledMax}
+                                    onClick={this.handleGuestClick("plus")}>
+                                    <span className="fa fa-plus"></span>
+                                </button>
+                            </div>
+                        </div>
                 
                     </div>
                 </div>
                 <div className="booking-submit-btn">
-                    <button className="special-buttons" onClick={this.handleSubmit}>Request Booking!</button>
+                    <button className="special-buttons-2" onClick={this.handleSubmit}>Request Booking!</button>
                 </div>
 
 

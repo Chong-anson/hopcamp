@@ -47,18 +47,28 @@
 
 #place-search-box-home{
     width: 40%;
-    // display: flex;
-    // justify-content: space-around;
 }
 
-.home-search-box .form-control option{
-    padding: 5px;
+.home-search-box .form-control, .home-search-box option{
+    margin: 0 10px;
+    // padding: 5px;
 }
 
 .daypicker-home{
     width: 200px;
 }
 
+.daypicker-home input{
+    box-sizing: border-box;
+    height: 58.8px;
+    // width: 100%;
+    border: solid 1px #333333;
+    margin-bottom: 0px;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #555555;
+}
 // .DayPicker-wrapper{
 //     z-index: 20;
 // }

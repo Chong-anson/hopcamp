@@ -8,6 +8,11 @@ export const selectAllTags = state => {
 
 export const selectAllCategories = state => {
     const tags = Object.values(state.entities.tags);
-    
-
 }
+
+export const selectBookings = (state, bookings) => (
+    bookings.map( id => 
+        state.entities.booking[id]
+    )
+)
+

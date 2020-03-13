@@ -1,22 +1,28 @@
 .booking-widget{
     width: 35%;
+    height: 250px;
     display: flex;
     flex-direction: column;
     border: solid 2px red;
+    padding: 10px
 };
 
 .row{
     width: 100%;
     display: flex;
-    border: solid 2px blue;
     justify-content: space-between;
 };
 
-.col-2{
+.booking-row{
+    margin: 10px 0;
+    border-top: 1px #ebebeb solid;
+    border-bottom: 1px #ebebeb solid;
+}
+.col-4{
     width: 40%;
 };
 
-.col-5{
+.col-2{
     width: 20%;
 }
 
@@ -24,22 +30,51 @@
     margin-top: 10px;
 }
 
+.campsite-price{
+    align-items: center;
+    display: flex;
+    color: #333333;
+    font-size: 26px;
+    line-height: 0.9;
+    margin: 2px 0 0;
+    min-height: 26px;
+}
+
 .booking-submit-btn{
     display: flex;
     justify-content: center;
+    align-self: center;
+    width: 100%;
 }
 
+.booking-row label{
+    display: block;
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+}
 /* .daypicker-booking{
     
 } */
 .daypicker-booking input{
-    height: 40px;
+    height: 30px;
     font-size: 16px;
 }
 .daypicker-booking input::placeholder{
     text-align: left;
 }
 
+.add-minus-guest{
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
 /* .DayPicker-Day--highlighted {
   background-color: yellow;

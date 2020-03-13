@@ -31,7 +31,6 @@ class CampsiteShow extends React.Component{
             // this.map.setOptions({draggable: false})
             const marker = new google.maps.Marker({ position: { lat, lng }, map: this.map})
         }
-
     }
 
     render(){
@@ -47,13 +46,18 @@ class CampsiteShow extends React.Component{
                     >
                 </div>
                 )
-            const tags = []
+            const tags = {};
             tags["Activities"] = [];
-            tags["Amentities"]  = [] ;
+            tags["Amenities"]  = [] ;
             tags["Terrain"] = [] ;
-            // this.props.tags.forEach( tag => 
-            //     // tags[tag.category].push(tag.name)
-            // )
+            // debugger
+            // if (this)
+            this.props.tags.forEach( (tag,idx) => 
+                // console.log(tag)
+                tags[tag.category].push(
+                    <li key={`${tag.category}-${idx}`}><p> {tag.name}</p></li>
+                )
+            )
             return (
                 <div className="campsite-page">
                     <div className="photo-container">
@@ -72,36 +76,54 @@ class CampsiteShow extends React.Component{
                                     {campsite.description}
                                 </p>
                             </div>
-
-                            <div className="row">
+                            <div className="row show-row">
                                 <div className="tags-container">
-                                    <h2>Amentities</h2>
+                                    <h2>Amenities</h2>
+                                    <ul className="tags-list">
+
+                                        {tags["Amenities"].length ? tags["Amenities"] : "No amenities"}
+
+                                    </ul>
+
                                 </div>
                                 <div className="tags-container">
                                     <h2>Activites</h2>
+                                    <ul className="tags-list">
+                                        {/* {tags["Activities"]} */}
+                                        {tags["Activities"].length ? tags["Activities"] : "No activities"}
+
+
+                                    </ul>
 
                                 </div>
                                 <div className="tags-container">
                                     <h2>Terrain</h2>
+                                    <ul className="tags-list">
+                                        {/* {tags["Terrain"]} */}
+                                        {tags["Terrain"].length ? tags["Terrain"] : "No terrain"}
+
+
+                                    </ul>
 
                                 </div>
                             </div>
-
-                            <div className="row">
+                            <div className="row show-row">
+                                <h2>The vibe at {campsite.address} </h2>
                                 <div className="weather-container">
                                     <h2>Elevation</h2>
                                 </div>
                                 <div className="weather-container">
+                                    <h3>{campsite.weatherApi ? campsite.weatherApi.weather : null }</h3>
                                     <h2>Weather</h2>
-                                    <h3>{campsite.weather}</h3>
                                 </div>
                                 <div className="weather-container">
+                                    <h3>{campsite.weatherApi ? campsite.weatherApi.temperature : null } {'\xB0F'} </h3>
                                     <h2>Temprature</h2>
-                                    <h3>{campsite.temperature}</h3>
                                 </div>
                             </div>
                         </div>
-                        <BookingFormContainer campsite={campsite}  />
+                            <BookingFormContainer campsite={campsite}  />
+
                     </div>
 
                     <div className="campsite-map">

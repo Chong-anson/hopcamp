@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
         super(props);
         this.state = { email: "", password: ""}
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoClick = this.handleDemoClick.bind(this);
     }
 
     handleChange(type) {
@@ -15,6 +16,27 @@ class LoginForm extends React.Component {
             this.setState({ [type]: e.target.value });
         }
     }
+
+    handleDemoClick(e){
+        e.preventDefault();
+        const user = {
+            email: "edgardo@raynorflatley.org",
+            password: "198el8"
+        }
+        this.props.processForm(user)
+            .then(() => {
+                const url = this.props.match.url
+                if (url.includes("campsite")) {
+                    // console.log(url);
+                    this.props.clearError();
+                    this.props.history.push(url.replace("/login", ""));
+                }
+                else {
+                    this.props.closeModal();
+                };
+            });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
@@ -58,6 +80,14 @@ class LoginForm extends React.Component {
                     <ErrorShowContainer type={"session"} />
                     <button className="btn session-btn">Log In</button>
                 </form>
+                <div className="demo-container">
+                    <button 
+                        className="btn session-btn"
+                        onClick={this.handleDemoClick}
+                    >
+                        Demo
+                    </button>
+                </div>
                 <div className="session-component-footer">
                     <span>Don"t have a Hopcamp account? </span>
                     <span>{signupForm}</span>
