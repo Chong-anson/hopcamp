@@ -5,7 +5,7 @@
 
 .search-box,.filter-bar{
     width: 100%;
-    border: 3px solid yellow;
+    // border: 3px solid yellow;
 }
 
 .results-container{
@@ -15,7 +15,7 @@
 .results-map{
     width: 40%;
     height: 855px;
-    border: 5px solid red;
+    // border: 5px solid red;
 }
 
 .filter-bar{
@@ -92,7 +92,7 @@
 
 .results-list{
     width: 60%;
-    border: 5px solid black;
+    // border: 5px solid black;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid red 1px;
+    // border: solid red 1px;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
