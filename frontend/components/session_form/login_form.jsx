@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
                 const url = this.props.match.url
                 if (url.includes("campsite")) {
                     // console.log(url);
-                    this.props.clearError();
+                    this.props.clearErrors();
                     this.props.history.push(url.replace("/login", ""));
                 }
                 else {
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
                 const url = this.props.match.url
                 if (url.includes("campsite")) {
                     // console.log(url);
-                    this.props.clearError();
+                    this.props.clearErrors();
                     this.props.history.push(url.replace("/login",""));
                 }
                 else {
