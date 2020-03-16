@@ -1,64 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 
-class FilterBar extends React.Component{
-    constructor(props){
-        super(props);
-        this.CAMPSITE_TYPE = ["CAMPING", "RV", "GLAMPING"];
-        this.state = { typeFilter: this.CAMPSITE_TYPE};
-        // props.updateFilter("type", this.CAMPSITE_TYPE);
-        this.updateTypeFilter = this.updateTypeFilter.bind(this);
-        this.handleButtonClick = this.handleButtonClick.bind(this);
-        this.handleFilterClick = this.handleFilterClick.bind(this);
-    };
+const FilterBar = (props) => {
+    const CAMPSITE_TYPE = ["CAMPING", "RV", "GLAMPING"];
+    // const state = { typeFilter: this.CAMPSITE_TYPE};
+    const [typeFilter, setTypeFilter] = useState(CAMPSITE_TYPE); 
+    // props.updateFilter("type", this.CAMPSITE_TYPE);
 
-    // componentWillUnmount remove filter modal 
-    handleFilterClick(e){
-        e.preventDefault();
-        $(e.currentTarget).toggleClass("selected-filter");
-        this.updateTypeFilter();
-    };
-
-    updateTypeFilter(){
-        const typeFilter = []; 
+    const updateTypeFilter = () => {
+        const appliedFilter = [];
         document.querySelectorAll('button.selected-filter').forEach(el =>
-            typeFilter.push(el.getAttribute("data-type"))
+            appliedFilter.push(el.getAttribute("data-type"))
         );
-        this.setState({typeFilter}, ()=> {
-            this.props.updateFilter("type", this.state.typeFilter);
-        });
+        setTypeFilter(appliedFilter); 
+        props.updateFilter("type", typeFilter);
+        // this.setState({ typeFilter }, () => {
+        //     this.props.updateFilter("type", this.state.typeFilter);
+        // });
     };
 
-    handleButtonClick(){
+    const handleButtonClick = () => {
         const el = $(".more-filter-large")
         // debugger
         el.toggleClass("show")
-    }
+    };
 
-    render(){
-        const types = this.CAMPSITE_TYPE.map( (type,idx) => 
+    const handleFilterClick = (e) => {
+        e.preventDefault();
+        $(e.currentTarget).toggleClass("selected-filter");
+        updateTypeFilter();
+    };
+
+
+    const types = CAMPSITE_TYPE.map( (type,idx) => 
             <button 
                 className="type-filter"
-                onClick={this.handleFilterClick}
+                onClick={handleFilterClick}
                 data-type={type}
                 key={idx}
                 >
                     <div className={`filter-type-icon ${type}`}></div>
                     {type}
             </button>
-        )
+    )
 
-        return (
-            <div className="filter-bar">
-                {/* <DayPickerInput />  */}
-                {types}
-                <div className="more-filter">
-                    {this.props.filterButton}
-                    {/* <MoreFilterContainer updateFilter={this.props.updateFilter} /> */}
-                </div>
+    useEffect( () => {props.updateFilter} , [typeFilter]); 
+
+    return (
+        <div className="filter-bar">
+            {/* <DayPickerInput />  */}
+            {types}
+            <div className="more-filter">
+                {props.filterButton}
+                {/* <MoreFilterContainer updateFilter={this.props.updateFilter} /> */}
             </div>
-        )
-    };
+        </div>
+    )
 };
 
 export default FilterBar;
