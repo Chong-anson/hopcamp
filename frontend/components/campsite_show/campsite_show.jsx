@@ -18,10 +18,6 @@ class CampsiteShow extends React.Component{
 
         if (this.props.campsite) {
             const { lat, lng } = this.props.campsite
-            const mapOptions = {
-                center: { lat, lng },
-                zoom: 9
-            }
             this.map = new google.maps.Map(this.mapNode, {
                 center: { lat, lng },
                 zoom: 9,
@@ -29,7 +25,7 @@ class CampsiteShow extends React.Component{
                 mapTypeId: 'terrain'
             });
             // this.map.setOptions({draggable: false})
-            const marker = new google.maps.Marker({ position: { lat, lng }, map: this.map})
+            new google.maps.Marker({ position: { lat, lng }, map: this.map})
         }
     }
 
@@ -51,12 +47,13 @@ class CampsiteShow extends React.Component{
             tags["Amenities"]  = [] ;
             tags["Terrain"] = [] ;
             // debugger
-            // if (this)
-            this.props.tags.forEach( (tag,idx) => 
-                // console.log(tag)
-                tags[tag.category].push(
-                    <li key={`${tag.category}-${idx}`}><p> {tag.name}</p></li>
-                )
+            this.props.tags.forEach( (tag,idx) => {
+                if (tag){
+                    tags[tag.category].push(
+                        <li key={`${tag.category}-${idx}`}><p> {tag.name}</p></li>
+                        )
+                    }
+                }
             )
             return (
                 <div className="campsite-page">
@@ -80,9 +77,7 @@ class CampsiteShow extends React.Component{
                                 <div className="tags-container">
                                     <h2>Amenities</h2>
                                     <ul className="tags-list">
-
                                         {tags["Amenities"].length ? tags["Amenities"] : "No amenities"}
-
                                     </ul>
 
                                 </div>
