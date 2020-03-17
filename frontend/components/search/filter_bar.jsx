@@ -13,17 +13,17 @@ const FilterBar = (props) => {
             appliedFilter.push(el.getAttribute("data-type"))
         );
         setTypeFilter(appliedFilter); 
-        props.updateFilter("type", typeFilter);
+        // props.updateFilter("type", appliedFilter);
+        props.updateTypeFilter(appliedFilter);
         // this.setState({ typeFilter }, () => {
         //     this.props.updateFilter("type", this.state.typeFilter);
         // });
     };
 
-    const handleButtonClick = () => {
-        const el = $(".more-filter-large")
-        // debugger
-        el.toggleClass("show")
-    };
+    // const handleButtonClick = () => {
+    //     const el = $(".more-filter-large")
+    //     el.toggleClass("show")
+    // };
 
     const handleFilterClick = (e) => {
         e.preventDefault();

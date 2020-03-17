@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ResultItem = props => {
-    console.log(props.item)
+    // console.log(props.item)
     return (
         <div 
             className="result-item"
-
             >
             <Link to={`/campsites/${props.item.id}`}>
             <div className="result-image-wrapper">

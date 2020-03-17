@@ -6,6 +6,7 @@ import { fetchCampsites } from "../../actions/campsite_actions";
 // import { fetchVenue } from "../../actions/venue_actions";
 import { updateFilter } from "../../actions/filter_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
+import { filterCampsites } from '../../reducers/selector';
 
 const msp = (state, ownProps) => {
     const parseQueryString = function () {

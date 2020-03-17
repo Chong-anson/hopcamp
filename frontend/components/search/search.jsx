@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import MarkerManager from "../../util/marker_manager";
 import ResultItem from "./result_item";
 import FilterBar from "./filter_bar";
+import { filterCampsites } from "../../reducers/selector";
 
 class Search extends React.Component{
     constructor(props){
@@ -20,7 +21,6 @@ class Search extends React.Component{
         };
         this.updateMap = this.updateMap.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     updateMap(){
@@ -42,18 +42,6 @@ class Search extends React.Component{
     handleChange(e){
         this.setState({ location: e.target.value });
     };
-
-    // handleSubmit(e){
-    //     e.preventDefault();
-    //     const request = {
-    //         query: this.state.location,
-    //         fields: ["geometry", "name"]
-    //     };
-    //     const service = new google.maps.places.PlacesService(this.map);
-    //     service.findPlaceFromQuery(request, (results, status) => {
-    //         this.map.setCenter(results[0].geometry.location);
-    //     })
-    // };
 
     componentDidMount(){
         let mapOptions = {
@@ -87,7 +75,6 @@ class Search extends React.Component{
             // this.map.addListener("click", this.handleClick);
         }
         this.MarkerManager.updateMarkers(this.props.campsites);
-
         // const autocomplete = new google.maps.places.Autocomplete(
         //     (document.getElementById("autocomplete")),
         //     { types: ['(cities)'] }
@@ -115,11 +102,19 @@ class Search extends React.Component{
                 this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
             }
         }
+        if (prevProps.campsites !== this.props.campsites){
+            this.setState({campsites: this.props.campsites})
+        }
+    }
+
+    updateTypeFilter(TypeFilter){
+        let campsites = filterCampsites(this.props.campsites, TypeFilter);
+        this.setState({campsites});
     }
 
     render(){
         // const { campsites, updateFilter } = this.props; 
-        const campsites = this.props.campsites.map(el => 
+        const campsites = this.state.campsites.map(el => 
             <ResultItem item={el} key={el.id} /> 
             )
         return(
@@ -131,7 +126,11 @@ class Search extends React.Component{
                         <button>Search campsite at that city</button>
                     </form>
                 </div> */}
-                <FilterBar updateFilter={this.props.updateFilter} filterButton={this.props.filterButton}/> 
+                <FilterBar 
+                    updateFilter={this.props.updateFilter} 
+                    filterButton={this.props.filterButton}
+                    updateTypeFilter={this.updateTypeFilter.bind(this)}
+                    /> 
                 <div className="address-bar">
                     {/* TODO PRINT OUT ADDRESS HERE */}
                     <h1>The best camping near ... </h1>

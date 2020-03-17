@@ -23,9 +23,9 @@ class Api::CampsitesController < ApplicationController
             if (filter[:max_price].length > 0)
                 @campsites = @campsites.where("price <= ?", filter[:max_price])
             end
-            if (filter[:type] && filter[:type].length > 0 )
-                @campsites = @campsites.where(campsite_type: filter[:type])
-            end
+            # if (filter[:type] && filter[:type].length > 0 )
+            #     @campsites = @campsites.where(campsite_type: filter[:type])
+            # end
 
             if (@campsites.length > 30)        
                 @campsites = @campsites.limit(30)
