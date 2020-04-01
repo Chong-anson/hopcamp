@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import MoreFilter from './more_filter';
 import { fetchTags } from '../../actions/tag_actions';
-import { updateAppliedFilter } from '../../actions/filter_actions';
+import { updateTags } from '../../actions/filter_actions';
 
 const msp = (state, ownProps) => {
     const campsites = state.entities.campsites;
-    const tagsList = Object.values(state.entities.tags);
-    if (tagsList.length){
+    const tags = state.entities.tags;
+    if (tags.length){
+    // categorize tags
         const categorized = {};
-        tagsList.forEach(tag => {
+        tags.forEach(tag => {
             if (categorized[tag.category])
                 categorized[tag.category].push(tag);
             else
@@ -30,8 +31,8 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => ({
     fetchTags: () => dispatch(fetchTags()),
-    updateAppliedFilter: (bool)=> dispatch(updateAppliedFilter(bool)),
-    
+    updateTags: (selected, selectedCampsites) => 
+                  dispatch(updateTags(selected, selectedCampsites)),
 }); 
 
 export default connect(msp,mdp)(MoreFilter);

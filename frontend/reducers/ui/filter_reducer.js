@@ -1,4 +1,4 @@
-import { UPDATE_FILTER, UPDATE_APPLIED_FILTER } from "../../actions/filter_actions";
+import { UPDATE_FILTER, UPDATE_TAGS } from "../../actions/filter_actions";
 
 const _defaultState = {
     bounds: {},
@@ -6,7 +6,7 @@ const _defaultState = {
     minPrice: null, 
     maxPrice: null,
     type: null,
-    campsites: null, 
+    selectedCampsites: null, 
     tags: null, 
     appliedFilter: false
 };
@@ -15,11 +15,16 @@ const filterReducer = (state = _defaultState, action) => {
     Object.freeze(state);
     switch(action.type){
         case UPDATE_FILTER:
-            return Object.assign({}, state,{[action.filter]: action.value});
-        case UPDATE_APPLIED_FILTER: 
-            return Object.assign({}, state, {appliedFilter: action.appliedFilter})
+          return Object.assign({}, state,{[action.filter]: action.value});
+        case UPDATE_TAGS: 
+          return Object.assign(
+                    {}, 
+                    state, 
+                    {appliedFilter: action.appliedFilter},
+                    {selectedCampsites: action.selectedCampsites}
+                    )
         default:
-            return state;
+          return state;
     }
 }
 

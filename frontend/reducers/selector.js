@@ -16,8 +16,8 @@ export const selectBookings = (state, bookings) => (
     )
 )
 
-export const filterCampsites = (campsites, type) => {
-    // let campsites = Object.values(state.entities.campsites);
+export const filterCampsites = (state) => {
+    let campsites = Object.values(state.entities.campsites);
     // const { type } = state.ui.filter;
     // Filter campsite by types (OR relationships)
     if (type && type.length){

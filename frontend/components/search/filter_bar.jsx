@@ -24,7 +24,7 @@ const FilterBar = (props) => {
     //     const el = $(".more-filter-large")
     //     el.toggleClass("show")
     // };
-
+ 
     const handleFilterClick = (e) => {
         e.preventDefault();
         $(e.currentTarget).toggleClass("selected-filter");
