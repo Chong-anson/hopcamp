@@ -108,13 +108,14 @@ class Search extends React.Component{
     }
 
     updateTypeFilter(TypeFilter){
-        let campsites = filterCampsites(this.props.campsites, TypeFilter);
-        this.setState({campsites});
+        // let campsites = filterCampsites(this.props.campsites, TypeFilter);
+        // this.setState({campsites});
+      this.props.updateFilter("type", TypeFilter);
     }
 
     render(){
         // const { campsites, updateFilter } = this.props; 
-        const campsites = this.state.campsites.map(el => 
+        const campsites = this.props.campsites.map(el => 
             <ResultItem item={el} key={el.id} /> 
             )
         return(

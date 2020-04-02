@@ -29,7 +29,7 @@ const msp = (state, ownProps) => {
     const lat = parseFloat(query['lat']);
     const lng = parseFloat(query['lng']);
     return ({
-        campsites: Object.values(state.entities.campsites),
+        campsites: filterCampsites(state),
         lat,
         lng,
         selected: false

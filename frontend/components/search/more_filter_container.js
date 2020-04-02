@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import MoreFilter from './more_filter';
 import { fetchTags } from '../../actions/tag_actions';
-import { updateTags } from '../../actions/filter_actions';
+import { updateFilter } from '../../actions/filter_actions';
+import { filterCampsites } from "../../reducers/selector";
 
 const msp = (state, ownProps) => {
-    const campsites = state.entities.campsites;
+    const campsites = filterCampsites(state);
     const tags = state.entities.tags;
     if (tags.length){
     // categorize tags
@@ -17,22 +18,22 @@ const msp = (state, ownProps) => {
         } )
         return ({
             categorized,
-            campsites: Object.keys(campsites),
-            tags: state.entities.tags,
-            checkedTags: state.ui.filter.tags,
+            campsites,
+            checkedTags: state.ui.filter.checkedTags,
             appliedFilter: state.ui.filter.appliedFilter
         })
     }
     else{
         return ({
+          checkedTags: [], 
         })
     }
 };
 
 const mdp = (dispatch) => ({
     fetchTags: () => dispatch(fetchTags()),
-    updateTags: (selected, selectedCampsites) => 
-                  dispatch(updateTags(selected, selectedCampsites)),
+    updateFilter: (filter, value) => 
+                  dispatch(updateFilter(filter, value)),
 }); 
 
 export default connect(msp,mdp)(MoreFilter);

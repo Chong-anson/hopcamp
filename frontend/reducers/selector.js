@@ -1,27 +1,33 @@
 export const selectAllCities = state => {
-    return Object.values(state.entities.venues).map( venue => venue.name)
+  return Object.values(state.entities.venues).map( venue => venue.name)
 };
 
 export const selectAllTags = state => {
-    return Object.values(state.entities.tags).map(tag => tag.name)
+  return Object.values(state.entities.tags).map(tag => tag.name)
 };
 
 export const selectAllCategories = state => {
-    const tags = Object.values(state.entities.tags);
+  const tags = Object.values(state.entities.tags);
 }
 
 export const selectBookings = (state, bookings) => (
-    bookings.map( id => 
-        state.entities.booking[id]
-    )
+  bookings.map( id => 
+      state.entities.booking[id]
+  )
 )
 
 export const filterCampsites = (state) => {
-    let campsites = Object.values(state.entities.campsites);
-    // const { type } = state.ui.filter;
-    // Filter campsite by types (OR relationships)
-    if (type && type.length){
-        campsites = campsites.filter( el => type.includes(el.campsiteType))
-    }
-    return campsites;
+  const { 
+    type, 
+    selectedCampsites 
+  } = state.ui.filter;
+  // Filter campsite by types (OR relationships)
+  let campsites = Object.values(state.entities.campsites);
+  if ( state.ui.filter.appliedFilter ) 
+    campsites = campsites.filter( campsite => selectedCampsites.includes(campsite.id));
+  if (type.length)
+    campsites = campsites.filter( campsite => type.includes(campsite.campsiteType));
+  
+  
+  return campsites;
 }

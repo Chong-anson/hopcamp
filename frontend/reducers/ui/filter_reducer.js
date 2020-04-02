@@ -5,9 +5,9 @@ const _defaultState = {
     minCapacity: null,
     minPrice: null, 
     maxPrice: null,
-    type: null,
-    selectedCampsites: null, 
-    tags: null, 
+    type: [],
+    selectedCampsites: [], 
+    checkedTags: [], 
     appliedFilter: false
 };
 
@@ -16,13 +16,13 @@ const filterReducer = (state = _defaultState, action) => {
     switch(action.type){
         case UPDATE_FILTER:
           return Object.assign({}, state,{[action.filter]: action.value});
-        case UPDATE_TAGS: 
-          return Object.assign(
-                    {}, 
-                    state, 
-                    {appliedFilter: action.appliedFilter},
-                    {selectedCampsites: action.selectedCampsites}
-                    )
+        // case UPDATE_TAGS: 
+          // return Object.assign(
+          //           {}, 
+          //           state, 
+          //           {appliedFilter: action.appliedFilter},
+          //           {selectedCampsites: action.selectedCampsites}
+          //           )
         default:
           return state;
     }

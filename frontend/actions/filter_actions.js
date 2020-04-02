@@ -10,16 +10,16 @@ export const updateFilter = (filter, value) => {
             filter,
             value 
         })
-        if (filter !== "tags")
+        if (filter === "bounds" )
           return (fetchCampsites(getState().ui.filter)(dispatch));
     }
 };
 
-export const updateTags = ( tags, selectedCampsites ) => ({
-    type: UPDATE_TAGS, 
-    tags, 
-    selectedCampsites
-});
+// export const updateTags = ( tags, selectedCampsites ) => ({
+//     type: UPDATE_TAGS, 
+//     tags, 
+//     selectedCampsites
+// });
 
 
 
