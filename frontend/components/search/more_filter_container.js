@@ -10,7 +10,8 @@ const msp = (state, ownProps) => {
     const { 
       checkedTags, 
       appliedFilter,
-      minCapacity
+      minCapacity,
+      maxPrice
     } = state.ui.filter;
     if (tags.length){
     // categorize tags
@@ -26,7 +27,8 @@ const msp = (state, ownProps) => {
             campsites,
             checkedTags,
             appliedFilter,
-            minCapacity
+            minCapacity,
+            maxPrice
         })
     }
     else{

@@ -105,6 +105,7 @@ class Search extends React.Component{
         if (prevProps.campsites !== this.props.campsites){
             this.setState({campsites: this.props.campsites})
         }
+
     }
 
     updateTypeFilter(TypeFilter){

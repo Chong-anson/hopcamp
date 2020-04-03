@@ -11,6 +11,7 @@ class MoreFilter extends React.Component{
       appliedFilter: props.appliedFilter,
       checkedTags: props.checkedTags,
       minCapacity: props.minCapacity, 
+      maxPrice: props.maxPrice
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
@@ -20,16 +21,27 @@ class MoreFilter extends React.Component{
   };
   
   handleSizeChange(e){
-    const minCapacity = e.target.value; 
-    let selectedCampsites = this.state.selectedCampsites.filter( campsite => 
-        campsite.capacity >= minCapacity
-      )
+    const minCapacity = parseInt(e.target.value); 
+    const selectedCampsites = this.state.selectedCampsites.filter( campsite => 
+      campsite.capacity >= minCapacity
+    )
     this.setState({ 
       selectedCampsites, 
       minCapacity,
       count: selectedCampsites.length 
     });
-    console.log(selectedCampsites)
+  };
+
+  handlePriceChange(e){
+    const maxPrice = parseInt(e.target.value);
+    const selectedCampsites = this.state.selectedCampsites.filter( campsite => 
+      campsite.capacity <= maxPrice
+    )
+    this.setState({
+      selectedCampsites,
+      maxPrice,
+      count: selectedCampsites.length
+    });
   };
 
   handleTagChange(e){
@@ -74,8 +86,9 @@ class MoreFilter extends React.Component{
     this.props.updateFilter( 
       "selectedCampsites", 
       this.state.selectedCampsites.map(campsite => campsite.id)
-    )
-    this.props.updateFilter("checkedTags", this.state.checkedTags)
+    );
+    this.props.updateFilter("checkedTags", this.state.checkedTags);
+    this.props.updateFilter("minCapacity", parseInt(this.state.minCapacity));
     this.props.closeModal();
   };
 
@@ -84,6 +97,7 @@ class MoreFilter extends React.Component{
     this.props.updateFilter("appliedFilter", false);
     this.props.updateFilter("selectedCampsites", []); 
     this.props.updateFilter("checkedTags", []);
+    this.props.updateFilter("minCapacity", 0);
     console.log("clearing")
     document.querySelectorAll("input.selected-more-filter").forEach(el => {
       el.checked =  false
@@ -118,6 +132,7 @@ class MoreFilter extends React.Component{
   };
 
   render(){
+    const { minCapacity } = this.state; 
     if ( this.props.categorized ){
       const categorizedList = {};
       Object.keys(this.props.categorized).forEach(key => 
@@ -140,7 +155,13 @@ class MoreFilter extends React.Component{
       const groupSize = [];
       for(let i = 1 ; i <= 10; i++){
         groupSize.push(
-          <option key={i} value={i}>{i} camper{i > 1 ? "s" : ""}</option>
+          <option 
+            key={i} 
+            value={i}
+            // selected={(minCapacity === i) ? true : false}
+          >
+            {i} camper{i > 1 ? "s" : ""}
+          </option>
         )
       }
       console.log("camp", this.state.selectedCampsites);
@@ -153,9 +174,10 @@ class MoreFilter extends React.Component{
                   className="form-control" 
                   name="" 
                   id="" 
+                  defaultValue={minCapacity}
                   onChange={this.handleSizeChange}
                 >
-                    <option value="">Any size</option>
+                    <option value="" >Any size</option>
                     {groupSize}
                     <option value="10">10+ campers</option>
                     <option value="15">15+ campers</option>

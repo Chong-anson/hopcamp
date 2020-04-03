@@ -23,7 +23,7 @@ export const filterCampsites = (state) => {
   } = state.ui.filter;
   // Filter campsite by types (OR relationships)
   let campsites = Object.values(state.entities.campsites);
-  if ( state.ui.filter.appliedFilter ) 
+  if ( state.ui.filter.appliedFilter || selectedCampsites.length) 
     campsites = campsites.filter( campsite => selectedCampsites.includes(campsite.id));
   if (type.length)
     campsites = campsites.filter( campsite => type.includes(campsite.campsiteType));
