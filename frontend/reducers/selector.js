@@ -28,6 +28,5 @@ export const filterCampsites = (state) => {
   if (type.length)
     campsites = campsites.filter( campsite => type.includes(campsite.campsiteType));
   
-  
   return campsites;
 }

@@ -7,6 +7,11 @@ import { filterCampsites } from "../../reducers/selector";
 const msp = (state, ownProps) => {
     const campsites = filterCampsites(state);
     const tags = state.entities.tags;
+    const { 
+      checkedTags, 
+      appliedFilter,
+      minCapacity
+    } = state.ui.filter;
     if (tags.length){
     // categorize tags
         const categorized = {};
@@ -19,14 +24,16 @@ const msp = (state, ownProps) => {
         return ({
             categorized,
             campsites,
-            checkedTags: state.ui.filter.checkedTags,
-            appliedFilter: state.ui.filter.appliedFilter
+            checkedTags,
+            appliedFilter,
+            minCapacity
         })
     }
     else{
-        return ({
-          checkedTags: [], 
-        })
+      return ({
+        campsites: [], 
+        checkedTags: [], 
+      })
     }
 };
 
