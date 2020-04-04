@@ -10,7 +10,6 @@ class Bookingform extends React.Component{
             startDate: new Date(Date.now()),
             endDate: undefined,
             groupSize: 1
-
         }
         this.handleDateClick = this.handleDateClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,7 +45,6 @@ class Bookingform extends React.Component{
         }
         else{
             const url = this.props.match.url.concat("/signup")
-            // console.log(url);
             this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
         }
     }

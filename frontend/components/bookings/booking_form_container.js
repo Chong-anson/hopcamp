@@ -10,7 +10,7 @@ const msp = (state, ownProps) => ({
 });
 
 const mdp = (dispatch) => ({
-    createBooking: (booking) => (dispatch(createBooking(booking)))
+  createBooking: (booking) => (dispatch(createBooking(booking)))
 
 });
 
