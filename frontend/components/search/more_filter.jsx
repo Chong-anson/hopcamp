@@ -7,7 +7,7 @@ class MoreFilter extends React.Component{
     // const selectedCampsites = [...props.campsites];
     this.state = {
       selectedCampsites: props.campsites,
-      count: ((props.campsites) ? props.campsites.length : 0), 
+      count: props.campsites.length, 
       appliedFilter: props.appliedFilter,
       checkedTags: props.checkedTags,
       minCapacity: props.minCapacity, 
@@ -35,7 +35,6 @@ class MoreFilter extends React.Component{
 
   handlePriceChange(e){
     const maxPrice = parseInt(e.target.value);
-    console.log(maxPrice);
     const selectedCampsites = this.state.selectedCampsites.filter( campsite => 
       campsite.price <= maxPrice
     )
@@ -48,25 +47,22 @@ class MoreFilter extends React.Component{
 
   handleTagChange(e){
     // update the filter in the state 
-    console.log("handle change")
     $(e.target).toggleClass("selected-more-filter");
     const filters = document.querySelectorAll("input.selected-more-filter");
     let appliedFilter; 
-    let selectedCampsites = this.state.selectedCampsites;
+    let { selectedCampsites } = this.state;
     let checkedTags = []; 
     if (filters.length){
-        selectedCampsites = [...this.props.campsites];
-        // debugger
+        // selectedCampsites = [...this.props.campsites];
         appliedFilter = true;
         filters.forEach( el => {
-            const newSites = el.getAttribute("data-campsites")
-                                .split(",")
-                                .map(id => parseInt(id))
-            // debugger
-            selectedCampsites = selectedCampsites.filter(campsite => 
-              newSites.includes(campsite.id)
-            );
-            checkedTags.push(el.id)
+          const newSites = el.getAttribute("data-campsites")
+                              .split(",")
+                              .map(id => parseInt(id))
+          selectedCampsites = selectedCampsites.filter(campsite => 
+            newSites.includes(campsite.id)
+          );
+          checkedTags.push(parseInt(el.id)); 
         })
     }
     else{
@@ -90,25 +86,28 @@ class MoreFilter extends React.Component{
       minCapacity,
       maxPrice
     } = this.state; 
-
-    this.props.updateFilter("appliedFilter", appliedFilter );
-    this.props.updateFilter( 
-      "selectedCampsites", 
-      this.state.selectedCampsites.map(campsite => campsite.id)
-    );
-    this.props.updateFilter("checkedTags", checkedTags);
-    this.props.updateFilter("minCapacity", minCapacity);
-    this.props.updateFilter("maxPrice", maxPrice);
+    const selectedCampsites = this.state.selectedCampsites
+                                .map(campsite => campsite.id)
+    // this.props.updateFilter("appliedFilter", appliedFilter );
+    // this.props.updateFilter( 
+    //   "selectedCampsites", 
+    //   this.state.selectedCampsites.map(campsite => campsite.id)
+    // );
+    // this.props.updateFilter("checkedTags", checkedTags);
+    // this.props.updateFilter("minCapacity", minCapacity);
+    // this.props.updateFilter("maxPrice", maxPrice);
+    this.props.updateTagFilter({
+      appliedFilter, 
+      checkedTags, 
+      minCapacity, 
+      maxPrice, 
+      selectedCampsites
+    })
     this.props.closeModal();
   };
 
   clearFilter(e){
     e.preventDefault();
-    // this.props.updateFilter("appliedFilter", false);
-    // this.props.updateFilter("selectedCampsites", []); 
-    // this.props.updateFilter("checkedTags", []);
-    // this.props.updateFilter("minCapacity", 0);
-    // this.props.updateFilter("maxPrice", 1/0);
     this.props.resetTagFilter(); 
     console.log("clearing")
     document.querySelectorAll("input.selected-more-filter").forEach(el => {
@@ -144,7 +143,7 @@ class MoreFilter extends React.Component{
   };
 
   render(){
-    const { minCapacity } = this.state; 
+    const { minCapacity, maxPrice } = this.state; 
     if ( this.props.categorized ){
       const categorizedList = {};
       Object.keys(this.props.categorized).forEach(key => 
@@ -167,15 +166,16 @@ class MoreFilter extends React.Component{
       const groupSize = [];
       for(let i = 1 ; i <= 10; i++){
         groupSize.push(
-          <option 
-            key={i} 
-            value={i}
-            // selected={(minCapacity === i) ? true : false}
-          >
+          <option key={`size-${i}`} value={i}>
             {i} camper{i > 1 ? "s" : ""}
           </option>
         )
       }
+      const priceRange = [25, 50, 75, 125, 175].map( (el, idx) => 
+                            <option key={`price-${idx}`} value={`${el}`} >
+                              {`Under $${el}`}
+                            </option>
+                          )
       console.log("camp", this.state.selectedCampsites);
       console.log("camp2", this.props.campsites);
       return(
@@ -196,16 +196,11 @@ class MoreFilter extends React.Component{
                 </select>
                 <h2>Pricing</h2>
                 <select className="form-control" name="" id=""
-                  defaultValue = {this.state.maxPrice}
+                  defaultValue = {maxPrice === 1/0 ? "" : maxPrice}
                   onChange={this.handlePriceChange}
                 >
                     <option value="">Any price</option>
-                    <option value="25">Under $25</option>
-                    <option value="50">Under $50</option>
-                    <option value="75">Under $75</option>
-                    <option value="125">Under $125</option>
-                    <option value="175">Under $175</option>
-                    {/* <option value="1/0">$175 or more</option> */}
+                    {priceRange}
                 </select>
             </div>
             <div className="more-filter-section">
