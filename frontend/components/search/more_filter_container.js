@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MoreFilter from './more_filter';
 import { fetchTags } from '../../actions/tag_actions';
-import { updateFilter } from '../../actions/filter_actions';
+import { updateFilter, resetTagFilter } from '../../actions/filter_actions';
 import { filterCampsites } from "../../reducers/selector";
 
 const msp = (state, ownProps) => {
@@ -43,6 +43,7 @@ const mdp = (dispatch) => ({
     fetchTags: () => dispatch(fetchTags()),
     updateFilter: (filter, value) => 
                   dispatch(updateFilter(filter, value)),
+    resetTagFilter: () => dispatch(resetTagFilter())
 }); 
 
 export default connect(msp,mdp)(MoreFilter);

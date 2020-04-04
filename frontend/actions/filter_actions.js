@@ -2,6 +2,7 @@ import {fetchCampsites} from "./campsite_actions";
 export const UPDATE_FILTER = "UPDATE_FILTER";
 // export const UPDATE_APPLIED_FILTER = "UPDATE_APPLIED_FILTER";
 export const UPDATE_TAGS = "UPDATE_TAGS";
+export const RESET_TAG_FILTER = "RESET_TAG_FILTER"; 
 
 export const updateFilter = (filter, value) => {
     return (dispatch, getState) => {
@@ -20,6 +21,10 @@ export const updateFilter = (filter, value) => {
 //     tags, 
 //     selectedCampsites
 // });
+
+export const resetTagFilter = () => ({
+  type: RESET_TAG_FILTER
+})
 
 
 

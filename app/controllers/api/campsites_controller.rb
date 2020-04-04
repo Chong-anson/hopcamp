@@ -17,12 +17,12 @@ class Api::CampsitesController < ApplicationController
             if (filter[:min_capacity].length > 0)
                 @campsites = @campsites.where("capacity >= ?", filter[:min_capacity])
             end 
-            if (filter[:min_price].length > 0)
-                @campsites = @campsites.where("price >= ?", filter[:min_price])
-            end 
-            if (filter[:max_price].length > 0)
-                @campsites = @campsites.where("price <= ?", filter[:max_price])
-            end
+            # if (filter[:min_price].length > 0)
+            #     @campsites = @campsites.where("price >= ?", filter[:min_price])
+            # end 
+            # if (filter[:max_price].length > 0)
+            #     @campsites = @campsites.where("price <= ?", filter[:max_price])
+            # end
             # if (filter[:type] && filter[:type].length > 0 )
             #     @campsites = @campsites.where(campsite_type: filter[:type])
             # end

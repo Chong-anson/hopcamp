@@ -15,6 +15,7 @@ class MoreFilter extends React.Component{
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
     this.clearFilter = this.clearFilter.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,8 +35,9 @@ class MoreFilter extends React.Component{
 
   handlePriceChange(e){
     const maxPrice = parseInt(e.target.value);
+    console.log(maxPrice);
     const selectedCampsites = this.state.selectedCampsites.filter( campsite => 
-      campsite.capacity <= maxPrice
+      campsite.price <= maxPrice
     )
     this.setState({
       selectedCampsites,
@@ -82,22 +84,32 @@ class MoreFilter extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateFilter("appliedFilter", this.state.appliedFilter );
+    const {
+      appliedFilter,
+      checkedTags, 
+      minCapacity,
+      maxPrice
+    } = this.state; 
+
+    this.props.updateFilter("appliedFilter", appliedFilter );
     this.props.updateFilter( 
       "selectedCampsites", 
       this.state.selectedCampsites.map(campsite => campsite.id)
     );
-    this.props.updateFilter("checkedTags", this.state.checkedTags);
-    this.props.updateFilter("minCapacity", parseInt(this.state.minCapacity));
+    this.props.updateFilter("checkedTags", checkedTags);
+    this.props.updateFilter("minCapacity", minCapacity);
+    this.props.updateFilter("maxPrice", maxPrice);
     this.props.closeModal();
   };
 
   clearFilter(e){
     e.preventDefault();
-    this.props.updateFilter("appliedFilter", false);
-    this.props.updateFilter("selectedCampsites", []); 
-    this.props.updateFilter("checkedTags", []);
-    this.props.updateFilter("minCapacity", 0);
+    // this.props.updateFilter("appliedFilter", false);
+    // this.props.updateFilter("selectedCampsites", []); 
+    // this.props.updateFilter("checkedTags", []);
+    // this.props.updateFilter("minCapacity", 0);
+    // this.props.updateFilter("maxPrice", 1/0);
+    this.props.resetTagFilter(); 
     console.log("clearing")
     document.querySelectorAll("input.selected-more-filter").forEach(el => {
       el.checked =  false
@@ -183,13 +195,17 @@ class MoreFilter extends React.Component{
                     <option value="15">15+ campers</option>
                 </select>
                 <h2>Pricing</h2>
-                <select className="form-control" name="" id="">
+                <select className="form-control" name="" id=""
+                  defaultValue = {this.state.maxPrice}
+                  onChange={this.handlePriceChange}
+                >
+                    <option value="">Any price</option>
                     <option value="25">Under $25</option>
                     <option value="50">Under $50</option>
                     <option value="75">Under $75</option>
                     <option value="125">Under $125</option>
                     <option value="175">Under $175</option>
-                    <option value="175+">$175 or more</option>
+                    {/* <option value="1/0">$175 or more</option> */}
                 </select>
             </div>
             <div className="more-filter-section">

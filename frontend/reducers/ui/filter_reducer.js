@@ -1,10 +1,10 @@
-import { UPDATE_FILTER, UPDATE_TAGS } from "../../actions/filter_actions";
+import { UPDATE_FILTER, RESET_TAG_FILTER } from "../../actions/filter_actions";
 
 const _defaultState = {
     bounds: {},
     minCapacity: 0,
     minPrice: null, 
-    maxPrice: null,
+    maxPrice: (1/0),
     type: [],
     selectedCampsites: [], 
     checkedTags: [], 
@@ -16,6 +16,14 @@ const filterReducer = (state = _defaultState, action) => {
     switch(action.type){
       case UPDATE_FILTER:
         return Object.assign({}, state,{[action.filter]: action.value});
+      case RESET_TAG_FILTER:
+        return Object.assign({}, state, {
+          minCapacity: 0,
+          maxPrice: (1 / 0),
+          selectedCampsites: [],
+          checkedTags: [],
+          appliedFilter: false
+        })
       default:
         return state;
     }
