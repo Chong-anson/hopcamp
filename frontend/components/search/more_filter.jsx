@@ -7,7 +7,6 @@ class MoreFilter extends React.Component{
     // const selectedCampsites = [...props.campsites];
     this.state = {
       selectedCampsites: props.campsites,
-      count: props.campsites.length, 
       appliedFilter: props.appliedFilter,
       checkedTags: props.checkedTags,
       minCapacity: props.minCapacity, 
@@ -28,8 +27,7 @@ class MoreFilter extends React.Component{
     )
     this.setState({ 
       selectedCampsites, 
-      minCapacity,
-      count: selectedCampsites.length 
+      minCapacity
     });
   };
 
@@ -40,8 +38,7 @@ class MoreFilter extends React.Component{
     )
     this.setState({
       selectedCampsites,
-      maxPrice,
-      count: selectedCampsites.length
+      maxPrice
     });
   };
 
@@ -72,7 +69,6 @@ class MoreFilter extends React.Component{
     };        
     this.setState({ 
       selectedCampsites, 
-      count: selectedCampsites.length, 
       appliedFilter, 
       checkedTags
     });
@@ -117,7 +113,6 @@ class MoreFilter extends React.Component{
     const selectedCampsites = [...this.props.campsites];
     this.setState({
       selectedCampsites,
-      count: selectedCampsites.length,
       checkedTags: []
     })
     this.props.closeModal();
@@ -128,22 +123,20 @@ class MoreFilter extends React.Component{
     if (this.state.checkedTags.length) {
       this.state.checkedTags.forEach(id => {
         $(`#${id}`).prop("checked", true)
-      }
-      )
+      })
     }
   };
 
   componentDidUpdate(prevProps){
-    if(!prevProps.campsites.length && this.props.campsites){
+    if(!prevProps.campsites.length && this.props.campsites.length){
       const selectedCampsites = this.props.campsites; 
-      this.setState({ 
-        selectedCampsites, 
-        count: selectedCampsites.length })
+      this.setState({ selectedCampsites })
     }
   };
 
   render(){
     const { minCapacity, maxPrice } = this.state; 
+    const count = this.state.selectedCampsites.length; 
     if ( this.props.categorized ){
       const categorizedList = {};
       Object.keys(this.props.categorized).forEach(key => 
@@ -178,6 +171,14 @@ class MoreFilter extends React.Component{
                           )
       console.log("camp", this.state.selectedCampsites);
       console.log("camp2", this.props.campsites);
+      const filterSection = Object.keys(categorizedList).map( section => (
+        <div className="more-filter-section">
+          <h2>{section}</h2>
+          <div className={`strong-filter ${section.toLowerCase()}`}>
+            {categorizedList[section]}
+          </div>
+        </div>
+      ))
       return(
         <div className="more-filter-large">
             <div className="more-filter-section">
@@ -203,28 +204,11 @@ class MoreFilter extends React.Component{
                     {priceRange}
                 </select>
             </div>
-            <div className="more-filter-section">
-                <h2>Amenities</h2>
-                <div className="strong-filter amentities">
-                    {categorizedList["Amenities"]}
-                </div>
-            </div>
-            <div className="more-filter-section">
-                <h2>Activities</h2>
-                <div className="strong-filter activities">
-                    {categorizedList["Activities"]}
-                </div>
-            </div>
-            <div className="more-filter-section">
-                <h2>Terrain</h2>
-                <div className="strong-filter terrain">
-                    {categorizedList["Terrain"]}
-                </div>
-                <button></button>
-            </div>
+            {filterSection}
             <button onClick={this.clearFilter}>Clear Filter</button>
-            <button onClick={this.handleSubmit}>Show {this.state.count}+ camps </button>
-
+            <button onClick={this.handleSubmit}>
+              Show {(count < 10) ? count : `${count}+`} camps 
+            </button>
         </div>
     )
   }
