@@ -1,7 +1,7 @@
 import React from "react";
 import BookingFormContainer from "../bookings/booking_form_container";
-import BookingList from "../bookings/booking_list"
-import { connect } from "react-redux";
+import BookingList from "../bookings/booking_list";
+import PhotoCarousel from "./photo_carousel";
 
 class CampsiteShow extends React.Component{
   constructor(props){
@@ -12,6 +12,7 @@ class CampsiteShow extends React.Component{
 
   componentDidMount(){
     this.props.fetchCampsite(this.props.match.params.id);
+
   }
 
   componentDidUpdate(prevProps){
@@ -32,34 +33,25 @@ class CampsiteShow extends React.Component{
     }
   }
 
-  show(n){
-      return () => {
-      const photos = document.querySelectorAll('.photo-container .photo')
-      let index = this.state.index + n ;
+  // show(n){
+  //     return () => {
+  //     const photos = document.querySelectorAll('.photo-container .photo')
+  //     let index = this.state.index + n ;
 
-      console.log("index", index);
-      console.log("state", this.state);
+  //     console.log("index", index);
+  //     console.log("state", this.state);
 
-      if (index === photos.length ) index = 0; 
-      else if (index === -1 ) index = photos.length - 1; 
-      this.setState({index})
-      photos[index].scrollIntoView(false);
-    }
-  }
+  //     if (index === photos.length ) index = 0; 
+  //     else if (index === -1 ) index = photos.length - 1; 
+  //     this.setState({index})
+  //     photos[index].scrollIntoView(false);
+  //   }
+  // }
 
   render(){
     const {campsite } = this.props;
     if (this.props.campsite){
-      const photos = campsite.photoUrls.map( url => 
-        // <div 
-        //     className="photo"
-        //     style={{
-        //         backgroundImage: `url(${url})`
-        //     }}
-        //     >
-        // </div>
-        <img className="photo" src={`${url}`} alt=""/>
-        )
+
       const tags = {};
       tags["Activities"] = [];
       tags["Amenities"]  = [] ;
@@ -74,15 +66,16 @@ class CampsiteShow extends React.Component{
       })
       return (
         <div className="campsite-page">
-          <div className="photo-container">
-            <button className="prev" onClick={this.show(-1).bind(this)}>
+          <PhotoCarousel photoUrls={campsite.photoUrls} />
+          {/* <div className="photo-container"> */}
+            {/* <button className="prev" onClick={this.show(-1).bind(this)}>
               &lt;
-            </button>
-            {photos}
-            <button className="next" onClick={this.show(+1).bind(this)}>
+            </button> */}
+            {/* {photos} */}
+            {/* <button className="next" onClick={this.show(+1).bind(this)}>
               &gt;
-            </button>
-          </div>
+            </button> */}
+          {/* </div> */}
           <div className="campsite-main-content">
             <div className="campsite-show-info">
               <div className="campsite-show-title">
