@@ -16,19 +16,32 @@
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
+    overflow: hidden;
+    transform-style: preserve-3d;
 }
 
 .photo-container:first-child{
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .photo{
-    width: 33.333333%;
-    height: 500px;
+    width: auto;
+    height: 490px;
     margin-right: 10px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    // object-fit: contain;
+    // background-size: cover;
+    // background-position: center;
+    // background-repeat: no-repeat;
+}
+
+button.prev, button.next{
+  position: absolute;
+  top: 250px; 
+  background-color: yellow; 
+}
+
+button.next{
+  right: 25px;
 }
 
 .campsite-show-info{
