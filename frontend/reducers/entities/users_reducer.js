@@ -10,7 +10,8 @@ const usersReducer = (state = _defaultState, action) => {
             return Object.assign({}, state, {[action.payload.user.id]: action.payload.user});
         case RECEIVE_BOOKING:
             let newState = Object.assign({}, state);
-            newState[action.booking.userId].bookings << action.booking.id 
+            const { booking } = action.payload; 
+            newState[booking.userId].bookings.push(booking.id)
             return newState;
         default: 
             return state; 

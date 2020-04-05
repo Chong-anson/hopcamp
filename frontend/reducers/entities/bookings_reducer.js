@@ -4,23 +4,23 @@ import { RECEIVE_CURRENT_USER } from "../../actions/session_actions"
 
 const _defaultState = {};
 
-const bookingsReducer = (state = _defaultState, action) => {
+const bookingsReducer = (state = _defaultState, {type, payload }) => {
     Object.freeze(state);
 
     let obj; 
-    switch(action.type){
+    switch(type){
         case RECEIVE_CURRENT_USER:
             obj = {};
-            if (action.payload.bookings)
-                obj = action.payload.bookings
+            if (payload.bookings)
+                obj = payload.bookings
             return obj
         case RECEIVE_CAMPSITE: 
             obj = {};
-            if (action.payload.bookings)
-                obj = action.payload.bookings
+            if (payload.bookings)
+                obj = payload.bookings
             return obj
         case RECEIVE_BOOKING:
-            return Object.assign({}, state, {[action.booking.id]: action.booking})
+            return Object.assign({}, state, {[payload.booking.id]: payload.booking})
         default:
             return state;
     }

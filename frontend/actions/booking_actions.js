@@ -9,7 +9,9 @@ const receiveBookings = (bookings) => ({
 
 const receiveBooking = (booking) => ({
     type: RECEIVE_BOOKING,
-    booking 
+    payload: {
+      booking
+    } 
 })
 
 export const createBooking = (booking) => dispatch => {

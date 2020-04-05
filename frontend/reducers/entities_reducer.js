@@ -7,7 +7,7 @@ import tagsReducer from "./entities/tags_reducer";
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
-    booking: bookingsReducer,
+    bookings: bookingsReducer,
     campsites: campsitesReducer,
     venues: venuesReducer,
     tags: tagsReducer

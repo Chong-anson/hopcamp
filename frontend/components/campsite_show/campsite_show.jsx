@@ -108,8 +108,10 @@ class CampsiteShow extends React.Component{
                     </div>
                 </div>
             </div>
+            <div className="booking-widget">
               <BookingFormContainer campsite={campsite}  />
-              <BookingList />
+              <BookingList user={this.props.currentUser} campsiteId={campsite.id} />
+            </div>
           </div>
 
           <div className="campsite-map">

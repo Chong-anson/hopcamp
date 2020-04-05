@@ -60,7 +60,7 @@ class Bookingform extends React.Component{
         console.log(this.props)
         // if (this.props.currentUser.bookings)
         return (
-            <div className="booking-widget">
+            <div className="booking-form">
                 {/* TEST */}
                 {/* <div>{this.props.campsite.capacity}</div> */}
                 <div className="price-box">

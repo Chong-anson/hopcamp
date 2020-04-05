@@ -10,7 +10,7 @@ end
 json.bookings do 
     @campsite.bookings.each do | booking | 
         json.set! booking.id do 
-            json.(booking, :id, :user_id, :status, :start_date, :end_date, :group_size)
+            json.(booking, :id, :user_id, :status, :start_date, :end_date, :group_size, :updated_at)
         end
     end
 end
