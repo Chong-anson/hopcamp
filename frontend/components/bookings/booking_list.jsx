@@ -13,7 +13,7 @@ const BookingList = ({user, campsiteId = null}) => {
   })
   .sort((a, b) => ((new Date(b.updatedAt)) - (new Date(a.updatedAt))))
   .map( (booking, idx) => 
-    <BookingItem key={`booking-${idx}`} booking={booking}/>
+    (booking) ? <BookingItem key={`booking-${idx}`} booking={booking} /> : null
   )
   
   if (campsiteId){
