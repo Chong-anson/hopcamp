@@ -40,9 +40,15 @@ const Footer = () => {
           </p>
       </div>
       <div className="footer-bottom">
-        <p>&copy; Anson Chong </p>
-        <i class="fab fa-github"></i>
-        <i class="fab fa-linkedin"></i>
+        <p>&copy; Hopcamp by Anson Chong </p>
+        <div className="profile-link">
+          <a href="https://github.com/Chong-anson">
+            <i className="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ansonchongch/">
+            <i className="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
     </div>
   )
