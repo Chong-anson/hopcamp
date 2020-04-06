@@ -94,3 +94,9 @@ div {
     background-color: #fff;
     color: #40d9ac;
 }
+
+.logo{
+  background-image: url(asset-path('logo.jpg'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}

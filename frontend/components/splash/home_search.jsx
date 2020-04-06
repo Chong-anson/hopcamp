@@ -85,7 +85,7 @@ class HomeSearch extends React.Component{
                             <option value="Glamping">Glamping</option>
                             <option value="RVs">RVs</option>
                         </select>
-                        <button className="special-buttons"> Submit </button>
+                        <button className="special-buttons"> Search </button>
                     </form>
                 </div>
             </div>

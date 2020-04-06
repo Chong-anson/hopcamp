@@ -5,6 +5,7 @@ import MiniSearchBox from "./navbar/mini_search"
 import NavbarContainer from "./navbar/navbar_container";
 import SplashContainer from "./splash/splash_container";
 import SearchContainer from "./search/search_container";
+import Footer from "./footer/footer"
 import Modal from "./modal/modal";
 import { AuthRoute, ProtectedRoute } from "../util/route_utils.jsx";
 import CampsiteShowContainer from "./campsite_show/campsite_show_container";
@@ -18,7 +19,6 @@ const App = () => {
             <header className="header">
                 <div className="navbar">
                     <div className="left">
-
                         <Link className="header-logo" to="/">
                             <div className="logo">
                             </div>
@@ -27,7 +27,6 @@ const App = () => {
                     </div>
                     <div className="right">
                         <NavbarContainer />
-
                     </div>
                 </div>
             </header> 
@@ -43,7 +42,7 @@ const App = () => {
             </Switch>
             </div>
             <footer>
-                {/* <Footer /> */}
+              <Footer />
             </footer>
         </div>
     )

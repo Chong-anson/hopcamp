@@ -28,11 +28,7 @@ class Splash extends React.Component{
                     {citiesList}
                 </div>
                 <h2>Discover camping</h2>
-                {/* <div className="splash-items-container">
-                    {tagsList}
-                </div> */}
-                {/* Places list */}
-                {/* <img src={photoUrl} alt=""/> */}
+
     
             </div>
         )
