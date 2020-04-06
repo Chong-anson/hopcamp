@@ -2,7 +2,7 @@ html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, h3,h4, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small {
+span, article, footer, time, small, select{
   margin: 0px;
   border: 0px;
   padding: 0px;
@@ -33,7 +33,8 @@ input[type="text"],
 input[type="submit"],
 select,
 textarea,
-button {
+button,
+option {
   -webkit-appearance: none;
   -moz-appearance: none;
 }

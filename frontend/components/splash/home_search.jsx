@@ -68,18 +68,18 @@ class HomeSearch extends React.Component{
                 </div>
                 <div className="home-search-box">
                     <form className="home-search-form" onSubmit={this.handleSubmit}>
-
                         <input 
                             type="text" 
                             className="form-control"
                             id="place-search-box-home"
                             onChange={this.handleChange}
                             />
-                        <div className="daypicker-home">
-                            <input type="date" className="splash-date"/>
-                        </div>
+                        {/* <div className="daypicker-home"> */}
+                            <input type="date" className="splash-date form-control"/>
+                        {/* </div> */}
                         {/* <button onClick={this.handleButtonClick}></button> */}
-                        <select className="form-control" name="campsiteType" id="">
+
+                        <select className="" name="campsiteType" id="">
                             <option value="All" defaultChecked>All camping</option>
                             <option value="Camping">Camping</option>
                             <option value="Glamping">Glamping</option>
