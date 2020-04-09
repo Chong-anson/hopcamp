@@ -1,14 +1,15 @@
 @font-face{
   font-family: "calibre";
-  src: url(asset-path()) format("woff")
+  src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
 }
+
 html{
   font-size: 16px;
   background-color: #fff;
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "calibre", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.42;
   color: #333333;
