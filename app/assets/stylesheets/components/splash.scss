@@ -93,12 +93,31 @@
 .recommended-list-item{
   width: 32%;
   margin-right: 2%;
-  margin-bottom: 10px;
+  margin-bottom: 22px;
   border: solid #ebebeb 1px;
 }
 
 .recommended-list-item:nth-child(3n) {
     margin-right: 0;
+}
+
+.recommended-list-item figcaption {
+  height: 80px;
+  padding: 14px;
+  position: relative;
+}
+
+.recommended-list-item figcaption h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.recommended-list-item figcaption p {
+  font-size: 18px;
+  color: #757575;
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
 }
 
 @media (min-width: 768px)

@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default (props) => {
   const recommendedList = 
   [
-    { 'heading': 'See the winners', 'subHeading': '2019 Hipcamps of the year ', 'imgUrl': 'See-the-winners.jpg' },
+    { 'heading': 'See the winners', 'subHeading': '2019 Hopcamps of the year ', 'imgUrl': 'See-the-winners.jpg' },
     { 'heading': 'Available tonight', 'subHeading': 'Best options near me', 'imgUrl': 'Available-tonight.jpg' },
     { 'heading': 'Available this weekend', 'subHeading': 'Best options near me', 'imgUrl': 'Available-this-weekend.jpg' },
     { 'heading': 'Available next weekend', 'subHeading': 'Best options near me', 'imgUrl': 'Available-next-weekend.jpg' },
@@ -11,7 +12,7 @@ export default (props) => {
     { 'heading': 'Glamping near me', 'subHeading': 'Best options near me', 'imgUrl': 'Glamping-near-me.jpg' },
     { 'heading': 'Beach camping', 'subHeading': 'Best options near me', 'imgUrl': 'Beach-camping.jpg' },
     { 'heading': 'Pet friendly camping', 'subHeading': 'Best options near me', 'imgUrl': 'Pet-friendly-camping.jpg' },
-    { 'heading': 'RV sites', 'subHeading': 'Hipcamps ready for RVs near me', 'imgUrl': 'RV-sites.jpg' },
+    { 'heading': 'RV sites', 'subHeading': 'Hopcamps ready for RVs near me', 'imgUrl': 'RV-sites.jpg' },
     { 'heading': 'Lake camping', 'subHeading': 'Best options near me', 'imgUrl': 'Lake-camping.jpg' },
     { 'heading': 'Tent camping near me', 'subHeading': 'Best options near me', 'imgUrl': 'Tent-camping-near-me.jpg' },
     { 'heading': 'Yosemite', 'subHeading': 'California', 'imgUrl': 'Yosemite.jpg' },
@@ -33,12 +34,14 @@ export default (props) => {
   const result = recommendedList.map(el => {
     return (
       <div className="recommended-list-item">
-        <a href="">
+        <Link to={'search?lat=37.7749295&lng=-122.4194155'}>
           <img src={`/recommended_list/${el.imgUrl}`} alt="" />
-        </a>
+        </Link>
         <figcaption>
-          <h2>{el.heading}</h2>
-          <h3>{el.subHeading}</h3>
+          <Link to="search?lat=37.7749295&lng=-122.4194155">
+            <h2>{el.heading}</h2>
+          </Link>
+          <p>{el.subHeading}</p>
         </figcaption>
       </div>
     )
