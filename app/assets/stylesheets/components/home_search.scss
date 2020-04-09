@@ -8,12 +8,18 @@
 
 .home-title .sub-title{
     margin: 24px 0 35px auto;
+    font-size: 25px;
+    max-width: 500px;
 };
 
 .sub-title h3{
     display: inline;
     font-size: 1em;
     font-weight: 400;
+}
+
+.sub-title strong{
+  font-weight: bold;
 }
 
 .home-search-container{
