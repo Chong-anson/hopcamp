@@ -1,6 +1,12 @@
 @font-face{
   font-family: "calibre";
-  src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
+  src:url(asset-path("fonts/CalibreWeb-Regular.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Regular.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Regular.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Regular.woff2")) format("woff2");
+  font-weight:400;
+  font-style:normal
+  // src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
 }
 
 html{
@@ -84,11 +90,25 @@ div {
     text-align: center;
 }
 
+// .special-buttons{
+//     border: 3px solid #40d9ac;
+//     margin: 10px 15px;
+//     padding: 7px 12px;
+//     color: #40d9ac;
+// }
+
+// .special-buttons:hover{
+//     background-color: #40d9ac;
+//     color: white;
+// }
+
 .special-buttons-2{
-    width: 100%;
+    // width: 30%;
     background-color: #40d9ac;
     border: 3px solid #40d9ac;
-    // margin: 10px 15px;
+    font-size: 18px;
+    margin: 10px 15px;
+    border-radius: 2px; 
     padding: 10px 12px;
     color: #fff;
 }
@@ -98,8 +118,13 @@ div {
     color: #40d9ac;
 }
 
+a {
+  transition: all 0.25s ease 0s;
+}
+
 .logo{
   background-image: url(asset-path('logo.jpg'));
   background-size: contain;
   background-repeat: no-repeat;
 }
+

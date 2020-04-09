@@ -12,13 +12,13 @@ const msp = (state) => ({
 const mdp = (dispatch) => ({
     logout: () => dispatch(logout()),
     signupForm: (
-        <button className="special-buttons"  onClick={() => dispatch(openModal("signup"))} >
+        <button className="navbar-btn"  onClick={() => dispatch(openModal("signup"))} >
             Sign up
         </button>
     ),
     loginForm: (
         <button className="navbar-btn" onClick={() => dispatch(openModal("login"))}>
-            Login
+            Log in
         </button>
     )
 })

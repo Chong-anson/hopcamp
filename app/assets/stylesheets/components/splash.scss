@@ -85,6 +85,27 @@
     margin-inline-end: 0px;
 };
 
+.become-host{
+  background-image: url("/splash-photo-1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+  // padding: 60px;
+}
+
+.host-description {
+    width: 364px;
+    height: 364px;
+    background-color: #333333;
+    padding: 26px;
+    color: white;
+}
+
+
+
 .recommended-list-container{
   display: flex; 
   flex-wrap: wrap; 

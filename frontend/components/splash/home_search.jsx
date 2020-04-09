@@ -61,7 +61,7 @@ class HomeSearch extends React.Component{
         return (
             <div className="home-search-container">
                 <div className="home-title">
-                    <h1>Find yourself outside!</h1>
+                    <h1>Find yourself outside.</h1>
                     <div className="sub-title">
                         <h3>Book unique camping experiences on over <strong>300,000</strong> campsites, cabins, RV parks, public parks and more.</h3>
                     </div>
@@ -75,17 +75,20 @@ class HomeSearch extends React.Component{
                             onChange={this.handleChange}
                             />
                         {/* <div className="daypicker-home"> */}
-                            <input type="date" className="splash-date form-control"/>
+                            <input 
+                              type="date" 
+                              className="splash-date form-control"
+                            />
                         {/* </div> */}
                         {/* <button onClick={this.handleButtonClick}></button> */}
 
-                        <select className="" name="campsiteType" id="">
+                        <select className="form-control" name="campsiteType" id="">
                             <option value="All" defaultChecked>All camping</option>
                             <option value="Camping">Camping</option>
                             <option value="Glamping">Glamping</option>
                             <option value="RVs">RVs</option>
                         </select>
-                        <button className="special-buttons"> Search </button>
+                        <button className="special-buttons-2"> Search </button>
                     </form>
                 </div>
             </div>

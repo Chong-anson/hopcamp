@@ -23,6 +23,17 @@ class Splash extends React.Component{
             <div className="splash-content">
                 {/* SearchBox */}
                 <HomeSearch />
+                <div className="become-host">
+                  <div className="host-description">
+                    <h2>
+                      Own land? Earn money hosting on Hipcamp
+                    </h2>
+                    <span>
+                      Help more people spend time outside. Share your land with campers, glampers, and RV travelers.
+                    </span>
+                    <button>Become a Host</button>
+                  </div>
+                </div>
                 <h2>Destination getaways...</h2>
                 <div className="splash-items-container">
                     {citiesList}
