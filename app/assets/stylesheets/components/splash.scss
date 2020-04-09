@@ -104,7 +104,6 @@
 .recommended-list-item figcaption {
   height: 80px;
   padding: 14px;
-  position: relative;
 }
 
 .recommended-list-item figcaption h2 {
@@ -115,9 +114,7 @@
 .recommended-list-item figcaption p {
   font-size: 18px;
   color: #757575;
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
+  margin-top: 3px; 
 }
 
 @media (min-width: 768px)
