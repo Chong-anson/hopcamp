@@ -28,7 +28,7 @@ class Splash extends React.Component{
                     {citiesList}
                 </div>
                 <h2>Discover camping</h2>
-
+            {/* RECEOMMENDED_LIST,  */}
     
             </div>
         )
