@@ -1,7 +1,7 @@
 import React from "react";
 import SplashItem from "./splash_item";
 import HomeSearch from './home_search';
-
+import RecommendedList from './recommended_list';
 class Splash extends React.Component{
     constructor(props){
         super(props);
@@ -29,7 +29,7 @@ class Splash extends React.Component{
                 </div>
                 <h2>Discover camping</h2>
             {/* RECEOMMENDED_LIST,  */}
-    
+                <RecommendedList /> 
             </div>
         )
 
