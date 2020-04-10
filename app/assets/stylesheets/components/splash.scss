@@ -10,90 +10,90 @@
     flex-wrap: wrap;
 }
 
+.long-tile, .splash-item-link{
+  position: relative;
+  display: flex;
+  width: 32%;
+  align-items: flex-end;
+  overflow: hidden;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out 0s, 
+              box-shadow 0.2s ease-in-out;
+}
+
+.long-tile{
+  height: 635px;
+  transform: translateY(5px);
+}
+
+.long-tile:not(:first-child){
+  margin-left: 2%;
+}
+
+.long-tile .image-container, .splash-item-background{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; 
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.long-tile-bottom, .splash-item-bottom{
+  color: white; 
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  font-size: 19px;
+}
+
+.long-tile-bottom h2, .splash-item-bottom h2{
+  font-size: 35px;
+  margin-bottom: 2px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+
 .splash-item-link{
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    width: 32%;   
     height: 364px;
     margin-left: 2%;
     margin-bottom: 2%;
-    align-items: flex-end;
-
-    justify-content: center;
-    transition: transform 0.2s ease-in-out, 
-                box-shadow 0.2s ease-in-out;
 }
 
 .splash-items-container .splash-item-link:nth-child(3n+1){
     margin-left: 0;
 };
 
-.splash-item-background {
-    box-sizing: border-box;
-    width: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    // border: 2px solid red;
-
-};
-
-.splash-item-link:hover{
-    transform: translateY(-3px);
+.long-tile:hover, .splash-item-link:hover{
+    transform: translateY(-5px);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
 }
 
-.splash-item-link::before{
+.long-tile a::before, .splash-item-link::before {
     content: " ";
     width: 100%;
     height: 50%;
+    left: 0;
     position: absolute;
     bottom: 0;
     background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65));
     z-index: 2;
 }
 
-.splash-item-title {
-    // border: 5px solid red;
-    display: block;
-    position: relative;
-    bottom: 25px;
-    left: 0;
-    font-weight: 400;
-    color: white;
-    z-index: 3;
-    text-align: center;
-
-};
-
-.item-title {
-    font-weight: 400;
-    font-size: 35px;
-    margin-top: 0;
-    margin-bottom: 2px;
-    padding: 0 10px;
-    margin-block-start: 0.83em;
-    // margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-};
-
 .become-host{
+  width: 100%;
+  height: auto;
+  padding: 60px;
   background-image: url("/splash-photo-1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
-  height: auto;
   margin-top: 100px;
-  // padding: 60px;
 }
 
 .host-description {
@@ -104,7 +104,31 @@
     color: white;
 }
 
+.host-description h2, .host-description p{
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 17px;
+}
 
+.host-description p{
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.host-description button{
+  background: white;
+  color: #333333;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 20px;
+}
+
+.splash-container{
+  width: 100%; 
+  padding: 40px 0;
+}
 
 .recommended-list-container{
   display: flex; 

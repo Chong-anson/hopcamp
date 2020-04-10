@@ -12,8 +12,8 @@ const SpashItem = (props) => {
                     backgroundPosition: "center"
                     }}>
             </div>
-            <div className="splash-item-title">
-                <h2 className="item-title">{props[type].description}</h2>
+            <div className="splash-item-bottom">
+                <h2>{props[type].description}</h2>
                 <span>{props[type].name}</span>
             </div>
         </Link>

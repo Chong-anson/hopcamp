@@ -9,6 +9,36 @@
   // src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
 }
 
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Medium.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Medium.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Medium.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Medium.woff2")) format("woff2");
+  font-weight:500;
+  font-style:normal
+}
+
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Semibold.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Semibold.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Semibold.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Semibold.woff2")) format("woff2");
+  font-weight:700;
+  font-style:normal
+}
+
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Light.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Light.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Light.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Light.woff2")) format("woff2");
+  font-weight:200;
+  font-style:normal
+}
+
 html{
   font-size: 16px;
   background-color: #fff;
@@ -107,7 +137,8 @@ div {
     background-color: #40d9ac;
     border: 3px solid #40d9ac;
     font-size: 18px;
-    margin: 10px 15px;
+    font-weight: 500;
+    margin: 10px 15px; 
     border-radius: 2px; 
     padding: 10px 12px;
     color: #fff;

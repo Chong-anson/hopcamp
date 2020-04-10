@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -14,12 +14,11 @@ class Navbar extends React.Component {
 
     render() {
         // const searchBox = (
-
         // )
         if (this.props.currentUser) {
             const  currentUserId = this.props.currentUser.id
             return (
-                <div className="navbar-buttons">
+                <div className="navbar-buttons" >
                     <ul className="top-nav">
                       <li>
                         <Link to={`/users/${currentUserId}/trips`}>Trips</Link>

@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { logout } from "../../actions/session_actions";
 
-const msp = (state) => ({
+const msp = (state, ownProps) => ({
     currentUser : state.entities.users[state.session.id],
 })
 

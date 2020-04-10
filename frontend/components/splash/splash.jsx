@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import SplashItem from "./splash_item";
 import HomeSearch from './home_search';
 import RecommendedList from './recommended_list';
@@ -19,6 +20,23 @@ class Splash extends React.Component{
         const citiesList = this.props.venues.map( el => 
             <SplashItem key={el.id} venue={el} type="venue" /> 
             )
+        const longTiles = [
+          {heading: "Unique Tiny House", subheading: "Small & stylish", imgUrl: "splash-photo-2.jpg"},
+          {heading: "Animal Experience", subheading: "Horses, camels, goats & more", imgUrl: "splash-photo-3.jpg"},
+          {heading: "Stunning Sunshine State", subheading: "Colorful camping & glamping", imgUrl: "splash-photo-4.jpg"}
+        ].map( el => (
+          <div className="long-tile">
+            <Link to={'search?lat=37.7749295&lng=-122.4194155'}>
+              <div className="image-container" style={{backgroundImage: `url(${el.imgUrl})`}} >
+
+              </div>
+              <div className="long-tile-bottom">
+                <h2>{el.heading}</h2>
+                <span>{el.subheading}</span>
+              </div>
+            </Link>
+          </div>
+        ))
         return(
             <div className="splash-content">
                 {/* SearchBox */}
@@ -28,19 +46,29 @@ class Splash extends React.Component{
                     <h2>
                       Own land? Earn money hosting on Hipcamp
                     </h2>
-                    <span>
+                    <p>
                       Help more people spend time outside. Share your land with campers, glampers, and RV travelers.
-                    </span>
+                    </p>
                     <button>Become a Host</button>
                   </div>
                 </div>
-                <h2>Destination getaways...</h2>
-                <div className="splash-items-container">
-                    {citiesList}
+                <div className="splash-container">
+                  <h2>One of a kind trips.</h2>
+                  <div className="splash-items-container">
+                  {longTiles}
+                  </div>
                 </div>
-                <h2>Discover camping</h2>
-            {/* RECEOMMENDED_LIST,  */}
-                <RecommendedList /> 
+                <div className="splash-container">
+                  <h2>Destination getaways...</h2>
+                  <div className="splash-items-container">
+                      {citiesList}
+                  </div>
+                </div>
+                <div className="splash-container">
+                  <h2>Discover camping...</h2>
+                  {/* RECEOMMENDED_LIST,  */}
+                  <RecommendedList /> 
+                </div>
             </div>
         )
 
