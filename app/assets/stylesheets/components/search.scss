@@ -150,10 +150,21 @@
     padding: 2px 12px 10px;
 }
 
-.result-item-title{
+.result-title{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: normal;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 5px 0 -3px 0;
+}
+
+.result-title h1{
     box-sizing: content-box;
     width: 85%;
-    font-weight: 600;
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

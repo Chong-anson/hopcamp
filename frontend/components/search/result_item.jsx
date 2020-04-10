@@ -19,11 +19,13 @@ const ResultItem = props => {
             </div>
             <div className="result-info">
                 <div className="result-item-main-info">
-                  <h1 className="result-item-title">{props.item.name}</h1>
-                  <div className="result-type">
-                      <div className={`result-type-icon hc-awesome-${props.item.campsiteType.toLowerCase()}`}></div>
+                  <div className="result-title">
+                    <h1>{props.item.name}</h1>
+                    <div className="result-type">
+                        <div className={`result-type-icon hc-awesome-${props.item.campsiteType.toLowerCase()}`}></div>
+                    </div>
                   </div>
-                      <p className="result-item-subtitle">{props.item.address}</p>
+                  <p className="result-item-subtitle">{props.item.address}</p>
                 </div>
                 <div className="result-item-subinfo">
                         <span className="gray"> 
