@@ -85,18 +85,26 @@
     z-index: 2;
 }
 
-.become-host{
+.banner{
   width: 100%;
   height: auto;
   padding: 60px;
-  background-image: url("/splash-photo-1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   margin-top: 100px;
 }
 
-.host-description {
+.banner.become-host{
+  background-image: url("/splash-banner-1.jpg");
+}
+
+.banner.shower{
+  margin-top: 0;
+  background-image: url("/splash-banner-2.jpg");
+}
+
+.banner-description {
     width: 364px;
     height: 364px;
     background-color: #333333;
@@ -104,19 +112,19 @@
     color: white;
 }
 
-.host-description h2, .host-description p{
+.banner-description h2, .banner-description p{
   font-size: 36px;
   font-weight: 500;
   margin-top: 0px;
   margin-bottom: 17px;
 }
 
-.host-description p{
+.banner-description p{
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-.host-description button{
+.banner-description button{
   background: white;
   color: #333333;
   border-radius: 4px;
@@ -128,6 +136,13 @@
 .splash-container{
   width: 100%; 
   padding: 40px 0;
+}
+
+.splash-container > h2 {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 32px;
+  margin-top: 0;
 }
 
 .recommended-list-container{

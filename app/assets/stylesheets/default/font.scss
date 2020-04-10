@@ -1,20 +1,55 @@
 @font-face{
+  font-family: "calibre";
+  src:url(asset-path("fonts/CalibreWeb-Regular.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Regular.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Regular.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Regular.woff2")) format("woff2");
+  font-weight:400;
+  font-style:normal
+  // src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
+}
+
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Medium.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Medium.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Medium.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Medium.woff2")) format("woff2");
+  font-weight:500;
+  font-style:normal
+}
+
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Semibold.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Semibold.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Semibold.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Semibold.woff2")) format("woff2");
+  font-weight:700;
+  font-style:normal
+}
+
+@font-face{
+  font-family:"Calibre";
+  src:url(asset-path("fonts/CalibreWeb-Light.eot"));
+  src:url(asset-path("fonts/CalibreWeb-Light.eot?#iefix")) format("embedded-opentype"),
+      url(asset-path("fonts/CalibreWeb-Light.woff")) format("woff"),
+      url(asset-path("fonts/CalibreWeb-Light.woff2")) format("woff2");
+  font-weight:200;
+  font-style:normal
+}
+
+@font-face{
   font-family:"hc-awesome";
-  src:url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-aeeee3b87043f6c245734920117b0908cd5792480c4d632bfbf481c87cf6f7fa.eot);
-  src:url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-aeeee3b87043f6c245734920117b0908cd5792480c4d632bfbf481c87cf6f7fa.eot?#iefix) format("embedded-opentype"),
-  url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-37e438fe799f6c1bece321d047369cc8e0d059735c9e38f4b37f73335c7e60f5.woff2) format("woff2"),
-  url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-8c50d8c3ac183a35b0ba2892381ffc358e83b08fe50eb2cdca6a0c9317a47233.woff) format("woff"),
-  url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-7533e8ee672208e144a5299d32de48063a7aeaaab0eebf68de9c6bcc0f036d4d.ttf) format("truetype"),
-  url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-38448a965c11708e6c2c8a133a7fcec4c28a113ca9e4fcf779aa967730832967.svg#hc-awesome) format("svg");
+  src:url(asset-path("fonts/hc-awesome.eot"));
+  src:url(asset-path("fonts/hc-awesome.eot?#iefix")) format("embedded-opentype"),
+  url(asset-path("fonts/hc-awesome.woff2")) format("woff2"),
+  url(asset-path("fonts/hc-awesome.woff")) format("woff"),
+  url(asset-path("fonts/hc-awesome.ttf")) format("truetype");
   font-weight:normal;
   font-style:normal
 }
-@media screen and (-webkit-min-device-pixel-ratio: 0){
-  @font-face{
-  font-family:"hc-awesome";
-  src:url(//djqvcbmmgpti5.cloudfront.net/assets/hc-awesome-38448a965c11708e6c2c8a133a7fcec4c28a113ca9e4fcf779aa967730832967.svg#hc-awesome) format("svg")
-  }
-}
+
 [data-icon]:before{
   content:attr(data-icon)}[data-icon]:before,
 .hc-awesome-beach:before,
@@ -39,7 +74,7 @@
 .hc-awesome-hiking:before,
 .hc-awesome-horseback-riding:before,
 .hc-awesome-hot-spring:before,
-.hc-awesome-house:before,
+.hc-awesome-glamping:before,
 .hc-awesome-kayaking:before,
 .hc-awesome-kitchen:before,
 .hc-awesome-lake:before,
@@ -74,7 +109,7 @@
 .hc-awesome-snowsports:before,
 .hc-awesome-surfing:before,
 .hc-awesome-swimming:before,
-.hc-awesome-tent:before,
+.hc-awesome-camping:before,
 .hc-awesome-terrain-lake:before,
 .hc-awesome-times:before,
 .hc-awesome-toilet:before,
@@ -127,7 +162,7 @@
 .hc-awesome-hiking:before{content:"\f113"}
 .hc-awesome-horseback-riding:before{content:"\f114"}
 .hc-awesome-hot-spring:before{content:"\f115"}
-.hc-awesome-house:before{content:"\f116"}
+.hc-awesome-glamping:before{content:"\f116"}
 .hc-awesome-kayaking:before{content:"\f117"}
 .hc-awesome-kitchen:before{content:"\f118"}
 .hc-awesome-lake:before{content:"\f119"}
@@ -162,7 +197,7 @@
 .hc-awesome-snowsports:before{content:"\f136"}
 .hc-awesome-surfing:before{content:"\f137"}
 .hc-awesome-swimming:before{content:"\f138"}
-.hc-awesome-tent:before{content:"\f139"}
+.hc-awesome-camping:before{content:"\f139"}
 .hc-awesome-terrain-lake:before{content:"\f13a"}
 .hc-awesome-times:before{content:"\f13b"}
 .hc-awesome-toilet:before{content:"\f13c"}

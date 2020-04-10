@@ -21,9 +21,9 @@ class Splash extends React.Component{
             <SplashItem key={el.id} venue={el} type="venue" /> 
             )
         const longTiles = [
-          {heading: "Unique Tiny House", subheading: "Small & stylish", imgUrl: "splash-photo-2.jpg"},
-          {heading: "Animal Experience", subheading: "Horses, camels, goats & more", imgUrl: "splash-photo-3.jpg"},
-          {heading: "Stunning Sunshine State", subheading: "Colorful camping & glamping", imgUrl: "splash-photo-4.jpg"}
+          {heading: "Unique Tiny House", subheading: "Small & stylish", imgUrl: "splash-photo-1.jpg"},
+          {heading: "Animal Experience", subheading: "Horses, camels, goats & more", imgUrl: "splash-photo-2.jpg"},
+          {heading: "Stunning Sunshine State", subheading: "Colorful camping & glamping", imgUrl: "splash-photo-3.jpg"}
         ].map( el => (
           <div className="long-tile">
             <Link to={'search?lat=37.7749295&lng=-122.4194155'}>
@@ -41,11 +41,9 @@ class Splash extends React.Component{
             <div className="splash-content">
                 {/* SearchBox */}
                 <HomeSearch />
-                <div className="become-host">
-                  <div className="host-description">
-                    <h2>
-                      Own land? Earn money hosting on Hipcamp
-                    </h2>
+                <div className="banner become-host">
+                  <div className="banner-description">
+                    <h2> Own land? Earn money hosting on Hipcamp </h2>
                     <p>
                       Help more people spend time outside. Share your land with campers, glampers, and RV travelers.
                     </p>
@@ -59,11 +57,18 @@ class Splash extends React.Component{
                   </div>
                 </div>
                 <div className="splash-container">
-                  <h2>Destination getaways...</h2>
+                  <h2>Destination getaways.</h2>
                   <div className="splash-items-container">
                       {citiesList}
                   </div>
                 </div>
+                <div className="banner shower">
+                  <div className="banner-description">
+                    <h2> Showers at Joshua Tree? </h2>
+                    <p> 11 gorgeous outdoor showers & bathtubs to enjoy. </p>
+                    <button>Learn More.</button>
+                  </div>
+            </div>
                 <div className="splash-container">
                   <h2>Discover camping...</h2>
                   {/* RECEOMMENDED_LIST,  */}

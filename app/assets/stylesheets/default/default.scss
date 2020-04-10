@@ -1,43 +1,4 @@
-@font-face{
-  font-family: "calibre";
-  src:url(asset-path("fonts/CalibreWeb-Regular.eot"));
-  src:url(asset-path("fonts/CalibreWeb-Regular.eot?#iefix")) format("embedded-opentype"),
-      url(asset-path("fonts/CalibreWeb-Regular.woff")) format("woff"),
-      url(asset-path("fonts/CalibreWeb-Regular.woff2")) format("woff2");
-  font-weight:400;
-  font-style:normal
-  // src: url(asset-path("fonts/calibre-test-regular.woff")) format("woff");
-}
 
-@font-face{
-  font-family:"Calibre";
-  src:url(asset-path("fonts/CalibreWeb-Medium.eot"));
-  src:url(asset-path("fonts/CalibreWeb-Medium.eot?#iefix")) format("embedded-opentype"),
-      url(asset-path("fonts/CalibreWeb-Medium.woff")) format("woff"),
-      url(asset-path("fonts/CalibreWeb-Medium.woff2")) format("woff2");
-  font-weight:500;
-  font-style:normal
-}
-
-@font-face{
-  font-family:"Calibre";
-  src:url(asset-path("fonts/CalibreWeb-Semibold.eot"));
-  src:url(asset-path("fonts/CalibreWeb-Semibold.eot?#iefix")) format("embedded-opentype"),
-      url(asset-path("fonts/CalibreWeb-Semibold.woff")) format("woff"),
-      url(asset-path("fonts/CalibreWeb-Semibold.woff2")) format("woff2");
-  font-weight:700;
-  font-style:normal
-}
-
-@font-face{
-  font-family:"Calibre";
-  src:url(asset-path("fonts/CalibreWeb-Light.eot"));
-  src:url(asset-path("fonts/CalibreWeb-Light.eot?#iefix")) format("embedded-opentype"),
-      url(asset-path("fonts/CalibreWeb-Light.woff")) format("woff"),
-      url(asset-path("fonts/CalibreWeb-Light.woff2")) format("woff2");
-  font-weight:200;
-  font-style:normal
-}
 
 html{
   font-size: 16px;
@@ -157,5 +118,9 @@ a {
   background-image: url(asset-path('logo.jpg'));
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+span.icon {
+  font-size: 24px;
 }
 

@@ -39,7 +39,7 @@ const FilterBar = (props) => {
                 data-type={type}
                 key={idx}
                 >
-                    <div className={`filter-type-icon ${type}`}></div>
+                    <span className={`filter-type-icon hc-awesome-${type.toLowerCase()}`}></span>
                     {type}
             </button>
     )
