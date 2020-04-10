@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 
 const FilterBar = (props) => {
-    const CAMPSITE_TYPE = ["CAMPING", "RV", "GLAMPING"];
+    const CAMPSITE_TYPE = [{Campsites: "CAMPING"}, {RVs: "RV"}, {Lodging: "GLAMPING"}];
     // const state = { typeFilter: this.CAMPSITE_TYPE};
     const [typeFilter, setTypeFilter] = useState(CAMPSITE_TYPE); 
     // props.updateFilter("type", this.CAMPSITE_TYPE);
@@ -36,11 +36,11 @@ const FilterBar = (props) => {
             <button 
                 className="type-filter"
                 onClick={handleFilterClick}
-                data-type={type}
+                data-type={Object.values(type)[0]}
                 key={idx}
                 >
-                    <span className={`filter-type-icon hc-awesome-${type.toLowerCase()}`}></span>
-                    {type}
+                    <span className={`filter-type-icon hc-awesome-${Object.values(type)[0].toLowerCase()}`}></span>
+                    {Object.keys(type)[0]}
             </button>
     )
 

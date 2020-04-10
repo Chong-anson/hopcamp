@@ -1,6 +1,6 @@
 .search-container{
     display: block;
-    width: 85%;
+    width: 87%;
 }
 
 .search-box,.filter-bar{
@@ -13,7 +13,7 @@
 }
 
 .results-map{
-    width: 40%;
+    width: 36.8%;
     height: 855px;
     // border: 5px solid red;
 }
@@ -51,11 +51,7 @@
     background-repeat: no-repeat;
 }
 .filter-type-icon{
-    width: 40px;
-    height: 40px;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    font-size: 22px;
     margin-right: 5px;
 };
 
@@ -143,7 +139,14 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    flex-grow: 100;
+    // flex-grow: 100;
+}
+.result-item-main-info{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2px 12px 10px;
 }
 
 .result-item-title{
@@ -168,30 +171,17 @@
 };
 
 .result-type-icon{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+  font-size: 30px;
 };
 
-.GLAMPING{
-    background-image: url(asset-path("glamping.png"));
-}
-.RV{
-    background-image: url(asset-path("rv.png"));
-}
-.CAMPING{
-    background-image: url(asset-path("camping.png"));
-}
+
 
 .result-item-subinfo{
     width: 100%;
     justify-self: flex-end;
     display: flex;
     justify-content: space-between;
-
+    padding: 2px 12px 12px; 
 }
 
 .result-item-subinfo span.gray{
