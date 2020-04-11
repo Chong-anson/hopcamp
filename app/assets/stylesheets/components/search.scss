@@ -69,19 +69,29 @@
     padding: 30px 5%;
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 70px;
     z-index: 10;
 
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
 
+.more-filter-large .filter-row{
+  justify-content: center;
+}
+
+.filter-buttons{
+  position: absolute;
+  bottom: 10px;
+  right: 150px;
+  justify-content: flex-end;
 }
 
 .more-filter-section{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 20%;
 }
 
 .more-filter-icon{

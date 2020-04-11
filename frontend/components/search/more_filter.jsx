@@ -82,16 +82,8 @@ class MoreFilter extends React.Component{
       minCapacity,
       maxPrice
     } = this.state; 
-    const selectedCampsites = this.state.selectedCampsites
-                                .map(campsite => campsite.id)
-    // this.props.updateFilter("appliedFilter", appliedFilter );
-    // this.props.updateFilter( 
-    //   "selectedCampsites", 
-    //   this.state.selectedCampsites.map(campsite => campsite.id)
-    // );
-    // this.props.updateFilter("checkedTags", checkedTags);
-    // this.props.updateFilter("minCapacity", minCapacity);
-    // this.props.updateFilter("maxPrice", maxPrice);
+    const selectedCampsites = this.state.selectedCampsites.map(campsite => campsite.id)
+
     this.props.updateTagFilter({
       appliedFilter, 
       checkedTags, 
@@ -122,7 +114,9 @@ class MoreFilter extends React.Component{
     if (!this.props.categorized) this.props.fetchTags();
     if (this.state.checkedTags.length) {
       this.state.checkedTags.forEach(id => {
-        $(`#${id}`).prop("checked", true)
+        const checkbox = $(`#${id}`);
+        checkbox.prop("checked", true);
+        checkbox.parent().addClass("checked-label")
       })
     }
   };
@@ -145,27 +139,27 @@ class MoreFilter extends React.Component{
         "Toilets": "toilet",
         "Campfires": "fire",
         "Water": "water",
-        "Hiking": "hiking",
-        "Swimming": "swimming",
+        // "Hiking": "hiking",
+        // "Swimming": "swimming",
+        "Forest": "forests",
         "Lake": "lake",
-        "Beach": "beach"
+        "Beach": "beach",
+        "Showers": "shower",
+        "Picnic table": "picnic-table",
+        "Trash": "trash",
+        "Wifi": "wifi",
+        "Cooking equipment": "kitchen"
       }
-      
 
       Object.keys(this.props.categorized).forEach(key => 
           categorizedList[key] = Object.values(this.props.categorized[key]).map( tag => {
-            let className;
-            let icon; 
+            let className = "normal";
+            let icon = null; 
             if (Object.keys(specialCheckbox).includes(tag.name)){
               className = "special";
-              icon = 
-                <span className={`more-filter-icon 
-                    hc-awesome-${specialCheckbox[tag.name]}`}>
-                </span>              
-            }
-            else{
-              className = "normal";
-              icon = "";
+              icon = <span className={`more-filter-icon 
+                      hc-awesome-${specialCheckbox[tag.name]}`}>
+                      </span>              
             }
 
             return (
@@ -186,8 +180,7 @@ class MoreFilter extends React.Component{
                   onChange={this.handleTagChange}
                   data-campsites={tag.campsites}
                 />
-                {icon}
-                {tag.name}
+                {icon}{tag.name}
               </label>
             )
         })
@@ -217,7 +210,7 @@ class MoreFilter extends React.Component{
       ))
       return(
         <div className="more-filter-large">
-            <div className="row">
+            <div className="row filter-row">
               <div className="more-filter-section">
                   <h2>Group Size</h2>
                   <div className="filter-select">
@@ -249,11 +242,11 @@ class MoreFilter extends React.Component{
                 </div>
               {filterSection}
             </div>
-            <div className="row filter-buttons">
-              <button className="clear-button" onClick={this.clearFilter}>Clear Filter</button>
-              <button className="special-buttons-2" onClick={this.handleSubmit}> 
-                Show {(count < 10) ? count : `${count}+`} camps 
-              </button>
+              <div className="filter-buttons">
+                <button className="clear-button" onClick={this.clearFilter}>Clear Filter</button>
+                <button className="special-buttons-2" onClick={this.handleSubmit}> 
+                  Show {(count < 10) ? count : `${count}+`} camps 
+                </button>
             </div>
         </div>
     )
