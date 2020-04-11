@@ -9,36 +9,31 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import { filterCampsites } from '../../reducers/selector';
 
 const msp = (state, ownProps) => {
-    const parseQueryString = function () {
+    const { location, lat, lng } = state.ui.map;
+    const { typesFilter } = state.ui.filter.type;
+    // const parseQueryString = function () {
 
-        var searchStr = ownProps.location.search;
-        var params = {};
+    //     var searchStr = ownProps.location.search;
+    //     var params = {};
 
-        searchStr.replace(/([^?=&]+)(=([^&]*))?/g,
-            (dum, key, dum2, val) => {
-                // console.log(`dum=${dum}`)
-                // console.log(`key=${key}`)
-                // console.log(`dum2=${dum2}`)
-                // console.log(`val=${val}`)
-                params[key] = val;
-            }
-        );
-        return params;
-    };
-    const query = parseQueryString();
-    const lat = parseFloat(query['lat']);
-    const lng = parseFloat(query['lng']);
+    //     searchStr.replace(/([^?=&]+)(=([^&]*))?/g,
+    //         (dum, key, dum2, val) => {
+    //             params[key] = val;
+    //         }
+    //     );
+    //     return params;
+    // };
+    // const query = parseQueryString();
+    // const lat = parseFloat(query['lat']);
+    // const lng = parseFloat(query['lng']);
     return ({
         campsites: filterCampsites(state),
+        location,
         lat,
         lng,
+        typesFilter,
         selected: false
     })
-    // campsites: selectCampsites(state),
-    // SELECT CAMPSITES BASED ON TAGS,
-    // minCapactiy: state.ui.filter.minCapactiy
-    // minPrice: state.ui.filter.minPrice
-    // maxPrice: state.ui.filter.maxPrice
 }
 
 const mdp = (dispatch) => ({

@@ -6,19 +6,19 @@ class HomeSearch extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            input: "", 
+            location: "", 
             startDate: new Date(Date.now()),
             endDate: undefined, 
-            type: "",
             lat: "",
             lng: "",
+            campsiteTypes: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
     };
 
     handleChange(e){
-        this.setState({ input: e.target.value })
+        this.setState({ location: e.target.value })
     }
 
     componentDidMount() {
@@ -32,7 +32,7 @@ class HomeSearch extends React.Component{
             // if (!place.geometry) {
             //     // User entered the name of a Place that was not suggested and
             //     // pressed the Enter key, or the Place Details request failed.
-            //     // window.alert("No details available for input: '" + place.name + "'");
+            //     // window.alert("No details available for location: '" + place.name + "'");
             //     // return;
             //     const geocoder = new google.maps.Geocoder();
             //     geocoder.geocode({ 'address': that.state.input }, (res, status) => {
@@ -45,6 +45,7 @@ class HomeSearch extends React.Component{
             // }
             const lat = place.geometry.location.lat()
             const lng = place.geometry.location.lng()
+            console.log(place)
             // that.props.history.push(`/search?lat=${lat}&lng=${lng}`)
             that.setState({ lat, lng})
         })
@@ -52,9 +53,22 @@ class HomeSearch extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        const {lat, lng} = this.state
-        this.props.history.push(`/search?lat=${lat}&lng=${lng}`)
-        this.setState({input : ""});
+        const { location, campsiteTypes } = this.state;
+        const geocoder = new google.maps.Geocoder();
+        const that = this;
+        geocoder.geocode({'address': location}, (res,status) => {
+          if (status === 'OK') {
+            console.log(res)
+            const location = res[0].formatted_address;
+            const lat = res[0].geometry.location.lat();
+            const lng = res[0].geometry.location.lng();
+            that.props.updateLocation({ location, lat, lng });
+            that.props.updateFilter("type", [campsiteTypes]);
+            that.props.history.push(`/search?lat=${lat}&lng=${lng}`)
+          }
+          else 
+            window.alert(status)
+        })
     }
 
     render(){
@@ -82,7 +96,12 @@ class HomeSearch extends React.Component{
                         {/* </div> */}
                         {/* <button onClick={this.handleButtonClick}></button> */}
 
-                        <select className="form-control" name="campsiteType" id="">
+                        <select 
+                          className="form-control" 
+                          name="campsiteType" 
+                          id=""
+                          onChange={(e)=> this.setState({campsiteTypes: e.target.value})}
+                        >
                             <option value="All" defaultChecked>All camping</option>
                             <option value="Camping">Camping </option>
                             <option value="Glamping">Glamping</option>

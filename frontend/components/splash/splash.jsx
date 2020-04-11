@@ -40,7 +40,10 @@ class Splash extends React.Component{
         return(
             <div className="splash-content">
                 {/* SearchBox */}
-                <HomeSearch />
+                <HomeSearch 
+                  updateFilter={this.props.updateFilter}
+                  updateLocation={this.props.updateLocation}
+                  />
                 <div className="banner become-host">
                   <div className="banner-description">
                     <h2> Own land? Earn money hosting on Hipcamp </h2>

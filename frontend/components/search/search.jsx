@@ -46,23 +46,19 @@ class Search extends React.Component{
     componentDidMount(){
         let mapOptions = {
             center: { lat: 37.7758, lng: -122.435 },
-            zoom: 9
+            zoom: 9,
+            mapTypeId: 'terrain'
         };
 
         if (this.props.selected) {
             const selectedCampsite = this.props.campsite;
-            mapOptions = {
-                center: { lat: selectedCampsite.lat, lng: selectedCampsite.lng },
-                zoom: 9
-            }
+            mapOptions.center =  { lat: selectedCampsite.lat, lng: selectedCampsite.lng }
         }
         else if (this.props.lat && this.props.lng) {
             const { lat, lng } = this.props
-            mapOptions = {
-                center: { lat, lng },
-                zoom: 9
-            }
+            mapOptions.center = { lat, lng }
         }
+
         console.log(mapOptions);
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));

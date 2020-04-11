@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import { selectAllCities, selectAllTags } from "../../reducers/selector";
 import { fetchVenues } from "../../actions/venue_actions";
 import { fetchTags } from "../../actions/tag_actions";
+import { updateFilter } from "../../actions/filter_actions";
+import { updateLocation } from "../../actions/map_action";
 import Splash from "./splash";
 
 const msp = (state, ownProps) => ({
@@ -13,7 +15,9 @@ const msp = (state, ownProps) => ({
 
 const mdp = (dispatch) => ({
     fetchVenues: () => dispatch(fetchVenues()),
-    fetchTags: () => dispatch(fetchTags())
+    fetchTags: () => dispatch(fetchTags()),
+    updateFilter: (filter, value) => dispatch(updateFilter(filter,value)),
+    updateLocation: (location) => dispatch(updateLocation(location))
 })
 
 
