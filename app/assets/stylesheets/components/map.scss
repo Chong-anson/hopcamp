@@ -10,3 +10,34 @@
     width: 460px;
     max-height: 100vh;
 }
+
+.infowindow{
+  display: flex;
+  justify-content: center;
+}
+
+.infowindow-left{
+  width: 120px;
+  height: 70px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+}
+
+.infowindow-right{
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.infowindow h1{
+  font-size: 16px;
+  margin-top: 0; 
+}
+
+.infowindow p{
+  color: #757575;
+  font-weight: 500;
+}

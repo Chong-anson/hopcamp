@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom';
-
-
-class MarkerManager {
+class MarkerManager{
     constructor(map, handleMarkerClick) {
-        this.map = map;
+        this.map = map; 
         this.markers = {};
         this.updateMarkers = this.updateMarkers.bind(this);
         this.removeMarker = this.removeMarker.bind(this);
@@ -47,6 +44,32 @@ class MarkerManager {
             map: this.map
         })
         marker.setMap(this.map)
+      // const contentString = `<div class='result-item-tite'>` +
+      //   ${ campsite.name } in ${ campsite.address }
+      // +`</div>`
+        const photo = $("<div />", {class: "infowindow-left"}).css("background-image", `url(${campsite.photoUrls[0]})`)
+        console.log(campsite);
+        const element = $("<div />").append(
+                          $("<div />", {class: "infowindow"})
+                            .append(photo)
+                            .append(
+                              $("<div />", {class: "infowindow-right"})
+                                .append($("<h1 />", { text: campsite.name }))
+                                .append($("<p />", { text: `in ${campsite.address}` }))
+                          ))
+                        .html()
+
+        const infowindow = new google.maps.InfoWindow({
+          content: element,
+          maxWidth: 250
+        }) 
+
+        marker.addListener("mouseover", ()=>{
+          infowindow.open(this.map, marker);
+        })
+        marker.addListener("mouseout", ()=>{
+          infowindow.close();
+        })
         marker.addListener("click", (e) => {
             e.preventDefault;
             this.handleMarkerClick(campsite.id);
