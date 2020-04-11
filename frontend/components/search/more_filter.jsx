@@ -136,22 +136,57 @@ class MoreFilter extends React.Component{
 
   render(){
     const { minCapacity, maxPrice } = this.state; 
-    const count = this.state.selectedCampsites.length; 
+    const count = this.state.selectedCampsites.length;
+
     if ( this.props.categorized ){
       const categorizedList = {};
+      const specialCheckbox = {
+        "Pets allowed": "pets",
+        "Toilets": "toilet",
+        "Campfires": "fire",
+        "Water": "water",
+        "Hiking": "hiking",
+        "Swimming": "swimming",
+        "Lake": "lake",
+        "Beach": "beach"
+      }
+      
+
       Object.keys(this.props.categorized).forEach(key => 
           categorizedList[key] = Object.values(this.props.categorized[key]).map( tag => {
+            let className;
+            let icon; 
+            if (Object.keys(specialCheckbox).includes(tag.name)){
+              className = "special";
+              icon = 
+                <span className={`more-filter-icon 
+                    hc-awesome-${specialCheckbox[tag.name]}`}>
+                </span>              
+            }
+            else{
+              className = "normal";
+              icon = "";
+            }
+
             return (
-              <label key={tag.id}>
+              <label 
+                className={`more-filter-label ${className}-label`} 
+                key={tag.id}
+                onClick={
+                  (e) => {
+                  $(`#${tag.id}`).prop("checked")
+                  $(e.target).toggleClass("checked-label")
+                }}>
                 <input
                   type="checkbox"
+                  className={`${className}-checkbox`}
                   key={`tag-${tag.id}`}
                   name={tag.id}
                   id={tag.id} 
                   onChange={this.handleTagChange}
                   data-campsites={tag.campsites}
                 />
-                
+                {icon}
                 {tag.name}
               </label>
             )
@@ -215,7 +250,7 @@ class MoreFilter extends React.Component{
               {filterSection}
             </div>
             <div className="row filter-buttons">
-              <button onClick={this.clearFilter}>Clear Filter</button>
+              <button className="clear-button" onClick={this.clearFilter}>Clear Filter</button>
               <button className="special-buttons-2" onClick={this.handleSubmit}> 
                 Show {(count < 10) ? count : `${count}+`} camps 
               </button>

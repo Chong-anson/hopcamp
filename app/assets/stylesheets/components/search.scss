@@ -66,7 +66,7 @@
     border-top: 1px solid #ebebeb;
     font-size: 1.1em;
     left: 0;
-    padding: 30px 15%;
+    padding: 30px 5%;
     position: absolute;
     right: 0;
     top: 50px;
@@ -78,9 +78,21 @@
 
 }
 
-.more-filter-section, .strong-filter{
+.more-filter-section{
     display: flex;
     flex-direction: column;
+    width: 30%;
+}
+
+.more-filter-icon{
+    margin-right: 5px;
+    margin-top: -10px;
+}
+
+.strong-filter{
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;  
 }
 
 .filter-select{
@@ -106,8 +118,80 @@
   pointer-events: none;
 }
 
+.normal-checkbox, .special-checkbox{
+    position: relative;
+    top: 3px;
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s;
+    -o-transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s;
+    -webkit-transition: background-color 0.2s ease, border-color 0.2s ease;
+    -webkit-transition-delay: 0s, 0s;
+    transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s;
+    background-color: white;
+    border: 1px solid #757575;
+    border-radius: 2px; 
+}
+
+.normal-checkbox:checked{
+  background-color: #40d9ac;
+  border-color: #3cc69e;
+}
+
+.normal-checkbox:checked::after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00c";
+  color: white;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  bottom: -5px;
+  left: -1px;
+}
+
+.normal-label{
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.special-checkbox{
+  display: none;
+}
+
+.special-label{
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #ebebeb;
+  cursor: pointer;
+  font-size: 18px;
+  width: 40%;
+  height: 45px;
+  margin-bottom: 10px;
+  // margin-left: -28px;
+  min-width: 150px;
+  padding: 9px 10px
+}
+
+.special-label.checked-label{
+    background-color: #f3fbfb;
+    border: 1px solid #3cc69e;
+    color: #40d9ac;
+}
+
 .filter-buttons{
   justify-content: flex-end;
+}
+
+.clear-button:hover{
+  text-decoration: underline;
 }
 
 .results-list{

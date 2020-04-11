@@ -20,7 +20,7 @@ const msp = (state, ownProps) => {
             if (categorized[tag.category])
                 categorized[tag.category].push(tag);
             else
-                categorized[tag.category] = [];
+                categorized[tag.category] = [tag];
         } )
         return ({
             categorized,
