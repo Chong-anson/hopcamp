@@ -15,7 +15,6 @@
 .results-map{
     width: 36.8%;
     height: 855px;
-    // border: 5px solid red;
 }
 
 .filter-bar{
@@ -185,7 +184,6 @@
   width: 70%;
   height: 45px;
   margin-bottom: 10px;
-  // margin-left: -28px;
   min-width: 182px;
   padding: 9px 10px
 }
@@ -265,7 +263,7 @@
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
-    padding: 2px 12px 10px;
+    padding: 2px 12px 7px;
 }
 
 .result-title{
@@ -328,7 +326,8 @@
 }
 
 .result-item p{
-    // font-weight: 600;
     line-height: 1;
+    font-size: 20px;
+    font-weight: 500;
 }
 
