@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_031138) do
+ActiveRecord::Schema.define(version: 2020_04_11_071029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_031138) do
     t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon"
     t.index ["category"], name: "index_tags_on_category"
     t.index ["name"], name: "index_tags_on_name"
   end

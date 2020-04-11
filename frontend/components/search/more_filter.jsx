@@ -44,7 +44,9 @@ class MoreFilter extends React.Component{
 
   handleTagChange(e){
     // update the filter in the state 
-    $(e.target).toggleClass("selected-more-filter");
+    const checkbox = $(e.target);
+    checkbox.toggleClass("selected-more-filter");
+    checkbox.parent().toggleClass("checked-label");
     const filters = document.querySelectorAll("input.selected-more-filter");
     let appliedFilter; 
     let { selectedCampsites } = this.state;
@@ -134,31 +136,32 @@ class MoreFilter extends React.Component{
 
     if ( this.props.categorized ){
       const categorizedList = {};
-      const specialCheckbox = {
-        "Pets allowed": "pets",
-        "Toilets": "toilet",
-        "Campfires": "fire",
-        "Water": "water",
-        // "Hiking": "hiking",
-        // "Swimming": "swimming",
-        "Forest": "forests",
-        "Lake": "lake",
-        "Beach": "beach",
-        "Showers": "shower",
-        "Picnic table": "picnic-table",
-        "Trash": "trash",
-        "Wifi": "wifi",
-        "Cooking equipment": "kitchen"
-      }
+      // const specialCheckbox = {
+      //   "Pets allowed": "pets",
+      //   "Toilets": "toilet",
+      //   "Campfires": "fire",
+      //   "Water": "water",
+      //   // "Hiking": "hiking",
+      //   // "Swimming": "swimming",
+      //   "Forest": "forests",
+      //   "Lake": "lake",
+      //   "Beach": "beach",
+      //   "Showers": "shower",
+      //   "Picnic table": "picnic-table",
+      //   "Trash": "trash",
+      //   "Wifi": "wifi",
+      //   "Cooking equipment": "kitchen"
+      // }
 
       Object.keys(this.props.categorized).forEach(key => 
           categorizedList[key] = Object.values(this.props.categorized[key]).map( tag => {
             let className = "normal";
             let icon = null; 
-            if (Object.keys(specialCheckbox).includes(tag.name)){
+            if (["Amenities", "Terrain"].includes(tag.category) || 
+                ["Hiking", "Swimming"].includes(tag.name)){
               className = "special";
               icon = <span className={`more-filter-icon 
-                      hc-awesome-${specialCheckbox[tag.name]}`}>
+                      hc-awesome-${[tag.icon]}`}>
                       </span>              
             }
 
@@ -166,11 +169,13 @@ class MoreFilter extends React.Component{
               <label 
                 className={`more-filter-label ${className}-label`} 
                 key={tag.id}
-                onClick={
-                  (e) => {
-                  $(`#${tag.id}`).prop("checked")
-                  $(e.target).toggleClass("checked-label")
-                }}>
+                // onClick={
+                //   (e) => {
+                //   $(`#${tag.id}`).prop("checked")
+                //   debugger
+                //   $(e.currentTarget).toggleClass("checked-label")
+                // }}
+                >
                 <input
                   type="checkbox"
                   className={`${className}-checkbox`}
