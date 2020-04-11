@@ -151,6 +151,7 @@ class MoreFilter extends React.Component{
                   onChange={this.handleTagChange}
                   data-campsites={tag.campsites}
                 />
+                
                 {tag.name}
               </label>
             )
@@ -181,34 +182,44 @@ class MoreFilter extends React.Component{
       ))
       return(
         <div className="more-filter-large">
-            <div className="more-filter-section">
-                <h2>Group Size</h2>
-                <select 
-                  className="form-control" 
-                  name="" 
-                  id="" 
-                  defaultValue={minCapacity}
-                  onChange={this.handleSizeChange}
-                >
-                    <option value="" >Any size</option>
-                    {groupSize}
-                    <option value="10">10+ campers</option>
-                    <option value="15">15+ campers</option>
-                </select>
-                <h2>Pricing</h2>
-                <select className="form-control" name="" id=""
-                  defaultValue = {maxPrice === 1/0 ? "" : maxPrice}
-                  onChange={this.handlePriceChange}
-                >
-                    <option value="">Any price</option>
-                    {priceRange}
-                </select>
+            <div className="row">
+              <div className="more-filter-section">
+                  <h2>Group Size</h2>
+                  <div className="filter-select">
+                    <select 
+                      className="form-control" 
+                      name="" 
+                      id="" 
+                      defaultValue={minCapacity}
+                      onChange={this.handleSizeChange}
+                      >
+                        <option value="" >Any size</option>
+                        {groupSize}
+                        <option value="10">10+ campers</option>
+                        <option value="15">15+ campers</option>
+                    </select>
+                    <i className="fas fa-angle-down"></i>
+                  </div>
+                  <h2>Pricing</h2>
+                  <div className="filter-select">
+                    <select className="form-control" name="" id=""
+                      defaultValue = {maxPrice === 1/0 ? "" : maxPrice}
+                      onChange={this.handlePriceChange}
+                      >
+                        <option value="">Any price</option>
+                        {priceRange}
+                    </select>
+                    <i className="fas fa-angle-down"></i>
+                  </div>
+                </div>
+              {filterSection}
             </div>
-            {filterSection}
-            <button onClick={this.clearFilter}>Clear Filter</button>
-            <button onClick={this.handleSubmit}>
-              Show {(count < 10) ? count : `${count}+`} camps 
-            </button>
+            <div className="row filter-buttons">
+              <button onClick={this.clearFilter}>Clear Filter</button>
+              <button className="special-buttons-2" onClick={this.handleSubmit}> 
+                Show {(count < 10) ? count : `${count}+`} camps 
+              </button>
+            </div>
         </div>
     )
   }

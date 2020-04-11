@@ -39,6 +39,10 @@ option {
   -moz-appearance: none;
 }
 
+select {
+  border-radius: 0; 
+}
+
 button,
 input[type="submit"] {
   cursor: pointer;
