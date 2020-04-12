@@ -38,13 +38,20 @@ const FilterBar = (props) => {
                 onClick={handleFilterClick}
                 data-type={Object.values(type)[0]}
                 key={idx}
+                id={`type-${Object.values(type)[0]}`}
                 >
                     <span className={`filter-type-icon hc-awesome-${Object.values(type)[0].toLowerCase()}`}></span>
                     {Object.keys(type)[0]}
             </button>
     )
 
-    useEffect( () => {props.updateFilter} , [typeFilter]); 
+    // useEffect( () => {props.updateFilter} , [typeFilter]); 
+    useEffect( () => {
+      props.typesFilter.forEach( type => {
+        $(`#type-${type}`).addClass("selected-filter");
+        // updateTypeFilter();
+      })
+    } , []); 
 
     return (
         <div className="filter-bar">

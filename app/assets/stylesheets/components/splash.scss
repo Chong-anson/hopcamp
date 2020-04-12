@@ -179,20 +179,20 @@
 
 @media (min-width: 768px)
 {
-  .splash-content{
+  .splash-content, .campsite-main-content{
     width: 740px;
   }
 }
 
 @media (min-width: 992px)
 {
-  .splash-content{
+  .splash-content, .campsite-main-content{
     width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .splash-content{
+  .splash-content, .campsite-main-content{
     width: 1080px;
   }
 }

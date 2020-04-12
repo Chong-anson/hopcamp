@@ -128,10 +128,11 @@ class Search extends React.Component{
                     updateFilter={this.props.updateFilter} 
                     filterButton={this.props.filterButton}
                     updateTypeFilter={this.updateTypeFilter.bind(this)}
+                    typesFilter={this.props.typesFilter}
                     /> 
                 <div className="address-bar">
                     {/* TODO PRINT OUT ADDRESS HERE */}
-                    <h1>The best camping near ... </h1>
+                    <h1>The best camping near {this.props.location} </h1>
                 </div>
                 <div className="results-container">
                     {/* {CampsiteResult} */}

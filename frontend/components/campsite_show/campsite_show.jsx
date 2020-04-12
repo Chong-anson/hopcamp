@@ -6,7 +6,10 @@ import PhotoCarousel from "./photo_carousel";
 class CampsiteShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = { index: 0 };
+    this.state = { 
+      index: 0,
+      truncated: true
+    };
 
   }
 
@@ -48,9 +51,21 @@ class CampsiteShow extends React.Component{
   //   }
   // }
 
+  handleShowMore(e){
+    e.preventDefault()
+    $(e.target).parent().removeClass("truncated")
+    $(e.target).parent().addClass("full")
+    this.setState({truncated: false})
+  }
+
   render(){
-    const {campsite } = this.props;
+    const { campsite } = this.props;
     if (this.props.campsite){
+      const { truncated } = this.state; 
+      const descriptionClass = ( truncated ? "truncated" : "full")
+      const charIndex = campsite.description.indexOf(" ", 730);
+      const campsiteDescription = ( truncated ? campsite.description.slice(0, charIndex)  : campsite.description );
+      const showMore = ( truncated ? <button onClick={this.handleShowMore.bind(this)}>Show more...</button> : "" )
 
       const tags = {};
       tags["Activities"] = [];
@@ -83,8 +98,9 @@ class CampsiteShow extends React.Component{
                 <h2 className="campsite-address">Nearby: </h2>
                 <span>{campsite.address}</span>
               </div>
-              <div className="campsite-description">
-                <p> {campsite.description} </p>
+              <div className={`campsite-description ${descriptionClass}`}>
+                <p> {campsiteDescription} </p>
+                { showMore }
               </div>
               <div className="row show-row">
                 <div className="tags-container">

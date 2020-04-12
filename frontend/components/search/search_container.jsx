@@ -10,7 +10,7 @@ import { filterCampsites } from '../../reducers/selector';
 
 const msp = (state, ownProps) => {
     const { location, lat, lng } = state.ui.map;
-    const { typesFilter } = state.ui.filter.type;
+    const typesFilter = state.ui.filter.type;
     // const parseQueryString = function () {
 
     //     var searchStr = ownProps.location.search;

@@ -6,12 +6,12 @@ class HomeSearch extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            location: "", 
+            location: "San Francisco", 
             startDate: new Date(Date.now()),
             endDate: undefined, 
             lat: "",
             lng: "",
-            campsiteTypes: ""
+            campsiteTypes: "All",
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
@@ -45,15 +45,16 @@ class HomeSearch extends React.Component{
             // }
             const lat = place.geometry.location.lat()
             const lng = place.geometry.location.lng()
+
             console.log(place)
-            // that.props.history.push(`/search?lat=${lat}&lng=${lng}`)
-            that.setState({ lat, lng})
+            const location = place.formatted_address;
+            that.setState({location, lat, lng})
         })
     };
 
     handleSubmit(e){
         e.preventDefault();
-        const { location, campsiteTypes } = this.state;
+        let { location, campsiteTypes } = this.state;
         const geocoder = new google.maps.Geocoder();
         const that = this;
         geocoder.geocode({'address': location}, (res,status) => {
@@ -63,7 +64,9 @@ class HomeSearch extends React.Component{
             const lat = res[0].geometry.location.lat();
             const lng = res[0].geometry.location.lng();
             that.props.updateLocation({ location, lat, lng });
-            that.props.updateFilter("type", [campsiteTypes]);
+            if (campsiteTypes !== "All"){
+              that.props.updateFilter("type", [campsiteTypes]);
+            }
             that.props.history.push(`/search?lat=${lat}&lng=${lng}`)
           }
           else 
@@ -103,9 +106,9 @@ class HomeSearch extends React.Component{
                           onChange={(e)=> this.setState({campsiteTypes: e.target.value})}
                         >
                             <option value="All" defaultChecked>All camping</option>
-                            <option value="Camping">Camping </option>
-                            <option value="Glamping">Glamping</option>
-                            <option value="RVs">RVs</option>
+                            <option value="CAMPING">Campsites </option>
+                            <option value="GLAMPING">Lodging</option>
+                            <option value="RV">RVs</option>
                         </select>
                         <button className="special-buttons-2"> Search </button>
                     </form>
