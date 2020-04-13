@@ -89,12 +89,26 @@
     line-height: 1.42;
 
     color: #333333;
-    height: 300px;
+    // height: 300px;
     text-overflow: ellipsis;
-    overflow: clip;
+    // overflow: clip;
     padding-bottom: 20px;
 
 }
+
+.campsite-description p, .campsite-description button{
+  display: inline;
+}
+
+.campsite-description button{
+  color: #333333;
+  font-weight: 700;
+}
+
+.campsite-description button:hover{
+  text-decoration: underline;
+}
+
 .show-row{
     margin-top: 30px;
 }
@@ -113,6 +127,10 @@
     border: 1px solid #ebebeb;
 }
 
+.tags-container:not(:first-child), .weather-container:not(:first-of-type) {
+  margin-left: 2%
+}
+
 .tags-list{
     margin-top: 20px;
     text-align: center;
@@ -128,6 +146,7 @@
     line-height: 1.42;
     color: #333333;
     padding: 5px;
+    display: flex;
 }
 
 .show-row{

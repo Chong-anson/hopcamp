@@ -4,7 +4,7 @@ json.campsite do
 end
 
 json.tags(@campsite.tags) do |tag|
-    json.(tag, :id, :name, :category)
+    json.(tag, :id, :name, :category, :icon)
 end
 
 json.bookings do 

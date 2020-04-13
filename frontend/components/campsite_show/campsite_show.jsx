@@ -53,9 +53,11 @@ class CampsiteShow extends React.Component{
 
   handleShowMore(e){
     e.preventDefault()
-    $(e.target).parent().removeClass("truncated")
-    $(e.target).parent().addClass("full")
-    this.setState({truncated: false})
+    $(e.target).parent().toggleClass("truncated")
+    $(e.target).parent().toggleClass("full")
+    const truncated = !this.state.truncated;
+    console.log(truncated);
+    this.setState({truncated})
   }
 
   render(){
@@ -65,7 +67,7 @@ class CampsiteShow extends React.Component{
       const descriptionClass = ( truncated ? "truncated" : "full")
       const charIndex = campsite.description.indexOf(" ", 730);
       const campsiteDescription = ( truncated ? campsite.description.slice(0, charIndex)  : campsite.description );
-      const showMore = ( truncated ? <button onClick={this.handleShowMore.bind(this)}>Show more...</button> : "" )
+      const showMore = (truncated ? "Show more..." : "Show less..." )
 
       const tags = {};
       tags["Activities"] = [];
@@ -75,7 +77,10 @@ class CampsiteShow extends React.Component{
       this.props.tags.forEach( (tag,idx) => {
           if (tag){
               tags[tag.category].push(
-                <li key={`${tag.category}-${idx}`}><p> {tag.name}</p></li>
+                <li key={`${tag.category}-${idx}`}>
+                  <span className={`filter-type-icon hc-awesome-${tag.icon}`}></span>
+                  <p> {tag.name}</p>
+                </li>
               )
               }
       })
@@ -99,8 +104,9 @@ class CampsiteShow extends React.Component{
                 <span>{campsite.address}</span>
               </div>
               <div className={`campsite-description ${descriptionClass}`}>
-                <p> {campsiteDescription} </p>
-                { showMore }
+                <p> {campsiteDescription} ;&nbsp;&nbsp; </p>
+                <button onClick={this.handleShowMore.bind(this)}>{showMore}</button>
+                
               </div>
               <div className="row show-row">
                 <div className="tags-container">
