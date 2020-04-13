@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 
-import MiniSearchBox from "./navbar/mini_search"
+import MiniSearchBox from "./navbar/mini_search_container";
 import NavbarContainer from "./navbar/navbar_container";
 import SplashContainer from "./splash/splash_container";
 import SearchContainer from "./search/search_container";
