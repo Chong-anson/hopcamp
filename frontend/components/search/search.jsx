@@ -94,7 +94,7 @@ class Search extends React.Component{
         //     this.setMapbyPlace(this.props.place);
         // }
         if (this.props.lat && this.props.lng){
-            if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng){
+            if (prevProps.lat !== this.props.lat && prevProps.lng !== this.props.lng){
                 this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
             }
         }

@@ -46,7 +46,7 @@ class HomeSearch extends React.Component{
             const lat = place.geometry.location.lat()
             const lng = place.geometry.location.lng()
 
-            console.log(place)
+
             const location = place.formatted_address;
             that.setState({location, lat, lng})
         })
