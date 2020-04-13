@@ -14,7 +14,7 @@ class Search extends React.Component{
         //     this.setMapbyPlace(this.props.place);
         // }
         this.state = { 
-            location: "San Francisco",
+            location: props.location,
             startDate: "",
             endDate: "",
             campsites: this.props.campsites,

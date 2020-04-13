@@ -21,16 +21,24 @@ class Navbar extends React.Component {
                 <div className="navbar-buttons" >
                     <ul className="top-nav">
                       <li>
-                        <Link to={`/users/${currentUserId}/trips`}>Trips</Link>
+                        <div>
+                          <Link to={`/users/${currentUserId}/trips`}>Trips</Link>
+                        </div>
                       </li>
                       <li>
-                        <Link to={`/users/${currentUserId}/Saves`}>Saves</Link>
+                        <div>
+                          <Link to={`/users/${currentUserId}/Saves`}>Saves</Link>
+                        </div>
                       </li>
                       <li>
-                        <Link to={`/users/${currentUserId}/Messages`}>Messages</Link>
+                        <div>
+                          <Link to={`/users/${currentUserId}/Messages`}>Messages</Link>
+                        </div>
                       </li>
                       <li>
-                        <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
+                        <div>
+                          <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
+                        </div>
                       </li>
                     </ul>
                 </div>
