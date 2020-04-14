@@ -7,7 +7,6 @@ const ResultItem = props => {
         <div 
             className="result-item"
             >
-            <div>
                 <Link to={`/campsites/${props.item.id}`}>
                   <div className="result-image-wrapper">
                       <div 
@@ -18,7 +17,7 @@ const ResultItem = props => {
                           >
                       </div>
                   </div>
-                  <div className="result-info">
+                  {/* <div className="result-info"> */}
                       <div className="result-item-main-info">
                         <div className="result-title">
                           <h1>{props.item.name}</h1>
@@ -38,10 +37,8 @@ const ResultItem = props => {
                               </span>
                           <p>${props.item.price}/night</p>
                       </div>
-                  </div>
+                  {/* </div> */}
                 </Link>
-            </div>
-
         </div>
     )
 };

@@ -56,7 +56,7 @@ class CampsiteShow extends React.Component{
         console.log(res, status)
         if (status === 'OK') {
           if (res[0]) {
-            const elevation = res[0].elevation.toFixed(3);
+            const elevation = Math.floor(res[0].elevation);
             that.setState({ elevation })
           } else {
             that.setState({ elevation: "Information not found" })
