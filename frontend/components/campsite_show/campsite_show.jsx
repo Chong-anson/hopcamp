@@ -9,23 +9,24 @@ class CampsiteShow extends React.Component{
     super(props);
     this.state = { 
       index: 0,
-      truncated: true
+      truncated: true,
+      elevation: 0,
+      state: "",
+      country: "",
     };
-
+    this.fetchGeoInfo.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchCampsite(this.props.match.params.id);
-
+    this.fetchGeoInfo();
   }
 
-  componentDidUpdate(prevProps){
-    if(prevProps.match.params.id != this.props.match.params.id){
-      this.props.fetchCampsite(this.props.match.params.id);
-    }
+  fetchGeoInfo(){
+    const that = this;
+    if (this.props.campsite){
 
-    if (this.props.campsite) {
-      const { lat, lng } = this.props.campsite
+      const { lat, lng, address } = this.props.campsite;
       this.map = new google.maps.Map(this.mapNode, {
         center: { lat, lng },
         zoom: 9,
@@ -33,25 +34,52 @@ class CampsiteShow extends React.Component{
         mapTypeId: 'terrain'
       });
       // this.map.setOptions({draggable: false})
-      new google.maps.Marker({ position: { lat, lng }, map: this.map})
+      new google.maps.Marker({ position: { lat, lng }, map: this.map })
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ 'address': address }, (res, status) => {
+        if (status == 'OK') {
+          if (res[0]) {
+            const addressComponents = Object.values(res[0].address_components)
+            const country = addressComponents[addressComponents.length - 2].long_name;
+            const state = addressComponents[addressComponents.length - 3].long_name;
+            that.setState({ country, state })
+          }
+        }
+        else {
+          window.alert(status);
+        }
+      })
+      const elevator = new google.maps.ElevationService;
+      elevator.getElevationForLocations({
+        'locations': [{ lat, lng }]
+      }, function (res, status) {
+        console.log(res, status)
+        if (status === 'OK') {
+          if (res[0]) {
+            const elevation = res[0].elevation.toFixed(3);
+            that.setState({ elevation })
+          } else {
+            that.setState({ elevation: "Information not found" })
+          }
+        }
+        else {
+          // that.setState({ elevation: "Information not found" })
+          window.alert(status);
+        }
+      });
+    }
+
+  }
+  componentDidUpdate(prevProps){
+    
+    // if(prevProps.match.params.id != this.props.match.params.id){
+    //   this.props.fetchCampsite(this.props.match.params.id);
+    // }
+
+    if (this.props.campsite && !prevProps.campsite) {
+      this.fetchGeoInfo();
     }
   }
-
-  // show(n){
-  //     return () => {
-  //     const photos = document.querySelectorAll('.photo-container .photo')
-  //     let index = this.state.index + n ;
-
-  //     console.log("index", index);
-  //     console.log("state", this.state);
-
-  //     if (index === photos.length ) index = 0; 
-  //     else if (index === -1 ) index = photos.length - 1; 
-  //     this.setState({index})
-  //     photos[index].scrollIntoView(false);
-  //   }
-  // }
-
   handleShowMore(e){
     e.preventDefault()
     $(e.target).parent().toggleClass("truncated")
@@ -100,15 +128,29 @@ class CampsiteShow extends React.Component{
           <div className="campsite-main-content">
             <div className="campsite-show-info">
               <div className="campsite-show-title">
-                <h1 className="campsite-title">{campsite.name}</h1>
+                <div className="campsite-address-container">
+                  <h2>{this.state.country} > {this.state.state} > {this.props.campsite.address} </h2>
+                </div>
+                <div className="campsite-title">
+                  <h1>{campsite.name}</h1>
+                  <span className={`hc-awesome-${campsite.campsiteType.toLowerCase()}`}></span> 
+                </div>
                 <h2 className="campsite-address">Nearby: </h2>
                 <span>{campsite.address}</span>
               </div>
               <div className={`campsite-description ${descriptionClass}`}>
-                <p> {campsiteDescription} ;&nbsp;&nbsp; </p>
+                <p> {campsiteDescription} &nbsp;&nbsp; </p>
                 <button onClick={this.handleShowMore.bind(this)}>{showMore}</button>
                 
               </div>
+              {/* <div className="row show-row">
+                <h2>{campsite.campsiteType} Provided</h2>
+                <ul>
+                  <li>1 site</li>
+                  <li>Up to {campsite.capacity} guests</li>
+                </ul>
+
+              </div> */}
               <div className="row show-row">
                 <div className="tags-container">
                   <h2>Amenities</h2>
@@ -121,7 +163,6 @@ class CampsiteShow extends React.Component{
                 <div className="tags-container">
                   <h2>Activites</h2>
                   <ul className="tags-list">
-                    {/* {tags["Activities"]} */}
                     {tags["Activities"].length
                       ? tags["Activities"]
                       : "No activities"}
@@ -130,7 +171,6 @@ class CampsiteShow extends React.Component{
                 <div className="tags-container">
                   <h2>Terrain</h2>
                   <ul className="tags-list">
-                    {/* {tags["Terrain"]} */}
                     {tags["Terrain"].length ? tags["Terrain"] : "No terrain"}
                   </ul>
                 </div>
@@ -138,13 +178,14 @@ class CampsiteShow extends React.Component{
               <div className="row show-row">
                 <h2>The vibe at {campsite.address} </h2>
                 <div className="weather-container">
-                  <h2>Elevation</h2>
+                  <h3>{this.state.elevation} Ft</h3>
+                  <span>Elevation</span>
                 </div>
                 <div className="weather-container">
                   <h3>
                     {campsite.weatherApi ? campsite.weatherApi.weather : null}
                   </h3>
-                  <h2>Weather</h2>
+                  <span>Weather</span>
                 </div>
                 <div className="weather-container">
                   <h3>
@@ -153,10 +194,10 @@ class CampsiteShow extends React.Component{
                       : null}{" "}
                     {"\xB0F"}{" "}
                   </h3>
-                  <h2>Temprature</h2>
+                  <span>Temprature</span>
                 </div>
               </div>
-              <CampsiteDetail />
+              <CampsiteDetail capacity={campsite.capacity} campsiteType={campsite.campsiteType} />
 
             </div>
             <div className="booking-widget">
