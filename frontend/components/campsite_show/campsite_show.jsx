@@ -2,6 +2,7 @@ import React from "react";
 import BookingFormContainer from "../bookings/booking_form_container";
 import BookingList from "../bookings/booking_list";
 import PhotoCarousel from "./photo_carousel";
+import CampsiteDetail from "./campsite_detail";
 
 class CampsiteShow extends React.Component{
   constructor(props){
@@ -155,6 +156,8 @@ class CampsiteShow extends React.Component{
                   <h2>Temprature</h2>
                 </div>
               </div>
+              <CampsiteDetail />
+
             </div>
             <div className="booking-widget">
               <BookingFormContainer campsite={campsite} />
@@ -164,7 +167,6 @@ class CampsiteShow extends React.Component{
               />
             </div>
           </div>
-
           <div className="campsite-map">
             <div id="map-container" ref={(map) => (this.mapNode = map)}></div>
           </div>

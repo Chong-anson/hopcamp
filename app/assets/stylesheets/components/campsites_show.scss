@@ -159,4 +159,28 @@
     width: 100%;
 };
 
+.campsite-details-container{
+  padding-top: 30px;
+}
+
+.details-left{
+  width: 16.6666667%;
+}
+
+.details-right{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.details-right ul{
+  width: 44%;
+}
+
+.details-right h2{
+  display: inline-block;
+  margin: 0;
+}
+
+
+
 
