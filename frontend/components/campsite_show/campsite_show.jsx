@@ -39,9 +39,15 @@ class CampsiteShow extends React.Component{
       geocoder.geocode({ 'address': address }, (res, status) => {
         if (status == 'OK') {
           if (res[0]) {
+            console.log(res[0])
             const addressComponents = Object.values(res[0].address_components)
-            const country = addressComponents[addressComponents.length - 2].long_name;
-            const state = addressComponents[addressComponents.length - 3].long_name;
+            var country, state;
+            addressComponents.forEach( component => {
+              if (component.types.includes('country'))
+                country = component.long_name;
+              else if (component.types.includes("administrative_area_level_1"))
+                state = component.long_name;
+            })
             that.setState({ country, state })
           }
         }
@@ -129,7 +135,7 @@ class CampsiteShow extends React.Component{
             <div className="campsite-show-info">
               <div className="campsite-show-title">
                 <div className="campsite-address-container">
-                  <h2>{this.state.country} > {this.state.state} > {this.props.campsite.address} </h2>
+                  <h2> {this.state.country} > {this.state.state} > {this.props.campsite.address} </h2>
                 </div>
                 <div className="campsite-title">
                   <h1>{campsite.name}</h1>
@@ -143,14 +149,6 @@ class CampsiteShow extends React.Component{
                 <button onClick={this.handleShowMore.bind(this)}>{showMore}</button>
                 
               </div>
-              {/* <div className="row show-row">
-                <h2>{campsite.campsiteType} Provided</h2>
-                <ul>
-                  <li>1 site</li>
-                  <li>Up to {campsite.capacity} guests</li>
-                </ul>
-
-              </div> */}
               <div className="row show-row">
                 <div className="tags-container">
                   <h2>Amenities</h2>
