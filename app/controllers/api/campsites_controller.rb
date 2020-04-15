@@ -28,9 +28,10 @@ class Api::CampsitesController < ApplicationController
                         .with_attached_photos
                         .includes(:tags)
                         .includes(:bookings)
+                        .includes(:reviews)
+                        .includes(:reviewers)
                         .find_by(id: params[:id])
         if @campsite
-
             render :show
         else
             render json: ["Campsite not found"], status: 404 

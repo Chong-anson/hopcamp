@@ -7,18 +7,18 @@ const _defaultState = {};
 const bookingsReducer = (state = _defaultState, {type, payload }) => {
     Object.freeze(state);
 
-    let obj; 
+    let nextState; 
     switch(type){
         case RECEIVE_CURRENT_USER:
-            obj = {};
+            nextState = {};
             if (payload.bookings)
-                obj = payload.bookings
-            return obj
+                nextState = payload.bookings
+            return nextState
         case RECEIVE_CAMPSITE: 
-            obj = {};
+            nextState = {};
             if (payload.bookings)
-                obj = payload.bookings
-            return obj
+                nextState = payload.bookings
+            return nextState
         case RECEIVE_BOOKING:
             return Object.assign({}, state, {[payload.booking.id]: payload.booking})
         default:

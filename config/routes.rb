@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :bookings, except: [:new, :edit]
     resources :tags, only: [:index, :show]
     resources :category, only: [:index, :show]
+    resources :reviews, only: [:create, :update, :destroy]
   end
   root to: "static_pages#root"
 end

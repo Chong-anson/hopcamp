@@ -20,7 +20,8 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     attr_reader :password
 
-    has_many :bookings
+    has_many :bookings,
+      dependent: :destroy 
     
     def password=(password)
         @password = password

@@ -15,7 +15,6 @@
 #  address       :string           not null
 #
 class Campsite < ApplicationRecord
-    
     validates :name, presence: true, uniqueness: true
     validates :price, :campsite_type, :lat, :lng, :description, :address, presence: true
     validates :campsite_type, inclusion: {in: ["CAMPING", "RV", "GLAMPING"]}
@@ -24,13 +23,23 @@ class Campsite < ApplicationRecord
     # belongs_to :venue,
     #     class_name: :Venue
 
-    has_many :bookings
-    has_many :campsite_taggings
+    has_many :bookings,
+      dependent: :destroy 
+      
+    has_many :campsite_taggings,
+      dependent: :destroy
 
     has_many :tags,
         through: :campsite_taggings,
         source: :tag
 
+    has_many :reviews,
+      dependent: :destroy
+
+    has_many :reviewers, 
+      through: :reviews,
+      source: :user 
+    
     has_many_attached :photos
 
     def self.in_bounds(bounds)

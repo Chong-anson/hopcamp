@@ -4,13 +4,15 @@ import campsitesReducer from "./entities/campsites_reducer";
 import venuesReducer from "./entities/venues_reducer";
 import bookingsReducer from "./entities/bookings_reducer";
 import tagsReducer from "./entities/tags_reducer";
+import reviewsReducer from "./entities/reviews_reducer";
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
     bookings: bookingsReducer,
     campsites: campsitesReducer,
     venues: venuesReducer,
-    tags: tagsReducer
+    tags: tagsReducer,
+    reviews: reviewsReducer
 })
 
 export default entitiesReducer;
