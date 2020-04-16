@@ -1,12 +1,36 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteReview } from '../../actions/review_actions';
 
 const ReviewItem = ({review}) => {
   const {reviewer, body} = review;
-                
+  const currentUserId = useSelector(state => state.session.id)
+  const dispatch = useDispatch();
+
   const icon = (review.recommended) ?
           <i className="fas fa-thumbs-up"></i> : 
           <i className="fas fa-thumbs-down"></i>
   const date = new Date(review.updatedAt)
+
+  const handleEdit = (e) => {
+    e.preventDefault(); 
+    $(".review-form-container")
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteReview(review.id));
+  }
+
+  const reviewButtons = (currentUserId === review.userId) ? (
+    <div className="review-item-buttons">
+      <button className="edit-review"
+        onClick={handleEdit}
+        >Edit</button>
+      <button className="delete-review"
+        onClick={handleDelete}
+        >Delete</button>
+    </div> ) : ""
 
   return (
     <div className="review-item">
@@ -15,7 +39,7 @@ const ReviewItem = ({review}) => {
           <div className="recommend-icon">
             {icon}
           </div>
-          <p>
+          <p>&nbsp; 
             <strong> {reviewer} </strong> 
             {(!review.recommended) ? "does not" : "" } recommends this listing.
           </p>
@@ -28,6 +52,9 @@ const ReviewItem = ({review}) => {
         <p>
           {body}
         </p>
+      </div>
+      <div className="review-item-buttons">
+        {reviewButtons}
       </div>
     </div>
   )

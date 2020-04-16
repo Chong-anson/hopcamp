@@ -17,23 +17,29 @@ const ReviewForm = (props) => {
     e.preventDefault();
     const recommended = ($(".selected-option"))[0]
     // if (recommended){
-      const review = {
-        body, 
-        recommended: recommended.getAttribute("data-recommended"),
-        userId: currentUser.id,
-        campsiteId
-      }
-      dispatch(createReview(review))
-        .then( ()=> console.log("success"))
-        .fail(()=> console.log("fail"))
-      $(".review-form-container").removeClass("show")
+    const review = {
+      body, 
+      recommended: recommended.getAttribute("data-recommended"),
+      userId: currentUser.id,
+      campsiteId
+    }
+
+    dispatch(createReview(review))
+      .then( ()=> {
+          props.closeForm();
+          console.log("success")
+        })
+      .fail(()=> console.log("fail"))
+      // setBody("");
+      // $(".selected-option").removeClass("selected-option");
+      // $(".review-title .special-buttons-2").click();
     // }
   }
 
-  const handleCancel = (e) => {
-    e.preventDefault();
-    $(".review-form-container").removeClass("show")
-  }
+  // const handleCancel = (e) => {
+  //   e.preventDefault();
+  //   $(".review-form-container").removeClass("show")
+  // }
 
   return (
     <div className="review-form-container">
@@ -70,7 +76,7 @@ const ReviewForm = (props) => {
               </button>
             </div>
           </label>
-          <button className="clear-button" onClick={handleCancel}>Cancel Review</button>
+          {/* <button className="clear-button" onClick={handleCancel}>Cancel Review</button> */}
           <button 
             className="special-buttons-2"
             onClick={handleSubmit}>Submit Review

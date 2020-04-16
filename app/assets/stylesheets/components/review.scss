@@ -4,13 +4,10 @@
 }
 
 .review-form-container {
+  display: flex;
   justify-content: space-evenly;
-  display: none;
 }
 
-.show{
-  display: flex;
-}
 .review-form-container .left{
   width: 30%;
 }
@@ -32,7 +29,7 @@
 
 .review-form textarea{
   width: 95%;
-  height: 10vh;
+  height: 15vh;
   color: #333333;
   border: solid 1px #ebebeb;
   resize: none; 
@@ -71,9 +68,13 @@
   background-color: #40d9ac;
 }
 
+.review-title .special-buttons-2{
+  padding: 5px 12px;
+} 
 .review-form .special-buttons-2{
   margin-top: 20px;
   margin-left: auto;
+
 }
 
 .recommend-icon {
