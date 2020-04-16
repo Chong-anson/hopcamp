@@ -55,11 +55,29 @@ class Search extends React.Component{
             mapOptions.center =  { lat: selectedCampsite.lat, lng: selectedCampsite.lng }
         }
         else if (this.props.lat && this.props.lng) {
-            const { lat, lng } = this.props
+           var { lat, lng } = this.props
             mapOptions.center = { lat, lng }
+        } 
+        const geocoder = new google.maps.Geocoder();
+        const that = this; 
+
+        if (this.state.location === null){
+            geocoder.geocode({location: {lat, lng}}, (res, status) => {
+              if (status === 'OK'){
+                const addressComponents = res[0].address_components;
+                console.log(res[0]);
+                let city;
+                addressComponents.forEach(component => {
+                  if (component.types.includes("locality"))
+                    city = component.long_name;
+                })
+                that.setState({location: `${city}`})
+              }
+            })
         }
 
-        console.log(mapOptions);
+        console.log(mapOptions.center)
+        // console.log(mapOptions);
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
@@ -71,6 +89,8 @@ class Search extends React.Component{
             // this.map.addListener("click", this.handleClick);
         }
         this.MarkerManager.updateMarkers(this.props.campsites);
+
+
         // const autocomplete = new google.maps.places.Autocomplete(
         //     (document.getElementById("autocomplete")),
         //     { types: ['(cities)'] }
@@ -96,6 +116,9 @@ class Search extends React.Component{
         if (this.props.lat && this.props.lng){
             if (prevProps.lat !== this.props.lat && prevProps.lng !== this.props.lng){
                 this.map.setCenter({ lat: this.props.lat, lng: this.props.lng })
+            }
+            if (prevProps.location !== this.props.location){
+              this.setState({location: this.props.location})
             }
         }
         if (prevProps.campsites !== this.props.campsites){
@@ -132,7 +155,7 @@ class Search extends React.Component{
                     /> 
                 <div className="address-bar">
                     {/* TODO PRINT OUT ADDRESS HERE */}
-                    <h1>The best camping near {this.props.location} </h1>
+                    <h1>The best camping near {this.state.location} </h1>
                 </div>
                 <div className="results-container">
                     {/* {CampsiteResult} */}

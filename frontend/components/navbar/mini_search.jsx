@@ -7,6 +7,7 @@ class MiniSearchBox extends React.Component{
         this.state = {input: ""};
         // this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+
     };
 
     handleChange(e){
@@ -21,15 +22,9 @@ class MiniSearchBox extends React.Component{
             if (place.length == 0) {
                 return;
             }
-
             if (!place.geometry) {
-                // User entered the name of a Place that was not suggested and
-                // pressed the Enter key, or the Place Details request failed.
-                // window.alert("No details available for input: '" + place.name + "'");
-                // return;
                 const service = new google.maps.places.AutocompleteService();
                 const geocoder = new google.maps.Geocoder();
-                // debugger;
                 service.getPlacePredictions({input: that.state.input}, (res, status) => {
                   that.setState({input: res[0].description})
                   geocoder.geocode({ 'address': res[0].description }, (result, status) => {
@@ -39,7 +34,9 @@ class MiniSearchBox extends React.Component{
                       const lng = result[0].geometry.location.lng()
                       const location = result[0].formatted_address
                       that.props.updateLocation({ location, lat, lng });
+
                       that.props.history.replace(`/search?lat=${lat}&lng=${lng}`)
+
                     }
                     else {
                       window.alert(status);
@@ -48,14 +45,14 @@ class MiniSearchBox extends React.Component{
                 })
             }
             else{
-              // var result = place; 
               const lat = place.geometry.location.lat()
               const lng = place.geometry.location.lng()
               const location = place.formatted_address
               that.props.updateLocation({location, lat, lng});
+
               that.props.history.replace(`/search?lat=${lat}&lng=${lng}`)
             }
-            // that.setState({ input: "" })
+            that.setState({ input: "" })
         })
     };
 

@@ -1,9 +1,9 @@
 import { UPDATE_LOCATION } from '../../actions/map_action';
 
 const _defaultState = {
-  location: "San Francisco",
-  lat: 37.7758,
-  lng: -122.435
+  location: null,
+  lat: null,
+  lng: null
 }
 
 export default (state = _defaultState, {type, payload} ) => {

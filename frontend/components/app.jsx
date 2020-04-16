@@ -23,7 +23,9 @@ const App = () => {
                             <div className="logo">
                             </div>
                         </Link>
-                        <MiniSearchBox />
+                        <Switch>
+                          <Route path="/:id" component={MiniSearchBox} />
+                        </Switch>
                     </div>
                     <div className="right">
                         <NavbarContainer />

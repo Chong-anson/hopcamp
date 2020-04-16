@@ -7,25 +7,27 @@ import { fetchCampsites } from "../../actions/campsite_actions";
 import { updateFilter } from "../../actions/filter_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { filterCampsites } from '../../reducers/selector';
+import { updateLocation } from '../../actions/map_action';
 
 const msp = (state, ownProps) => {
-    const { location, lat, lng } = state.ui.map;
+    let { location, lat, lng } = state.ui.map;
+
     const typesFilter = state.ui.filter.type;
-    // const parseQueryString = function () {
+    const parseQueryString = function () {
+        var searchStr = ownProps.location.search;
+        var params = {};
 
-    //     var searchStr = ownProps.location.search;
-    //     var params = {};
-
-    //     searchStr.replace(/([^?=&]+)(=([^&]*))?/g,
-    //         (dum, key, dum2, val) => {
-    //             params[key] = val;
-    //         }
-    //     );
-    //     return params;
-    // };
-    // const query = parseQueryString();
-    // const lat = parseFloat(query['lat']);
-    // const lng = parseFloat(query['lng']);
+        searchStr.replace(/([^?=&]+)(=([^&]*))?/g,
+            (dum, key, dum2, val) => {
+                params[key] = val;
+            }
+        );
+        return params;
+    };
+    const query = parseQueryString();
+    if (query["lat"]) lat = parseFloat(query['lat']);
+    if (query["lng"]) lng = parseFloat(query['lng']);
+    if (query["res"]) location = query["res"].replace(/%20/g, " ");
     return ({
         campsites: filterCampsites(state),
         location,
@@ -39,6 +41,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => ({
     fetchCampsites: ()=> dispatch(fetchCampsites),
     updateFilter: (filter, value) => dispatch(updateFilter(filter,value)),
+    updateLocation: (location) => dispatch(updateLocation),
     filterButton: (
         <button className="type-filter" onClick={()=> dispatch(openModal("filters"))}>More filters</button>
     )

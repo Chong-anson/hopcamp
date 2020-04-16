@@ -53,7 +53,6 @@ const ReviewForm = (props) => {
                 onClick={handleClick}
                 data-recommended="true"
                 >
-                {/* Yes */}
                 <i className="fas fa-thumbs-up"></i>
               </button>
               <button 
@@ -61,11 +60,11 @@ const ReviewForm = (props) => {
                 onClick={handleClick}
                 data-recommended="false"
                 >
-                {/* No */}
                 <i className="fas fa-thumbs-down"></i>
               </button>
             </div>
           </label>
+          
           <button 
             className="special-buttons-2"
             onClick={handleSubmit}>Submit Review

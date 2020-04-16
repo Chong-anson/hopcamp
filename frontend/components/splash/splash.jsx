@@ -14,14 +14,14 @@ class Splash extends React.Component{
     }
 
     render(){
-        const tagsList = this.props.tags.map( el => 
-            <SplashItem key={el.id} tag={el} type="tag" />
-            );
+        // const tagsList = this.props.tags.map( el => 
+        //   <SplashItem key={el.id} tag={el} type="tag" updateLocation={this.props.updateLocation}/>
+        //     );
         const citiesList = this.props.venues.map( el => 
-            <SplashItem key={el.id} venue={el} type="venue" /> 
+          <SplashItem key={el.id} venue={el} type="venue" updateLocation={this.props.updateLocation}/> 
             )
         const longTiles = [
-          {heading: "Unique Tiny House", subheading: "Small & stylish", imgUrl: "splash-photo-1.jpg"},
+          {heading: "Unique Tiny House", subheading: "S mall & stylish", imgUrl: "splash-photo-1.jpg"},
           {heading: "Animal Experience", subheading: "Horses, camels, goats & more", imgUrl: "splash-photo-2.jpg"},
           {heading: "Stunning Sunshine State", subheading: "Colorful camping & glamping", imgUrl: "splash-photo-3.jpg"}
         ].map( el => (
@@ -75,7 +75,7 @@ class Splash extends React.Component{
                 <div className="splash-container">
                   <h2>Discover camping...</h2>
                   {/* RECEOMMENDED_LIST,  */}
-                  <RecommendedList /> 
+                <RecommendedList updateLocation={this.props.updateLocation}/> 
                 </div>
             </div>
         )
