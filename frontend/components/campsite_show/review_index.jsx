@@ -41,9 +41,14 @@ const ReviewIndex = (props) => {
   const reviews = useSelector((state) =>
     state.entities.campsites[campsiteId].reviews.map(id =>
       state.entities.reviews[id]
-    )).map(review =>
-      <ReviewItem review={review} editForm={handleReviewAction("edit", review)} />
-    )
+    )).map(review =>{
+      console.log("r", review)
+      if (review !== undefined){
+        return <ReviewItem review={review} editForm={handleReviewAction("edit", review)} />
+      }
+      else 
+        return null;
+    })
 
   const addReviewButton = (currentUser === undefined ) ? "" : 
   (
@@ -54,20 +59,20 @@ const ReviewIndex = (props) => {
       {button}
     </button>
   )
-
-  return (
-    <div className="show-row">
+  
+    return (
+      <div className="show-row">
       <div className="review-title row">
         <h2> {reviews.length} {reviews.length === 1 ? "review" : "reviews"} </h2>
         {addReviewButton}
       </div>
       { openForm ? 
         <ReviewForm 
-          currentUser={currentUser} 
-          campsiteId={campsiteId} 
-          closeForm={closeForm} 
-          type={formType}
-          review={review}
+        currentUser={currentUser} 
+        campsiteId={campsiteId} 
+        closeForm={closeForm} 
+        type={formType}
+        review={review}
         /> : 
         ""
       }
@@ -75,7 +80,8 @@ const ReviewIndex = (props) => {
         {reviews}
       </div>
     </div>
-  )
+  
+    )
 
 
 };

@@ -12,6 +12,15 @@ json.reviews do
   json.array! campsite.reviews.ids 
 end
 
+if (campsite.reviews.length != 0)  
+  reviews = campsite.reviews
+  rating = (reviews.count { |el| el.recommended }) * 100.0 / reviews.length
+else 
+  rating = 0
+end
+
+json.rating rating 
+
 if campsite.photos
     json.photoUrls campsite.photos.map { |file| url_for(file) }
 end
