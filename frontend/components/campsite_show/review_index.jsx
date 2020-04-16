@@ -9,47 +9,47 @@ const ReviewIndex = (props) => {
   const { campsiteId } = props;
   const [ button, setButton ] = useState("Add Review");
   const [ openForm, setForm ] = useState(false);
-
-  const reviews = useSelector((state) => 
-    state.entities.campsites[campsiteId].reviews.map( id => 
-      state.entities.reviews[id]
-  )).map( review => 
-    <ReviewItem review={review} />
-  )
+  const [ formType, setFormType ] = useState("create")
+  const [ review, setReview ] = useState(null);
 
   const currentUser = useSelector(state => state.entities.users[state.session.id])
   
-  const handleAddReview = (e) => {
+  const handleReviewAction = (formType, reviewObj = null) => (e) => {
     e.preventDefault()
 
-    // const form = $(".review-form-container")
-    // form.toggleClass("show")
-
+    setFormType(formType);
+    setReview(reviewObj);
+    
     if (openForm){
-      console.log(openForm);
       setForm(false);
-      setButton("Add Review")
+      setButton("Add Review");
     }
     else {
-      console.log(openForm);
       setForm(true);
       setButton("X")
-
-      // $(".selected-option").removeClass("selected-option");
     }
+
   };
 
   const closeForm = () => {
     setForm(false);
+    setFormType("create");
+    setReview(null);
     setButton("Add Review")
-
   }
+
+  const reviews = useSelector((state) =>
+    state.entities.campsites[campsiteId].reviews.map(id =>
+      state.entities.reviews[id]
+    )).map(review =>
+      <ReviewItem review={review} editForm={handleReviewAction("edit", review)} />
+    )
 
   const addReviewButton = (currentUser === undefined ) ? "" : 
   (
     <button
       className="special-buttons-2"
-      onClick={handleAddReview}
+      onClick={handleReviewAction("create")}
     >
       {button}
     </button>
@@ -58,11 +58,17 @@ const ReviewIndex = (props) => {
   return (
     <div className="show-row">
       <div className="review-title row">
-        <h2> {reviews.length} reviews </h2>
+        <h2> {reviews.length} {reviews.length === 1 ? "review" : "reviews"} </h2>
         {addReviewButton}
       </div>
       { openForm ? 
-        <ReviewForm currentUser={currentUser} campsiteId={campsiteId} closeForm={closeForm}/> : 
+        <ReviewForm 
+          currentUser={currentUser} 
+          campsiteId={campsiteId} 
+          closeForm={closeForm} 
+          type={formType}
+          review={review}
+        /> : 
         ""
       }
       <div className="review-container">

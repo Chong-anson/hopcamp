@@ -7,6 +7,7 @@ import ReviewForm from "../../components/campsite_show/review_form";
 const _defaultState = {};
 
 const campsitesReducer = (state = _defaultState, {type, payload}) => {
+
   Object.freeze(state);
   let newState;
   newState = Object.assign({}, state); 
@@ -23,7 +24,10 @@ const campsitesReducer = (state = _defaultState, {type, payload}) => {
       newState[booking.campsiteId].bookings.push(booking.id);
       return newState; 
     case RECEIVE_REVIEW:
-      newState[payload.review.campsiteId].reviews.push(payload.review.id);
+      const { review } = payload
+      if (!newState[review.campsiteId].reviews.includes(review.id)){ 
+        newState[review.campsiteId].reviews.push(review.id);
+      }
       return newState;
     case DELETE_REVIEW:
       const id = payload.review.id;

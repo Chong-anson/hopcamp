@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteReview } from '../../actions/review_actions';
 
-const ReviewItem = ({review}) => {
+const ReviewItem = ({review, editForm}) => {
   const {reviewer, body} = review;
   const currentUserId = useSelector(state => state.session.id)
   const dispatch = useDispatch();
@@ -12,10 +12,10 @@ const ReviewItem = ({review}) => {
           <i className="fas fa-thumbs-down"></i>
   const date = new Date(review.updatedAt)
 
-  const handleEdit = (e) => {
-    e.preventDefault(); 
-    $(".review-form-container")
-  };
+  // const handleEdit = (e) => {
+  //   e.preventDefault(); 
+  //   editForm("edit", );
+  // };
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const ReviewItem = ({review}) => {
   const reviewButtons = (currentUserId === review.userId) ? (
     <div className="review-item-buttons">
       <button className="edit-review"
-        onClick={handleEdit}
+        onClick={editForm}
         >Edit</button>
       <button className="delete-review"
         onClick={handleDelete}
@@ -53,9 +53,7 @@ const ReviewItem = ({review}) => {
           {body}
         </p>
       </div>
-      <div className="review-item-buttons">
         {reviewButtons}
-      </div>
     </div>
   )
 }

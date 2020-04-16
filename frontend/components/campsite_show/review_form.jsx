@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { createReview, clearErrors } from "../../actions/review_actions";
+import { createReview, updateReview, clearErrors } from "../../actions/review_actions";
+import ReviewErrors from './review_errors';
 
 const ReviewForm = (props) => {
-  const { currentUser, campsiteId } = props; 
-  const [body, setBody] = useState("");
+  const { currentUser, campsiteId, review, type, closeForm } = props; 
+  const [body, setBody] = useState((review ? review.body : ""));
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (type === "edit" && !review.recommended){
+      $("#review-false").click()
+    }
+  },[])
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -17,22 +24,30 @@ const ReviewForm = (props) => {
     e.preventDefault();
     const recommended = ($(".selected-option"))[0]
     // if (recommended){
-    const review = {
+    const reviewForm = {
       body, 
       recommended: recommended.getAttribute("data-recommended"),
       userId: currentUser.id,
       campsiteId
     }
 
-    dispatch(createReview(review))
+    if (type === "create" ){
+      dispatch(createReview(reviewForm))
       .then( ()=> {
-          props.closeForm();
-          console.log("success")
-        })
+        closeForm();
+        dispatch(clearErrors())
+      })
       .fail(()=> console.log("fail"))
-      // setBody("");
-      // $(".selected-option").removeClass("selected-option");
-      // $(".review-title .special-buttons-2").click();
+    }
+    else {
+      reviewForm.id = review.id; 
+      dispatch(updateReview(reviewForm))
+        .then(() => {
+          closeForm();
+          dispatch(clearErrors())
+        })
+        .fail(() => console.log("fail"))
+    }
     // }
   }
 
@@ -54,20 +69,20 @@ const ReviewForm = (props) => {
             placeholder="Let us know what you feel about this campsite!"
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            // required="true"
           />
           <label id="review-recommended">
             <span>Like this campsite? </span>
             <div className="yes-no-buttons">
-
               <button 
-                className="review-button" 
+                id='review-true'
+                className="review-button selected-option" 
                 onClick={handleClick}
                 data-recommended="true"
                 >
                 <i className="fas fa-thumbs-up"></i>
               </button>
               <button 
+                id='review-false'
                 className="review-button" 
                 onClick={handleClick}
                 data-recommended="false"
@@ -79,9 +94,11 @@ const ReviewForm = (props) => {
           {/* <button className="clear-button" onClick={handleCancel}>Cancel Review</button> */}
           <button 
             className="special-buttons-2"
-            onClick={handleSubmit}>Submit Review
+            onClick={handleSubmit}>{ type === "create" ? "Submit " : "Update "} Review
           </button>
         </form>
+          <ReviewErrors />
+
       </div>
     </div>
   )

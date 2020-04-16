@@ -86,11 +86,15 @@
   background: #40d9ac;
 }
 
+.review-item{
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+
 .review-item-title{
   display: flex;
   justify-content: space-between;
   padding: 10px 5px;
-  margin-right: 15px;
 }
 
 .review-item-title strong{
@@ -110,5 +114,13 @@
 
 .review-body{
   padding: 10px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+}
+
+.review-item-buttons{
+  width: 15%;
+  margin-left: auto;
+  color: #40d9ac;
+  display: flex;
+  justify-content: space-around;
 }
