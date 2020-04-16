@@ -3,6 +3,7 @@ import BookingFormContainer from "../bookings/booking_form_container";
 import BookingList from "../bookings/booking_list";
 import PhotoCarousel from "./photo_carousel";
 import CampsiteDetail from "./campsite_detail";
+import ReviewIndex from "./review_index";
 
 class CampsiteShow extends React.Component{
   constructor(props){
@@ -146,8 +147,7 @@ class CampsiteShow extends React.Component{
               </div>
               <div className={`campsite-description ${descriptionClass}`}>
                 <p> {campsiteDescription} &nbsp;&nbsp; </p>
-                <button onClick={this.handleShowMore.bind(this)}>{showMore}</button>
-                
+                <button onClick={this.handleShowMore.bind(this)}>{showMore}</button>  
               </div>
               <div className="row show-row">
                 <div className="tags-container">
@@ -196,7 +196,7 @@ class CampsiteShow extends React.Component{
                 </div>
               </div>
               <CampsiteDetail capacity={campsite.capacity} campsiteType={campsite.campsiteType} />
-
+              <ReviewIndex campsiteId={this.props.campsite.id} />
             </div>
             <div className="booking-widget">
               <BookingFormContainer campsite={campsite} />

@@ -8,6 +8,10 @@ json.bookings do
     json.array! campsite.bookings.ids
 end
 
+json.reviews do 
+  json.array! campsite.reviews.ids 
+end
+
 if campsite.photos
     json.photoUrls campsite.photos.map { |file| url_for(file) }
 end

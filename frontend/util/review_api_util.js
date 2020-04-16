@@ -5,7 +5,7 @@ export const createReview = review => {
     url: "/api/reviews",
     data:{
       review: {
-        user_id: review.useId, 
+        user_id: review.userId, 
         campsite_id: review.campsiteId,
         body,
         recommended

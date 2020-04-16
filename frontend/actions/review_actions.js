@@ -19,17 +19,17 @@ const removeReview = (review) => ({
 export const createReview =  review => dispatch => {
   return reviewUtil.createReview(review)
           .then(review => dispatch(receiveReview(review)))
-          .catch(errors => console.log(errors))
+          .fail(errors => console.log(errors))
 }
 
 export const updateReview = review => dispatch => {
   return reviewUtil.updateReview(review)
           .then(review => dispatch(receiveReview(review)))
-          .catch(errors => console.log(errors))
+          .fail(errors => console.log(errors))
 } 
 
 export const deleteReview = reviewId => dispatch => {
   return reviewUtil.deleteReview(reviewId)
           .then(review => dispatch(removeReview(review)))
-          .catch(errors => console.log(errors))
+          .fail(errors => console.log(errors))
 }

@@ -16,6 +16,10 @@ export const selectBookings = (state, bookings) => (
   )
 )
 
+export const selectReviews = (state, reviews) => (
+  reviews.map( id => state.entities.reviews[id])
+);
+
 export const filterCampsites = (state) => {
   const { 
     type, 
