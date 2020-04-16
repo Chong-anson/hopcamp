@@ -17,6 +17,6 @@ export default (state = _defaultState, {type, payload}) => {
       nextState = payload.reviews || _defaultState; 
       return nextState;
     default:
-      return _defaultState;
+      return state;
   }
 }

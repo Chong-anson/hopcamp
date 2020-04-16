@@ -4,8 +4,9 @@
     height: 250px;
     display: flex;
     flex-direction: column;
-    border: solid 2px red;
-    padding: 10px
+    border: solid 2px #ebebeb;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 };
 
 .booking-row{

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { createReview } from "../../actions/review_actions";
+import { createReview, clearErrors } from "../../actions/review_actions";
 
 const ReviewForm = (props) => {
   const { currentUser, campsiteId } = props; 
   const [body, setBody] = useState("");
   const dispatch = useDispatch();
+
   const handleClick = (e) => {
     e.preventDefault();
     $(".selected-option").removeClass("selected-option")
@@ -15,18 +16,23 @@ const ReviewForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const recommended = ($(".selected-option"))[0]
-    if (recommended){
+    // if (recommended){
       const review = {
         body, 
         recommended: recommended.getAttribute("data-recommended"),
         userId: currentUser.id,
         campsiteId
       }
-      dispatch(createReview(review));
-    }
-    else {
+      dispatch(createReview(review))
+        .then( ()=> console.log("success"))
+        .fail(()=> console.log("fail"))
+      $(".review-form-container").removeClass("show")
+    // }
+  }
 
-    }
+  const handleCancel = (e) => {
+    e.preventDefault();
+    $(".review-form-container").removeClass("show")
   }
 
   return (
@@ -64,7 +70,7 @@ const ReviewForm = (props) => {
               </button>
             </div>
           </label>
-          
+          <button className="clear-button" onClick={handleCancel}>Cancel Review</button>
           <button 
             className="special-buttons-2"
             onClick={handleSubmit}>Submit Review
