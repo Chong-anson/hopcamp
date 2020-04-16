@@ -42,7 +42,6 @@ const ReviewIndex = (props) => {
     state.entities.campsites[campsiteId].reviews.map(id =>
       state.entities.reviews[id]
     )).map(review =>{
-      console.log("r", review)
       if (review !== undefined){
         return <ReviewItem review={review} editForm={handleReviewAction("edit", review)} />
       }

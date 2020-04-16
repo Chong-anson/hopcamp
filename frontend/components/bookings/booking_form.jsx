@@ -2,6 +2,7 @@ import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import DayPicker, { DateUtils } from 'react-day-picker';
 import { formatDate, parseDate } from "react-day-picker/moment";
+import BookingErrors from "../error_show";
 
 class Bookingform extends React.Component{
     constructor(props){
@@ -114,6 +115,7 @@ class Bookingform extends React.Component{
                         <div className="add-minus-guest">
                             <div>
                                 <button 
+                                    className="guest-size-button"
                                     disabled={disabledMin}
                                     onClick={this.handleGuestClick("minus")}>
                                     <span className="fa fa-minus"></span>
@@ -124,6 +126,7 @@ class Bookingform extends React.Component{
                             </div>
                             <div>
                                 <button 
+                                    className="guest-size-button"
                                     disabled={disabledMax}
                                     onClick={this.handleGuestClick("plus")}>
                                     <span className="fa fa-plus"></span>
@@ -137,7 +140,7 @@ class Bookingform extends React.Component{
                     <button className="special-buttons-2" onClick={this.handleSubmit}>Request Booking!</button>
                 </div>
 
-
+                <BookingErrors type="booking"/>
             </div>
         )
     }

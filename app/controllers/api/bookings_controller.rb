@@ -1,12 +1,14 @@
 class Api::BookingsController < ApplicationController
     def create
         @booking = Booking.new(booking_params)
-        # @booking.start_date = Date.strptime(booking_params[:start_date], '%m-%d-%y')
-        # @booking.end_date = Date.strptime(booking_params[:end_date], '%m-%d-%y')
-        if (@booking.save)
-            render :show
-        else
-            render json: @booking.errors.full_messages, status: 422
+        if (@booking.overlapping_requests.length == 0)
+          if (@booking.save)
+              render :show
+          else
+              render json: @booking.errors.full_messages, status: 422
+          end
+        else 
+          render json: ["This listing has already been booked :("], status: 422
         end
     end
 

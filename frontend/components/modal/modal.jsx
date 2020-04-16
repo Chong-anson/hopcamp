@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import { SignupFormContainer, LoginFormContainer } from "../session_form/form_container";
-import { clearErrors } from "../../actions/session_actions";
+import { clearSessionErrors } from "../../actions/session_actions";
 import { updateFilter } from "../../actions/filter_actions";
 import MoreFilterContainer from '../search/more_filter_container';
 
@@ -44,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => {
-            dispatch(clearErrors());
+            dispatch(clearSessionErrors());
             return dispatch(closeModal());
         },
         updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),

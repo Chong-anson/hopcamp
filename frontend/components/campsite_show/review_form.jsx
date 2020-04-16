@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { createReview, updateReview, clearErrors } from "../../actions/review_actions";
-import ReviewErrors from './review_errors';
+import { createReview, updateReview, clearReviewErrors } from "../../actions/review_actions";
+import ReviewErrors from '../error_show';
 
 const ReviewForm = (props) => {
   const { currentUser, campsiteId, review, type, closeForm } = props; 
@@ -12,6 +12,7 @@ const ReviewForm = (props) => {
     if (type === "edit" && !review.recommended){
       $("#review-false").click()
     }
+    dispatch(clearReviewErrors())
   },[])
 
   const handleClick = (e) => {
@@ -35,7 +36,7 @@ const ReviewForm = (props) => {
       dispatch(createReview(reviewForm))
       .then( ()=> {
         closeForm();
-        dispatch(clearErrors())
+        dispatch(clearReviewErrors())
       })
       .fail(()=> console.log("fail"))
     }
@@ -44,7 +45,7 @@ const ReviewForm = (props) => {
       dispatch(updateReview(reviewForm))
         .then(() => {
           closeForm();
-          dispatch(clearErrors())
+          dispatch(clearReviewErrors())
         })
         .fail(() => console.log("fail"))
     }
@@ -97,7 +98,7 @@ const ReviewForm = (props) => {
             onClick={handleSubmit}>{ type === "create" ? "Submit " : "Update "} Review
           </button>
         </form>
-          <ReviewErrors />
+          <ReviewErrors type="review" />
 
       </div>
     </div>

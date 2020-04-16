@@ -1,14 +1,32 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-const ErrorShow = (props) => {
-    const errors = props.errors[props.type].map( (el,idx) => (
-        <li key={idx}>{el}</li>
-    )
-    )
+const ErrorShow = ({type}) => {
+    let errors = useSelector(state => state.errors[type])
 
-    return (
-        <div className="errors">
+  if (type === "review" && errors.includes("User has already been taken")){
+        errors = ([<li>You have already reviewed this listing!</li>])
+    }
+  else {
+    errors = errors.map( (error,idx) => (
+      <li key={idx}>{error}</li>
+      ))
+  } 
+    // else if (type === "booking"){
+    //   errors = errors.map 
+    // }
+  let heading = null;
+
+  if (type !== "session"){
+    heading = (<h2>
+      {errors.length ? `${type[0].toUpperCase() + type.slice(1).toLowerCase()} Error !!` : ""}
+    </h2>)
+  }
+
+
+return (
+        <div className={`${type}-errors-container`}>
+            {heading}
             <ul>
                 {errors}
             </ul>
@@ -17,12 +35,13 @@ const ErrorShow = (props) => {
     )
 };
 
-const msp = (state) => ({
-    errors: state.errors
-});
+// const msp = (state) => ({
+//     errors: state.errors
+// });
 
-const mdp = (dispatch) => ({
+// const mdp = (dispatch) => ({
 
-});
+// });
 
-export default connect(msp, mdp)(ErrorShow)
+// export default connect(msp, mdp)(ErrorShow)
+export default ErrorShow;
