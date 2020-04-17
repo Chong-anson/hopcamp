@@ -8,12 +8,21 @@
 
 };
 
-.booking-form, .booking-list{
+.booking-form, .booking-list, .payment-form{
     border: solid 2px #ebebeb;
     padding: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
+.payment-form h2{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.payment-form h3{
+  font-size: 16px;
+  font-weight: 400;
+}
 .booking-list{
   margin-top: 15px;
 }
@@ -109,8 +118,8 @@
   margin-top: 0;
 }
 
-.booking-item{
-    padding: 10px 0;
+.booking-item, .payment-row{
+    padding: 10px 5px;
     border-top: 1px #ebebeb solid;
     border-bottom: 1px #ebebeb solid;
 }
@@ -118,6 +127,16 @@
 .booking-list-button{
   display: flex;
   justify-content: center;
+}
+
+.payment-total{
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-total h3{
+  font-size: 20px;
+  font-weight: 500;
 }
 /* .DayPicker-Day--highlighted {
   background-color: yellow;

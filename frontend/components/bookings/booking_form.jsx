@@ -17,6 +17,22 @@ class Bookingform extends React.Component{
 
     };
     
+    overlappingBookings() {
+      const { startDate, endDate } = this.state;
+      const bookingDates = this.props.bookings.map( booking => ({
+        startDate: new Date(booking.startDate + " GMT-12"),
+        endDate: new Date(booking.endDate + " GMT-12")
+      }))
+
+      for(let i = 0; i < bookingDates.length; i++){
+        const bookingDate = bookingDates[i];
+        if (endDate > bookingDate.startDate && startDate < bookingDate.endDate ){
+          return true;
+        }
+      }
+
+      return false;
+    }
 
     handleDateClick(type){
         return (date) => {
@@ -52,25 +68,26 @@ class Bookingform extends React.Component{
       if (endDate - startDate <= 0){
         errors.push("Check in date must be before Check out date")
       }
+      else if (this.overlappingBookings()){
+        errors.push("Booking overlapped with previous bookings :(")
+      }
       return errors;
     }
 
     handleSubmit(e){
         e.preventDefault();
         const button = $(e.currentTarget)
+        const { campsite, currentUserId } = this.props;
         const errors = this.validateBooking();
         if (this.props.currentUserId){
             const booking = Object.assign({}, this.state, {
-                campsiteId: this.props.campsite.id,
-                userId: this.props.currentUserId
+                campsiteId: campsite.id,
+                userId: currentUserId,
             });
             if (errors.length === 0){
-              debugger;
-              this.props.createBooking(booking).then(
-                () => {
-                  button.text("Make another booking")
-                }
-                );
+              console.log("no error")
+              this.props.createPayment(booking);
+              this.props.setTab("checkout");
             }
             else {
               this.props.receiveErrors(errors)
@@ -119,7 +136,6 @@ class Bookingform extends React.Component{
                 </div>
                 <div className="row booking-row">
                     <div className="check-in-btn col-4" >
-                        
                         <h4 className="label">Check in</h4>
                         <div className="daypicker-booking">
 
