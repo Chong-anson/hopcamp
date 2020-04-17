@@ -16,7 +16,7 @@ const receiveBooking = (booking) => ({
     } 
 })
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_BOOKING_ERRORS,
   errors
 })

@@ -8,12 +8,13 @@ class Bookingform extends React.Component{
     constructor(props){
         super(props);
         this.state = { 
-            startDate: new Date(Date.now()),
+            startDate: undefined,
             endDate: undefined,
             groupSize: 1
         }
         this.handleDateClick = this.handleDateClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        console.log(this.state.startDate);
     };
     
     handleDateClick(type){
@@ -33,30 +34,54 @@ class Bookingform extends React.Component{
         }
     };
 
+
+    validateBooking() {
+      const errors = [];
+      const { startDate, endDate, groupSize } = this.state;
+      const blankErr = "can't be blank"
+      if (startDate === undefined){
+        errors.push("Check in date " + blankErr)
+      }
+      if (endDate === undefined){
+        errors.push("Check out date " + blankErr)
+      }
+      if (endDate - startDate <= 0){
+        errors.push("Check in date must be before Check out date")
+      }
+      return errors;
+    }
+
     handleSubmit(e){
         e.preventDefault();
         const button = $(e.currentTarget)
+        const errors = this.validateBooking();
         // button.prop("disabled", true)
         if (this.props.currentUserId){
             const booking = Object.assign({}, this.state, {
                 campsiteId: this.props.campsite.id,
                 userId: this.props.currentUserId
             });
-            this.props.createBooking(booking).then(
+            if (errors.length === 0){
+              this.props.createBooking(booking).then(
                 () => {
                   // button.prop("disabled", false)
                   button.text("Make another booking")
                 }
-            );
+                );
+            }
+            else {
+              this.props.receiveErrors(errors)
+            }
         }
         else{
-            const url = this.props.match.url.concat("/signup")
+            // const url = this.props.match.url.concat("/signup")
             this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
         }
     }
 
     render() {
-        const {startDate, endDate, groupSize} = this.state;
+        let {startDate, endDate, groupSize} = this.state;
+        startDate = startDate || new Date(Date.now())
         const disabledMin = groupSize === 1 ? true : false;
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
         const bookedCheckin = this.props.bookings.map(booking => (
@@ -71,7 +96,8 @@ class Bookingform extends React.Component{
           return next;
         }
 
-        const tomorrow = new Date(startDate);
+        const tomorrow = nextDay(new Date(startDate));
+
         const bookedCheckout = this.props.bookings.map(booking => (
           { from: nextDay(new Date(booking.startDate)), to: new Date(booking.endDate) }
         ))

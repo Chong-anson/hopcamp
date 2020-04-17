@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import BookingForm from "./booking_form";
-import { createBooking, clearErrors } from "../../actions/booking_actions";
+import { createBooking, clearErrors, receiveErrors } from "../../actions/booking_actions";
 
 const msp = (state, ownProps) => ({
     currentUserId: state.session.id,
@@ -11,6 +11,7 @@ const msp = (state, ownProps) => ({
 
 const mdp = (dispatch) => ({
   createBooking: (booking) => (dispatch(createBooking(booking))),
+  receiveErrors: (errors) => dispatch(receiveErrors(errors)),
   clearErrors: () => dispatch(clearErrors())
 });
 
