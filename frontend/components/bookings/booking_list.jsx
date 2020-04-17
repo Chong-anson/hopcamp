@@ -25,10 +25,10 @@ const BookingList = ({user, campsiteId = null, type}) => {
     })
     .sort((a, b) => ((new Date(a.startDate)) - (new Date(b.startDate))))
     .map((booking, idx) =>
-      (booking) ? <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} /> : null
+      <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} type="user"/> 
     )
     return (
-      <div className="booking-list">
+      <div className="user-booking-list">
         {bookings}
       </div>
     )
@@ -41,7 +41,12 @@ const BookingList = ({user, campsiteId = null, type}) => {
     })
     .sort((a, b) => ((new Date(a.startDate)) - (new Date(b.startDate))))
     .map( (booking, idx) => 
-      (booking) ? <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} /> : null
+      (booking) ? 
+        <BookingItem 
+          key={`booking-${idx}`} 
+          idx={idx} booking={booking} 
+          type="campsite" 
+        /> : null
     )
       return (
         <div className="booking-list">

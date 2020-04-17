@@ -41,9 +41,9 @@ const ReviewIndex = (props) => {
   const reviews = useSelector((state) =>
     state.entities.campsites[campsiteId].reviews.map(id =>
       state.entities.reviews[id]
-    )).map(review =>{
+    )).map((review,idx) =>{
       if (review !== undefined){
-        return <ReviewItem review={review} editForm={handleReviewAction("edit", review)} />
+        return <ReviewItem key={`review-${idx}`}review={review} editForm={handleReviewAction("edit", review)} />
       }
       else 
         return null;

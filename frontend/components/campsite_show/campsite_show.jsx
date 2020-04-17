@@ -15,11 +15,13 @@ class CampsiteShow extends React.Component{
       country: "",
     };
     this.fetchGeoInfo.bind(this);
+    console.log(this.props);
   }
 
   componentDidMount(){
-    this.props.fetchCampsite(this.props.match.params.id);
-    this.fetchGeoInfo();
+    this.props.fetchCampsite(this.props.match.params.id).then(
+      () => this.fetchGeoInfo()
+    )
   }
 
   fetchGeoInfo(){
@@ -39,7 +41,7 @@ class CampsiteShow extends React.Component{
       geocoder.geocode({ 'address': address }, (res, status) => {
         if (status == 'OK') {
           if (res[0]) {
-            console.log(res[0])
+            // console.log(res[0])
             const addressComponents = Object.values(res[0].address_components)
             var country, state;
             addressComponents.forEach( component => {
@@ -59,7 +61,7 @@ class CampsiteShow extends React.Component{
       elevator.getElevationForLocations({
         'locations': [{ lat, lng }]
       }, function (res, status) {
-        console.log(res, status)
+        // console.log(res, status)
         if (status === 'OK') {
           if (res[0]) {
             const elevation = Math.floor(res[0].elevation);
@@ -76,6 +78,7 @@ class CampsiteShow extends React.Component{
     }
 
   }
+  
   componentDidUpdate(prevProps){
     
     // if(prevProps.match.params.id != this.props.match.params.id){
@@ -86,6 +89,7 @@ class CampsiteShow extends React.Component{
       this.fetchGeoInfo();
     }
   }
+
   handleShowMore(e){
     e.preventDefault()
     $(e.target).parent().toggleClass("truncated")
@@ -97,7 +101,7 @@ class CampsiteShow extends React.Component{
 
   render(){
     const { campsite, currentUser } = this.props;
-    if (this.props.campsite){
+    if (this.props.campsite && this.props.campsite.tags){
       const { truncated } = this.state; 
       const descriptionClass = ( truncated ? "truncated" : "full")
       const charIndex = campsite.description.indexOf(" ", 730);
@@ -205,10 +209,11 @@ class CampsiteShow extends React.Component{
         </div>
       );   
     }
-    else
-      return(
-          null
+    else{
+      return( 
+        null
       );
+    }
   }
 }
 

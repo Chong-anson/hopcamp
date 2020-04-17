@@ -11,8 +11,9 @@ export default ({photoUrls}) => {
   }, []);
 
   const photos = photoUrls.map(
-    (url) => (
+    (url,idx) => (
       <div
+        key={`photo-${idx}`}
         className="photo"
         style={{
           backgroundImage: `url(${url})`,
