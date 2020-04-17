@@ -98,30 +98,15 @@ class Bookingform extends React.Component{
         startDate = startDate || new Date(Date.now())
         const disabledMin = groupSize === 1 ? true : false;
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
-        const previousDay = (date) => {
-          const previous = new Date(date);
-          previous.setDate(date.getDate() - 1);
-          return previous;
-        }
-        const bookedCheckin = this.props.bookings.map(booking => {
-          // console.log("1", booking.startDate, new Date(booking.startDate +" GMT-12"))
-          return { from: new Date(booking.startDate + " GMT-12"), to: previousDay(new Date(booking.endDate + " GMT-12"))}
-        })
-        const modifiers = {start: startDate, end: endDate};
+        const { bookedCheckin, bookedCheckout, nextDay } = this.props; 
+        
         // const tomorrow = new Date();
         // tomorrow.setDate(startDate.getDate() + 1);
-        let nextDay = (date) => {
-          // console.log("day", date.getDate())
-          const next = new Date(date);
-          next.setDate(date.getDate() + 1);
-          return next;
-        }
 
-        const tomorrow = nextDay(startDate);
-        const bookedCheckout = this.props.bookings.map(booking => (
-          { from: nextDay(new Date(booking.startDate + " GMT-12")), to: new Date(booking.endDate + " GMT-12") }
-        ))
-        console.log(bookedCheckin);
+
+        const tomorrow = this.props.nextDay(startDate);
+
+        // console.log(bookedCheckin);
         return (
             <div className="booking-form">
                 {/* TEST */}
