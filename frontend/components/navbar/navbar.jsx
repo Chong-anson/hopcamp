@@ -48,7 +48,7 @@ class Navbar extends React.Component {
             return (
                 <div className="navbar-buttons">
                     <ul className="top-nav">
-                      <li>
+                      {/* <li>
                         <div>
                           <Link to="/">Near me</Link>
                         </div>
@@ -62,7 +62,7 @@ class Navbar extends React.Component {
                         <div>
                           <Link to="/">Earn Hoppcash</Link>
                         </div>
-                      </li>
+                      </li> */}
                       <li>
                         <div>
                           {this.props.loginForm}
