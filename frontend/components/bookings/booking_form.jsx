@@ -10,13 +10,15 @@ class Bookingform extends React.Component{
         this.state = { 
             startDate: undefined,
             endDate: undefined,
-            groupSize: 1
+            groupSize: 1,
+            hoverRange: undefined
         }
         this.handleDateClick = this.handleDateClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(this.state.startDate);
+
     };
     
+
     handleDateClick(type){
         return (date) => {
             this.setState({[type]: date})
@@ -55,7 +57,6 @@ class Bookingform extends React.Component{
         e.preventDefault();
         const button = $(e.currentTarget)
         const errors = this.validateBooking();
-        // button.prop("disabled", true)
         if (this.props.currentUserId){
             const booking = Object.assign({}, this.state, {
                 campsiteId: this.props.campsite.id,
@@ -64,7 +65,6 @@ class Bookingform extends React.Component{
             if (errors.length === 0){
               this.props.createBooking(booking).then(
                 () => {
-                  // button.prop("disabled", false)
                   button.text("Make another booking")
                 }
                 );
@@ -79,6 +79,17 @@ class Bookingform extends React.Component{
         }
     }
 
+    handleDayHover(startDate) {
+      return (date, modifiers={}) => {
+        if (modifiers.disabled){
+          return 
+        }
+        else {
+          this.setState({ hoverRange: { from: startDate, to: date } })
+        }
+      }
+    }
+
     render() {
         let {startDate, endDate, groupSize} = this.state;
         startDate = startDate || new Date(Date.now())
@@ -91,17 +102,17 @@ class Bookingform extends React.Component{
         // const tomorrow = new Date();
         // tomorrow.setDate(startDate.getDate() + 1);
         let nextDay = (date) => {
-          const next = new Date();
+          // console.log("day", date.getDate())
+          const next = new Date(date);
           next.setDate(date.getDate() + 1);
           return next;
         }
 
-        const tomorrow = nextDay(new Date(startDate));
-
+        const tomorrow = nextDay(startDate);
         const bookedCheckout = this.props.bookings.map(booking => (
           { from: nextDay(new Date(booking.startDate)), to: new Date(booking.endDate) }
         ))
-        // if (this.props.currentUser.bookings)
+
         return (
             <div className="booking-form">
                 {/* TEST */}
@@ -143,9 +154,16 @@ class Bookingform extends React.Component{
                                 onDayChange={this.handleDateClick("endDate")}
                                 // selectedDays={endDate}
                                 placeholder="Select date"
+                                
                                 dayPickerProps={{
+                                    onDayMouseEnter: this.handleDayHover.call(this, startDate),
+                                    onDayMouseLeave: ()=>{this.setState({hoverRange: undefined})},
                                     selectedDays: [startDate, { from: startDate, to: endDate }],
                                     disabledDays: bookedCheckout.concat([{ before: tomorrow }]),
+                                    modifiers: {
+                                      hoverRange: this.state.hoverRange,
+                                      startDate: startDate
+                                    },
                                     month: tomorrow
                                 }}
                             />
