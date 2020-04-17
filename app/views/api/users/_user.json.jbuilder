@@ -4,5 +4,5 @@ json.bookings do
 end
 
 json.campsites do 
-  json.array! user.booked_campsties.id
+  json.array! user.booked_campsites.id
 end
