@@ -19,6 +19,6 @@ json.campsites do
             end
             json.truncated true 
         end
-      end
+    end
 end
 
