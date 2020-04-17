@@ -1,14 +1,17 @@
 import React from "react";
 
-export default ({booking}) => {
+export default ({booking, idx}) => {
   const { status, startDate, endDate, groupSize } = booking; 
   return (
   <div className="booking-item">
-    <p>{status}</p>
-    <p>{startDate}</p>
-    <p>{endDate}</p>
-    <p>{groupSize}</p>
+      <h3>Booking #{idx+1}</h3>
+      <p>From &nbsp;
+        <strong>{startDate}</strong>
+        &nbsp; to &nbsp;
+        <strong>{endDate}</strong>
+      </p>
+      <p> Guest number: {groupSize}</p>
+      
   </div>
   )
 }
-

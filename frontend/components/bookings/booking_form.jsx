@@ -35,13 +35,18 @@ class Bookingform extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
+        const button = $(e.currentTarget)
+        // button.prop("disabled", true)
         if (this.props.currentUserId){
             const booking = Object.assign({}, this.state, {
                 campsiteId: this.props.campsite.id,
                 userId: this.props.currentUserId
             });
             this.props.createBooking(booking).then(
-                () => window.alert("booking created")
+                () => {
+                  // button.prop("disabled", false)
+                  button.text("Make another booking")
+                }
             );
         }
         else{
@@ -54,11 +59,22 @@ class Bookingform extends React.Component{
         const {startDate, endDate, groupSize} = this.state;
         const disabledMin = groupSize === 1 ? true : false;
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
+        const bookedCheckin = this.props.bookings.map(booking => (
+          {from: new Date(booking.startDate), to: new Date(booking.endDate)}
+        ))
         const modifiers = {start: startDate, end: endDate};
-        let nextDay = new Date();
-        nextDay.setDate(startDate.getDate() + 1);
+        // const tomorrow = new Date();
+        // tomorrow.setDate(startDate.getDate() + 1);
+        let nextDay = (date) => {
+          const next = new Date();
+          next.setDate(date.getDate() + 1);
+          return next;
+        }
 
-        console.log(this.props)
+        const tomorrow = new Date(startDate);
+        const bookedCheckout = this.props.bookings.map(booking => (
+          { from: nextDay(new Date(booking.startDate)), to: new Date(booking.endDate) }
+        ))
         // if (this.props.currentUser.bookings)
         return (
             <div className="booking-form">
@@ -83,9 +99,9 @@ class Bookingform extends React.Component{
                                 onDayChange={this.handleDateClick("startDate")}
                                 dayPickerProps={ {
                                     selectedDays: [startDate, {from: startDate, to: endDate}],
-                                    disabledDays: {
-                                        before: new Date(Date.now()) 
-                                    },
+                                    disabledDays: bookedCheckin.concat([{
+                                    before: new Date(Date.now())
+                                  }]),
                                 }}
                             />
                         </div>
@@ -103,8 +119,8 @@ class Bookingform extends React.Component{
                                 placeholder="Select date"
                                 dayPickerProps={{
                                     selectedDays: [startDate, { from: startDate, to: endDate }],
-                                    disabledDays: { before: nextDay },
-                                    month: nextDay
+                                    disabledDays: bookedCheckout.concat([{ before: tomorrow }]),
+                                    month: tomorrow
                                 }}
                             />
                         </div>
@@ -136,11 +152,12 @@ class Bookingform extends React.Component{
                 
                     </div>
                 </div>
+                <BookingErrors type="booking" />
+
                 <div className="booking-submit-btn">
                     <button className="special-buttons-2" onClick={this.handleSubmit}>Request Booking!</button>
                 </div>
 
-                <BookingErrors type="booking"/>
             </div>
         )
     }

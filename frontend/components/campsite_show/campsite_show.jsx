@@ -1,8 +1,7 @@
 import React from "react";
-import BookingFormContainer from "../bookings/booking_form_container";
-import BookingList from "../bookings/booking_list";
 import PhotoCarousel from "./photo_carousel";
 import CampsiteDetail from "./campsite_detail";
+import BookingWidget from "../bookings/booking_widget";
 import ReviewIndex from "./review_index";
 
 class CampsiteShow extends React.Component{
@@ -97,7 +96,7 @@ class CampsiteShow extends React.Component{
   }
 
   render(){
-    const { campsite } = this.props;
+    const { campsite, currentUser } = this.props;
     if (this.props.campsite){
       const { truncated } = this.state; 
       const descriptionClass = ( truncated ? "truncated" : "full")
@@ -198,13 +197,7 @@ class CampsiteShow extends React.Component{
               <CampsiteDetail capacity={campsite.capacity} campsiteType={campsite.campsiteType} />
               <ReviewIndex campsiteId={this.props.campsite.id} />
             </div>
-            <div className="booking-widget">
-              <BookingFormContainer campsite={campsite} />
-              <BookingList
-                user={this.props.currentUser}
-                campsiteId={campsite.id}
-              />
-            </div>
+            <BookingWidget campsite={campsite} currentUser={currentUser} />
           </div>
           <div className="campsite-map">
             <div id="map-container" ref={(map) => (this.mapNode = map)}></div>
