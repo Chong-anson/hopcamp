@@ -7,8 +7,8 @@ export const createBooking = booking => {
                user_id: booking.userId,
                campsite_id: booking.campsiteId,
                group_size: booking.groupSize,
-               start_date: booking.startDate,
-               end_date: booking.endDate 
+               start_date: booking.startDate.toJSON(),
+               end_date: booking.endDate.toJSON()
             }
         }
     }

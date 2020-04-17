@@ -1,7 +1,6 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import DayPicker, { DateUtils } from 'react-day-picker';
-import { formatDate, parseDate } from "react-day-picker/moment";
+// import { formatDate, parseDate } from "react-day-picker/moment";
 import BookingErrors from "../error_show";
 
 class Bookingform extends React.Component{
@@ -22,6 +21,9 @@ class Bookingform extends React.Component{
     handleDateClick(type){
         return (date) => {
             this.setState({[type]: date})
+            if (type === "startDate"){
+              this.endDate.getInput().focus();
+            }
         }
     };
 
@@ -63,6 +65,7 @@ class Bookingform extends React.Component{
                 userId: this.props.currentUserId
             });
             if (errors.length === 0){
+              debugger;
               this.props.createBooking(booking).then(
                 () => {
                   button.text("Make another booking")
@@ -95,9 +98,15 @@ class Bookingform extends React.Component{
         startDate = startDate || new Date(Date.now())
         const disabledMin = groupSize === 1 ? true : false;
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
-        const bookedCheckin = this.props.bookings.map(booking => (
-          {from: new Date(booking.startDate), to: new Date(booking.endDate)}
-        ))
+        const previousDay = (date) => {
+          const previous = new Date(date);
+          previous.setDate(date.getDate() - 1);
+          return previous;
+        }
+        const bookedCheckin = this.props.bookings.map(booking => {
+          // console.log("1", booking.startDate, new Date(booking.startDate +" GMT-12"))
+          return { from: new Date(booking.startDate + " GMT-12"), to: previousDay(new Date(booking.endDate + " GMT-12"))}
+        })
         const modifiers = {start: startDate, end: endDate};
         // const tomorrow = new Date();
         // tomorrow.setDate(startDate.getDate() + 1);
@@ -110,9 +119,9 @@ class Bookingform extends React.Component{
 
         const tomorrow = nextDay(startDate);
         const bookedCheckout = this.props.bookings.map(booking => (
-          { from: nextDay(new Date(booking.startDate)), to: new Date(booking.endDate) }
+          { from: nextDay(new Date(booking.startDate + " GMT-12")), to: new Date(booking.endDate + " GMT-12") }
         ))
-
+        console.log(bookedCheckin);
         return (
             <div className="booking-form">
                 {/* TEST */}
@@ -131,14 +140,12 @@ class Bookingform extends React.Component{
 
                             <DayPickerInput
                                 format="LL"
-                                formatDate={formatDate}
+                                // formatDate={formatDate}
                                 placeholder="Select date"
                                 onDayChange={this.handleDateClick("startDate")}
                                 dayPickerProps={ {
                                     selectedDays: [startDate, {from: startDate, to: endDate}],
-                                    disabledDays: bookedCheckin.concat([{
-                                    before: new Date(Date.now())
-                                  }]),
+                                    disabledDays: bookedCheckin.concat([{before: new Date(Date.now())}]),
                                 }}
                             />
                         </div>
@@ -150,16 +157,15 @@ class Bookingform extends React.Component{
                             <DayPickerInput 
                                 ref={ daypicker => this.endDate = daypicker}
                                 format="LL"
-                                formatDate={formatDate}
+                                // formatDate={formatDate}
                                 onDayChange={this.handleDateClick("endDate")}
                                 // selectedDays={endDate}
                                 placeholder="Select date"
-                                
                                 dayPickerProps={{
                                     onDayMouseEnter: this.handleDayHover.call(this, startDate),
                                     onDayMouseLeave: ()=>{this.setState({hoverRange: undefined})},
                                     selectedDays: [startDate, { from: startDate, to: endDate }],
-                                    disabledDays: bookedCheckout.concat([{ before: tomorrow }]),
+                                    disabledDays: bookedCheckout.concat([{ before: nextDay(startDate) }]),
                                     modifiers: {
                                       hoverRange: this.state.hoverRange,
                                       startDate: startDate

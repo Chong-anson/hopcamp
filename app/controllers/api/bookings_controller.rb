@@ -1,6 +1,7 @@
 class Api::BookingsController < ApplicationController
     def create
         @booking = Booking.new(booking_params)
+        # debugger
         if (@booking.overlapping_requests.length == 0)
           if (@booking.save)
               render :show
