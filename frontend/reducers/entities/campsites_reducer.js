@@ -35,11 +35,13 @@ const campsitesReducer = (state = _defaultState, {type, payload}) => {
       newState[payload.review.campsiteId].reviews.splice(idx,1);
       return newState;
     case RECEIVE_CURRENT_USER:
-      Object.keys(payload.campsites).forEach( id => {
-        if (newState[id] === undefined ){
-          newState[id] = payload.campsites[id]
-        }
-      })
+      if (payload.campsites){
+        Object.keys(payload.campsites).forEach( id => {
+          if (newState[id] === undefined ){
+            newState[id] = payload.campsites[id]
+          }
+        })
+      }
       return newState;
     default: 
         return state;
