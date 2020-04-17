@@ -924,7 +924,7 @@ Campsite.all.each do |campsite|
         begin
             campsite.photos.attach(io: open("https://hopcamp-seed.s3-us-west-1.amazonaws.com/photos/#{campsite[:image_url]}-#{idx}.jpeg"), filename: "#{campsite[:image_url]}-#{idx}.jpeg")
             # puts "#{campsite[:name]}-#{idx} photo attached "
-        rescue => exception
+        rescue 
             # puts "#{campsite[:name]}-#{idx} photo fail"
             next        
         end
