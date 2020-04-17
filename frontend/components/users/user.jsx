@@ -2,14 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { fetchCurrentUser } from '../../actions/session_actions';
+import BookingList from '../bookings/booking_list';
 
 const User = (props) => {
     // console.log(props);
-    const {firstName, lastName, email}  = props.currentUser;
+    const currentUser = useSelector(state => state.entities.users[state.session.id])
+    const {firstName, lastName, email}  = currentUser;
 
     let { url } = useRouteMatch();
     // console.log(props.bookings);
     const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(fetchCurrentUser(currentUser.id))
+
+    }, [])
     let bookings = {};
     // useEffect( () => {dispatch(fetchCurrentUser(props.currentUser.id))}, [props.currentUser.id]);
     // const bookings = useSelector( (state) => (
@@ -47,6 +53,7 @@ const User = (props) => {
                 }}
                 />  */}
                 {/* <Route path="/>  */}
+            <BookingList user={currentUser} type="user"/>
         </div>
     )
 }

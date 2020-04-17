@@ -13,10 +13,10 @@ class Api::BookingsController < ApplicationController
         end
     end
 
-    def index
-        @bookings = Booking.all 
-        render :index
-    end
+    # def index
+    #     @bookings = Booking.all 
+    #     render :index
+    # end
 
     private 
     def booking_params

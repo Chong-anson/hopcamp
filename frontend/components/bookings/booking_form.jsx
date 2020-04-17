@@ -85,7 +85,6 @@ class Bookingform extends React.Component{
                 userId: currentUserId,
             });
             if (errors.length === 0){
-              console.log("no error")
               this.props.createPayment(booking);
               this.props.setTab("checkout");
             }

@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
-import User from './user';
-import { selectBookings } from "../../reducers/selector";
+// import { connect } from 'react-redux';
+// import User from './user';
+// import { selectBookings } from "../../reducers/selector";
 
-const msp = (state) => {
-    return ({
-        currentUser: state.entities.users[state.session.id],
-    });
-}
+// const msp = (state) => {
+//     return ({
+//         currentUser: ,
+//     });
+// }
 
-const mdp = (dispatch) => ({
+// const mdp = (dispatch) => ({
 
-});
+// });
  
-export default connect(msp,mdp)(User)
+// export default connect(msp,mdp)(User)

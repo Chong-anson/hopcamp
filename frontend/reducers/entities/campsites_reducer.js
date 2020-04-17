@@ -1,5 +1,5 @@
 import { RECEIVE_CAMPSITE, RECEIVE_CAMPSITES } from "../../actions/campsite_actions";
-// import { RECEIVE_VENUE } from "../../actions/venue_actions";
+import { RECEIVE_CURRENT_USER } from "../../actions/session_actions";
 import { RECEIVE_BOOKING } from "../../actions/booking_actions";
 import { RECEIVE_REVIEW, DELETE_REVIEW } from "../../actions/review_actions";
 import ReviewForm from "../../components/campsite_show/review_form";
@@ -33,6 +33,13 @@ const campsitesReducer = (state = _defaultState, {type, payload}) => {
       const id = payload.review.id;
       const idx = newState[payload.review.campsiteId].reviews.indexOf(id);
       newState[payload.review.campsiteId].reviews.splice(idx,1);
+      return newState;
+    case RECEIVE_CURRENT_USER:
+      Object.keys(payload.campsites).forEach( id => {
+        if (newState[id] === undefined){
+          newState[id] = payload.campsites[id]
+        }
+      })
       return newState;
     default: 
         return state;

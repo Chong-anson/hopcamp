@@ -9,3 +9,15 @@ json.bookings do
         end
     end
 end
+
+json.campsites do 
+    @user.booked_campsites.each do | campsite | 
+        json.set! campsite.id do
+            json.extract! campsite, :id, :name, :address, :campsite_type
+            if campsite.photos
+                json.photoUrls campsite.photos.map { |file| url_for(file) }
+            end
+        end
+      end
+end
+

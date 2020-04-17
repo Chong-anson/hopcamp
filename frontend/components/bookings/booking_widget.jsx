@@ -20,7 +20,7 @@ const BookingWidget = (props) => {
   const handleCheckOut = (e) => {
     e.preventDefault();
     dispatch(createBooking(booking))
-      .then(() => setTab("confirmed"))
+      .then(() => setTab("finish"))
       .fail((err) => dispatch(receiveErrors(err.responseJSON)))
   };
 
@@ -80,7 +80,7 @@ const BookingWidget = (props) => {
       </div>
     )
   }
-  else if (tab === "confirmed"){
+  else if (tab === "finish"){
     bookingForm = (
       <div className="payment-form">
         <h2>Booking Confirmed. Thank you!</h2>
@@ -99,6 +99,7 @@ const BookingWidget = (props) => {
     <BookingList
       user={currentUser}
       campsiteId={campsite.id}
+      type="campsite"
       />
   </div>
   )

@@ -22,6 +22,10 @@ class User < ApplicationRecord
 
     has_many :bookings,
       dependent: :destroy 
+
+    has_many :booked_campsites,
+      through: :bookings,
+      source: :campsite
     
     def password=(password)
         @password = password

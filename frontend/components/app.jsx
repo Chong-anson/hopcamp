@@ -10,7 +10,7 @@ import Modal from "./modal/modal";
 import { AuthRoute, ProtectedRoute } from "../util/route_utils.jsx";
 import CampsiteShowContainer from "./campsite_show/campsite_show_container";
 import { SignupFormContainer, LoginFormContainer } from "./session_form/form_container";
-import UserContainer from "./users/user_container"
+import UserComponent from "./users/user";
 
 const App = () => {
     return(
@@ -38,7 +38,7 @@ const App = () => {
                 <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />
                 <AuthRoute exact path="/campsites/:campsiteId/login" component={LoginFormContainer} />
                 <Route exact path="/campsites/:id" component={CampsiteShowContainer} /> 
-                <Route path="/users/:id" component={UserContainer} />
+                <Route path="/users/:id" component={UserComponent} />
                 <Route exact path="/search" component={SearchContainer} /> 
                 <Route path="/" component={SplashContainer} />
             </Switch>
