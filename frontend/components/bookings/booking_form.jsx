@@ -20,8 +20,8 @@ class Bookingform extends React.Component{
     overlappingBookings() {
       const { startDate, endDate } = this.state;
       const bookingDates = this.props.bookings.map( booking => ({
-        startDate: new Date(booking.startDate + " GMT-12"),
-        endDate: new Date(booking.endDate + " GMT-12")
+        startDate: (new Date(booking.startDate + " GMT-12")).getDate(),
+        endDate: (new Date(booking.endDate + " GMT-12")).getDate()
       }))
 
       for(let i = 0; i < bookingDates.length; i++){

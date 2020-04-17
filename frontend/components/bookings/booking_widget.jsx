@@ -37,17 +37,38 @@ const BookingWidget = (props) => {
     const dayDiff = Math.round(endDate - startDate) / (1000 * 24 * 60 * 60);
     bookingForm = (
       <div className="payment-form">
-        <h2>Your trip to:  </h2>
-        <h2>{campsite.name}</h2>
-        <h3>Type: {campsite.campsiteType}</h3>
-        <h3>From: {startDate.toDateString()} </h3>
-        <h3>To: {endDate.toDateString()}</h3>
-        <div className="payment-row">
-          <h3>Number of Nights: {dayDiff}</h3>
-          <h3>Nightly Price: {campsite.price}</h3>
-          <h3>Guests: {groupSize}</h3>
+        <div className="payment-title">
+          <h2>Your trip to:  </h2>
+          <h2>{campsite.name}</h2>
+          <div className="space-between">
+            <span>Type: </span>
+            <span>{campsite.campsiteType}</span>
+          </div>
+          <div className="space-between">
+            <span>From: </span>
+            <span>{startDate.toDateString()}</span>
+          </div>
+          <div className="space-between">
+            <span>To: </span>
+            <span>{endDate.toDateString()}</span>
+          </div>
         </div>
-        <div className="payment-total">
+
+        <div className="payment-row">
+          <div className="space-between">
+            <span>Number of Nights: </span>
+            <span>{dayDiff}</span>
+          </div>
+          <div className="space-between">
+            <span>Nightly Price: </span>
+            <span> {campsite.price} </span>
+          </div>
+          <div className="space-between">
+            <span>Guests: </span>
+            <span>{groupSize}</span>
+          </div>
+        </div>
+        <div className="payment-total space-between">
           <h3>Total: </h3>
           <h3>{Math.round(dayDiff * campsite.price)}</h3>
         </div>
@@ -60,14 +81,16 @@ const BookingWidget = (props) => {
     )
   }
   else if (tab === "confirmed"){
-    <div className="booking-form">
-      <h2>Booking Confirmed. Thank you!</h2>
-      <div className="booking-submit-btn">
-        <button className="special-buttons-2"
-          onClick={handleConfirm}
-        >Make another booking!</button>
+    bookingForm = (
+      <div className="payment-form">
+        <h2>Booking Confirmed. Thank you!</h2>
+        <div className="booking-submit-btn">
+          <button className="special-buttons-2"
+            onClick={handleConfirm}
+            >Make another booking!</button>
+        </div>
       </div>
-    </div>
+    )
   }
 
   return (

@@ -110,7 +110,12 @@ span.icon {
   font-size: 24px;
 }
 
-.row{
+.row, .space-between{
     width: 100%;
     display: flex;
 };
+
+.space-between{
+  justify-content: space-between;
+  margin: 5px 0;
+}

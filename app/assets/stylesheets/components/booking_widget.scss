@@ -14,15 +14,22 @@
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
+.payment-title {
+  padding: 5px;
+}
+
 .payment-form h2{
   font-size: 20px;
   font-weight: 500;
+  // margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .payment-form h3{
   font-size: 16px;
   font-weight: 400;
 }
+
 .booking-list{
   margin-top: 15px;
 }
@@ -130,13 +137,13 @@
 }
 
 .payment-total{
-  display: flex;
-  justify-content: space-between;
+  padding: 5px;
 }
 
 .payment-total h3{
   font-size: 20px;
   font-weight: 500;
+  margin-top: 0;
 }
 /* .DayPicker-Day--highlighted {
   background-color: yellow;
