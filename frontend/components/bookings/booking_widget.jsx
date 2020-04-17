@@ -99,7 +99,6 @@ const BookingWidget = (props) => {
     <BookingList
       user={currentUser}
       campsiteId={campsite.id}
-      type="campsite"
       />
   </div>
   )

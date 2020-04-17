@@ -17,6 +17,7 @@ json.campsites do
             if campsite.photos
                 json.photoUrls campsite.photos.map { |file| url_for(file) }
             end
+            json.truncated true 
         end
       end
 end

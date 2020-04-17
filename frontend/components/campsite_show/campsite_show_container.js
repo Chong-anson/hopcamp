@@ -7,7 +7,7 @@ const msp = (state, ownProps) => {
     const campsite = state.entities.campsites[ownProps.match.params.id];
     return ({
         campsite: state.entities.campsites[ownProps.match.params.id],
-        tags: (campsite && campsite.tags) ? campsite.tags.map( tagId => state.entities.tags[tagId]) : [] ,
+        tags: (campsite && !campsite.truncated ) ? campsite.tags.map( tagId => state.entities.tags[tagId]) : [] ,
         currentUser: state.entities.users[state.session.id]
     })
 }

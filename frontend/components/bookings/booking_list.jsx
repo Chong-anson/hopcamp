@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import BookingItem from "./booking_item";
 
-const BookingList = ({user, campsiteId = null, type}) => {
+const BookingList = ({user, campsiteId = null}) => {
   // show bookings the user booked 
   // show bookings user booked for that campsite 
   //  (show bookings the campsite owner has)
@@ -14,26 +14,28 @@ const BookingList = ({user, campsiteId = null, type}) => {
     }, 'slow')
   }
 
-  if (type === "user" && user){
-    var bookings = useSelector(state => {
-      let bookingState = Object.keys(state.entities.bookings);
-      if (bookingState.length > 0)
-        bookingState = user.bookings.map(bookingId =>
-          state.entities.bookings[bookingId]
-        )
-      return bookingState;
-    })
-    .sort((a, b) => ((new Date(a.startDate)) - (new Date(b.startDate))))
-    .map((booking, idx) =>
-      <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} type="user"/> 
-    )
-    return (
-      <div className="user-booking-list">
-        {bookings}
-      </div>
-    )
-  }
-  else if (type === "campsite" && campsiteId && user) {
+  // if (type === "user" && user){
+  //   var bookings = useSelector(state => {
+  //     let bookingState = Object.keys(state.entities.bookings);
+  //     if (bookingState.length > 0)
+  //       bookingState = user.bookings.map(bookingId =>
+  //         state.entities.bookings[bookingId]
+  //       )
+  //     return bookingState;
+  //   })
+  //   .sort((a, b) => ((new Date(a.startDate)) - (new Date(b.startDate))))
+  //   .map((booking, idx) =>
+  //     <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} type="user"/> 
+  //   )
+
+  //   return (
+  //     <div className="user-booking-list">
+  //       {bookings}
+  //     </div>
+  //   )
+  // }
+  // else 
+  if (campsiteId && user) {
     var bookings = useSelector((state) => {
       const bookingState = state.entities.campsites[campsiteId].bookings
                             .filter( id => user.bookings.includes(id))

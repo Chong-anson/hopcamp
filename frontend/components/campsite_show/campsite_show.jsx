@@ -101,7 +101,7 @@ class CampsiteShow extends React.Component{
 
   render(){
     const { campsite, currentUser } = this.props;
-    if (this.props.campsite && this.props.campsite.tags){
+    if (this.props.campsite && !this.props.campsite.truncated){
       const { truncated } = this.state; 
       const descriptionClass = ( truncated ? "truncated" : "full")
       const charIndex = campsite.description.indexOf(" ", 730);
@@ -179,7 +179,7 @@ class CampsiteShow extends React.Component{
               <div className="row show-row">
                 <h2>The vibe at {campsite.address} </h2>
                 <div className="weather-container">
-                  <h3>{this.state.elevation} Ft</h3>
+                  <h3>{this.state.elevation} ft</h3>
                   <span>Elevation</span>
                 </div>
                 <div className="weather-container">

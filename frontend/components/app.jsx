@@ -38,7 +38,7 @@ const App = () => {
                 <AuthRoute exact path="/campsites/:campsiteId/signup" component={SignupFormContainer} />
                 <AuthRoute exact path="/campsites/:campsiteId/login" component={LoginFormContainer} />
                 <Route exact path="/campsites/:id" component={CampsiteShowContainer} /> 
-                <Route path="/users/:id" component={UserComponent} />
+                <ProtectedRoute path="/users/:id" component={UserComponent} />
                 <Route exact path="/search" component={SearchContainer} /> 
                 <Route path="/" component={SplashContainer} />
             </Switch>

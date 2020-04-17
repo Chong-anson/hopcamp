@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { fetchCurrentUser } from '../../actions/session_actions';
-import BookingList from '../bookings/booking_list';
+import TripList from './trip_list';
 
 const User = (props) => {
     // console.log(props);
@@ -14,15 +14,17 @@ const User = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchCurrentUser(currentUser.id))
-
     }, [])
-    let bookings = {};
+
+
     // useEffect( () => {dispatch(fetchCurrentUser(props.currentUser.id))}, [props.currentUser.id]);
     // const bookings = useSelector( (state) => (
     //     props.currentUser.bookings.map( id => state.entities.booking)
     // ))
     return(
         <div className="user-container">
+          <div className="left">
+
             <div className="user-info">
                 <table>
                     <thead>
@@ -46,6 +48,8 @@ const User = (props) => {
                     </tbody>
                 </table>
             </div>
+        </div>
+
                 {/* <Route path={`${url}/trips`} render={ () => {
                     bookings.map( booking => 
                         <li> {booking.startDate} </li>
@@ -53,7 +57,9 @@ const User = (props) => {
                 }}
                 />  */}
                 {/* <Route path="/>  */}
-            <BookingList user={currentUser} type="user"/>
+            <div className="right">
+              <TripList user={currentUser} />
+            </div>
         </div>
     )
 }

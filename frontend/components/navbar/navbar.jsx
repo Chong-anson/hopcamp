@@ -25,7 +25,7 @@ class Navbar extends React.Component {
                           <Link to={`/users/${currentUserId}/trips`}>Trips</Link>
                         </div>
                       </li>
-                      <li>
+                      {/* <li>
                         <div>
                           <Link to={`/users/${currentUserId}/Saves`}>Saves</Link>
                         </div>
@@ -34,7 +34,7 @@ class Navbar extends React.Component {
                         <div>
                           <Link to={`/users/${currentUserId}/Messages`}>Messages</Link>
                         </div>
-                      </li>
+                      </li> */}
                       <li>
                         <div>
                           <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
