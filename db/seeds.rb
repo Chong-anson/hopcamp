@@ -8,6 +8,8 @@
 
 require 'open-uri'
 # Review.destroy_all
+Review.destroy_all
+Booking.destroy_all
 CampsiteTagging.destroy_all
 Tag.destroy_all
 Campsite.destroy_all
