@@ -221,8 +221,7 @@
 
 .result-item, .trip-item{
     width: 48%;
-    min-height: 300px;
-
+    // min-height: 300px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
@@ -231,11 +230,15 @@
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-height: 340px;
+    // max-height: 340px;
     cursor: pointer;
     height: -moz-fit-content;
     height: -webkit-fit-content;
     height: -fit-content;
+}
+
+.result-item {
+    height: 340px;
 }
 
 .result-item a, .trip-item a{
