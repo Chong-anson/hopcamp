@@ -18,6 +18,19 @@ class Api::BookingsController < ApplicationController
     #     render :index
     # end
 
+    def destroy  
+      @booking = Booking.find_by(id: params[:id])
+      if (@booking)
+        if (@booking.destroy)
+          render json: @booking.id
+        else 
+          render json: @booking.errors.full_messages, status: 422
+        end
+      else
+        render json: ["The booking doesn't exist"], status: 422
+      end
+    end
+
     private 
     def booking_params
         params.require(:booking).permit(:user_id, :campsite_id, :group_size, :start_date, :end_date)

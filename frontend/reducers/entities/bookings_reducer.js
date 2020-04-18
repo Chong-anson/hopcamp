@@ -1,4 +1,4 @@
-import { RECEIVE_BOOKING } from "../../actions/booking_actions";
+import { RECEIVE_BOOKING, REMOVE_BOOKING } from "../../actions/booking_actions";
 import { RECEIVE_CAMPSITE } from "../../actions/campsite_actions";
 import { RECEIVE_CURRENT_USER } from "../../actions/session_actions"
 
@@ -14,6 +14,10 @@ const bookingsReducer = (state = _defaultState, {type, payload }) => {
             if (payload.bookings)
                 nextState = payload.bookings
             return nextState
+        case REMOVE_BOOKING:
+            nextState = Object.assign({}, state);
+            delete nextState[payload.bookinId];
+            return nextState;
         case RECEIVE_CAMPSITE: 
             nextState = {};
             if (payload.bookings)

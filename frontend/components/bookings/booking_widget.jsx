@@ -61,7 +61,7 @@ const BookingWidget = (props) => {
           </div>
           <div className="space-between">
             <span>Nightly Price: </span>
-            <span> {campsite.price} </span>
+            <span> ${campsite.price} </span>
           </div>
           <div className="space-between">
             <span>Guests: </span>
@@ -70,7 +70,7 @@ const BookingWidget = (props) => {
         </div>
         <div className="payment-total space-between">
           <h3>Total: </h3>
-          <h3>{Math.round(dayDiff * campsite.price)}</h3>
+          <h3>${Math.round(dayDiff * campsite.price)}</h3>
         </div>
         <div className="booking-submit-btn">
           <button className="special-buttons-2"

@@ -7,18 +7,6 @@ export default ({booking, idx, type}) => {
   const { status, startDate, endDate, groupSize, campsiteId } = booking; 
   let extendComponent = null;
   
-  // if (type === "user"){
-  //     extendComponent = (
-  //       <div className="booking-item-campsite">
-  //         {/* <Link to={`/campsites/${campsite.id}`}>
-  //           {campsite.name}
-  //         </Link> */}
-  //         <ResultItem item={campsite} type="truncated"/>
-  //       </div>
-  //     )
-  //   }
-  // }
-
   return (
     <div className="booking-item">
         {extendComponent}

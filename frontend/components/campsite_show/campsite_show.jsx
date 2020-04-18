@@ -158,7 +158,7 @@ class CampsiteShow extends React.Component{
                   <ul className="tags-list">
                     {tags["Amenities"].length
                       ? tags["Amenities"]
-                      : "No amenities"}
+                      : <li><p>No amenities :(</p></li>}
                   </ul>
                 </div>
                 <div className="tags-container">
@@ -166,13 +166,13 @@ class CampsiteShow extends React.Component{
                   <ul className="tags-list">
                     {tags["Activities"].length
                       ? tags["Activities"]
-                      : "No activities"}
+                      : <li><p>No activities :(</p></li>}
                   </ul>
                 </div>
                 <div className="tags-container">
                   <h2>Terrain</h2>
                   <ul className="tags-list">
-                    {tags["Terrain"].length ? tags["Terrain"] : "No terrain"}
+                    {tags["Terrain"].length ? tags["Terrain"] : <li><p>No terrains :(</p></li>}
                   </ul>
                 </div>
               </div>

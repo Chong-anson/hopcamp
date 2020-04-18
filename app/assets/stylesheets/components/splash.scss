@@ -162,7 +162,10 @@
 }
 
 .recommended-list-item figcaption {
-  height: 80px;
+  min-height: 80px;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
   padding: 14px;
 }
 
@@ -196,3 +199,4 @@
     width: 1080px;
   }
 }
+

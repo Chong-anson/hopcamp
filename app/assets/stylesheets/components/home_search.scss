@@ -87,3 +87,22 @@
     font-size: 1.2rem;
     color: #555555;
 }
+
+@media (max-width: 760px)
+{
+  .home-search-box{
+    height: fit-content;
+  }
+
+  .home-search-form{
+    height: fit-content;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .home-search-box .form-control, #place-search-box-home {
+    width: 100%;
+    margin-bottom: 20px;
+
+  }
+}
