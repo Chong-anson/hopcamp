@@ -43,6 +43,10 @@ class Search extends React.Component{
         this.setState({ location: e.target.value });
     };
 
+    componentWillUnmount(){
+      this.props.resetAllFilter();
+    }
+
     componentDidMount(){
         let mapOptions = {
             center: { lat: 37.7758, lng: -122.435 },

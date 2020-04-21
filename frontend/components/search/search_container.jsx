@@ -4,7 +4,7 @@ import { withRouter, useLocation } from 'react-router-dom';
 import Search from "./search";
 import { fetchCampsites } from "../../actions/campsite_actions";
 // import { fetchVenue } from "../../actions/venue_actions";
-import { updateFilter } from "../../actions/filter_actions";
+import { updateFilter, resetAllFilter } from "../../actions/filter_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { filterCampsites } from '../../reducers/selector';
 import { updateLocation } from '../../actions/map_action';
@@ -41,10 +41,12 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => ({
     fetchCampsites: ()=> dispatch(fetchCampsites),
     updateFilter: (filter, value) => dispatch(updateFilter(filter,value)),
-    updateLocation: (location) => dispatch(updateLocation),
+    updateLocation: (location) => dispatch(updateLocation(location)),
     filterButton: (
         <button className="type-filter" onClick={()=> dispatch(openModal("filters"))}>More filters</button>
-    )
+    ),
+    resetAllFilter: () => dispatch(resetAllFilter())
+    
 
 })
 

@@ -1,4 +1,4 @@
-import { UPDATE_FILTER, RESET_TAG_FILTER, UPDATE_TAG_FILTER } from "../../actions/filter_actions";
+import { UPDATE_FILTER, RESET_TAG_FILTER, UPDATE_TAG_FILTER, RESET_ALL_FILTER } from "../../actions/filter_actions";
 
 const _defaultState = {
     bounds: {},
@@ -24,6 +24,8 @@ const filterReducer = (state = _defaultState, action) => {
           checkedTags: [],
           appliedFilter: false
         })
+      case RESET_ALL_FILTER:
+        return _defaultState
       case UPDATE_TAG_FILTER:
         return Object.assign({}, state, action.filter)
       default:

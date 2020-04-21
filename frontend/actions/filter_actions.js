@@ -3,6 +3,7 @@ export const UPDATE_FILTER = "UPDATE_FILTER";
 // export const UPDATE_APPLIED_FILTER = "UPDATE_APPLIED_FILTER";
 export const UPDATE_TAG_FILTER = "UPDATE_TAG_FILTER";
 export const RESET_TAG_FILTER = "RESET_TAG_FILTER"; 
+export const RESET_ALL_FILTER = "RESET_ALL_FILTER"; 
 
 export const updateFilter = (filter, value) => {
   return (dispatch, getState) => {
@@ -23,6 +24,10 @@ export const updateTagFilter = ( filter ) => ({
 
 export const resetTagFilter = () => ({
   type: RESET_TAG_FILTER
+})
+
+export const resetAllFilter = () => ({
+  type: RESET_ALL_FILTER
 })
 
 
