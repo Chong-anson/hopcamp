@@ -1,24 +1,5 @@
-# README
+# Hopcamp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A campsite booking web application inspired by Hipcamp, built with Ruby on Rails, React and Redux. 
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creationse
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
