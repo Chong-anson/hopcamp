@@ -6,21 +6,27 @@
 
 ## Features
 Search & Filter 
+
 ![Search & Filter](./app/assets/images/hopcamp2.gif)
 
 User Auth 
+
 ![User Auth](./app/assets/images/user_auth.png)
 
 Campsite Booking
+
 ![](./app/assets/images/booking.gif)
 
 Campsite Search 
+
 ![Campsite Search](./app/assets/images/campsite_search.png)
 
 Campsite Show
+
 ![Campsite Show](./app/assets/images/campsite_show.png)
 
 Campsite Review
+
 ![Campsite Review](./app/assets/images/campsite_review.png)
 
 
