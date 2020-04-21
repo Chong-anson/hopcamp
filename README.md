@@ -15,7 +15,7 @@ User Auth
 
 Campsite Booking
 
-![](./app/assets/images/booking.gif)
+![Booking](./app/assets/images/booking.gif)
 
 Campsite Search 
 
