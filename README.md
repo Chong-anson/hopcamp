@@ -5,6 +5,6 @@
 *A campsite booking web application inspired by Hipcamp, built with Ruby on Rails, React and Redux.*
 
 ## Features
-![Search & Filter](./app/assets/images/hopcamp.gif)
+![Search & Filter](./app/assets/images/hopcamp2.gif)
 
 
