@@ -13,10 +13,12 @@ Search & Filter
 ![User Auth](./app/assets/images/user_auth.png)
 
 **Campsite Booking**
+
 *Utilised React-Day-Picker library to disabled user from making overlapping booking on the form input*
 ![Booking](./app/assets/images/booking.gif)
 
 **Campsite Search**
+
 *Incorporated Google Maps API to autocomple search query, retreive location information and search campsites.*
 ![Campsite Search](./app/assets/images/campsite_search.png)
 
@@ -24,6 +26,7 @@ Search & Filter
 ![Campsite Show](./app/assets/images/campsite_show.png)
 
 **Campsite Review**
+
 *Implemented RESTful API for CRUD cycle of reviews.* 
 ![Campsite Review](./app/assets/images/campsite_review.png)
 
