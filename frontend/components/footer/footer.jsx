@@ -48,6 +48,9 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/ansonchongch/">
             <i className="fab fa-linkedin"></i>
           </a>
+          <a href="https://angel.co/u/anson-chong">
+            <i className="fab fa-angellist"></i>
+          </a>
         </div>
       </div>
     </div>
