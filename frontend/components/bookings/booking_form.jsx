@@ -6,10 +6,10 @@ class Bookingform extends React.Component{
     constructor(props){
         super(props);
         this.state = { 
-            startDate: undefined,
-            endDate: undefined,
+            startDate: null,
+            endDate: null,
             groupSize: 1,
-            hoverRange: undefined
+            hoverRange: null
         }
         this.handleDateClick = this.handleDateClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -116,7 +116,7 @@ class Bookingform extends React.Component{
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
         const { bookedCheckin, bookedCheckout, nextDay } = this.props; 
 
-        const tomorrow = this.props.nextDay(startDate);
+        const tomorrow = nextDay(startDate);
 
         return (
             <div className="booking-form">
