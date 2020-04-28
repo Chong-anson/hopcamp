@@ -1,4 +1,4 @@
-import { RECEIVE_TAG, RECEIVE_TAGS } from "../../actions/tag_actions";
+import { RECEIVE_TAGS } from "../../actions/tag_actions";
 import { RECEIVE_CAMPSITE } from "../../actions/campsite_actions";
 
 const _defaultState = {};
@@ -10,8 +10,6 @@ const tagsReducer = (state = _defaultState, action) => {
     switch (type) {
         case RECEIVE_TAGS:
             return tags;
-        case RECEIVE_TAG:
-            return Object.assign({}, state, { [tag.id]: tag })
         case RECEIVE_CAMPSITE:
             payload.tags.forEach( tag => 
                 newState[tag.id] = tag

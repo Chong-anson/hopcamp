@@ -32,7 +32,6 @@ export const createBooking = (booking) => dispatch => {
     return bookingUtil.createBooking(booking)
             .then(bookingId => dispatch(receiveBooking(bookingId)))
             .fail(res => dispatch(receiveErrors(res.responseJSON)))
-            // .fail(res => console.log(res.responseJSON))
 }
 
 export const deleteBooking = (bookingId) => dispatch => {
