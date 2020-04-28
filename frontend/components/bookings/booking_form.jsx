@@ -1,6 +1,5 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-// import { formatDate, parseDate } from "react-day-picker/moment";
 import BookingErrors from "../error_show";
 
 class Bookingform extends React.Component{
@@ -116,18 +115,11 @@ class Bookingform extends React.Component{
         const disabledMin = groupSize === 1 ? true : false;
         const disabledMax = groupSize === this.props.campsite.capacity ? true : false;
         const { bookedCheckin, bookedCheckout, nextDay } = this.props; 
-        
-        // const tomorrow = new Date();
-        // tomorrow.setDate(startDate.getDate() + 1);
-
 
         const tomorrow = this.props.nextDay(startDate);
 
-        // console.log(bookedCheckin);
         return (
             <div className="booking-form">
-                {/* TEST */}
-                {/* <div>{this.props.campsite.capacity}</div> */}
                 <div className="price-box">
                     <div>
                         <h2 className="campsite-price">${this.props.campsite.price} </h2>
@@ -141,7 +133,6 @@ class Bookingform extends React.Component{
 
                             <DayPickerInput
                                 format="LL"
-                                // formatDate={formatDate}
                                 placeholder="Select date"
                                 onDayChange={this.handleDateClick("startDate")}
                                 dayPickerProps={ {
@@ -158,9 +149,7 @@ class Bookingform extends React.Component{
                             <DayPickerInput 
                                 ref={ daypicker => this.endDate = daypicker}
                                 format="LL"
-                                // formatDate={formatDate}
                                 onDayChange={this.handleDateClick("endDate")}
-                                // selectedDays={endDate}
                                 placeholder="Select date"
                                 dayPickerProps={{
                                     onDayMouseEnter: this.handleDayHover.call(this, startDate),

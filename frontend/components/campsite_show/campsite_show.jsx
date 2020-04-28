@@ -15,7 +15,6 @@ class CampsiteShow extends React.Component{
       country: "",
     };
     this.fetchGeoInfo.bind(this);
-    console.log(this.props);
   }
 
   componentDidMount(){
@@ -35,13 +34,11 @@ class CampsiteShow extends React.Component{
         streetViewControl: false,
         mapTypeId: 'terrain'
       });
-      // this.map.setOptions({draggable: false})
       new google.maps.Marker({ position: { lat, lng }, map: this.map })
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': address }, (res, status) => {
         if (status == 'OK') {
           if (res[0]) {
-            // console.log(res[0])
             const addressComponents = Object.values(res[0].address_components)
             var country, state;
             addressComponents.forEach( component => {
@@ -61,7 +58,6 @@ class CampsiteShow extends React.Component{
       elevator.getElevationForLocations({
         'locations': [{ lat, lng }]
       }, function (res, status) {
-        // console.log(res, status)
         if (status === 'OK') {
           if (res[0]) {
             const elevation = Math.floor(res[0].elevation);
@@ -71,7 +67,6 @@ class CampsiteShow extends React.Component{
           }
         }
         else {
-          // that.setState({ elevation: "Information not found" })
           window.alert(status);
         }
       });
@@ -80,11 +75,6 @@ class CampsiteShow extends React.Component{
   }
   
   componentDidUpdate(prevProps){
-    
-    // if(prevProps.match.params.id != this.props.match.params.id){
-    //   this.props.fetchCampsite(this.props.match.params.id);
-    // }
-
     if (this.props.campsite && !prevProps.campsite) {
       this.fetchGeoInfo();
     }
@@ -95,7 +85,6 @@ class CampsiteShow extends React.Component{
     $(e.target).parent().toggleClass("truncated")
     $(e.target).parent().toggleClass("full")
     const truncated = !this.state.truncated;
-    console.log(truncated);
     this.setState({truncated})
   }
 
@@ -126,15 +115,6 @@ class CampsiteShow extends React.Component{
       return (
         <div className="campsite-page">
           <PhotoCarousel photoUrls={campsite.photoUrls} />
-          {/* <div className="photo-container"> */}
-            {/* <button className="prev" onClick={this.show(-1).bind(this)}>
-              &lt;
-            </button> */}
-            {/* {photos} */}
-            {/* <button className="next" onClick={this.show(+1).bind(this)}>
-              &gt;
-            </button> */}
-          {/* </div> */}
           <div className="campsite-main-content">
             <div className="campsite-show-info">
               <div className="campsite-show-title">

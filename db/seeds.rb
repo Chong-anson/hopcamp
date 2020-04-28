@@ -18,7 +18,7 @@ Venue.destroy_all
 
 # CREATE CITY TABLE
 venues = [
-    {name: "Deep in the heart of Texas", description: "Lone Star Spots", lat: 31.9686,lng: -99.9018},
+    {name: "Deep in the heart of Texas", description: "Lone Star Spots", lat: 29.4241,lng: -98.4936},
     {name: "San Diego", description: "SoCal Mountain Retreats", lat: 32.7157, lng: -117.1611},
     {name: "Hawaii", description: "Tropical Hideouts", lat: 19.8968, lng: -155.5828},
     {name: "Southwest is best", description: "Desert Road Trip", lat: 39.3210, lng: -111.0937},

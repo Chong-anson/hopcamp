@@ -38,7 +38,6 @@ const ReviewForm = (props) => {
         closeForm();
         dispatch(clearReviewErrors())
       })
-      .fail(()=> console.log("fail"))
     }
     else {
       reviewForm.id = review.id; 
@@ -47,7 +46,6 @@ const ReviewForm = (props) => {
           closeForm();
           dispatch(clearReviewErrors())
         })
-        .fail(() => console.log("fail"))
     }
     // }
   }

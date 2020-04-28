@@ -69,7 +69,6 @@ class Search extends React.Component{
             geocoder.geocode({location: {lat, lng}}, (res, status) => {
               if (status === 'OK'){
                 const addressComponents = res[0].address_components;
-                console.log(res[0]);
                 let city;
                 addressComponents.forEach(component => {
                   if (component.types.includes("locality"))
@@ -80,8 +79,7 @@ class Search extends React.Component{
             })
         }
 
-        console.log(mapOptions.center)
-        // console.log(mapOptions);
+
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
@@ -90,21 +88,9 @@ class Search extends React.Component{
         }
         else {
             this.map.addListener("idle", this.updateMap);
-            // this.map.addListener("click", this.handleClick);
         }
         this.MarkerManager.updateMarkers(this.props.campsites);
 
-
-        // const autocomplete = new google.maps.places.Autocomplete(
-        //     (document.getElementById("autocomplete")),
-        //     { types: ['(cities)'] }
-        // );
-        // console.log(autocomplete);
-        // autocomplete.addListener('place_changed', () => {
-        //     const place = autocomplete.getPlace();
-        //     console.log(place);
-        // const form = document.getElementById("bench-map-form").dispatchEvent("submit");
-        // });
     }
 
     componentDidUpdate(prevProps){

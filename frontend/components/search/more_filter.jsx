@@ -99,7 +99,6 @@ class MoreFilter extends React.Component{
   clearFilter(e){
     e.preventDefault();
     this.props.resetTagFilter(); 
-    console.log("clearing")
     document.querySelectorAll("input.selected-more-filter").forEach(el => {
       el.checked =  false
       el.classList.remove("selected-more-filter")
@@ -203,8 +202,6 @@ class MoreFilter extends React.Component{
                               {`Under $${el}`}
                             </option>
                           )
-      console.log("camp", this.state.selectedCampsites);
-      console.log("camp2", this.props.campsites);
       const filterSection = Object.keys(categorizedList).map( section => (
         <div className="more-filter-section">
           <h2>{section}</h2>

@@ -40,15 +40,11 @@ class MarkerManager{
         const latlng = { lat, lng };
         const marker = new google.maps.Marker({
             position: latlng,
-            // title: campsite.description,
             map: this.map
         })
         marker.setMap(this.map)
-      // const contentString = `<div class='result-item-tite'>` +
-      //   ${ campsite.name } in ${ campsite.address }
-      // +`</div>`
         const photo = $("<div />", {class: "infowindow-left"}).css("background-image", `url(${campsite.photoUrls[0]})`)
-        console.log(campsite);
+
         const element = $("<div />").append(
                           $("<div />", {class: "infowindow"})
                             .append(photo)

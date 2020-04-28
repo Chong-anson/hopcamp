@@ -60,12 +60,9 @@ class HomeSearch extends React.Component{
         geocoder.geocode({'address': location}, (res,status) => {
 
           if (status === 'OK') {
-            console.log(res)
             const location = res[0].formatted_address;
             const lat = res[0].geometry.location.lat();
             const lng = res[0].geometry.location.lng();
-            console.log("lat:", lat)
-            console.log("lng:", lng)
             that.props.updateLocation({ location, lat, lng });
             if (campsiteTypes !== "All"){
               that.props.updateFilter("type", [campsiteTypes]);

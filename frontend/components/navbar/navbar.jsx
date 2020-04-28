@@ -13,8 +13,6 @@ class Navbar extends React.Component {
     }
 
     render() {
-        // const searchBox = (
-        // )
         if (this.props.currentUser) {
             const  currentUserId = this.props.currentUser.id
             return (
@@ -22,19 +20,12 @@ class Navbar extends React.Component {
                     <ul className="top-nav">
                       <li>
                         <div>
+                        Hello, {this.props.currentUser.firstName}
+                        </div>
+                        <div>
                           <Link to={`/users/${currentUserId}/trips`}>Trips</Link>
                         </div>
                       </li>
-                      {/* <li>
-                        <div>
-                          <Link to={`/users/${currentUserId}/Saves`}>Saves</Link>
-                        </div>
-                      </li>
-                      <li>
-                        <div>
-                          <Link to={`/users/${currentUserId}/Messages`}>Messages</Link>
-                        </div>
-                      </li> */}
                       <li>
                         <div>
                           <button className="navbar-btn" onClick={this.handleClick}> Sign Out!</button>
@@ -48,21 +39,6 @@ class Navbar extends React.Component {
             return (
                 <div className="navbar-buttons">
                     <ul className="top-nav">
-                      {/* <li>
-                        <div>
-                          <Link to="/">Near me</Link>
-                        </div>
-                      </li>
-                      <li>
-                        <div>
-                          <Link to="/">About</Link>
-                        </div>
-                      </li>
-                      <li>
-                        <div>
-                          <Link to="/">Earn Hoppcash</Link>
-                        </div>
-                      </li> */}
                       <li>
                         <div>
                           {this.props.loginForm}
@@ -74,7 +50,6 @@ class Navbar extends React.Component {
                         </div>
                       </li>
                     </ul>
-                    {/* <Link className="special-buttons" to="/signup">Sign up</Link> */}
                     <button className="special-buttons-2">Start hosting</button>
                 </div>
 

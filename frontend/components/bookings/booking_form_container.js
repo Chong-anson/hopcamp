@@ -20,7 +20,6 @@ const msp = (state, ownProps) => {
     return previous;
   };
   const nextDay = (date) => {
-    // console.log("day", date.getDate())
     const next = new Date(date);
     next.setDate(date.getDate() + 1);
     return next;

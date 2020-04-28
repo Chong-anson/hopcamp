@@ -29,7 +29,6 @@ class MiniSearchBox extends React.Component{
                   that.setState({input: res[0].description})
                   geocoder.geocode({ 'address': res[0].description }, (result, status) => {
                     if (status === 'OK') {
-                      console.log(result[0]);
                       const lat = result[0].geometry.location.lat()
                       const lng = result[0].geometry.location.lng()
                       const location = result[0].formatted_address
@@ -55,21 +54,6 @@ class MiniSearchBox extends React.Component{
             that.setState({ input: "" })
         })
     };
-
-    // handleSubmit(e){
-    //     e.preventDefault();
-
-    //     console.log(this.state.input)
-    //     const geocoder = new google.maps.Geocoder();
-    //     geocoder.geocode({ 'address': this.state.input }, (res, status) => {
-    //         if (status === 'OK') {
-    //             const searchLat = res[0].geometry.location.lat();
-    //             const searchLng = res[0].geometry.location.lng();
-    //             this.props.history.replace(`/search?lat=${searchLat}&lng=${searchLng}`)
-    //         }
-    //     })
-    //     this.setState({input: ""})
-    // };
 
     render(){
 

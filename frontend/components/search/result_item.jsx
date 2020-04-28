@@ -5,7 +5,6 @@ import campsite_detail from '../campsite_show/campsite_detail';
 const ResultItem = props => {
   const { item } = props;
   const { id, photoUrls, name, campsiteType, address, reviews, price, rating} = item
-  // console.log(props.item)
   let ratingComponent; 
 
   if (reviews.length){

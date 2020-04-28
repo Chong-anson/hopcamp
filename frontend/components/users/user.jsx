@@ -5,22 +5,17 @@ import { fetchCurrentUser } from '../../actions/session_actions';
 import TripList from './trip_list';
 
 const User = (props) => {
-    // console.log(props);
+
     const currentUser = useSelector(state => state.entities.users[state.session.id])
     const {firstName, lastName, email}  = currentUser;
 
     let { url } = useRouteMatch();
-    // console.log(props.bookings);
+
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchCurrentUser(currentUser.id))
     }, [])
 
-
-    // useEffect( () => {dispatch(fetchCurrentUser(props.currentUser.id))}, [props.currentUser.id]);
-    // const bookings = useSelector( (state) => (
-    //     props.currentUser.bookings.map( id => state.entities.booking)
-    // ))
     return(
         <div className="user-container">
           <div className="left">
