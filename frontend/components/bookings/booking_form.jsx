@@ -94,7 +94,8 @@ class Bookingform extends React.Component{
         }
         else{
             // const url = this.props.match.url.concat("/signup")
-            this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
+            this.props.openModal();
+            // this.props.history.push(`/campsites/${this.props.campsite.id}/signup`);
         }
     }
 

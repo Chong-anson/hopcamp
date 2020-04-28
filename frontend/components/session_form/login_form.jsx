@@ -85,7 +85,7 @@ class LoginForm extends React.Component {
                         className="btn session-btn"
                         onClick={this.handleDemoClick}
                     >
-                        Demo
+                        Demo User
                     </button>
                 </div>
                 <div className="session-component-footer">
