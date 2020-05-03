@@ -16,8 +16,8 @@ class Api::CampsitesController < ApplicationController
                 @campsites = @campsites.where("capacity >= ?", filter[:min_capacity])
             end 
 
-            if (@campsites.length > 30)        
-                @campsites = @campsites.limit(30)
+            if (@campsites.length > 200)        
+                @campsites = @campsites.limit(200)
             end
         end
         render :index

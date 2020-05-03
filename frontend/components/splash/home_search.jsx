@@ -95,10 +95,6 @@ class HomeSearch extends React.Component {
               id="place-search-box-home"
               onChange={this.handleChange}
             />
-            {/* <input 
-                          type="date" 
-                          className="splash-date form-control"
-                        /> */}
             <DayPickerInput
               ref={(daypicker) => (this.date = daypicker)}
               onDayChange={this.handleDayChange}

@@ -235,3 +235,27 @@
 .DayPicker-Day--startDate{
   background-color: #40d9ac;
 }
+
+.home-search-box .DayPickerInput input{
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #555555;
+  height: 100%;
+  border: 1px solid #ebebeb;
+  box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
+  border-radius: 0;
+  margin: 0; 
+}
+
+.home-search-box .DayPickerInput input:hover{
+  border: 1px solid #757575;
+}
+
+.home-search-box .DayPickerInput{
+  width: 20%;
+  min-width: 150px;
+  height: 100%;
+}
