@@ -18,7 +18,7 @@
 * SCSS
 
 ## Code
-# Querying OpenWeatherMapsAPI from Rails 
+### Querying OpenWeatherMapsAPI from Rails 
 ```
     def weather_api
         response = Excon.get("http://api.openweathermap.org/data/2.5/weather?lat=#{self.lat}&lon=#{self.lng}&appid=#{ENV['WEATHER_API_KEY']}&units=imperial")
@@ -27,7 +27,7 @@
         result = {weather: result["weather"].first["main"], temperature: result["main"]["temp"]}
     end
 ```
-# Custom geolocation based SQL query
+### Custom geolocation based SQL query
 ```
     def self.in_bounds(bounds)
         campsites = Campsite
@@ -36,7 +36,7 @@
         return campsites
     end
 ```
-# Google Maps API(Places search, autocomplete and geocoder)
+### Google Maps API(Places search, autocomplete and geocoder)
 Once a search result is retreived, it will pass the coordinates to the url, so that the map component can set the center position according to query parameters.
 ```
  searchBox.addListener('place_changed', function () {
@@ -72,7 +72,7 @@ Once a search result is retreived, it will pass the coordinates to the url, so t
             that.setState({ input: "" })
         })
 ```
-# React Hook tab features for Booking UI
+### React Hook tab features for Booking UI
 ```
   const handleCheckOut = (e) => {
     e.preventDefault();
