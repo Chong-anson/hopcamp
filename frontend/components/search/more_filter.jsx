@@ -4,7 +4,6 @@ import { filterCampsites, selectAllCategories } from '../../reducers/selector';
 class MoreFilter extends React.Component{
   constructor(props){
     super(props);
-    // const selectedCampsites = [...props.campsites];
     this.state = {
       selectedCampsites: props.campsites,
       appliedFilter: props.appliedFilter,
@@ -52,12 +51,13 @@ class MoreFilter extends React.Component{
     let { selectedCampsites } = this.state;
     let checkedTags = []; 
     if (filters.length){
-        // selectedCampsites = [...this.props.campsites];
+        selectedCampsites = [...this.props.campsites];
         appliedFilter = true;
         filters.forEach( el => {
           const newSites = el.getAttribute("data-campsites")
                               .split(",")
                               .map(id => parseInt(id))
+
           selectedCampsites = selectedCampsites.filter(campsite => 
             newSites.includes(campsite.id)
           );
