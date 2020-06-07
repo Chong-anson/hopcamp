@@ -18,33 +18,36 @@
 }
 
 .footer-left{
-  width: 30%;
+  width: 45%;
   display: flex;
 }
 
 .footer-right{
-  width: 50%;
+  width: 45%;
+}
+
+.footer-left p a{
+  color: blue;
+
 }
 
 .footer-left-section{
   margin-right: 10px; 
 }
-
-.footer-left ul li, .footer p{ 
-  color: #757575;
-  margin-bottom: 8px;
-}
-
 .footer-title{
   margin-bottom: 24px; 
 }
 
-.footer-right p{
+.footer p{
+  color: #757575;
   line-height: 1.5;
 }
 
-.profile-link a{
-  margin-right: 5px;
+.profile-links{
+  display: flex;
   font-size: 22px;
 }
 
+.profile-links a{
+  margin-right: 5px;
+}
