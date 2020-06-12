@@ -17,16 +17,15 @@ class CampsiteShow extends React.Component{
     this.fetchGeoInfo.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchCampsite(this.props.match.params.id).then(
       () => this.fetchGeoInfo()
     )
   }
 
-  fetchGeoInfo(){
+  fetchGeoInfo() {
     const that = this;
-    if (this.props.campsite){
-
+    if (this.props.campsite) {
       const { lat, lng, address } = this.props.campsite;
       this.map = new google.maps.Map(this.mapNode, {
         center: { lat, lng },
@@ -49,8 +48,7 @@ class CampsiteShow extends React.Component{
             })
             that.setState({ country, state })
           }
-        }
-        else {
+        } else {
           window.alert(status);
         }
       })
@@ -65,8 +63,7 @@ class CampsiteShow extends React.Component{
           } else {
             that.setState({ elevation: "Information not found" })
           }
-        }
-        else {
+        } else {
           window.alert(status);
         }
       });
@@ -74,13 +71,13 @@ class CampsiteShow extends React.Component{
 
   }
   
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     if (this.props.campsite && !prevProps.campsite) {
       this.fetchGeoInfo();
     }
   }
 
-  handleShowMore(e){
+  handleShowMore(e) {
     e.preventDefault()
     $(e.target).parent().toggleClass("truncated")
     $(e.target).parent().toggleClass("full")
@@ -88,9 +85,9 @@ class CampsiteShow extends React.Component{
     this.setState({truncated})
   }
 
-  render(){
+  render() {
     const { campsite, currentUser } = this.props;
-    if (this.props.campsite && !this.props.campsite.truncated){
+    if (this.props.campsite && !this.props.campsite.truncated) {
       const { truncated } = this.state; 
       const descriptionClass = ( truncated ? "truncated" : "full")
       const charIndex = campsite.description.indexOf(" ", 730);
@@ -103,7 +100,7 @@ class CampsiteShow extends React.Component{
       tags["Terrain"] = [] ;
       // debugger
       this.props.tags.forEach( (tag,idx) => {
-          if (tag){
+          if (tag) {
               tags[tag.category].push(
                 <li key={`${tag.category}-${idx}`}>
                   <span className={`filter-type-icon hc-awesome-${tag.icon}`}></span>
@@ -188,11 +185,8 @@ class CampsiteShow extends React.Component{
           </div>
         </div>
       );   
-    }
-    else{
-      return( 
-        null
-      );
+    } else {
+      return ( null );
     }
   }
 }
