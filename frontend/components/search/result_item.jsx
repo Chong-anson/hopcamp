@@ -6,7 +6,6 @@ const ResultItem = props => {
   const { item } = props;
   const { id, photoUrls, name, campsiteType, address, reviews, price, rating} = item
   let ratingComponent; 
-  console.log(item);
   if (reviews.length){
     ratingComponent = (<span className="green">
                         <i className="fa fa-thumbs-up"></i>

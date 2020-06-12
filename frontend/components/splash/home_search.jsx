@@ -24,10 +24,8 @@ class HomeSearch extends React.Component {
 
   handleDayChange(date) {
     const {startDate, endDate} = this.state;
-    console.log(startDate === null)
     if(startDate === null || date <= startDate || endDate !== null){
       this.setState({startDate: date});
-      console.log("chose start date")
       this.date.showDayPicker();
     }
     else {
