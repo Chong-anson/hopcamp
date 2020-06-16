@@ -14,27 +14,6 @@ const BookingList = ({user, campsiteId = null}) => {
     }, 'slow')
   }
 
-  // if (type === "user" && user){
-  //   var bookings = useSelector(state => {
-  //     let bookingState = Object.keys(state.entities.bookings);
-  //     if (bookingState.length > 0)
-  //       bookingState = user.bookings.map(bookingId =>
-  //         state.entities.bookings[bookingId]
-  //       )
-  //     return bookingState;
-  //   })
-  //   .sort((a, b) => ((new Date(a.startDate)) - (new Date(b.startDate))))
-  //   .map((booking, idx) =>
-  //     <BookingItem key={`booking-${idx}`} idx={idx} booking={booking} type="user"/> 
-  //   )
-
-  //   return (
-  //     <div className="user-booking-list">
-  //       {bookings}
-  //     </div>
-  //   )
-  // }
-  // else 
   if (campsiteId && user) {
     var bookings = useSelector((state) => {
       const bookingState = state.entities.campsites[campsiteId].bookings

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-export default ({photoUrls}) => {
-  useEffect( () => {
-    const carousel = new Flickity(".photo-container", { 
+export default ({ photoUrls }) => {
+  useEffect(() => {
+    const carousel = new Flickity(".photo-container", {
       freeScroll: true,
       wrapAround: true,
-      pageDots: false, 
+      pageDots: false,
       draggable: false,
     });
   }, []);
 
   const photos = photoUrls.map(
-    (url,idx) => (
+    (url, idx) => (
       <div
         key={`photo-${idx}`}
         className="photo"
@@ -23,9 +23,5 @@ export default ({photoUrls}) => {
     // <img className="photo" src={`${url}`} alt=""/>
   );
 
-  return (
-    <div className="photo-container">
-      {photos}
-    </div>
-  )
-} 
+  return <div className="photo-container">{photos}</div>;
+};
