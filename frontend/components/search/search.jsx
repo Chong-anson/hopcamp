@@ -104,9 +104,6 @@ class Search extends React.Component {
     } else {
       this.MarkerManager.updateMarkers(this.props.campsites);
     }
-    // if (this.props.place){
-    //     this.setMapbyPlace(this.props.place);
-    // }
     if (this.props.lat && this.props.lng) {
       if (
         prevProps.lat !== this.props.lat &&
@@ -124,8 +121,6 @@ class Search extends React.Component {
   }
 
   updateTypeFilter(TypeFilter) {
-    // let campsites = filterCampsites(this.props.campsites, TypeFilter);
-    // this.setState({campsites});
     this.props.updateFilter("type", TypeFilter);
   }
 
