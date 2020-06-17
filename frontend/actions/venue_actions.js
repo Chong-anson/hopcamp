@@ -3,11 +3,12 @@ export const RECEIVE_VENUES = "RECEIVE_VENUES";
 import * as venueUtils from "../util/venue_api_util";
 
 const receiveVenues = (venues) => ({
-    type: RECEIVE_VENUES,
-    venues
-})
+  type: RECEIVE_VENUES,
+  venues,
+});
 
 export const fetchVenues = () => (dispatch) => {
-    return venueUtils.fetchVenues()
-        .then(venues => dispatch(receiveVenues(venues)))
-}
+  return venueUtils
+    .fetchVenues()
+    .then((venues) => dispatch(receiveVenues(venues)));
+};

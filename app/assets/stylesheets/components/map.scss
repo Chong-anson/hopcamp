@@ -1,21 +1,21 @@
 #map-container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.results-map{
-    position: sticky;
-    top: 0;
-    width: 460px;
-    max-height: 100vh;
+.results-map {
+  position: sticky;
+  top: 0;
+  width: 460px;
+  max-height: 100vh;
 }
 
-.infowindow{
+.infowindow {
   display: flex;
   justify-content: center;
 }
 
-.infowindow-left{
+.infowindow-left {
   width: 120px;
   height: 70px;
   background-position: center;
@@ -24,19 +24,19 @@
   border-radius: 2px;
 }
 
-.infowindow-right{
+.infowindow-right {
   margin-left: 10px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.infowindow h1{
+.infowindow h1 {
   font-size: 16px;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
-.infowindow p{
+.infowindow p {
   color: #757575;
   font-weight: 500;
 }

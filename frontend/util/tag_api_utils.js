@@ -1,11 +1,11 @@
 export const fetchTags = () => {
-    return $.ajax({
-        url: "/api/tags",
-    })
-}
+  return $.ajax({
+    url: "/api/tags",
+  });
+};
 
 export const fetchTag = (tagId) => {
-    return $.ajax({
-        url: `api/tags/${tagId}`
-    })
-}
+  return $.ajax({
+    url: `api/tags/${tagId}`,
+  });
+};

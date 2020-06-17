@@ -3,9 +3,9 @@ export const CLEAR_PAYMENT = "CLEAR_PAYMENT";
 
 export const createPaymentInfo = (booking) => ({
   type: RECEIVE_PAYMENT,
-  payload: { booking }
-})
+  payload: { booking },
+});
 
 export const clearPayment = () => ({
-  type: CLEAR_PAYMENT, 
-})
+  type: CLEAR_PAYMENT,
+});

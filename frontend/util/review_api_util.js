@@ -1,38 +1,38 @@
-export const createReview = review => {
+export const createReview = (review) => {
   const { recommended, body } = review;
   return $.ajax({
-    method: 'POST',
+    method: "POST",
     url: "/api/reviews",
-    data:{
+    data: {
       review: {
-        user_id: review.userId, 
+        user_id: review.userId,
         campsite_id: review.campsiteId,
         body,
-        recommended
-      }
-    }
-  })
-}
+        recommended,
+      },
+    },
+  });
+};
 
-export const updateReview = review => {
+export const updateReview = (review) => {
   const { recommended, body } = review;
   return $.ajax({
-    method: 'PATCH',
+    method: "PATCH",
     url: `/api/reviews/${review.id}`,
     data: {
       review: {
         body,
         recommended,
         user_id: review.useId,
-        campsite_id: review.campsiteId
-      }
-    }
-  })
-}
+        campsite_id: review.campsiteId,
+      },
+    },
+  });
+};
 
-export const deleteReview = reviewId => {
+export const deleteReview = (reviewId) => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/reviews/${reviewId}`
-  })
-}
+    url: `/api/reviews/${reviewId}`,
+  });
+};

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 import BookingItem from "../bookings/booking_item";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-
-const TripItem = ({campsite, booking, idx}) => {
+const TripItem = ({ campsite, booking, idx }) => {
   const { id, name, campsiteType, address } = campsite;
-  const {startDate, endDate, groupSize } = booking;
+  const { startDate, endDate, groupSize } = booking;
   return (
-    <div className="trip-item" >
+    <div className="trip-item">
       <Link to={`/campsites/${id}`}>
         <h1>Booking #{idx + 1}</h1>
         <div className="trip-booking-info">
-          <p>From: &nbsp;
+          <p>
+            From: &nbsp;
             <strong>{startDate}</strong>
           </p>
           <p>
@@ -20,20 +20,21 @@ const TripItem = ({campsite, booking, idx}) => {
           </p>
           <p> Guest number: {groupSize}</p>
         </div>
-          <div className="trip-item-main-info">
-            <div className="trip-title">
-              <h2>{name}</h2>
-              <div className="trip-type">
-                <div className={`trip-type-icon hc-awesome-${campsiteType.toLowerCase()}`}></div>
-              </div>
+        <div className="trip-item-main-info">
+          <div className="trip-title">
+            <h2>{name}</h2>
+            <div className="trip-type">
+              <div
+                className={`trip-type-icon hc-awesome-${campsiteType.toLowerCase()}`}
+              ></div>
             </div>
-            <p className="trip-item-subtitle">{address}</p>
           </div>
+          <p className="trip-item-subtitle">{address}</p>
+        </div>
       </Link>
       {/* <BookingItem  idx={idx} booking={booking} type="user" /> */}
-
     </div>
-  )
-}
+  );
+};
 
 export default TripItem;

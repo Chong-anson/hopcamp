@@ -1,8 +1,8 @@
 export const fetchVenues = () => {
-    return $.ajax({
-        url: "/api/venues"
-    })
-}
+  return $.ajax({
+    url: "/api/venues",
+  });
+};
 
 // export const fetchVenue = (venueId) => {
 //     return $.ajax({

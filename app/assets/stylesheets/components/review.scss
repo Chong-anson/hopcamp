@@ -1,4 +1,4 @@
-.review-title{
+.review-title {
   justify-content: space-between;
   font-size: 20px;
 }
@@ -8,7 +8,7 @@
   justify-content: space-evenly;
 }
 
-.review-form-container .left{
+.review-form-container .left {
   width: 30%;
 }
 .review-form-container .right {
@@ -21,23 +21,23 @@
   padding: 20px 0;
 }
 
-.yes-no-buttons{
+.yes-no-buttons {
   width: 30%;
-  display: flex; 
+  display: flex;
   justify-content: space-evenly;
-};
+}
 
-.review-form textarea{
+.review-form textarea {
   width: 95%;
   height: 15vh;
   color: #333333;
   border: solid 1px #ebebeb;
-  resize: none; 
+  resize: none;
   padding: 10px;
   margin-bottom: 20px;
 }
 
-.review-form textarea::placeholder{
+.review-form textarea::placeholder {
   color: #444444;
 }
 
@@ -45,36 +45,34 @@
   color: #40d9ac;
 }
 
-#review-recommended{
+#review-recommended {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-#review-recommended span{
+#review-recommended span {
   font-size: 20px;
   font-weight: 500;
 }
 
-
-.review-button{
-    height: 30px;
+.review-button {
+  height: 30px;
 }
 
-.selected-option{
+.selected-option {
   border: solid 1px #40d9ac;
   color: white;
   background-color: #40d9ac;
 }
 
-.review-title .special-buttons-2{
+.review-title .special-buttons-2 {
   padding: 5px 12px;
-} 
-.review-form .special-buttons-2{
+}
+.review-form .special-buttons-2 {
   margin-top: 20px;
   margin-left: auto;
-
 }
 
 .recommend-icon {
@@ -86,38 +84,38 @@
   background: #40d9ac;
 }
 
-.review-item{
+.review-item {
   margin-bottom: 20px;
   margin-right: 15px;
 }
 
-.review-item-title{
+.review-item-title {
   display: flex;
   justify-content: space-between;
   padding: 10px 5px;
 }
 
-.review-item-title strong{
+.review-item-title strong {
   font-weight: 500;
 }
 
-.review-item-title p{
+.review-item-title p {
   font-size: 18px;
   display: inline-block;
 }
 
-.review-item-title p:nth-child(2){
+.review-item-title p:nth-child(2) {
   color: #757575;
   padding-top: 4px;
   font-size: 16px;
 }
 
-.review-body{
+.review-body {
   padding: 10px;
   // margin-bottom: 10px;
 }
 
-.review-item-buttons{
+.review-item-buttons {
   width: 15%;
   margin-left: auto;
   color: #40d9ac;

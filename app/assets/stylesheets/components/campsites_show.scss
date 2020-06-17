@@ -1,43 +1,41 @@
-.campsite-page{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.campsite-page {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.campsite-main-content{
-    // width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-
+.campsite-main-content {
+  // width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
-.photo-container{
-    width: 100%;
-    // display: flex;
-    // flex-wrap: nowrap;
-    // overflow: hidden;
-    // transform-style: preserve-3d;
-
+.photo-container {
+  width: 100%;
+  // display: flex;
+  // flex-wrap: nowrap;
+  // overflow: hidden;
+  // transform-style: preserve-3d;
 }
 
-.photo-container:first-child{
-    margin: 20px;
+.photo-container:first-child {
+  margin: 20px;
 }
 
-.photo{
-    width: 50%;
-    height: 490px;
-    margin-right: 10px;
-    // object-fit: contain;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.photo {
+  width: 50%;
+  height: 490px;
+  margin-right: 10px;
+  // object-fit: contain;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 // button.prev, button.next{
 //   position: absolute;
-//   top: 40%; 
+//   top: 40%;
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
@@ -57,145 +55,148 @@
 //   right: 10px;
 // }
 
-.campsite-show-info{
-    width: 60%; 
-
+.campsite-show-info {
+  width: 60%;
 }
 
-.show-row, .campsite-description, .campsite-map{
-    border-top: 1px solid #ebebeb;
-    padding-top: 20px;
+.show-row,
+.campsite-description,
+.campsite-map {
+  border-top: 1px solid #ebebeb;
+  padding-top: 20px;
 }
 
-.campsite-map{
-    margin-top: 30px;
-    width: 100%;
-    height: 500px;
+.campsite-map {
+  margin-top: 30px;
+  width: 100%;
+  height: 500px;
 }
 
-.campsite-title{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 42px;
-    display: flex;
-    justify-content: space-between;
+.campsite-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 42px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.campsite-title h1{
+.campsite-title h1 {
   font-weight: 600;
   margin: 0;
 }
 
-.campsite-address{
-    display: inline;
-}
-
-.campsite-description{
-    font-size: 18px;
-    line-height: 1.42;
-
-    color: #333333;
-    // height: 300px;
-    text-overflow: ellipsis;
-    // overflow: clip;
-    padding-bottom: 20px;
-
-}
-
-.campsite-description p, .campsite-description button{
+.campsite-address {
   display: inline;
 }
 
-.campsite-description button{
+.campsite-description {
+  font-size: 18px;
+  line-height: 1.42;
+
+  color: #333333;
+  // height: 300px;
+  text-overflow: ellipsis;
+  // overflow: clip;
+  padding-bottom: 20px;
+}
+
+.campsite-description p,
+.campsite-description button {
+  display: inline;
+}
+
+.campsite-description button {
   color: #333333;
   font-weight: 700;
 }
 
-.campsite-description button:hover{
+.campsite-description button:hover {
   text-decoration: underline;
 }
 
-.show-row{
-    margin: 30px 0;
+.show-row {
+  margin: 30px 0;
 }
 
-.tags-container, .weather-container{
-    width: 32%;
-    // border: solid 2px blue;
+.tags-container,
+.weather-container {
+  width: 32%;
+  // border: solid 2px blue;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    // height: 220px;
-    padding: 30px 0;
-    background-color: #ffffff;
-    border: 1px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  // height: 220px;
+  padding: 30px 0;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
 }
 
-.tags-container:not(:first-child), .weather-container:not(:first-of-type) {
-  margin-left: 2%
+.tags-container:not(:first-child),
+.weather-container:not(:first-of-type) {
+  margin-left: 2%;
 }
 
-.tags-list{
-    margin-top: 20px;
-    text-align: center;
-
+.tags-list {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.tags-container h2{
-    margin: 0;
-    font-size: 20px;
+.tags-container h2 {
+  margin: 0;
+  font-size: 20px;
 }
 
-.tags-list li{
-    font-size: 18px;
-    line-height: 1.42;
-    color: #333333;
-    padding: 5px;
-    display: flex;
+.tags-list li {
+  font-size: 18px;
+  line-height: 1.42;
+  color: #333333;
+  padding: 5px;
+  display: flex;
 }
 
-.show-row{
-    flex-wrap: wrap;
-};
+.show-row {
+  flex-wrap: wrap;
+}
 
-.show-row > h2{
-    margin: 0;
-    margin-bottom: 20px;
-    font-size: 22px;
-    width: 100%;
-};
+.show-row > h2 {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+  width: 100%;
+}
 
 // .campsite-details-container{
 //   margin: 30px 0;
 //   padding-top: 16px;
 // }
-.weather-container h3{
+.weather-container h3 {
   font-size: 36px;
 }
-.weather-container span{
+.weather-container span {
   font-size: 18px;
 }
 
-.details-left{
+.details-left {
   width: 16.6666667%;
 }
 
-.details-left h2, .details-right{
+.details-left h2,
+.details-right {
   font-size: 18px;
 }
 
-.details-left h2{
+.details-left h2 {
   font-weight: 500;
 }
 
-.details-right{
+.details-right {
   display: flex;
   justify-content: space-evenly;
 }
 
-.details-right ul{
+.details-right ul {
   width: 44%;
 }
 
@@ -203,8 +204,7 @@
   margin-bottom: 3px;
 }
 
-.campsite-details-container h2{
+.campsite-details-container h2 {
   display: inline-block;
   margin: 0;
 }
-

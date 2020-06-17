@@ -1,8 +1,33 @@
-html, body, header, nav, h1, a,
-ul, li, strong, main, button, i,
-section, img, div, h2, h3,h4, p, form,
-fieldset, label, input, textarea,
-span, article, footer, time, small, select{
+html,
+body,
+header,
+nav,
+h1,
+a,
+ul,
+li,
+strong,
+main,
+button,
+i,
+section,
+img,
+div,
+h2,
+h3,
+h4,
+p,
+form,
+fieldset,
+label,
+input,
+textarea,
+span,
+article,
+footer,
+time,
+small,
+select {
   margin: 0px;
   border: 0px;
   padding: 0px;
@@ -40,7 +65,7 @@ option {
 }
 
 select {
-  border-radius: 0; 
+  border-radius: 0;
 }
 
 button,

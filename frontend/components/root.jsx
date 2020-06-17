@@ -1,18 +1,18 @@
-import React from "react"
+import React from "react";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
-import ScrollToTop from './scroll_to_top'
+import ScrollToTop from "./scroll_to_top";
 import App from "./app";
 
 const Root = (props) => {
-    return(
-        <Provider store={props.store}>
-            <HashRouter>
-                <ScrollToTop />
-                <App /> 
-            </HashRouter>
-        </Provider>
-    )
+  return (
+    <Provider store={props.store}>
+      <HashRouter>
+        <ScrollToTop />
+        <App />
+      </HashRouter>
+    </Provider>
+  );
 };
 
-export default Root; 
+export default Root;

@@ -1,53 +1,53 @@
-.footer, .footer-bottom{
-  width: 100%; 
-  display: flex; 
+.footer,
+.footer-bottom {
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border-top: solid 1px #ebebeb; 
+  border-top: solid 1px #ebebeb;
   padding-top: 5px;
 }
 
-.footer{
+.footer {
   padding: 20px 15%;
   margin-bottom: 30px;
 }
 
-.footer .logo{
+.footer .logo {
   width: 100%;
   height: 40px;
 }
 
-.footer-left{
+.footer-left {
   width: 45%;
   display: flex;
 }
 
-.footer-right{
+.footer-right {
   width: 45%;
 }
 
-.footer-left p a{
+.footer-left p a {
   color: blue;
-
 }
 
-.footer-left-section{
-  margin-right: 10px; 
+.footer-left-section {
+  margin-right: 10px;
 }
-.footer-title{
-  margin-bottom: 24px; 
+.footer-title {
+  margin-bottom: 24px;
 }
 
-.footer p{
+.footer p {
   color: #757575;
   line-height: 1.5;
 }
 
-.profile-links{
+.profile-links {
   display: flex;
   font-size: 22px;
 }
 
-.profile-links a{
+.profile-links a {
   margin-right: 5px;
 }

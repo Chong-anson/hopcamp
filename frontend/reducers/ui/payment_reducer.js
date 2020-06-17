@@ -1,11 +1,11 @@
-import { RECEIVE_PAYMENT, CLEAR_PAYMENT } from "../../actions/payment_actions"
+import { RECEIVE_PAYMENT, CLEAR_PAYMENT } from "../../actions/payment_actions";
 
 const _defaultState = {};
 
 const paymentReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_PAYMENT:
       return action.payload.booking;
     case CLEAR_PAYMENT:
@@ -13,6 +13,6 @@ const paymentReducer = (state = _defaultState, action) => {
     default:
       return state;
   }
-}
+};
 
-export default paymentReducer; 
+export default paymentReducer;

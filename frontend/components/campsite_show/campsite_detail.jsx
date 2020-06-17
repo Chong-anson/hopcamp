@@ -1,7 +1,11 @@
-import React from 'react'; 
+import React from "react";
 
 export default (props) => {
-  const CAMPSITE_TYPE = {CAMPING: "Campsites", RV: "RVs", GLAMPING: "Lodging" };
+  const CAMPSITE_TYPE = {
+    CAMPING: "Campsites",
+    RV: "RVs",
+    GLAMPING: "Lodging",
+  };
 
   return (
     <div className="campsite-details-container show-row">
@@ -17,7 +21,7 @@ export default (props) => {
             </li>
             <li>
               <h2> Number of guests: </h2>
-              <span> Up to {props.capacity} guests </span>  
+              <span> Up to {props.capacity} guests </span>
             </li>
             <li>
               <h2>Check in:</h2>
@@ -27,7 +31,6 @@ export default (props) => {
               <h2>Check out:</h2>
               <span>&nbsp;Before 12PM</span>
             </li>
-    
           </ul>
           <ul>
             <li>
@@ -38,7 +41,7 @@ export default (props) => {
               <h2>Minimum nights:</h2>
               <span>&nbsp;1</span>
             </li>
-              <li>
+            <li>
               <h2>Accepts bookings:</h2>
               <span>&nbsp;12 months out</span>
             </li>
@@ -50,5 +53,5 @@ export default (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
