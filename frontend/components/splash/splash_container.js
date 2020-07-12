@@ -6,7 +6,7 @@ import { updateFilter } from "../../actions/filter_actions";
 import { updateLocation } from "../../actions/map_action";
 import Splash from "./splash";
 
-const msp = (state, ownProps) => ({
+const msp = (state) => ({
   citiesList: selectAllCities(state),
   tagsList: selectAllTags(state),
   venues: Object.values(state.entities.venues),

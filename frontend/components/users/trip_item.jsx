@@ -32,7 +32,6 @@ const TripItem = ({ campsite, booking, idx }) => {
           <p className="trip-item-subtitle">{address}</p>
         </div>
       </Link>
-      {/* <BookingItem  idx={idx} booking={booking} type="user" /> */}
     </div>
   );
 };

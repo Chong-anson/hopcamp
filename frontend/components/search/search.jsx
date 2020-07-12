@@ -131,12 +131,6 @@ class Search extends React.Component {
     ));
     return (
       <div className="search-container">
-        {/* <div className="search-box">
-                    <form onSubmit={this.handleSubmit} id="campsite-map-form">
-                        <input type="text" value={this.state.location} onChange={this.handleChange} id="autocomplete" />
-                        <button>Search campsite at that city</button>
-                    </form>
-                </div> */}
         <FilterBar
           updateFilter={this.props.updateFilter}
           filterButton={this.props.filterButton}
