@@ -50,7 +50,7 @@ class Search extends React.Component {
   componentDidMount() {
     let mapOptions = {
       center: { lat: 37.7758, lng: -122.435 },
-      zoom: 9,
+      zoom: 7,
       mapTypeId: "terrain",
     };
 

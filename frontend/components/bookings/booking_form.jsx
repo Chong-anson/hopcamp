@@ -182,7 +182,7 @@ class Bookingform extends React.Component {
                   disabled={disabledMax}
                   onClick={this.handleGuestClick("plus")}
                 >
-                  <span className="fa fa-plus"></span>]
+                  <span className="fa fa-plus"></span>
                 </button>
               </div>
             </div>
