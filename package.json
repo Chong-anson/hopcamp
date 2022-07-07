@@ -9,7 +9,7 @@
     "@types/jquery": "^3.3.38",
     "babel-loader": "^8.1.0",
     "flickity": "^2.2.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
